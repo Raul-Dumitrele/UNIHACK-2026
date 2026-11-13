@@ -12,8 +12,11 @@ from sqlmodel import Session, SQLModel
 
 from backend.seed.build import SeedData, build_seed
 
-# Insert order respects foreign keys: users before spaces and ideas, spaces before slots.
-TABLES = [("users", "User"), ("spaces", "Space"), ("slots", "Slot"), ("ideas", "Idea")]
+# Insert order respects foreign keys: users -> spaces -> slots -> ideas -> interests/bookings -> notifications.
+TABLES = [
+    ("users", "User"), ("spaces", "Space"), ("slots", "Slot"), ("ideas", "Idea"),
+    ("interests", "Interest"), ("bookings", "Booking"), ("notifications", "Notification"),
+]
 
 
 def upsert(session: Session, model: type[SQLModel], rows: list[dict]) -> int:

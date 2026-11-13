@@ -11,20 +11,13 @@ from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 
 from backend.ai.fallback import build_fallback
+from backend.ai.geo import nearest_neighborhood
+from backend.ai.matching import KIND_LABELS
+from backend.seed import scenario
 
 DATA = Path(__file__).resolve().parent / "data"
 SLOT_DAYS = 14
 
-KIND_LABELS = {
-    "library": "bibliotecă",
-    "community_centre": "centru comunitar",
-    "social_centre": "centru social",
-    "arts_centre": "centru cultural",
-    "cultural_centre": "centru cultural",
-    "coworking_space": "spațiu de coworking",
-    "sports_centre": "bază sportivă",
-    "sports_hall": "sală de sport",
-}
 BASE_CAPACITY = {
     "library": 25, "community_centre": 40, "social_centre": 30, "arts_centre": 60,
     "cultural_centre": 60, "coworking_space": 20, "sports_centre": 40, "sports_hall": 60,
@@ -59,6 +52,9 @@ class SeedData:
     spaces: list[dict] = field(default_factory=list)
     slots: list[dict] = field(default_factory=list)
     ideas: list[dict] = field(default_factory=list)
+    interests: list[dict] = field(default_factory=list)
+    bookings: list[dict] = field(default_factory=list)
+    notifications: list[dict] = field(default_factory=list)
 
 
 def load_json(name: str) -> dict:
@@ -89,6 +85,7 @@ def build_spaces(osm: dict, owner_ids: list[str]) -> list[dict]:
             "lat": s["lat"],
             "lon": s["lon"],
             "address": s.get("address"),
+            "neighborhood": nearest_neighborhood((s["lat"], s["lon"])),
             "capacity": BASE_CAPACITY[s["kind"]] + (h % 5) * 5,
             "amenities": amenities,
             "setting": "exterior" if outdoor else "interior",
@@ -99,25 +96,29 @@ def build_spaces(osm: dict, owner_ids: list[str]) -> list[dict]:
     return spaces
 
 
+def make_slot(space_id: str, day: date) -> dict:
+    """The space's (hash-chosen) local time window on `day`, stored in UTC."""
+    start_t, end_t = SLOT_WINDOWS[stable_hash(space_id, "slots") % len(SLOT_WINDOWS)]
+    to_utc = lambda t: datetime.combine(day, t, tzinfo=LOCAL_TZ).astimezone(timezone.utc)  # noqa: E731
+    return {
+        "id": f"{space_id}-slot-{day.isoformat()}-{start_t:%H%M}",  # local date and time
+        "space_id": space_id,
+        "starts_at": to_utc(start_t).isoformat(),
+        "ends_at": to_utc(end_t).isoformat(),
+        "is_demo": True,
+    }
+
+
 def build_slots(spaces: list[dict], start: date) -> list[dict]:
     """Free slots for the next SLOT_DAYS days: 3 weekdays and one time window per space."""
     slots = []
     for s in spaces:
         h = stable_hash(s["id"], "slots")
         weekdays = {(h + k * 2) % 7 for k in range(3)}
-        start_t, end_t = SLOT_WINDOWS[h % len(SLOT_WINDOWS)]
         for offset in range(SLOT_DAYS):
             day = start + timedelta(days=offset)
-            if day.weekday() not in weekdays:
-                continue
-            to_utc = lambda t: datetime.combine(day, t, tzinfo=LOCAL_TZ).astimezone(timezone.utc)  # noqa: E731
-            slots.append({
-                "id": f"{s['id']}-slot-{day.isoformat()}-{start_t:%H%M}",  # local date and time
-                "space_id": s["id"],
-                "starts_at": to_utc(start_t).isoformat(),
-                "ends_at": to_utc(end_t).isoformat(),
-                "is_demo": True,
-            })
+            if day.weekday() in weekdays:
+                slots.append(make_slot(s["id"], day))
     return slots
 
 
@@ -135,9 +136,19 @@ def build_seed(start: date | None = None) -> SeedData:
     users = build_users(demo)
     owners = [u["id"] for u in users if u["role"] == "proprietar"]
     spaces = build_spaces(osm, owners)
+    start = start or date.today()
+    slots = build_slots(spaces, start)
+    ideas = build_ideas(demo)
+    interests = scenario.build_interests(demo)
+    bookings = scenario.build_bookings(demo, ideas, users, spaces, slots, start, make_slot)
+    threshold = demo["interest_threshold"]
+    scenario.apply_states(ideas, slots, interests, bookings, threshold)
     return SeedData(
         users=users,
         spaces=spaces,
-        slots=build_slots(spaces, start or date.today()),
-        ideas=build_ideas(demo),
+        slots=slots,
+        ideas=ideas,
+        interests=interests,
+        bookings=bookings,
+        notifications=scenario.build_notifications(ideas, spaces, slots, interests, bookings, threshold, LOCAL_TZ),
     )

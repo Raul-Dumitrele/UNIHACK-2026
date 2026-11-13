@@ -78,7 +78,8 @@ def test_commercial_venues_excluded(data):
 
 
 def test_slots_are_in_window(data):
-    for sl in data.slots:
+    past = {b["slot_id"] for b in data.bookings if b["id"] in {"demo-booking-5", "demo-booking-6", "demo-booking-7"}}
+    for sl in (s for s in data.slots if s["id"] not in past):
         starts, ends = datetime.fromisoformat(sl["starts_at"]), datetime.fromisoformat(sl["ends_at"])
         assert 0 <= (starts.date() - START).days < SLOT_DAYS
         assert starts < ends
@@ -94,6 +95,65 @@ def test_slots_are_local_windows_stored_as_utc(data):
         local = starts.astimezone(LOCAL_TZ)
         assert local.time() in local_starts
         assert sl["id"].endswith(f"-{local.date().isoformat()}-{local:%H%M}")
+
+
+def test_scenario_covers_every_state(data):
+    statuses = {i["status"] for i in data.ideas}
+    assert statuses == {"deschisa", "prag_atins", "rezervata"}
+    assert {b["status"] for b in data.bookings} == {"ceruta", "aprobata", "refuzata"}
+    for idea in data.ideas:
+        assert idea["interest_count"] == sum(1 for i in data.interests if i["idea_id"] == idea["id"])
+
+
+def test_scenario_rules(data):
+    users = {u["id"] for u in data.users}
+    ideas = {i["id"]: i for i in data.ideas}
+    slots = {s["id"]: s for s in data.slots}
+    pairs = [(i["idea_id"], i["user_id"]) for i in data.interests]
+    assert len(pairs) == len(set(pairs)), "one interest per user per idea"
+    assert all(u in users and ideas[i]["author_id"] != u for i, u in pairs), "no self-interest"
+    for b in data.bookings:
+        assert slots[b["slot_id"]]["space_id"] == b["space_id"]
+        assert ideas[b["idea_id"]]["interest_count"] >= 3, "booking only after threshold"
+        assert slots[b["slot_id"]]["is_free"] is (b["status"] != "aprobata")
+    approved_slots = [b["slot_id"] for b in data.bookings if b["status"] == "aprobata"]
+    assert len(approved_slots) == len(set(approved_slots)), "a slot is approved at most once"
+
+
+def test_past_events_have_past_slots(data):
+    past = [b for b in data.bookings if b["id"] in {"demo-booking-5", "demo-booking-6", "demo-booking-7"}]
+    slots = {s["id"]: s for s in data.slots}
+    assert all(datetime.fromisoformat(slots[b["slot_id"]]["starts_at"]).date() < START for b in past)
+
+
+def test_notifications(data):
+    users = {u["id"] for u in data.users}
+    kinds = {n["kind"] for n in data.notifications}
+    assert kinds == {"prag_atins", "cerere_rezervare", "rezervare_aprobata", "rezervare_refuzata"}
+    assert all(n["user_id"] in users and n["text"] and n["read"] is False for n in data.notifications)
+    owners = {s["id"]: s["owner_id"] for s in data.spaces}
+    for n in data.notifications:
+        if n["kind"] == "cerere_rezervare":
+            booking = next(b for b in data.bookings if b["id"] == n["booking_id"])
+            assert n["user_id"] == owners[booking["space_id"]]
+    ids = [n["id"] for n in data.notifications]
+    assert len(ids) == len(set(ids))
+
+
+def test_format_local():
+    from backend.seed.build import LOCAL_TZ
+    from backend.seed.scenario import format_local
+
+    assert format_local("2026-11-21T08:00:00+00:00", LOCAL_TZ) == "sâmbătă 21 noiembrie, 10:00"
+
+
+def test_demo_impact_is_not_empty(data):
+    from backend.impact import compute_impact
+    from backend.seed.scenario import approved_for_impact
+
+    r = compute_impact(approved_for_impact(data.bookings, data.spaces, data.slots, data.interests, data.users))
+    assert r.rezervari_aprobate == 5 and r.idei_realizate == 5
+    assert len(r.pe_saptamani) >= 3 and r.km_economisiti > 0
 
 
 def test_ideas_have_fallback_dossier(data):
