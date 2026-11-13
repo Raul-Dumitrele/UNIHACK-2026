@@ -2,6 +2,11 @@
 .venv/
 node_modules/
 __pycache__/
+.pytest_cache/
 dist/
+.expo/
+*.db
 *.log
 .DS_Store
+_to_delete/
+.claude/settings.local.json

@@ -1,0 +1,13 @@
+#!/bin/sh
+# Block secrets, then run P1 backend tests.
+if git diff --cached --name-only | grep -qE '(^|/)\.env$'; then
+  echo "pre-commit: .env is staged - refusing to commit secrets"; exit 1
+fi
+if git diff --cached -U0 | grep -E '^\+' | grep -qE 'AIza[0-9A-Za-z_-]{30,}|sk-[A-Za-z0-9]{20,}'; then
+  echo "pre-commit: staged change looks like an API key"; exit 1
+fi
+if [ -x backend/.venv/Scripts/python.exe ] || [ -x backend/.venv/bin/python ]; then
+  PY=backend/.venv/Scripts/python.exe; [ -x "$PY" ] || PY=backend/.venv/bin/python
+  (cd backend && "../$PY" -m pytest tests/app -q) || { echo "pre-commit: backend tests failed"; exit 1; }
+fi
+exit 0

@@ -1,36 +1,29 @@
-# Semnal (nume de lucru) - UniHack 2026, track Nokia Connected Communities
+# Loc Comun - UniHack 2026
 
 ## Obiectiv
-Alerte personalizate, pe clădire / linie / stație, pentru întreruperi de utilități (căldură, apă, curent) și devieri de transport din Timișoara.
-Flux: anunțuri reale -> date structurate -> hartă -> abonare -> alertă.
-Plus: "ce deservește efectiv stația X acum" (GTFS minus alerte plus vehicule live), cu stații fantomă și alternative.
-Provocări: CH-08 + CH-09 (docs/challenges.md). Livrăm modul compatibil cu Timișoara City App (API REST + widget + endpoint pentru Timi).
+Idee -> dosar structurat de AI -> spații libere potrivite -> interes din comunitate -> aprobare rezervare de către proprietar -> tablou de impact.
 
-## Foldere (fiecare persoană își are zona)
-- backend/  : ingestie, OCR, extracție LLM cu încredere, geocodare, API
-- frontend/ : PWA mobil-first, hartă, abonări, machetă City App
-- transit/  : GTFS + alerte + vehicule live, stații fantomă, evaluare
-- data/     : mock și snapshot-uri cu date reale
-- docs/     : context și contracte (citește doar ce ai nevoie)
+## Monorepo și zone (fiecare modifică doar zona sa)
+- P1 (Raul): CLAUDE.md, README.md, Makefile, .gitignore, .env.example, scripts/, .githooks/, docs/CONTRACT.md, docs/openapi.json, backend/__init__.py, backend/pytest.ini, backend/app/, backend/requirements.txt, backend/tests/app/
+- P2: web/ (React + Vite + TS), mobile/ (Expo + TS)
+- P3: backend/ai/, backend/impact/, backend/seed/, backend/tests/ai/, backend/tests/seed/, tests/e2e/, docs/DATA.md
 
-## Stack (propus, de confirmat în plan)
-Python 3.11 + FastAPI | React + Vite (PWA) + MapLibre | SQLite (Postgres+PostGIS dacă e nevoie) | LLM prin API (cheie în .env) | OSM Nominatim/Overpass.
+## Stack
+Python 3.11+ (FastAPI + SQLModel, SQLite) | React + Vite + TS | Expo + TS | Gemini (google-genai, cheie în .env, cu fallback fără Gemini).
 
 ## Reguli
-1. Doar software, doar date reale; orice simulare e marcată clar în demo
-2. Extracția LLM întoarce JSON cu câmpul `incredere` (0-1), `sursa` (URL) și `necitit`; se abține când nu e sigură
-3. STPT: endpoint-uri nedocumentate (docs/stpt-endpoints.md); cache, rate-limit mic, snapshot în data/ pentru demo
-4. Contractul JSON dintre module e în docs/api-contract.md; UI-ul lucrează pe mock din data/
-5. Fără chei în repo (.env e în .gitignore); commit-uri mici; o ramură per persoană
-6. UI în română (engleză opțional); cod și commit-uri în engleză
-7. Nu extinde scope-ul; MVP-ul: 10 anunțuri reale -> hartă -> abonare -> alertă -> stație fantomă
+1. Contractul e docs/CONTRACT.md; nu-l schimba fără acordul echipei. După schimbare: `make openapi`, apoi tipurile TS se regenerează din docs/openapi.json
+2. Datele demo au `is_demo=true` și insigna „exemplu” în UI; utilizatorul demo vine din header `X-User-Id`
+3. Notificările în aplicație la schimbarea stării ideii/rezervării fac parte din proiect
+4. Fără chei în repo (.env e ignorat; hook-ul pre-commit blochează .env și chei)
+5. UI în română; cod și commit-uri în engleză; commit-uri mici, o ramură per persoană
+6. Proiectul vechi („Semnal”) e abandonat; codul lui e doar în tag-ul git `arhiva-semnal`
+
+## Comenzi (din rădăcină)
+scripts/setup.ps1 | scripts/dev.ps1 | scripts/test.ps1 | scripts/smoke.ps1 | make openapi
 
 ## Cum lucrezi
 Plan înainte de cod. Referă fișiere precise. Răspunsuri scurte.
-## Documente
-- docs/brief.md: componente, echipa, plan pe ore, demo, plan B
-- docs/challenges.md, docs/stpt-endpoints.md
-- scripts/check_connections.py: verifica uneltele, cheile ?i accesul la date
 
 ## graphify
 
