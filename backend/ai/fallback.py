@@ -9,9 +9,10 @@ CATEGORY_KEYWORDS: dict[Category, tuple[str, ...]] = {
     Category.atelier: ("atelier", "repar", "croitor", "tricot", "olarit", "lucru manual", "diy", "mester", "bricolaj", "gatit"),
     Category.sport: ("sport", "fotbal", "baschet", "volei", "alerga", "yoga", "fitness", "tenis", "sah", "dans", "biciclet", "ciclism", "miscare"),
     Category.cultura: ("concert", "teatru", "film", "cinema", "expozit", "lectur", "carte", "poezie", "muzic", "arta", "pictur", "fotograf"),
-    Category.educatie: ("curs", "meditat", "invat", "lectie", "programare", "limba", "engleza", "matematic", "seminar", "prezentare", "workshop"),
-    Category.comunitate: ("vecin", "cartier", "comunitat", "intalnire", "voluntar", "schimb", "targ", "petrecere", "seniori", "varstnic", "socializ"),
+    Category.educatie: ("curs", "meditat", "invat", "lecti", "programare", "limba", "engleza", "matematic", "seminar", "prezentare", "workshop", "robotic", "stiint"),
     Category.mediu: ("mediu", "plant", "gradin", "reciclar", "compost", "curatenie", "ecolog", "copaci", "deseuri"),
+    # Most generic category last: dict order breaks ties, so specific topics win over "comunitate".
+    Category.comunitate: ("vecin", "cartier", "comunitat", "intalnire", "voluntar", "schimb", "targ", "petrecere", "seniori", "varstnic", "socializ"),
 }
 
 DEFAULT_PARTICIPANTS = {
@@ -36,10 +37,12 @@ AUDIENCES: list[tuple[str, str]] = [
     ("pensionar", "seniori"), ("vecin", "vecinii din cartier"),
 ]
 
-OUTDOOR = (r"parc(?:ul|uri)?\b", "aer liber", "afara", "exterior", "curte", "gradin", r"teren\b", "strad")
-INDOOR = (r"sal(?:a|i|ii)\b", "interior", "inauntru", "bibliotec", r"clas(?:a|e)\b")
+OUTDOOR = (r"parc(?:ul|uri)?\b", "aer liber", "afara", "exterior", "curte", "gradin", r"teren\b", "strad",
+           r"mal(?:ul)?\b", "padur", "plaj")
+INDOOR = (r"sal(?:a|i|ii)\b", "interior", "inauntru", "bibliotec", r"clas(?:a|e)\b", "bucatari")
 
-PEOPLE = r"(?:de\s+)?(?:oameni|persoane|participanti|copii|vecini|locuri|invitati|elevi|studenti|seniori|membri)"
+PEOPLE = (r"(?:de\s+)?(?:oameni|persoane|participanti|copii|vecini|locuri|invitati|elevi|studenti|seniori|membri"
+          r"|jucatori|voluntari|adulti|tineri|cursanti|spectatori|doritori|familii)")
 _PARTICIPANTS_RE = re.compile(r"\b(\d{1,3})\s*(?:-\s*\d{1,3}\s*)?" + PEOPLE + r"\b")
 _DURATION_RE = re.compile(r"\b(\d{1,2}(?:[.,]\d)?)\s*(?:de\s+)?(?:ore|ora|h)\b")
 _FILLER_RE = re.compile(
