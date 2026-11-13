@@ -1,0 +1,23 @@
+{
+ "note": "Persoane și idei fictive, doar pentru demonstrație (is_demo=true, insigna „exemplu”).",
+ "users": [
+  {"id": "demo-user-1", "name": "Ana Popescu", "role": "locuitor", "neighborhood": "Fabric"},
+  {"id": "demo-user-2", "name": "Mihai Ionescu", "role": "locuitor", "neighborhood": "Iosefin"},
+  {"id": "demo-user-3", "name": "Ioana Radu", "role": "locuitor", "neighborhood": "Elisabetin"},
+  {"id": "demo-user-4", "name": "Andrei Stan", "role": "locuitor", "neighborhood": "Circumvalațiunii"},
+  {"id": "demo-user-5", "name": "Elena Mureșan", "role": "locuitor", "neighborhood": "Fabric"},
+  {"id": "demo-user-6", "name": "Radu Lungu", "role": "proprietar", "neighborhood": "Cetate"},
+  {"id": "demo-user-7", "name": "Maria Dobre", "role": "proprietar", "neighborhood": "Lipovei"},
+  {"id": "demo-user-8", "name": "Cristian Pop", "role": "proprietar", "neighborhood": "Șagului"}
+ ],
+ "ideas": [
+  {"id": "demo-idea-1", "author_id": "demo-user-1", "created_at": "2026-11-10T17:00:00+00:00",
+   "text": "Vreau să organizez un atelier de reparat biciclete pentru vecini, sâmbăta dimineața, cam 15 oameni, 3 ore. Avem nevoie de mese și o priză."},
+  {"id": "demo-idea-2", "author_id": "demo-user-2", "created_at": "2026-11-11T09:30:00+00:00",
+   "text": "Propun un club de lectură pentru seniori din Iosefin, o dată pe săptămână, 2 ore, cu scaune și o masă mare."},
+  {"id": "demo-idea-3", "author_id": "demo-user-3", "created_at": "2026-11-12T15:00:00+00:00",
+   "text": "Curs gratuit de programare pentru copii de 10-14 ani, 12 copii, avem nevoie de proiector, wifi și prize."},
+  {"id": "demo-idea-4", "author_id": "demo-user-4", "created_at": "2026-11-12T18:45:00+00:00",
+   "text": "Turneu de baschet 3x3 pentru tinerii din cartier, 24 de participanți, 4 ore, pe un teren în aer liber."}
+ ]
+}
