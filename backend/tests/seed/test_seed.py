@@ -156,6 +156,17 @@ def test_demo_impact_is_not_empty(data):
     assert len(r.pe_saptamani) >= 3 and r.km_economisiti > 0
 
 
+def test_committed_examples_are_up_to_date():
+    """If this fails, run: python -m backend.seed.export_examples (and commit the JSON)."""
+    import json
+
+    from backend.seed.export_examples import OUT, build_examples
+
+    for name, payload in build_examples().items():
+        committed = json.loads((OUT / f"{name}.json").read_text(encoding="utf-8"))
+        assert committed == json.loads(json.dumps(payload, ensure_ascii=False)), name
+
+
 def test_ideas_have_fallback_dossier(data):
     bikes = next(i for i in data.ideas if i["id"] == "demo-idea-1")
     assert bikes["dossier"]["source"] == "fallback"

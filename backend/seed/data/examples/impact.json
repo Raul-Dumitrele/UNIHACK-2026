@@ -1,0 +1,50 @@
+{
+ "idei_realizate": 5,
+ "spatii_activate": 4,
+ "rezervari_aprobate": 5,
+ "ore_folosite": 14.0,
+ "participanti": 17,
+ "km_economisiti": 7.6,
+ "km_economisiti_estimare": true,
+ "ipoteze": {
+  "km_per_participant": 4.0,
+  "metoda": "dus-întors; din cartierul participantului: (distanța până în centru - distanța până la spațiu); altfel km_per_participant"
+ },
+ "pe_cartiere": {
+  "Cetate": 1,
+  "Complex Studențesc": 1,
+  "Fabric": 1,
+  "Iosefin": 2
+ },
+ "pe_tip_spatiu": {
+  "bază sportivă": 1,
+  "centru comunitar": 3,
+  "centru cultural": 1
+ },
+ "pe_saptamani": [
+  {
+   "saptamana": "2026-W44",
+   "rezervari": 1,
+   "ore": 4.0,
+   "participanti": 3
+  },
+  {
+   "saptamana": "2026-W45",
+   "rezervari": 1,
+   "ore": 2.0,
+   "participanti": 4
+  },
+  {
+   "saptamana": "2026-W46",
+   "rezervari": 1,
+   "ore": 4.0,
+   "participanti": 3
+  },
+  {
+   "saptamana": "2026-W47",
+   "rezervari": 2,
+   "ore": 4.0,
+   "participanti": 7
+  }
+ ]
+}

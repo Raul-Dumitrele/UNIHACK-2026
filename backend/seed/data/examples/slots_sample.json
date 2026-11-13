@@ -1,0 +1,50 @@
+[
+ {
+  "id": "osm-node-10024108156-slot-2026-11-16-1800",
+  "space_id": "osm-node-10024108156",
+  "starts_at": "2026-11-16T16:00:00+00:00",
+  "ends_at": "2026-11-16T18:00:00+00:00",
+  "is_demo": true,
+  "is_free": true
+ },
+ {
+  "id": "osm-node-10024108156-slot-2026-11-18-1800",
+  "space_id": "osm-node-10024108156",
+  "starts_at": "2026-11-18T16:00:00+00:00",
+  "ends_at": "2026-11-18T18:00:00+00:00",
+  "is_demo": true,
+  "is_free": true
+ },
+ {
+  "id": "osm-node-10024108156-slot-2026-11-21-1800",
+  "space_id": "osm-node-10024108156",
+  "starts_at": "2026-11-21T16:00:00+00:00",
+  "ends_at": "2026-11-21T18:00:00+00:00",
+  "is_demo": true,
+  "is_free": true
+ },
+ {
+  "id": "osm-node-10024108156-slot-2026-11-23-1800",
+  "space_id": "osm-node-10024108156",
+  "starts_at": "2026-11-23T16:00:00+00:00",
+  "ends_at": "2026-11-23T18:00:00+00:00",
+  "is_demo": true,
+  "is_free": true
+ },
+ {
+  "id": "osm-node-10024108156-slot-2026-11-25-1800",
+  "space_id": "osm-node-10024108156",
+  "starts_at": "2026-11-25T16:00:00+00:00",
+  "ends_at": "2026-11-25T18:00:00+00:00",
+  "is_demo": true,
+  "is_free": true
+ },
+ {
+  "id": "osm-node-10024108156-slot-2026-11-28-1800",
+  "space_id": "osm-node-10024108156",
+  "starts_at": "2026-11-28T16:00:00+00:00",
+  "ends_at": "2026-11-28T18:00:00+00:00",
+  "is_demo": true,
+  "is_free": true
+ }
+]

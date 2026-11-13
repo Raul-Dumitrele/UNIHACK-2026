@@ -1,0 +1,108 @@
+[
+ {
+  "id": "osm-node-10024108156",
+  "name": "Biblioteca Județeană Timiș - Filiala Fabric-Vii",
+  "kind": "library",
+  "kind_label": "bibliotecă",
+  "lat": 45.772267,
+  "lon": 21.233127,
+  "address": null,
+  "neighborhood": "Lipovei",
+  "capacity": 40,
+  "amenities": [
+   "mese",
+   "scaune",
+   "priză",
+   "wi-fi"
+  ],
+  "setting": "interior",
+  "owner_id": "demo-user-7",
+  "source": "osm",
+  "is_demo": true
+ },
+ {
+  "id": "osm-node-11681144987",
+  "name": "One Move Șagului",
+  "kind": "sports_centre",
+  "kind_label": "bază sportivă",
+  "lat": 45.73769,
+  "lon": 21.210215,
+  "address": "Bulevardul 16 Decembrie 1989 75",
+  "neighborhood": "Iosefin",
+  "capacity": 45,
+  "amenities": [
+   "vestiar",
+   "dușuri",
+   "saltele",
+   "parcare"
+  ],
+  "setting": "interior",
+  "owner_id": "demo-user-8",
+  "source": "osm",
+  "is_demo": true
+ },
+ {
+  "id": "osm-node-12329181697",
+  "name": "Club Norișor",
+  "kind": "community_centre",
+  "kind_label": "centru comunitar",
+  "lat": 45.701346,
+  "lon": 21.236954,
+  "address": null,
+  "neighborhood": "Planetelor",
+  "capacity": 45,
+  "amenities": [
+   "mese",
+   "scaune",
+   "priză",
+   "proiector",
+   "wi-fi"
+  ],
+  "setting": "interior",
+  "owner_id": "demo-user-6",
+  "source": "osm",
+  "is_demo": true
+ },
+ {
+  "id": "osm-node-13252338910",
+  "name": "Comples Sportiv Bega, Sală de gimnastică",
+  "kind": "sports_hall",
+  "kind_label": "sală de sport",
+  "lat": 45.764422,
+  "lon": 21.221119,
+  "address": null,
+  "neighborhood": "Dacia",
+  "capacity": 70,
+  "amenities": [
+   "vestiar",
+   "dușuri",
+   "saltele",
+   "sonorizare"
+  ],
+  "setting": "interior",
+  "owner_id": "demo-user-6",
+  "source": "osm",
+  "is_demo": true
+ },
+ {
+  "id": "osm-node-13726011332",
+  "name": "Biblioteca Județeană",
+  "kind": "library",
+  "kind_label": "bibliotecă",
+  "lat": 45.753308,
+  "lon": 21.203859,
+  "address": null,
+  "neighborhood": "Blașcovici",
+  "capacity": 25,
+  "amenities": [
+   "mese",
+   "scaune",
+   "priză",
+   "proiector"
+  ],
+  "setting": "interior",
+  "owner_id": "demo-user-8",
+  "source": "osm",
+  "is_demo": true
+ }
+]
