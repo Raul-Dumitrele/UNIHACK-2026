@@ -5,14 +5,17 @@ Run once, commit the JSON; seeding (run.py) is offline and never calls the netwo
 Data © OpenStreetMap contributors, ODbL 1.0 (see docs/DATA.md).
 """
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
 
+from backend.ai.fallback import normalize as normalize_text
+
 OUT = Path(__file__).resolve().parent / "data" / "osm_spaces.json"
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_URLS = ("https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter")
 USER_AGENT = "LocComun-seed/0.1 (hackathon demo)"
 BBOX = (45.70, 21.14, 45.81, 21.32)  # south, west, north, east: Timișoara
 
@@ -63,24 +66,74 @@ def normalize(payload: dict) -> list[dict]:
     return sorted(spaces, key=lambda s: s["id"])
 
 
-def main() -> int:
-    resp = httpx.post(OVERPASS_URL, data={"data": QUERY}, headers={"User-Agent": USER_AGENT}, timeout=120)
-    resp.raise_for_status()
-    spaces = normalize(resp.json())
+NEIGHBORHOODS_OUT = OUT.parent / "neighborhoods.json"
+NEIGHBORHOODS_QUERY = f"""[out:json][timeout:90];
+nwr["place"~"^(suburb|quarter|neighbourhood)$"]["name"]({','.join(map(str, BBOX))});
+out center tags;"""
+
+
+# Shopping/industrial places tagged as neighbourhoods; not where people live.
+NOT_RESIDENTIAL = re.compile(r"^(cora|metro\b|zona industrial)", re.IGNORECASE)
+
+
+def _name_key(name: str) -> str:
+    """'Braytim - Timișoara Sud' / 'Braytim-Timișoara Sud' and 'Complex' / 'Complexul Studențesc'
+    are the same district: ignore punctuation, spaces and the definite article '-ul'."""
+    return re.sub(r"[^a-z0-9]", "", re.sub(r"ul\b", "", normalize_text(name)))
+
+
+def normalize_neighborhoods(payload: dict) -> list[dict]:
+    """One entry per district name; nodes first, then by id, so the choice is stable."""
+    order = {"node": 0, "way": 1, "relation": 2}
+    seen: dict[str, dict] = {}
+    for el in sorted(payload.get("elements", []), key=lambda e: (order.get(e["type"], 3), e["id"])):
+        name = (el.get("tags", {}).get("name") or "").strip()
+        lat = el.get("lat", el.get("center", {}).get("lat"))
+        lon = el.get("lon", el.get("center", {}).get("lon"))
+        if not name or lat is None or lon is None or NOT_RESIDENTIAL.search(name):
+            continue
+        seen.setdefault(_name_key(name), {"name": name, "place": el["tags"]["place"],
+                                          "lat": round(float(lat), 6), "lon": round(float(lon), 6)})
+    return sorted(seen.values(), key=lambda n: _name_key(n["name"]))
+
+
+def _fetch(query: str) -> dict:
+    last: Exception | None = None
+    for url in OVERPASS_URLS:  # public instances often return 502/504 under load
+        try:
+            resp = httpx.post(url, data={"data": query}, headers={"User-Agent": USER_AGENT}, timeout=120)
+            resp.raise_for_status()
+            return resp.json()
+        except httpx.HTTPError as exc:
+            print(f"{url}: {exc}", file=sys.stderr)
+            last = exc
+    raise RuntimeError("all Overpass instances failed") from last
+
+
+def _write(path: Path, query: str, key: str, items: list[dict]) -> None:
     doc = {
         "source": "OpenStreetMap via Overpass API",
         "attribution": "© OpenStreetMap contributors (ODbL)",
         "license": "ODbL-1.0",
         "fetched_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "bbox": BBOX,
-        "query": QUERY,
-        "spaces": spaces,
+        "query": query,
+        key: items,
     }
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"wrote {len(spaces)} spaces to {OUT}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"wrote {len(items)} {key} to {path}")
+
+
+def main(argv: list[str]) -> int:
+    """No argument: spaces. 'neighborhoods': district centres (each file is fetched once)."""
+    if argv[:1] == ["neighborhoods"]:
+        _write(NEIGHBORHOODS_OUT, NEIGHBORHOODS_QUERY, "neighborhoods",
+               normalize_neighborhoods(_fetch(NEIGHBORHOODS_QUERY)))
+    else:
+        _write(OUT, QUERY, "spaces", normalize(_fetch(QUERY)))
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))
