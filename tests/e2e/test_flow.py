@@ -111,6 +111,46 @@ async def test_author_is_notified_on_status_change(client):
     assert any(n.get("idea_id") == idea["id"] for n in r.json())
 
 
+@pytest.mark.xfail(strict=True, reason="backend.app.models not published by P1 yet")
+async def test_seed_populates_database_idempotently(seed_data):
+    from sqlmodel import Session, func, select
+
+    from backend.app import models
+    from backend.app.db import engine
+    from backend.seed.run import seed
+
+    def counts():
+        with Session(engine) as s:
+            return {name: s.exec(select(func.count()).select_from(getattr(models, name))).one()
+                    for name in ("User", "Space", "Slot", "Idea", "Interest", "Booking", "Notification")}
+
+    before = counts()
+    assert before["Space"] == len(seed_data.spaces) and before["User"] == len(seed_data.users)
+    with Session(engine) as s:
+        seed(s, seed_data)
+    assert counts() == before
+
+
+@NOT_BUILT
+async def test_api_matches_agree_with_p3_ranking(client, seed_data):
+    from backend.ai import match_spaces
+
+    idea = next(i for i in seed_data.ideas if i["id"] == "demo-idea-3")
+    author = next(u for u in seed_data.users if u["id"] == idea["author_id"])
+    expected = [m.space_id for m in match_spaces(idea["dossier"], seed_data.spaces, author["neighborhood"], limit=3)]
+    r = await client.get(f"/ideas/{idea['id']}/matches", headers=as_user(author["id"]))
+    assert r.status_code == 200
+    assert [m["space_id"] for m in r.json()[:3]] == expected
+
+
+@pytest.mark.xfail(strict=True, reason="notifications endpoint not in docs/CONTRACT.md yet")
+async def test_seeded_notifications_are_listed(client, seed_data):
+    mine = [n for n in seed_data.notifications if n["user_id"] == "demo-user-1"]
+    r = await client.get("/notifications", headers=as_user("demo-user-1"))
+    assert r.status_code == 200
+    assert {n["id"] for n in mine} <= {n["id"] for n in r.json()}
+
+
 @NOT_BUILT
 async def test_impact_reports_estimate(client):
     r = await client.get("/impact")
