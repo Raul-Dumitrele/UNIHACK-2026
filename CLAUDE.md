@@ -27,3 +27,7 @@ Python 3.11 + FastAPI | React + Vite (PWA) + MapLibre | SQLite (Postgres+PostGIS
 
 ## Cum lucrezi
 Plan înainte de cod. Referă fișiere precise. Răspunsuri scurte.
+## Documente
+- docs/brief.md: componente, echipa, plan pe ore, demo, plan B
+- docs/challenges.md, docs/stpt-endpoints.md
+- scripts/check_connections.py: verifica uneltele, cheile ?i accesul la date
