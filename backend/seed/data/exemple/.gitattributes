@@ -1,0 +1,3 @@
+# Generated documents: byte-exact (PDF xref offsets break if line endings change)
+*.pdf binary
+*.dxf -text
