@@ -149,6 +149,10 @@ Pentru maparea rândurilor din baza de date în `ApprovedBooking`, exemplul de r
 | `pe_cartiere` | rezervări aprobate pe cartierul spațiului |
 | `pe_tip_spatiu` | rezervări aprobate pe tipul spațiului (bibliotecă, centru comunitar...) |
 | `pe_saptamani` | rezervări, ore și participanți pe săptămână ISO (`2026-W47`) |
+| `proiecte_trimise` | proiectele trimise către Primărie: orice stare în afară de `draft` |
+| `proiecte_cu_acord` | proiectele în starea `acord_de_principiu` (acord **simulat** în aplicație) |
+
+Pentru proiecte, apelul este `compute_impact(rezervări_aprobate, proiecte)`. `proiecte` poate conține rânduri, dicționare sau direct stările. Parametrul e opțional, deci apelurile vechi rămân valabile.
 
 ### `km_economisiti` este o estimare
 Valoarea se calculează dus-întors, pentru fiecare participant:
@@ -159,3 +163,123 @@ Detalii pentru implementare și afișare:
 - Rezultatul nu e niciodată negativ: cine merge mai departe decât în centru nu adaugă nimic.
 - Răspunsul are `km_economisiti_estimare: true` și descrie metoda în `ipoteze`.
 - UI-ul trebuie să afișeze valoarea ca „estimare” (de ex. „≈ 8 km economisiți (estimare)”).
+
+## Propunere către Primărie
+Fluxul complet: o idee care a atins pragul devine o propunere de amenajare pe un teren liber. Propunerea are un dosar generat automat, proiecte de referință reale și o estimare de cost.
+
+### Orice propunere
+Propunerea poate fi despre **orice**: skatepark, parc acvatic, fântână arteziană, bibliotecă stradală, observator astronomic etc. Nu există o listă închisă.
+
+Pentru P1 există o singură funcție: `backend.ai.proposal.prepare_proiect(idea, space, suprafata_mp, tip_amenajare=None)`. Ea întoarce `tip_amenajare`, `eticheta`, `referinte`, `cost` și `dosar`, adică exact câmpurile de proiect de care răspunde P3. Pașii:
+
+1. **Încadrare** (`classify_proposal(text)`), sărită dacă tipul e dat explicit:
+   - Gemini citește textul ideii și dă o etichetă scurtă, de ex. „parc acvatic”, plus cuvinte de căutare.
+   - Fără Gemini, regulile pe cuvinte cheie recunosc formulările obișnuite. Pentru orice altceva, eticheta e obiectul din prima frază („Vrem un aquapark pentru copii” → „aquapark”).
+   - Sinonimele ajung la același tip, deci „parc pentru câini”, „loc de joacă pentru câini” și „dog park” dau toate `parc_caini`.
+2. **Referințe** (`find_references`): întâi baza locală; dacă are prea puține date, căutarea live.
+3. **Documentare** (`research_notes`), doar cu căutarea live pornită: AI-ul caută ce presupune de obicei un astfel de proiect (componente, capacitate, etape, studii, riscuri). Notițele sunt trimise lui Gemini pentru dosar, iar propozițiile cu sume de bani sunt scoase înainte.
+4. **Cost și dosar**: `estimate_cost` și `generate_dosar`, ca mai jos.
+
+Dacă nu există date, rezultatul e tot un dosar complet: cost „date insuficiente” cu motiv, componente, etape, riscuri și lista de verificare. Nu se inventează nicio cifră.
+
+### Baza de referințe
+Baza e formată din proiecte realizate, licitate sau aprobate în alte orașe din România. Le folosim ca termen de comparație și pentru cost.
+
+- **Unde:** `backend/ai/references/data/<tip_amenajare>.json`, câte un fișier pentru fiecare tip. Fiecare intrare are forma `Referinta`.
+- **Colectare:** manuală, pe 2026-11-14. Fiecare pagină a fost deschisă și citită. PDF-urile primăriilor au fost citite local, cu `pdftotext`.
+- **Regula:** o cifră care nu apare în sursă rămâne `null`; nu estimăm. Componentele sunt scrise cu cuvintele noastre.
+
+| Tip | Intrări valide | Cu cost și suprafață | Surse |
+|---|---|---|---|
+| `skatepark` | 6 | 6 | presă locală (economica.net, zf.ro, alba24.ro, economedia.ro) |
+| `loc_de_joaca` | 6 | 5 | presă locală, comunicatul Primăriei Carei |
+| `pista_biciclete` | 5 | 3 | presă locală (bzi.ro, alba24.ro), comunicatul Primăriei Călărași |
+| `parc_caini` | 3 | 0 | presă (g4media.ro, actualdecluj.ro) |
+| `teren_sport` | 2 | 1 | presă (alba24.ro, bzi.ro) |
+| `gradina_comunitara`, `foisor` | 0 | 0 | nu s-au găsit surse cu cifre; acoperite de căutarea live |
+
+### Limite
+- Majoritatea sumelor sunt **valori estimate din licitații sau bugete aprobate**, nu costuri finale.
+- TVA-ul e precizat rar.
+- Uneori suprafața e a întregului amplasament (parc cu skatepark, parc cu loc de joacă), nu doar a amenajării.
+- La valorile date în sursă cu „peste” sau „aproape”, am păstrat cifra rotundă din sursă: Sibiu, „peste 10.000 mp”; Timișoara, „aproape 4.300 mp” și „peste 11 mil. lei”.
+- Unele surse nu au putut fi folosite pentru cost:
+  - Alba Iulia, Dealul Mamut: suprafața e dată pe tronsoane, nu total;
+  - Sibiu, parcuri pentru câini: 3 × 300 mp, fără total;
+  - Răducăneni: costul include și o sală de sport;
+  - Alba Iulia, Vasile Goldiș: valoarea e doar pentru proiectare.
+
+  Acolo cifra lipsă rămâne `null`.
+- Iași, CUG II: suma de 3.459.693 lei este **varianta 1** din două propuse consiliului local. Sursa nu spune care variantă a fost aprobată.
+- Galda de Jos: suprafața publicată (10.076 mp) e aproape dublul produsului lungime × lățime (2.520 m × 2 m), deci costul pe mp iese probabil subestimat. Cifra e păstrată exact cum apare în sursă.
+- Sumele în euro nu sunt convertite (nu inventăm un curs).
+- Populațiile pentru departajare sunt în `data/_populatie.json` (Recensământul 2021, cu link). Comunele lipsesc și ajung ultimele la departajare.
+
+### Cum se adaugă o intrare
+1. Deschide pagina sursei și copiază doar ce scrie acolo: orașul, anul, suprafața în mp și valoarea în lei.
+2. Adaugă intrarea în `data/<tip>.json`:
+   - `id`: `<tip>-<oras>-<an>`;
+   - `sursa_url`: linkul paginii;
+   - `sursa_tip`: una dintre `achizitie_publica`, `hotarare_consiliu`, `comunicat_primarie`, `date_deschise`, `presa`;
+   - `data_accesarii`: data de azi.
+3. Rulează `python -m backend.ai.references.validate`. Comanda iese cu cod 1 dacă vreo intrare e respinsă și spune de ce.
+
+### `find_references(tip_amenajare, suprafata_mp, k=5)`
+- `tip_amenajare` poate fi orice text. Sinonimele cunoscute ajung la tipul din contract („Parc pentru câini” → `parc_caini`); restul e transformat în identificator („Fântână arteziană” → `fantana_arteziana`). Pentru tipurile fără date întoarce `[]` (sau ce găsește căutarea live).
+- Ordinea:
+  1. diferența relativă de suprafață față de cea cerută, `|a − b| / max(a, b)`, rotunjită la 0,01; intrările fără suprafață ajung la final;
+  2. la egalitate, anul (cel mai recent primul);
+  3. apoi mărimea orașului, cel mai apropiat de Timișoara primul;
+  4. apoi id-ul.
+
+### Căutarea live
+Căutarea live e **pornită implicit** când există o cheie Gemini. `REFERENCES_LIVE_SEARCH=false` o oprește; testele, seed-ul și e2e o țin oprită. Proiectele se caută doar când baza locală are sub 2 intrări cu cost și suprafață.
+
+1. Gemini cu Google Search caută proiecte de tipul cerut, întâi în România. Dacă găsește mai puțin de 3, caută și în alte țări europene: proiectele de acolo apar ca exemple (oraș, țară), dar **nu intră în calculul costului**. A doua cerere Gemini extrage proiectele în JSON.
+2. Fiecare proiect trebuie să indice una dintre sursele returnate de căutare. Linkurile scrise de model sunt ignorate.
+3. Serverul deschide sursa și urmează redirecționările pas cu pas. Fiecare adresă e verificată înainte: doar http(s), doar adrese IP publice (protecție SSRF). Limite: 8 s, 2 MB.
+4. O cifră e păstrată doar dacă **apare în pagină**:
+   - costul, lângă „lei”/„RON”, inclusiv formele „11 mil. lei” și „1.250.000,00 RON”;
+   - suprafața, lângă „mp”/„m²”.
+
+   Altfel cifra rămâne `null`. Intrările cu cifre confirmate primesc `sursa_tip = cautare_ai_verificata`, iar celelalte `cautare_ai`.
+5. Rezultatele se salvează în `backend/ai/references/cache/<tip>.json` (ignorat de git), pentru 7 zile.
+6. Orice eroare (cotă 429, timeout) întoarce `[]` și se folosește baza locală.
+
+### `estimate_cost(referinte, suprafata_mp)`
+Calculul e determinist și nu folosește AI.
+
+- Pentru fiecare referință cu **cost și suprafață**: `cost pe mp = cost_total_lei / suprafata_mp`.
+- Rezultatul: `min`, `mediană` și `max` din costurile pe mp, înmulțite cu suprafața propusă și rotunjite la 100 de lei.
+- **Sub 2 referințe utilizabile:** `suficient = false`, fără nicio cifră, cu `motiv`.
+- `ipoteze` descrie de unde vin cifrele: numărul de proiecte, anii și orașele; prețuri nominale, fără inflație; TVA așa cum apare în sursă; estimări din licitații. Dacă au fost folosite intrări găsite live, o spune și pe asta.
+- Exemplu: skatepark de 600 mp, pe baza locală de azi: între 175.700 și 1.534.900 lei, mediană 733.300 lei, din 5 proiecte. Intervalul e mare pentru că proiectele de referință diferă mult ca dotări.
+
+### `generate_dosar(idea, space, tip_amenajare, suprafata_mp, referinte, cost)`
+- Gemini scrie textul pornind de la idee, spațiu și componentele referințelor. **Nu vede nicio cifră de cost**, nici pe cele ale referințelor, ci doar dacă estimarea e disponibilă.
+- Răspunsul e validat cu Pydantic. Dacă textul conține o sumă de bani (lei, RON, euro, €, „mii/milioane de lei”), răspunsul e respins. Se încearcă **încă o dată**, apoi se folosește **șablonul de rezervă**, care are aceeași formă și nu folosește Gemini.
+- Codul adaugă apoi:
+  - propoziția cu costul, din `estimate_cost`, la finalul `justificare`;
+  - textul obligatoriu, la finalul `descriere`: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”;
+  - punctele de bază din `lista_verificare` (cine administrează terenul, planurile urbanistice, eventualele avize, finanțarea, întreținerea), formulate ca întrebări de clarificat, fără afirmații legale ferme.
+- `referinte_citate` păstrează doar id-uri din lista primită.
+- Sumele scrise de utilizator în textul ideii nu sunt copiate în dosar.
+
+### Datele demo
+Fișier: `backend/seed/data/proiect_demo.json`, construit de `backend/seed/proiect_demo.py`. Totul are `is_demo=true`.
+
+- **Utilizatori:** `demo-user-9` (`primarie`) și `demo-user-10` (`verificator`).
+- **Teren liber:** `demo-space-teren-1`, `kind=teren_liber`, 600 mp, în Fabric, deținut de contul de primărie. Locul e fictiv: coordonatele sunt centrul cartierului. Nu are sloturi și nu apare la potriviri (capacitate 0).
+- **Idee:** `demo-idea-8` (skatepark), cu 4 interese, deci în starea `prag_atins`.
+- **Proiect:** `demo-proiect-1`, în starea `in_verificare`, cu evenimentele `draft → trimis → in_verificare`.
+  - Dosarul e generat din șablon, iar referințele vin doar din baza locală, deci seed-ul nu folosește rețeaua.
+  - Notificări: `proiect_trimis` către autor și primărie, `proiect_in_verificare` către autor.
+- Tabelele `Proiect` și `ProiectEveniment` se scriu automat după ce P1 le definește în `backend.app.models`. Până atunci, datele sunt în `backend/seed/data/examples/proiecte.json`, `proiect_evenimente.json` și `teren_liber.json`.
+
+### Comenzi
+```
+python -m backend.ai.references.validate     # verifică baza de referințe
+python -m backend.seed.run                   # seed (offline, idempotent)
+python -m backend.seed.export_examples       # regenerează exemplele pentru web/mobil
+python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără rețea)
+```
