@@ -4,7 +4,7 @@
 Idee -> dosar structurat de AI -> spații libere potrivite -> interes din comunitate -> aprobare rezervare de către proprietar -> tablou de impact.
 
 ## Monorepo și zone (fiecare modifică doar zona sa)
-- P1 (Raul): CLAUDE.md, README.md, Makefile, .gitignore, .env.example, scripts/, .githooks/, docs/CONTRACT.md, docs/openapi.json, backend/__init__.py, backend/pytest.ini, backend/app/, backend/requirements.txt, backend/tests/app/
+- P1 (Raul): CLAUDE.md, README.md, Makefile, .gitignore, .env.example, scripts/, .githooks/, docs/CONTRACT.md, docs/openapi.json, docs/ARCHITECTURE.md, backend/__init__.py, backend/pytest.ini, backend/app/, backend/requirements.txt, backend/tests/app/
 - P2: web/ (React + Vite + TS), mobile/ (Expo + TS)
 - P3: backend/ai/, backend/impact/, backend/seed/, backend/tests/ai/, backend/tests/seed/, tests/e2e/, docs/DATA.md
 
