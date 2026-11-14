@@ -9,7 +9,6 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "gen:types": "npx --yes -p typescript@5 -p openapi-typescript@7 openapi-typescript ../docs/openapi.json -o src/api/schema.d.ts",
-    "mocks:update": "cp ../backend/seed/data/examples/*.json src/mocks/data/",
     "typecheck": "tsc -b"
   },
   "dependencies": {

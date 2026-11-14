@@ -1,6 +1,6 @@
-// Demo users for the X-User-Id switcher. PROVISIONAL: taken from P3's demo data until
-// the contract defines users (and maybe GET /users).
-import type { User } from '@/api/types'
+// Demo users for the X-User-Id switcher, from the mock data (same ids as the seed: demo-user-N).
+// With the real API these match GET /users once P3's seed is loaded.
+import type { User } from '@/api/models'
 import usersData from '@/mocks/data/users.json'
 
 export const DEMO_USERS = usersData as User[]

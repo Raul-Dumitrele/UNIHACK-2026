@@ -4,6 +4,313 @@
  */
 
 export interface paths {
+    "/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Users */
+        get: operations["list_users_users_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/spaces": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Spaces */
+        get: operations["list_spaces_spaces_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ideas": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Ideas */
+        get: operations["list_ideas_ideas_get"];
+        put?: never;
+        /** Create Idea */
+        post: operations["create_idea_ideas_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ideas/{idea_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Idea */
+        get: operations["get_idea_ideas__idea_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ideas/{idea_id}/matches": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Idea Matches */
+        get: operations["idea_matches_ideas__idea_id__matches_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ideas/{idea_id}/interest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Add Interest */
+        post: operations["add_interest_ideas__idea_id__interest_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ideas/{idea_id}/owner-message": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Owner Message */
+        post: operations["owner_message_ideas__idea_id__owner_message_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/bookings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Booking */
+        post: operations["create_booking_bookings_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/bookings/{booking_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Decide Booking */
+        patch: operations["decide_booking_bookings__booking_id__patch"];
+        trace?: never;
+    };
+    "/notifications": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Notifications */
+        get: operations["list_notifications_notifications_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/notifications/{notification_id}/read": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Mark Read */
+        patch: operations["mark_read_notifications__notification_id__read_patch"];
+        trace?: never;
+    };
+    "/impact": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Impact */
+        get: operations["get_impact_impact_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ideas/{idea_id}/proiect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Proiect */
+        post: operations["create_proiect_ideas__idea_id__proiect_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Proiecte */
+        get: operations["list_proiecte_proiecte_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Proiect */
+        get: operations["get_proiect_proiecte__proiect_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}/trimite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Trimite */
+        post: operations["trimite_proiecte__proiect_id__trimite_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}/inainteaza": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Inainteaza */
+        post: operations["inainteaza_proiecte__proiect_id__inainteaza_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}/decizie": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Decizie */
+        post: operations["decizie_proiecte__proiect_id__decizie_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health": {
         parameters: {
             query?: never;
@@ -24,7 +331,463 @@ export interface paths {
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: never;
+    schemas: {
+        /** BookingCreate */
+        BookingCreate: {
+            /** Idea Id */
+            idea_id: string;
+            /** Space Id */
+            space_id: string;
+            slot: components["schemas"]["Slot"];
+            /** Mesaj */
+            mesaj?: string | null;
+        };
+        /** BookingOut */
+        BookingOut: {
+            /** Id */
+            id: string;
+            /** Idea Id */
+            idea_id: string;
+            /** Space Id */
+            space_id: string;
+            slot: components["schemas"]["Slot"];
+            /**
+             * Stare
+             * @enum {string}
+             */
+            stare: "cerut" | "aprobat" | "refuzat";
+            /** Created At */
+            created_at: string;
+            /** Mesaj */
+            mesaj?: string | null;
+        };
+        /** BookingUpdate */
+        BookingUpdate: {
+            /**
+             * Stare
+             * @enum {string}
+             */
+            stare: "aprobat" | "refuzat";
+        };
+        /** Cost */
+        Cost: {
+            /** Suficient */
+            suficient: boolean;
+            /** Min Lei */
+            min_lei?: number | null;
+            /** Mediana Lei */
+            mediana_lei?: number | null;
+            /** Max Lei */
+            max_lei?: number | null;
+            /**
+             * Moneda
+             * @default RON
+             * @constant
+             */
+            moneda: "RON";
+            /**
+             * Ipoteze
+             * @default []
+             */
+            ipoteze: string[];
+            /**
+             * Referinte Folosite
+             * @default []
+             */
+            referinte_folosite: string[];
+            /** Motiv */
+            motiv?: string | null;
+        };
+        /** DecizieIn */
+        DecizieIn: {
+            /**
+             * Stare
+             * @enum {string}
+             */
+            stare: "acord_de_principiu" | "respins" | "clarificari";
+            /** Mesaj */
+            mesaj?: string | null;
+        };
+        /** Dosar */
+        Dosar: {
+            /** Titlu */
+            titlu: string;
+            /** Descriere */
+            descriere: string;
+            /** Justificare */
+            justificare: string;
+            /**
+             * Componente
+             * @default []
+             */
+            componente: string[];
+            /**
+             * Etape
+             * @default []
+             */
+            etape: components["schemas"]["Etapa"][];
+            /**
+             * Riscuri
+             * @default []
+             */
+            riscuri: string[];
+            /**
+             * Lista Verificare
+             * @default []
+             */
+            lista_verificare: string[];
+            /**
+             * Referinte Citate
+             * @default []
+             */
+            referinte_citate: string[];
+        };
+        /** Etapa */
+        Etapa: {
+            /** Nume */
+            nume: string;
+            /** Durata Luni */
+            durata_luni: number;
+        };
+        /** HTTPValidationError */
+        HTTPValidationError: {
+            /** Detail */
+            detail?: components["schemas"]["ValidationError"][];
+        };
+        /** IdeaCreate */
+        IdeaCreate: {
+            /** Descriere */
+            descriere: string;
+            /** Titlu */
+            titlu?: string | null;
+            /** Prag */
+            prag?: number | null;
+        };
+        /** IdeaOut */
+        IdeaOut: {
+            /** Id */
+            id: string;
+            /** Author Id */
+            author_id: string;
+            /** Titlu */
+            titlu: string;
+            /** Descriere */
+            descriere: string;
+            structurat: components["schemas"]["Structurat"];
+            /** Prag */
+            prag: number;
+            /** Interesati */
+            interesati: number;
+            /**
+             * Stare
+             * @enum {string}
+             */
+            stare: "deschisa" | "prag_atins" | "rezervata";
+            /** Is Demo */
+            is_demo: boolean;
+            /** Created At */
+            created_at: string;
+        };
+        /** Impact */
+        Impact: {
+            /** Ore Recuperate */
+            ore_recuperate: number;
+            /** Oameni Conectati */
+            oameni_conectati: number;
+            /** Km Economisiti */
+            km_economisiti: number;
+            /** Proiecte Active */
+            proiecte_active: number;
+            /**
+             * Proiecte Trimise
+             * @default 0
+             */
+            proiecte_trimise: number;
+            /**
+             * Proiecte Cu Acord
+             * @default 0
+             */
+            proiecte_cu_acord: number;
+        };
+        /** InainteazaIn */
+        InainteazaIn: {
+            /** Verificator Id */
+            verificator_id: string;
+        };
+        /** MatchOut */
+        MatchOut: {
+            space: components["schemas"]["SpaceOut"];
+            /** Scor */
+            scor: number;
+            /** Motiv */
+            motiv: string;
+            /** Suprapunere */
+            suprapunere: components["schemas"]["Slot"][];
+        };
+        /** NotificationOut */
+        NotificationOut: {
+            /** Id */
+            id: string;
+            /** User Id */
+            user_id: string;
+            /** Idea Id */
+            idea_id: string;
+            /** Booking Id */
+            booking_id: string | null;
+            /** Proiect Id */
+            proiect_id?: string | null;
+            /** Mesaj */
+            mesaj: string;
+            /** Citita */
+            citita: boolean;
+            /** Created At */
+            created_at: string;
+        };
+        /** OwnerMessageIn */
+        OwnerMessageIn: {
+            /** Space Id */
+            space_id: string;
+            slot: components["schemas"]["Slot"];
+        };
+        /** OwnerMessageOut */
+        OwnerMessageOut: {
+            /** Mesaj */
+            mesaj: string;
+        };
+        /** ProiectCreate */
+        ProiectCreate: {
+            /** Space Id */
+            space_id: string;
+            /**
+             * Tip Amenajare
+             * @enum {string}
+             */
+            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            /** Suprafata Mp */
+            suprafata_mp?: number | null;
+        };
+        /** ProiectDetaliuOut */
+        ProiectDetaliuOut: {
+            /** Id */
+            id: string;
+            /** Idea Id */
+            idea_id: string;
+            /** Space Id */
+            space_id: string;
+            /** Autor Id */
+            autor_id: string;
+            /**
+             * Tip Amenajare
+             * @enum {string}
+             */
+            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            /** Suprafata Mp */
+            suprafata_mp: number;
+            /**
+             * Stare
+             * @enum {string}
+             */
+            stare: "draft" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
+            dosar: components["schemas"]["Dosar"];
+            /** Referinte */
+            referinte: components["schemas"]["Referinta"][];
+            cost: components["schemas"]["Cost"];
+            /** Created At */
+            created_at: string;
+            /** Updated At */
+            updated_at: string;
+            /** Verificator Id */
+            verificator_id?: string | null;
+            /**
+             * Evenimente
+             * @default []
+             */
+            evenimente: components["schemas"]["ProiectEvenimentOut"][];
+        };
+        /** ProiectEvenimentOut */
+        ProiectEvenimentOut: {
+            /** Id */
+            id: string;
+            /** Proiect Id */
+            proiect_id: string;
+            /** User Id */
+            user_id: string;
+            /**
+             * Stare Noua
+             * @enum {string}
+             */
+            stare_noua: "draft" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
+            /** Mesaj */
+            mesaj?: string | null;
+            /** Created At */
+            created_at: string;
+        };
+        /** ProiectOut */
+        ProiectOut: {
+            /** Id */
+            id: string;
+            /** Idea Id */
+            idea_id: string;
+            /** Space Id */
+            space_id: string;
+            /** Autor Id */
+            autor_id: string;
+            /**
+             * Tip Amenajare
+             * @enum {string}
+             */
+            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            /** Suprafata Mp */
+            suprafata_mp: number;
+            /**
+             * Stare
+             * @enum {string}
+             */
+            stare: "draft" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
+            dosar: components["schemas"]["Dosar"];
+            /** Referinte */
+            referinte: components["schemas"]["Referinta"][];
+            cost: components["schemas"]["Cost"];
+            /** Created At */
+            created_at: string;
+            /** Updated At */
+            updated_at: string;
+            /** Verificator Id */
+            verificator_id?: string | null;
+        };
+        /** Referinta */
+        Referinta: {
+            /** Id */
+            id: string;
+            /**
+             * Tip Amenajare
+             * @enum {string}
+             */
+            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            /** Oras */
+            oras: string;
+            /** An */
+            an: number;
+            /** Suprafata Mp */
+            suprafata_mp?: number | null;
+            /** Cost Total Lei */
+            cost_total_lei?: number | null;
+            /**
+             * Componente
+             * @default []
+             */
+            componente: string[];
+            /** Sursa Url */
+            sursa_url: string;
+            /** Sursa Tip */
+            sursa_tip: string;
+            /**
+             * Data Accesarii
+             * Format: date
+             */
+            data_accesarii: string;
+        };
+        /** Slot */
+        Slot: {
+            /**
+             * Zi
+             * @enum {string}
+             */
+            zi: "luni" | "marti" | "miercuri" | "joi" | "vineri" | "sambata" | "duminica";
+            /** De La */
+            de_la: string;
+            /** Pana La */
+            pana_la: string;
+        };
+        /** SpaceOut */
+        SpaceOut: {
+            /** Id */
+            id: string;
+            /** Nume */
+            nume: string;
+            /** Tip */
+            tip: string;
+            /** Lat */
+            lat: number;
+            /** Lng */
+            lng: number;
+            /** Capacitate */
+            capacitate: number;
+            /** Dotari */
+            dotari: ("scaune" | "mese" | "proiector" | "wifi" | "scena" | "oglinzi" | "vestiare" | "bucatarie" | "acces_rampa" | "curte" | "priza" | "tabla")[];
+            /** Sloturi */
+            sloturi: components["schemas"]["Slot"][];
+            /** Owner Id */
+            owner_id: string;
+            /** Is Demo */
+            is_demo: boolean;
+            /** Suprafata Mp */
+            suprafata_mp?: number | null;
+        };
+        /** Structurat */
+        Structurat: {
+            /**
+             * Categorie
+             * @enum {string}
+             */
+            categorie: "sport" | "cultura" | "educatie" | "social" | "creativ" | "tehnologie" | "altele";
+            /** Persoane */
+            persoane: number;
+            /**
+             * Dotari
+             * @default []
+             */
+            dotari: ("scaune" | "mese" | "proiector" | "wifi" | "scena" | "oglinzi" | "vestiare" | "bucatarie" | "acces_rampa" | "curte" | "priza" | "tabla")[];
+            /**
+             * Program
+             * @default []
+             */
+            program: components["schemas"]["Slot"][];
+            /**
+             * Zgomot
+             * @enum {string}
+             */
+            zgomot: "scazut" | "mediu" | "ridicat";
+            /** Rezumat */
+            rezumat: string;
+        };
+        /** TrimiteIn */
+        TrimiteIn: {
+            /** Mesaj */
+            mesaj?: string | null;
+        };
+        /** UserOut */
+        UserOut: {
+            /** Id */
+            id: string;
+            /** Nume */
+            nume: string;
+            /**
+             * Rol
+             * @enum {string}
+             */
+            rol: "cetatean" | "proprietar" | "primarie" | "verificator";
+            /** Cartier */
+            cartier: string;
+            /** Lat */
+            lat: number;
+            /** Lng */
+            lng: number;
+        };
+        /** ValidationError */
+        ValidationError: {
+            /** Location */
+            loc: (string | number)[];
+            /** Message */
+            msg: string;
+            /** Error Type */
+            type: string;
+            /** Input */
+            input?: unknown;
+            /** Context */
+            ctx?: Record<string, never>;
+        };
+    };
     responses: never;
     parameters: never;
     requestBodies: never;
@@ -33,6 +796,1034 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    list_users_users_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserOut"][];
+                };
+            };
+        };
+    };
+    list_spaces_spaces_get: {
+        parameters: {
+            query?: {
+                categorie?: ("sport" | "cultura" | "educatie" | "social" | "creativ" | "tehnologie" | "altele") | null;
+                dotari?: ("scaune" | "mese" | "proiector" | "wifi" | "scena" | "oglinzi" | "vestiare" | "bucatarie" | "acces_rampa" | "curte" | "priza" | "tabla")[];
+                capacitate_min?: number | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpaceOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_ideas_ideas_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IdeaOut"][];
+                };
+            };
+        };
+    };
+    create_idea_ideas_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["IdeaCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IdeaOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_idea_ideas__idea_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                idea_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IdeaOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    idea_matches_ideas__idea_id__matches_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                idea_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MatchOut"][];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_interest_ideas__idea_id__interest_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                idea_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IdeaOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    owner_message_ideas__idea_id__owner_message_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                idea_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OwnerMessageIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OwnerMessageOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_booking_bookings_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BookingCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookingOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decide_booking_bookings__booking_id__patch: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                booking_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BookingUpdate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookingOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_notifications_notifications_get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationOut"][];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    mark_read_notifications__notification_id__read_patch: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                notification_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_impact_impact_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Impact"];
+                };
+            };
+        };
+    };
+    create_proiect_ideas__idea_id__proiect_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                idea_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProiectCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_proiecte_proiecte_get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"][];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_proiect_proiecte__proiect_id__get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectDetaliuOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    trimite_proiecte__proiect_id__trimite_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TrimiteIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    inainteaza_proiecte__proiect_id__inainteaza_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InainteazaIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decizie_proiecte__proiect_id__decizie_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DecizieIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     health_health_get: {
         parameters: {
             query?: never;
