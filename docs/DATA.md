@@ -380,7 +380,33 @@ python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără
 - **TVA: neprecizat în setul de date.** Valorile sunt prețuri plătite de cumpărători publici, nu un standard.
 - **Colectare:** `python -m backend.seed.fetch_preturi` (o singură dată, cu rețea). Rezultatul e `backend/ai/proiect/data/preturi_seap.json`, cu fiecare observație (DA, dată, CPV, denumirea originală, cantitate, valoare), ca să poată fi verificată rând cu rând. Testele reaplică regulile pe fiecare observație comisă.
   - Fișierele `.xls` vechi și `.ods` sunt sărite (fără dependențe), iar lista lor e în JSON.
-  - Coloanele diferă între ani: 2023 are `VALOARE_ATRIBUITA_RON`, 2025+ are `VALOARE_ACHIZITIE_RON`. JSON-ul notează coloana folosită.
+  - Coloanele diferă între ani: 2023 T IV are `VALOARE_ATRIBUITA_RON`, 2023 T III are `VALOARE_ACHIZITIE`, 2025+ are `VALOARE_ACHIZITIE_RON`. JSON-ul notează coloana folosită.
+  - Formatele diferă și ele: 2023 T IV e CSV cu `,` și ghilimele `|`, 2023 T III e CSV cu `|` și ghilimele `"`, iar 2024 T IV e un XLSX cu rândurile pe 11 foi.
+  - `--refilter` reaplică regulile pe fișierul comis, fără rețea; regulile devin doar mai stricte.
+
+**Rezultatul rulării din 2026-11-15:**
+- 9 fișiere citite (2023 T III – 2026 T III), circa 5,4 milioane de rânduri; 10 fișiere `.xls`/`.ods` sărite.
+- **45 de observații**, fiecare verificată manual după rulare.
+- Verificarea manuală a scos potriviri greșite, care au devenit teste negative în `test_preturi.py`:
+  - „GARDLOX … SPRAY 30ML”: medicament, iar „ml” înseamnă mililitri;
+  - „ROLA DE 1 MP”: mărimea unei role, nu cantitatea cumpărată;
+  - reparații, recondiționări, piese de schimb;
+  - un „foișor de pază tip container”;
+  - covoare industriale din cauciuc;
+  - o factură copiată în denumire.
+
+| Articol | Observații | Mediană | Min – max |
+|---|---|---|---|
+| bancă de parc | 8 | 1.575 lei/buc | 550 – 2.979 |
+| coș de gunoi stradal | 3 | 290 lei/buc | 149 – 1.350 |
+| pardoseală sintetică (cauciuc / tartan) | 7 | 148,29 lei/mp | 101,01 – 318,19 |
+| gazon în rulou | 9 | 25 lei/mp | 13,5 – 38 |
+| împrejmuire (gard) | 13 | 345,67 lei/ml | 85,71 – 1.028 |
+| leagăn, balansoar, tobogan, structură de joacă, rastel, foișor, masă de picnic, compostor, pavaj | 0 – 2 | **de cotat** | – |
+
+Intervalele sunt mari pentru că produsele diferă mult (bancă simplă din lemn sau bancă de beton; gard din plasă sau gard de 5 m la un teren de sport). De aceea se afișează mereu și min–max.
+
+**Exemple pentru web/mobil:** `python -m backend.seed.export_planuri` scrie și `backend/seed/data/exemple/proiect_demo_*`. Acestea sunt răspunsurile `/plan` și `/materiale` și cele patru documente ale proiectului demo, cu prețurile de mai sus.
 
 ## Lista de materiale (`lista_materiale(scene)`)
 - Cantitățile vin din planul schematic. Fiecare linie are `ipoteza`, de exemplu:
