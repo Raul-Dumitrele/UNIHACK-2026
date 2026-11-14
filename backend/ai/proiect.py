@@ -260,17 +260,32 @@ def _research(tip_amenajare: str) -> list[str]:
     return research_notes(tip_amenajare)
 
 
+LIST_CHECK = ("Confirmarea faptului că terenul nu a fost atribuit între timp (Legea 15/2003) și a "
+              "disponibilității lui pentru uz comunitar")
+
+
+def from_city_hall_list(space: Any) -> bool:
+    """Plot from the Legea 15/2003 list: sursa=lista_primarie (when the model has it) or a lista-<an>-<cf> id."""
+    return _get(space, "sursa", "source") == "lista_primarie" or str(_get(space, "id", default="")).startswith("lista-")
+
+
+def _list_check(dosar: Dosar, space: Any) -> Dosar:
+    if from_city_hall_list(space) and LIST_CHECK not in dosar.lista_verificare:
+        dosar.lista_verificare.insert(0, LIST_CHECK)
+    return dosar
+
+
 def generate_dosar(idea: Any, space: Any, tip_amenajare: str, suprafata_mp: float | None,
                    referinte: Iterable[Any], cost: Any) -> Dosar:
     """Works for any proposal (aquapark, foișor, bibliotecă stradală...). Never raises on AI problems:
     web notes when live search is on, then Gemini (one retry), deterministic template otherwise."""
     context, refs, cost = _inputs(idea, space, tip_amenajare, suprafata_mp, referinte, cost,
                                   _research(tip_amenajare))
-    return finalize(ask_gemini(context) or template_draft(context, refs), refs, cost)
+    return _list_check(finalize(ask_gemini(context) or template_draft(context, refs), refs, cost), space)
 
 
 def template_dosar(idea: Any, space: Any, tip_amenajare: str, suprafata_mp: float | None,
                    referinte: Iterable[Any], cost: Any) -> Dosar:
     """Same result as generate_dosar without Gemini (offline seed, demos)."""
     context, refs, cost = _inputs(idea, space, tip_amenajare, suprafata_mp, referinte, cost)
-    return finalize(template_draft(context, refs), refs, cost)
+    return _list_check(finalize(template_draft(context, refs), refs, cost), space)

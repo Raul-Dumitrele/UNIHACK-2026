@@ -304,3 +304,33 @@ python -m backend.seed.run                   # seed (offline, idempotent)
 python -m backend.seed.export_examples       # regenerează exemplele pentru web/mobil
 python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără rețea)
 ```
+
+## Terenuri din lista Primăriei (Legea 15/2003)
+**Ipoteză de lucru a echipei:** terenurile din lista validată de Consiliul Local pentru Legea 15/2003 sunt folosite în aplicație ca terenuri libere ale Primăriei. În aplicație apar doar ca „din lista Primăriei, de confirmat”.
+
+**Atenție la două lucruri:**
+- Legea 15/2003 destinează aceste parcele **locuințelor tinerilor**.
+- Parcelele pot fi **atribuite între timp**.
+
+### Sursele (colectate pe 2026-11-14)
+- **Site-ul oficial:** [primariatm.ro/hcl](https://www.primariatm.ro/hcl). `hcl.usr.ro` nu a fost folosit, pentru că interzice accesul automat (`robots.txt`: `Disallow: /`).
+- **[HCL 20/29.01.2019](https://www.primariatm.ro/hcl/2019/20), Anexa nr. 1:** lista comisiei pentru Legea 15/2003, nr. SC2019-276. Are text, deci a putut fi extrasă: **128 de parcele**, toate pe str. Lt. Ovidiu Balea (Ronaț), cu 276 mp (80 de parcele) și 252 mp (48). Anexa dă doar CF-ul și numărul cadastral, fără număr de stradă.
+- **[HCL 25/2020](https://www.primariatm.ro/hcl/2020/25):** documentele sunt **scanate** (imagini fără text) și nu au putut fi citite automat.
+- **Ediții 2021–2026:** nu au fost găsite publicate.
+- **Documentele originale** sunt în `backend/seed/data/sursa/l15/`, cu `manifest.json` (URL-ul oficial al fiecărui document). Scanările din 2020 nu sunt comise. Lista extrasă e în `backend/seed/data/terenuri_l15_2019.json`.
+
+### Locația
+- Geocodarea s-a făcut o singură dată, cu Nominatim (OpenStreetMap, ODbL), cu cel mult 1 cerere pe secundă. Rezultatul e în cache, în `backend/seed/data/geocode_cache.json`.
+- Strada nu există ca obiect separat în OSM. Punctul folosit e o adresă de pe aceeași stradă, deci toate parcelele au aceeași locație, marcată `locatie_aproximativa` în `sursa_detalii`.
+
+### Regula din seed (`backend/seed/terenuri.py`)
+- **Filtrul:** suprafață de cel puțin **250 mp** (prag stabilit de echipă; inițial 300 mp, pe care nu-l atingea nicio parcelă) și locație găsită.
+- **Selecția:** cele mai bune **15** (suprafața cea mai mare, apoi ordinea din listă). Dacă rămân sub 5, nu se adaugă nimic.
+- **Fiecare teren** e un `Space` cu:
+  - `tip = teren_liber`, `suprafata_mp`, `sloturi = []`, `capacitate = 0`, deci nu apare la potriviri;
+  - proprietar contul de primărie (`demo-user-9`) și **`is_demo = false`**;
+  - `sursa = lista_primarie` și `sursa_detalii = „HCL 20/2019, anexa nr. 1, poz. <n>; locatie_aproximativa”`;
+  - id-ul `lista-2019-<cf>`.
+- **Câmpurile `sursa` și `sursa_detalii`** nu sunt încă în contract. Seed-ul le trimite, iar ele se salvează imediat ce P1 le adaugă în modelul `Space`.
+- **Dosarul:** pentru aceste terenuri, `generate_dosar` pune primul în `lista_verificare` punctul: „Confirmarea faptului că terenul nu a fost atribuit între timp (Legea 15/2003) și a disponibilității lui pentru uz comunitar”.
+

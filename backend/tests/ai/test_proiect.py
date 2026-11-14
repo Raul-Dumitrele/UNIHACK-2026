@@ -179,3 +179,13 @@ def test_no_web_notes_when_live_search_is_off(monkeypatch):
                         lambda tip: pytest.fail("live search is off in unit tests"))
     generate_dosar(IDEA, SPACE, "skatepark", 600, REFS, COST)
     assert '"informatii_gasite": []' in prompts[0]
+
+
+def test_list_plot_adds_the_legea_15_check(monkeypatch):
+    from backend.ai.proiect import LIST_CHECK
+
+    monkeypatch.setenv("GEMINI_API_KEY", "")
+    plot = {"id": "lista-2019-440964", "nume": "Teren din lista Primăriei", "cartier": "Ronaț"}
+    d = generate_dosar(IDEA, plot, "skatepark", 276, REFS, COST)
+    assert d.lista_verificare[0] == LIST_CHECK
+    assert LIST_CHECK not in generate_dosar(IDEA, SPACE, "skatepark", 600, REFS, COST).lista_verificare

@@ -61,7 +61,8 @@ def test_ids_unique_and_everything_is_demo(data):
     for rows in (data.users, data.spaces, data.slots, data.ideas):
         ids = [r["id"] for r in rows]
         assert len(ids) == len(set(ids))
-        assert all(r["is_demo"] is True for r in rows)
+        # Everything is demo data except the plots from the city hall's Legea 15/2003 list (real, is_demo=false).
+        assert all(r["is_demo"] is (not r["id"].startswith("lista-")) for r in rows)
 
 
 def test_references_are_consistent(data):
@@ -319,7 +320,7 @@ def test_city_hall_and_verifier_accounts(data):
 def test_free_plot_is_never_matched_or_bookable(data):
     from backend.ai.matching import match_spaces
 
-    [teren] = [s for s in data.spaces if s["kind"] == "teren_liber"]
+    [teren] = [s for s in data.spaces if s["id"] == "demo-space-teren-1"]
     assert teren["suprafata_mp"] == 600 and teren["is_demo"] and teren["neighborhood"] == "Fabric"
     assert not any(sl["space_id"] == teren["id"] for sl in data.slots)
     for idea in data.ideas:
@@ -359,3 +360,36 @@ def test_project_is_offline_and_deterministic(monkeypatch):
     monkeypatch.setattr("backend.ai.references.search.search_references",
                         lambda *a: pytest.fail("seed must not search the web"))
     assert build_seed(START).proiecte == build_seed(START).proiecte
+
+
+# --- plots from the city hall's Legea 15/2003 list (backend/seed/terenuri.py) ---
+
+def test_list_plots_follow_the_rule(data):
+    from backend.seed import terenuri
+
+    plots = [s for s in data.spaces if s["id"].startswith("lista-")]
+    assert terenuri.MIN_PLOTS <= len(plots) <= terenuri.MAX_PLOTS
+    assert all(p["suprafata_mp"] >= terenuri.MIN_AREA_MP and p["kind"] == "teren_liber" for p in plots)
+    assert all(p["is_demo"] is False and p["owner_id"] == "demo-user-9" and p["source"] == "lista_primarie" for p in plots)
+    assert all(p["sursa_detalii"].startswith("HCL 20/2019, anexa nr. 1, poz.") for p in plots)
+    assert all("locatie_aproximativa" in p["sursa_detalii"] for p in plots)  # street only, no house number
+    assert len({p["id"] for p in plots}) == len(plots)
+
+
+def test_list_plots_in_contract_rows(data):
+    from backend.seed.contract import contract_rows
+
+    rows = [s for s in contract_rows(data)["Space"] if s["id"].startswith("lista-")]
+    assert rows and all(r["tip"] == "teren_liber" and r["sloturi"] == [] and r["is_demo"] is False for r in rows)
+    assert all(r["sursa"] == "lista_primarie" for r in rows)
+
+
+@pytest.mark.parametrize("min_count, rows, expected", [(5, 4, 0), (5, 5, 5), (5, 30, 15)])
+def test_list_selection_threshold_and_cap(monkeypatch, min_count, rows, expected):
+    from backend.seed import terenuri
+
+    monkeypatch.setattr(terenuri, "MIN_PLOTS", min_count)
+    fake = [{"cf": str(i), "pozitie": i, "suprafata_mp": 276, "strada": "s"} for i in range(rows)]
+    fake.append({"cf": "small", "pozitie": 99, "suprafata_mp": 120, "strada": "s"})
+    fake.append({"cf": "nowhere", "pozitie": 98, "suprafata_mp": 900, "strada": "unknown"})
+    assert len(terenuri.select(fake, {"s": {}})) == expected
