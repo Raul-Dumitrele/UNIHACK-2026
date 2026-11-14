@@ -48,9 +48,9 @@ Calculul detaliat (pe cartiere, pe săptămâni, proiecte trimise) rămâne disp
 
 Seed-ul în forma contractului:
 - **Roluri:** `locuitor` devine `cetatean`; `proprietar`, `primarie` și `verificator` rămân la fel.
-- **Teren liber și proiect:** terenul liber e un `Space` cu `tip = teren liber` și `suprafata_mp`. Proiectul demo are `verificator_id` = contul de verificator care l-a preluat. Evenimentele lui și notificările cu `proiect_id` intră și ele în baza de date.
+- **Teren liber și proiect:** terenul liber e un `Space` cu `tip = teren_liber` (valoarea din contract) și `suprafata_mp`. Proiectul demo are `verificator_id` = contul de verificator care l-a preluat. Evenimentele lui și notificările cu `proiect_id` intră și ele în baza de date.
 - **Utilizatori:** `lat`/`lng` sunt centrul cartierului.
-- **Spații:** `tip` = eticheta în română; `dotari` sunt traduse în vocabularul contractului.
+- **Spații:** `tip` = eticheta în română (bibliotecă, centru comunitar...), cu excepția terenului liber, care are `teren_liber`; `dotari` sunt traduse în vocabularul contractului.
 - **Sloturi:** `sloturi` e programul săptămânal, în ora Timișoarei, fără sloturile ocupate de rezervările aprobate.
 - **Rezervări:** `slot` e intervalul săptămânal; `stare` e `cerut`, `aprobat` sau `refuzat`.
 - **Exemple pentru web/mobil:** `backend/seed/data/examples/*.json` au forma din contract. `impact.json` e calculat cu `compute_impact` pe o bază temporară.
@@ -264,7 +264,7 @@ Căutarea live e **pornită implicit** când există o cheie Gemini. `REFERENCES
 
    Altfel cifra rămâne `null`. Intrările cu cifre confirmate primesc `sursa_tip = cautare_ai_verificata`, iar celelalte `cautare_ai`.
 5. Rezultatele se salvează în `backend/ai/references/cache/<tip>.json` (ignorat de git), pentru 7 zile.
-6. Orice eroare (cotă 429, timeout) întoarce `[]` și se folosește baza locală.
+6. Căutarea are o limită de timp totală (`REFERENCES_SEARCH_BUDGET_S`, implicit 25 s). Când se termină, se folosesc candidații verificați până atunci și nu se salvează nimic în cache, ca o cerere ulterioară să termine căutarea. Orice eroare (cotă 429, timeout) întoarce `[]` și se folosește baza locală. Pentru demo e recomandat `REFERENCES_LIVE_SEARCH=false`, ca nimic să nu depindă de rețea.
 
 ### `estimate_cost(referinte, suprafata_mp)`
 Calculul e determinist și nu folosește AI.
@@ -279,8 +279,8 @@ Calculul e determinist și nu folosește AI.
 - Gemini scrie textul pornind de la idee, spațiu și componentele referințelor. **Nu vede nicio cifră de cost**, nici pe cele ale referințelor, ci doar dacă estimarea e disponibilă.
 - Răspunsul e validat cu Pydantic. Dacă textul conține o sumă de bani (lei, RON, euro, €, „mii/milioane de lei”), răspunsul e respins. Se încearcă **încă o dată**, apoi se folosește **șablonul de rezervă**, care are aceeași formă și nu folosește Gemini.
 - Codul adaugă apoi:
-  - propoziția cu costul, din `estimate_cost`, la finalul `justificare`;
-  - textul obligatoriu (regula 10 din contract), la finalul `justificare`, după propoziția cu costul: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”;
+  - textul obligatoriu (regula 10 din contract), la finalul `justificare`: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”;
+  - **nicio cifră de cost în textul dosarului**: costul stă doar în obiectul `Cost` (interval, mediană, ipoteze sau `motiv`), pe care UI-ul îl afișează separat. Dacă estimarea nu e posibilă, motivul e tot în `Cost.motiv`.
   - punctele de bază din `lista_verificare` (cine administrează terenul, planurile urbanistice, eventualele avize, finanțarea, întreținerea), formulate ca întrebări de clarificat, fără afirmații legale ferme.
 - `referinte_citate` păstrează doar id-uri din lista primită.
 - Contractul cere lei și mp ca numere întregi: la ieșire, `cost_total_lei` și `suprafata_mp` sunt rotunjite, iar baza păstrează zecimalele din sursă.
