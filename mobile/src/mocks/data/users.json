@@ -1,0 +1,58 @@
+[
+ {
+  "id": "demo-user-1",
+  "name": "Ana Popescu",
+  "role": "locuitor",
+  "neighborhood": "Fabric",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-2",
+  "name": "Mihai Ionescu",
+  "role": "locuitor",
+  "neighborhood": "Iosefin",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-3",
+  "name": "Ioana Radu",
+  "role": "locuitor",
+  "neighborhood": "Elisabetin",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-4",
+  "name": "Andrei Stan",
+  "role": "locuitor",
+  "neighborhood": "Circumvalațiunii",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-5",
+  "name": "Elena Mureșan",
+  "role": "locuitor",
+  "neighborhood": "Fabric",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-6",
+  "name": "Radu Lungu",
+  "role": "proprietar",
+  "neighborhood": "Cetate",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-7",
+  "name": "Maria Dobre",
+  "role": "proprietar",
+  "neighborhood": "Lipovei",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-8",
+  "name": "Cristian Pop",
+  "role": "proprietar",
+  "neighborhood": "Șagului",
+  "is_demo": true
+ }
+]

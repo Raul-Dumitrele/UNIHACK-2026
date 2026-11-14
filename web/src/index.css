@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Theme tokens. Keep in sync with src/theme/tokens.ts and mobile/src/theme/tokens.ts. */
+:root {
+  --radius: 0.75rem;
+
+  --background: #f7f7f5;
+  --foreground: #1d1d1b;
+  --card: #ffffff;
+  --card-foreground: #1d1d1b;
+  --popover: #ffffff;
+  --popover-foreground: #1d1d1b;
+
+  --primary: #2f6f4f;            /* Loc Comun green */
+  --primary-foreground: #ffffff;
+  --secondary: #eef2ee;
+  --secondary-foreground: #1f3d2c;
+  --muted: #f0f0ec;
+  --muted-foreground: #6b6b66;
+  --accent: #e6efe9;
+  --accent-foreground: #1f3d2c;
+
+  --destructive: #b3261e;
+  --success: #2f8f4f;
+  --demo: #b86b00;               /* "exemplu" badge */
+  --demo-soft: #fff4e0;
+
+  --border: #e2e2dc;
+  --input: #e2e2dc;
+  --ring: #2f6f4f;
+}
+
+.dark {
+  --background: #121412;
+  --foreground: #f2f2ee;
+  --card: #1b1e1b;
+  --card-foreground: #f2f2ee;
+  --popover: #1b1e1b;
+  --popover-foreground: #f2f2ee;
+
+  --primary: #6fbf8f;
+  --primary-foreground: #0f1f16;
+  --secondary: #243028;
+  --secondary-foreground: #e6efe9;
+  --muted: #232623;
+  --muted-foreground: #a3a39c;
+  --accent: #243028;
+  --accent-foreground: #e6efe9;
+
+  --destructive: #f2786f;
+  --success: #6fbf8f;
+  --demo: #f0a64a;
+  --demo-soft: #3a2a12;
+
+  --border: #2e322e;
+  --input: #2e322e;
+  --ring: #6fbf8f;
+}
+
+@theme inline {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-demo: var(--demo);
+  --color-demo-soft: var(--demo-soft);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* Leaflet: softer, more minimal OSM tiles; inverted in dark mode. */
+.map-tiles {
+  filter: saturate(0.35) brightness(1.04) contrast(0.92);
+}
+.dark .map-tiles {
+  filter: invert(1) hue-rotate(180deg) saturate(0.3) brightness(0.9) contrast(0.9);
+}
+.leaflet-container {
+  font-family: inherit;
+  background: var(--muted);
+}
+.dark .leaflet-bar a,
+.dark .leaflet-control-attribution {
+  background: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+}

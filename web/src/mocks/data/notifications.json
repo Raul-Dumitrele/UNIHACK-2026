@@ -1,0 +1,211 @@
+[
+ {
+  "id": "demo-idea-5-notif-prag",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-5",
+  "booking_id": null,
+  "kind": "prag_atins",
+  "created_at": "2026-10-13T12:00:00+00:00",
+  "text": "Ideea „Atelier de gătit sănătos pentru părinți și copii” a atins pragul: 3 persoane interesate.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-5-notif-cerere",
+  "user_id": "demo-user-8",
+  "idea_id": "demo-idea-5",
+  "booking_id": "demo-booking-5",
+  "kind": "cerere_rezervare",
+  "created_at": "2026-10-14T08:00:00+00:00",
+  "text": "Cerere nouă de rezervare: „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților, marți 27 octombrie, 09:00.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-5-notif-aprobata",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-5",
+  "booking_id": "demo-booking-5",
+  "kind": "rezervare_aprobata",
+  "created_at": "2026-10-14T15:00:00+00:00",
+  "text": "Rezervarea pentru „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților (marți 27 octombrie, 09:00) a fost aprobată.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-idea-6-notif-prag",
+  "user_id": "demo-user-3",
+  "idea_id": "demo-idea-6",
+  "booking_id": null,
+  "kind": "prag_atins",
+  "created_at": "2026-10-16T10:00:00+00:00",
+  "text": "Ideea „Seară de film documentar despre natură în cartier” a atins pragul: 3 persoane interesate.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-6-notif-cerere",
+  "user_id": "demo-user-6",
+  "idea_id": "demo-idea-6",
+  "booking_id": "demo-booking-6",
+  "kind": "cerere_rezervare",
+  "created_at": "2026-10-17T10:00:00+00:00",
+  "text": "Cerere nouă de rezervare: „Seară de film documentar despre natură în cartier” la Casa Artelor, marți 3 noiembrie, 17:00.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-6-notif-aprobata",
+  "user_id": "demo-user-3",
+  "idea_id": "demo-idea-6",
+  "booking_id": "demo-booking-6",
+  "kind": "rezervare_aprobata",
+  "created_at": "2026-10-18T09:00:00+00:00",
+  "text": "Rezervarea pentru „Seară de film documentar despre natură în cartier” la Casa Artelor (marți 3 noiembrie, 17:00) a fost aprobată.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-idea-7-notif-prag",
+  "user_id": "demo-user-2",
+  "idea_id": "demo-idea-7",
+  "booking_id": null,
+  "kind": "prag_atins",
+  "created_at": "2026-10-21T17:45:00+00:00",
+  "text": "Ideea „Întâlnire de schimb de cărți și semințe între vecini” a atins pragul: 3 persoane interesate.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-7-notif-cerere",
+  "user_id": "demo-user-8",
+  "idea_id": "demo-idea-7",
+  "booking_id": "demo-booking-7",
+  "kind": "cerere_rezervare",
+  "created_at": "2026-10-22T12:00:00+00:00",
+  "text": "Cerere nouă de rezervare: „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților, marți 10 noiembrie, 09:00.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-7-notif-aprobata",
+  "user_id": "demo-user-2",
+  "idea_id": "demo-idea-7",
+  "booking_id": "demo-booking-7",
+  "kind": "rezervare_aprobata",
+  "created_at": "2026-10-22T16:30:00+00:00",
+  "text": "Rezervarea pentru „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților (marți 10 noiembrie, 09:00) a fost aprobată.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-idea-1-notif-prag",
+  "user_id": "demo-user-1",
+  "idea_id": "demo-idea-1",
+  "booking_id": null,
+  "kind": "prag_atins",
+  "created_at": "2026-11-11T12:40:00+00:00",
+  "text": "Ideea „Atelier de reparat biciclete pentru vecini” a atins pragul: 3 persoane interesate.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-1-notif-cerere",
+  "user_id": "demo-user-7",
+  "idea_id": "demo-idea-1",
+  "booking_id": "demo-booking-1",
+  "kind": "cerere_rezervare",
+  "created_at": "2026-11-12T08:00:00+00:00",
+  "text": "Cerere nouă de rezervare: „Atelier de reparat biciclete pentru vecini” la Faber, marți 17 noiembrie, 17:00.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-1-notif-aprobata",
+  "user_id": "demo-user-1",
+  "idea_id": "demo-idea-1",
+  "booking_id": "demo-booking-1",
+  "kind": "rezervare_aprobata",
+  "created_at": "2026-11-12T14:00:00+00:00",
+  "text": "Rezervarea pentru „Atelier de reparat biciclete pentru vecini” la Faber (marți 17 noiembrie, 17:00) a fost aprobată.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-idea-4-notif-prag",
+  "user_id": "demo-user-4",
+  "idea_id": "demo-idea-4",
+  "booking_id": null,
+  "kind": "prag_atins",
+  "created_at": "2026-11-13T10:30:00+00:00",
+  "text": "Ideea „Turneu de baschet 3x3 pentru tinerii din cartier” a atins pragul: 3 persoane interesate.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-2-notif-cerere",
+  "user_id": "demo-user-6",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-2",
+  "kind": "cerere_rezervare",
+  "created_at": "2026-11-13T11:00:00+00:00",
+  "text": "Cerere nouă de rezervare: „Turneu de baschet 3x3 pentru tinerii din cartier” la Teren UVT, miercuri 18 noiembrie, 10:00.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-2-notif-refuzata",
+  "user_id": "demo-user-4",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-2",
+  "kind": "rezervare_refuzata",
+  "created_at": "2026-11-13T13:00:00+00:00",
+  "text": "Rezervarea pentru „Turneu de baschet 3x3 pentru tinerii din cartier” la Teren UVT (miercuri 18 noiembrie, 10:00) a fost refuzată.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-3-notif-cerere",
+  "user_id": "demo-user-6",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-3",
+  "kind": "cerere_rezervare",
+  "created_at": "2026-11-13T13:30:00+00:00",
+  "text": "Cerere nouă de rezervare: „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica, marți 17 noiembrie, 18:00.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-idea-2-notif-prag",
+  "user_id": "demo-user-2",
+  "idea_id": "demo-idea-2",
+  "booking_id": null,
+  "kind": "prag_atins",
+  "created_at": "2026-11-13T16:30:00+00:00",
+  "text": "Ideea „Club de lectură pentru seniori din Iosefin” a atins pragul: 3 persoane interesate.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-4-notif-cerere",
+  "user_id": "demo-user-8",
+  "idea_id": "demo-idea-2",
+  "booking_id": "demo-booking-4",
+  "kind": "cerere_rezervare",
+  "created_at": "2026-11-13T17:00:00+00:00",
+  "text": "Cerere nouă de rezervare: „Club de lectură pentru seniori din Iosefin” la Casa de Cultură a Studenților, marți 17 noiembrie, 09:00.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-booking-3-notif-aprobata",
+  "user_id": "demo-user-4",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-3",
+  "kind": "rezervare_aprobata",
+  "created_at": "2026-11-13T18:00:00+00:00",
+  "text": "Rezervarea pentru „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica (marți 17 noiembrie, 18:00) a fost aprobată.",
+  "read": false,
+  "is_demo": true
+ }
+]
