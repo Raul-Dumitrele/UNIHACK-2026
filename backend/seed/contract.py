@@ -99,7 +99,7 @@ def contract_rows(data: SeedData) -> dict[str, list[dict]]:
             "verificator_id": _verifier(p["id"], data.proiect_evenimente, users),
             "tip_amenajare": p["tip_amenajare"], "suprafata_mp": p["suprafata_mp"], "stare": p["stare"],
             "dosar": p["dosar"], "referinte": p["referinte"], "cost": p["cost"],
-            "created_at": p["created_at"], "updated_at": p["updated_at"],
+            "created_at": p["created_at"], "updated_at": p["updated_at"], "is_demo": True,
         } for p in data.proiecte],
         "ProiectEveniment": [{
             "id": e["id"], "proiect_id": e["proiect_id"], "user_id": e["user_id"], "stare_noua": e["stare_noua"],
