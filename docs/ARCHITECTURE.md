@@ -15,7 +15,15 @@
 6. `PATCH /bookings/{id}` -> proprietarul aprobă/refuză; la aprobare: idee `rezervata`, slot scos, cereri suprapuse refuzate, notificare autor.
 7. `GET /impact` -> `impact.compute_impact`.
 
+## Extensia „Propunere către Primărie”
+8. `POST /ideas/{id}/proiect` -> `find_references` -> `estimate_cost` -> `generate_dosar` -> proiect `draft`.
+9. `POST /proiecte/{id}/trimite` -> `trimis` (notifică utilizatorii `primarie`).
+10. `POST /proiecte/{id}/inainteaza` -> `in_verificare` (primarie desemnează un `verificator`).
+11. `POST /proiecte/{id}/decizie` -> `acord_de_principiu` | `respins` | `clarificari` (verificatorul desemnat).
+Roluri noi: `primarie`, `verificator`. Acordul e un acord de principiu simulat; estimările sunt orientative.
+
 ## Reguli de stare
+- Proiect: `draft` -> `trimis` -> `in_verificare` -> `acord_de_principiu` | `respins` | `clarificari`; `clarificari` -> `trimis` (autorul retrimite). Fiecare tranziție scrie un `ProiectEveniment`.
 - Idee: `deschisa` -> `prag_atins` (interesati >= prag) -> `rezervata` (rezervare aprobată).
 - Rezervare: `cerut` -> `aprobat` | `refuzat` (final).
 - Notificare la fiecare tranziție; doar în aplicație.
