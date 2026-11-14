@@ -95,3 +95,13 @@ def test_template_fits_any_kind_of_project(no_key):
     text = json.dumps(p["dosar"], ensure_ascii=False)
     assert "stație de încărcare" in p["dosar"]["titlu"]
     assert "timpului liber" not in text and "bănci" not in text
+
+
+def test_accepts_contract_shaped_ideas(no_key):
+    """P1's Idea rows: titlu, descriere, interesati, structurat.rezumat."""
+    idea = {"titlu": "Stație de încărcare", "descriere": "Vrem o stație de încărcare pentru mașini electrice.",
+            "interesati": 7, "structurat": {"rezumat": "Stație de încărcare pentru mașini electrice"}}
+    p = prepare_proiect(idea, {"nume": "Parcare (exemplu)", "cartier": "Fabric"}, 100)
+    assert p["eticheta"] == "stație de încărcare"
+    d = p["dosar"]
+    assert "Parcare (exemplu)" in d["descriere"] and "susținută de 7 persoane" in d["justificare"]

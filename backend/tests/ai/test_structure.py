@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from backend.ai import Category, IdeaDossier, Setting, structure_idea
+from backend.ai import Category, IdeaDossier, Setting, structure_dossier
 from backend.ai import gemini
 from backend.ai.fallback import build_fallback, normalize
 
@@ -52,14 +52,14 @@ def _gemini_returns(monkeypatch, result):
 
 def test_without_key_uses_fallback(no_key, monkeypatch):
     calls = _gemini_returns(monkeypatch, AssertionError("must not call Gemini"))
-    d = structure_idea(BIKES)
+    d = structure_dossier(BIKES)
     assert isinstance(d, IdeaDossier)
     assert d.source == "fallback"
     assert calls == []
 
 
 def test_fallback_extracts_fields(no_key):
-    d = structure_idea(BIKES)
+    d = structure_dossier(BIKES)
     assert d.category is Category.atelier
     assert d.expected_participants == 15
     assert d.duration_hours == 3.0
@@ -70,7 +70,7 @@ def test_fallback_extracts_fields(no_key):
 
 
 def test_fallback_is_deterministic(no_key):
-    assert structure_idea(BIKES) == structure_idea(BIKES)
+    assert structure_dossier(BIKES) == structure_dossier(BIKES)
 
 
 @pytest.mark.parametrize(
@@ -102,7 +102,7 @@ def test_no_false_positive_keywords():
 
 def test_empty_text_never_raises(fake_key, monkeypatch):
     calls = _gemini_returns(monkeypatch, AssertionError("must not call Gemini"))
-    d = structure_idea("   ")
+    d = structure_dossier("   ")
     assert d.source == "fallback" and d.title == "Idee nouă"
     assert calls == []
 
@@ -120,7 +120,7 @@ def test_normalize_handles_cedilla_variants():
 
 def test_gemini_success(fake_key, monkeypatch):
     calls = _gemini_returns(monkeypatch, json.dumps(GOOD))
-    d = structure_idea(BIKES)
+    d = structure_dossier(BIKES)
     assert d.source == "gemini"
     assert d.title == "Atelier de reparat biciclete"
     assert calls[0][0] == "test-model"
@@ -140,7 +140,7 @@ def test_gemini_success(fake_key, monkeypatch):
 )
 def test_gemini_failures_fall_back(fake_key, monkeypatch, result):
     _gemini_returns(monkeypatch, result)
-    d = structure_idea(BIKES)
+    d = structure_dossier(BIKES)
     assert d.source == "fallback"
     assert d == IdeaDossier(**build_fallback(BIKES).model_dump(), source="fallback")
 
@@ -148,7 +148,7 @@ def test_gemini_failures_fall_back(fake_key, monkeypatch, result):
 def test_gemini_values_are_clamped(fake_key, monkeypatch):
     _gemini_returns(monkeypatch, json.dumps({**GOOD, "expected_participants": 99999, "duration_hours": 0,
                                              "needs": ["Mese", "mese", ""] + [f"x{i}" for i in range(20)]}))
-    d = structure_idea(BIKES)
+    d = structure_dossier(BIKES)
     assert d.source == "gemini"
     assert d.expected_participants == 500
     assert d.duration_hours == 0.5

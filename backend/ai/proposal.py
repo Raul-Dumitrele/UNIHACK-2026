@@ -108,7 +108,7 @@ def prepare_proiect(idea, space, suprafata_mp: float | None, tip_amenajare: str 
                               cuvinte_cautare=[label_for(tip_amenajare)], source="fallback")
     else:
         dossier = _get(idea, "structurat", "dossier", default={}) or {}
-        incadrare = classify_proposal(_get(idea, "text") or _get(dossier, "summary") or _get(idea, "title") or "")
+        incadrare = classify_proposal(_get(idea, "text", "descriere") or _get(dossier, "summary", "rezumat") or _get(idea, "title", "titlu") or "")
     refs = find_references(incadrare.tip_amenajare, suprafata_mp)
     cost = estimate_cost(refs, suprafata_mp)
     dosar = generate_dosar(idea, space, incadrare.eticheta, suprafata_mp, refs, cost)

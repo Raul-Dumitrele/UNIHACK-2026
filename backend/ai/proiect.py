@@ -162,10 +162,10 @@ def _context(idea: Any, space: Any, tip: str, suprafata_mp: float | None, refs: 
     return {
         "idee": {
             "titlu": _get(idea, "title", "titlu") or _get(dossier, "title"),
-            "text": _get(idea, "text"),
-            "rezumat": _get(dossier, "summary"),
+            "text": _get(idea, "text", "descriere"),
+            "rezumat": _get(dossier, "summary", "rezumat"),
             "public": _get(dossier, "audience"),
-            "persoane_interesate": _get(idea, "interest_count"),
+            "persoane_interesate": _get(idea, "interest_count", "interesati"),
         },
         "spatiu": {
             "nume": _get(space, "name", "nume"),
