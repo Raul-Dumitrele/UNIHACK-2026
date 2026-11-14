@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 
 from backend.app.config import settings
 from backend.app.db import init_db
-from backend.app.routers import bookings, ideas, impact, notifications, spaces, users
+from backend.app.routers import bookings, ideas, impact, notifications, proiecte, spaces, users
 
 
 @asynccontextmanager
@@ -31,7 +31,7 @@ async def validation_error(_: Request, exc: RequestValidationError):
     return JSONResponse(status_code=422, content={"detail": "Date invalide - " + "; ".join(parts)})
 
 
-for _router in (users, spaces, ideas, bookings, notifications, impact):
+for _router in (users, spaces, ideas, bookings, notifications, impact, proiecte):
     app.include_router(_router.router)
 
 

@@ -1,5 +1,5 @@
 """Pydantic request/response schemas, exactly as in docs/CONTRACT.md."""
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, PlainSerializer, model_validator
@@ -13,7 +13,15 @@ Dotare = Literal[
 ]
 IdeaStatus = Literal["deschisa", "prag_atins", "rezervata"]
 BookingStatus = Literal["cerut", "aprobat", "refuzat"]
-UserRole = Literal["cetatean", "proprietar"]
+UserRole = Literal["cetatean", "proprietar", "primarie", "verificator"]
+TipAmenajare = Literal[
+    "skatepark", "loc_de_joaca", "parc_caini", "pista_biciclete", "gradina_comunitara", "teren_sport",
+]
+ProiectStare = Literal["draft", "trimis", "in_verificare", "clarificari", "acord_de_principiu", "respins"]
+DISCLAIMER = (
+    "Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; "
+    "acordul din aplicație este un acord de principiu simulat."
+)
 
 
 def _iso_utc(v: datetime) -> str:
@@ -60,6 +68,8 @@ class Impact(BaseModel):
     oameni_conectati: int
     km_economisiti: float  # estimare
     proiecte_active: int
+    proiecte_trimise: int = 0
+    proiecte_cu_acord: int = 0
 
 
 class UserOut(ORM):
@@ -82,6 +92,7 @@ class SpaceOut(ORM):
     sloturi: list[Slot]
     owner_id: str
     is_demo: bool
+    suprafata_mp: int | None = None
 
 
 class IdeaCreate(BaseModel):
@@ -123,6 +134,7 @@ class BookingCreate(BaseModel):
     idea_id: str
     space_id: str
     slot: Slot
+    mesaj: str | None = None
 
 
 class BookingUpdate(BaseModel):
@@ -136,6 +148,7 @@ class BookingOut(ORM):
     slot: Slot
     stare: BookingStatus
     created_at: UtcDatetime
+    mesaj: str | None = None
 
 
 class NotificationOut(ORM):
@@ -143,6 +156,103 @@ class NotificationOut(ORM):
     user_id: str
     idea_id: str
     booking_id: str | None
+    proiect_id: str | None = None
     mesaj: str
     citita: bool
     created_at: UtcDatetime
+
+
+# --- Extensia "Propunere catre Primarie" ---------------------------------
+
+class Referinta(BaseModel):
+    id: str
+    tip_amenajare: TipAmenajare
+    oras: str
+    an: int
+    suprafata_mp: int | None = None
+    cost_total_lei: int | None = None
+    componente: list[str] = []
+    sursa_url: str
+    sursa_tip: str
+    data_accesarii: date
+
+
+class Cost(BaseModel):
+    suficient: bool
+    min_lei: int | None = None
+    mediana_lei: int | None = None
+    max_lei: int | None = None
+    moneda: Literal["RON"] = "RON"
+    ipoteze: list[str] = []
+    referinte_folosite: list[str] = []
+    motiv: str | None = None
+
+
+class Etapa(BaseModel):
+    nume: str
+    durata_luni: float
+
+
+class Dosar(BaseModel):
+    titlu: str
+    descriere: str
+    justificare: str
+    componente: list[str] = []
+    etape: list[Etapa] = []
+    riscuri: list[str] = []
+    lista_verificare: list[str] = []
+    referinte_citate: list[str] = []
+
+
+class ProiectCreate(BaseModel):
+    space_id: str
+    tip_amenajare: TipAmenajare
+    suprafata_mp: int | None = Field(default=None, ge=1)
+
+
+class TrimiteIn(BaseModel):
+    mesaj: str | None = None
+
+
+class InainteazaIn(BaseModel):
+    verificator_id: str
+
+
+class DecizieIn(BaseModel):
+    stare: Literal["acord_de_principiu", "respins", "clarificari"]
+    mesaj: str | None = None
+
+    @model_validator(mode="after")
+    def _mesaj_required(self) -> "DecizieIn":
+        if self.stare in ("respins", "clarificari") and not (self.mesaj and self.mesaj.strip()):
+            raise ValueError("mesajul este obligatoriu la respingere și la cerere de clarificări")
+        return self
+
+
+class ProiectEvenimentOut(ORM):
+    id: str
+    proiect_id: str
+    user_id: str
+    stare_noua: ProiectStare
+    mesaj: str | None = None
+    created_at: UtcDatetime
+
+
+class ProiectOut(ORM):
+    id: str
+    idea_id: str
+    space_id: str
+    autor_id: str
+    tip_amenajare: TipAmenajare
+    suprafata_mp: int
+    stare: ProiectStare
+    dosar: Dosar
+    referinte: list[Referinta]
+    cost: Cost
+    created_at: UtcDatetime
+    updated_at: UtcDatetime
+    verificator_id: str | None = None
+
+
+class ProiectDetaliuOut(ProiectOut):
+    evenimente: list[ProiectEvenimentOut] = []
