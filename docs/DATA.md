@@ -364,6 +364,48 @@ python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără
 - Loturile din listă sunt desenate cu 12 m lățime, ca pe hartă. Motivul lor spune mereu „din lista Primăriei (Legea 15/2003), de confirmat: poate fi atribuit între timp”.
 - Loturile nu se unesc: pozițiile lor sunt schematice, deci alăturarea ar fi inventată. Consecință: un skatepark de peste 276 mp găsește azi doar terenul demo.
 
+## Prețuri unitare (SEAP, date deschise)
+**Nu există o sursă publică de prețuri unitare per articol.** Ce am verificat pe 2026-11-14:
+- **Standardele de cost** pentru investiții publice (HG 363/2010, HG 1394/2010) au fost **abrogate în 2018**. Ordinul MDLPA 1321/2021 (Anghel Saligny) are plafoane doar pentru apă, canalizare și drumuri.
+- **Contractele SEAP și OpenTender** au doar valori totale.
+- **Studiile de fezabilitate publicate** dau de obicei doar totalul (de ex. SF Sector 6, skatepark și parc pentru câini: 1.105.529,39 lei fără TVA).
+
+**Sursa folosită:** exporturile „Achiziții directe” din seturile [achizitii-publice-&lt;an&gt;](https://data.gov.ro/dataset/achizitii-publice-2025) de pe data.gov.ro, publicate de Autoritatea pentru Digitalizarea României, cu licența **CC BY 4.0** (2021+). Atribuirea trebuie afișată oriunde apar prețurile.
+- **Limita setului:** fiecare achiziție are o denumire liberă, un cod CPV și valoarea, dar **nicio coloană de cantitate**.
+- **Regula (`backend/ai/proiect/preturi.py`):** o achiziție devine observație doar dacă denumirea are **un singur articol** și **o singură cantitate explicită** în unitatea articolului: „Achizitie 30 buc. Banci pentru parc”, „MONTAJ PAVELE BETON 100 mp”.
+  - Sunt excluse pachetele, seturile, loturile, reparațiile, serviciile și denumirile cu două articole („pergola cu 2 bănci si masa”, „… + remodelare teren”).
+  - Sunt excluse și cantitățile pe palet („9,6 MP/PAL”) și materialele care nu sunt articolul (bandă de avertizare, plasă de gard).
+  - Fiecare articol are coduri CPV permise.
+- **Prețul unitar** = valoarea achiziției / cantitate. Un articol are preț doar cu **cel puțin 3 observații** (prag fixat înainte de rezultate). Se afișează mediana, min–max, numărul de observații, perioada și numerele DA cele mai apropiate de mediană.
+- **TVA: neprecizat în setul de date.** Valorile sunt prețuri plătite de cumpărători publici, nu un standard.
+- **Colectare:** `python -m backend.seed.fetch_preturi` (o singură dată, cu rețea). Rezultatul e `backend/ai/proiect/data/preturi_seap.json`, cu fiecare observație (DA, dată, CPV, denumirea originală, cantitate, valoare), ca să poată fi verificată rând cu rând. Testele reaplică regulile pe fiecare observație comisă.
+  - Fișierele `.xls` vechi și `.ods` sunt sărite (fără dependențe), iar lista lor e în JSON.
+  - Coloanele diferă între ani: 2023 are `VALOARE_ATRIBUITA_RON`, 2025+ are `VALOARE_ACHIZITIE_RON`. JSON-ul notează coloana folosită.
+
+## Lista de materiale (`lista_materiale(scene)`)
+- Cantitățile vin din planul schematic. Fiecare linie are `ipoteza`, de exemplu:
+  - bănci = câte sunt pe plan;
+  - alee pavată = suprafața aleii;
+  - pardoseală de protecție = echipamentele de joacă cu zona lor liberă;
+  - gard = perimetrul;
+  - gazon = suprafața rămasă.
+- Fără preț (sub 3 observații sau articol fără sursă) linia e **„de cotat”**, cu motivul.
+- `subtotal_cotat_lei` acoperă doar liniile cotate și se afișează **doar** ca „Subtotal articole cotate (incomplet: N articole de cotat)”. **Nu este costul proiectului**; estimarea de cost rămâne `Cost` (din proiecte de referință).
+
+## Documente (`backend.ai.proiect.documente`)
+- `build_documente(proiect, space) -> {"plan.svg", "plan.dxf", "dosar.pdf", "materiale.csv": (bytes, media type)}`, plus `plan_json` și `materiale_json`.
+- Proiectul și spațiul sunt în forma din contract (dicționare sau rânduri ORM; `dosar`/`cost` pot fi și text JSON). Rezultatul e determinist.
+- **Dosarul PDF** e scris manual (PDF 1.4, fără dependențe):
+  - conținut: textele dosarului, estimarea de cost, referințele, planul desenat vectorial, lista de materiale și textul din regula 10;
+  - fonturi: Helvetica standard, cu codificare pentru ă/ș/ț (`/Differences` + `/ToUnicode`, deci copierea și căutarea dau ș/ț corecte);
+  - fără dată de creare, ca fișierul să fie identic la fiecare generare.
+- **`materiale.csv`:** separator `;`, virgulă zecimală, UTF-8 cu BOM, ca să se deschidă direct în Excel în română.
+- Terenurile din lista Primăriei sunt desenate cu 12 m lățime, iar dosarul lor spune „de confirmat”.
+- **Cereri către P1** (propunere de contract):
+  - `GET /terenuri/potrivite`, `GET /proiecte/{id}/plan`, `GET /proiecte/{id}/materiale`;
+  - `GET /proiecte/{id}/documente/{plan.svg|plan.dxf|dosar.pdf|materiale.csv}`;
+  - vizibilitatea e aceeași ca la `GET /proiecte/{id}`.
+
 ## Stratul LLM: lanț de rezervă peste furnizori gratuiți
 Funcțiile `structure_idea`, `owner_message`, `classify_proposal` și `generate_dosar` nu mai depind doar de Gemini. Toate trec prin `backend.ai.llm.generate_json(prompt, schema, system=None, task=..., validator=None)`, care încearcă, în ordine, toate modelele gratuite configurate. Dacă niciunul nu răspunde valid, funcția apelantă folosește fallback-ul determinist de până acum. Semnăturile din contract nu se schimbă.
 
