@@ -1,4 +1,5 @@
-// One project: dossier, cost, references, history, and the action the current role may take (rule 8).
+// One complete project. Tab "Dosar": summary, plot, cost, stages, risks, questions for the city hall, references;
+// tab "Documente": plan, downloads, materials. Beside them: history and the one action the current role may take.
 // Printable (Save as PDF) via the print: utilities and @media print in index.css.
 import { useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
@@ -7,17 +8,33 @@ import { toast } from 'sonner'
 import { api } from '@/api/client'
 import type { Proiect, ProiectDetaliu, Space } from '@/api/models'
 import { DemoBadge } from '@/components/DemoBadge'
-import { CostBlock, Disclaimer, DosarView, EvenimenteTimeline, ProiectStatusBadge, ReferinteList } from '@/components/proiect/parts'
+import { DocumenteTab } from '@/components/proiect/Documente'
+import {
+  BulletList, CostBlock, Disclaimer, EtapeList, EvenimenteTimeline, ProiectStatusBadge, ReferinteList, Rezumat,
+} from '@/components/proiect/parts'
 import { ErrorState, LoadingCards } from '@/components/StateViews'
+import { TerenMap } from '@/components/TerenMap'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Textarea } from '@/components/ui/textarea'
 import { DEMO_USERS } from '@/demoUsers'
-import { fmtDate, tipLabel } from '@/lib/format'
+import { fmtDate, isFreePlot, tipLabel } from '@/lib/format'
 import { useApi } from '@/lib/useApi'
 import { cn } from '@/lib/utils'
 import { useUser } from '@/user'
+
+function Block({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <Card className="break-inside-avoid print:border-0 print:shadow-none">
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3">{children}</CardContent>
+    </Card>
+  )
+}
 
 export function ProiectDetaliuPage() {
   const { id = '' } = useParams()
@@ -29,10 +46,12 @@ export function ProiectDetaliuPage() {
   if (pr.error || !pr.data) return <ErrorState message={pr.error ?? 'Proiectul nu există.'} onRetry={pr.reload} />
 
   const p = pr.data
+  const dosar = p.dosar
   const me = DEMO_USERS.find((u) => u.id === userId)
   const autor = DEMO_USERS.find((u) => u.id === p.autor_id)
   const verificator = DEMO_USERS.find((u) => u.id === p.verificator_id)
   const space = spaces.data?.find((s) => s.id === p.space_id)
+  const teren = space && isFreePlot(space.tip) ? space : undefined
 
   return (
     <section className="space-y-6">
@@ -53,51 +72,74 @@ export function ProiectDetaliuPage() {
             {tipLabel(p.tip_amenajare)} · {p.suprafata_mp} mp
           </span>
         </div>
-        <h1 className="text-3xl font-semibold tracking-tight">{p.dosar.titlu}</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">{dosar.titlu}</h1>
         <p className="text-sm text-muted-foreground">
           Propus de {autor?.nume ?? p.autor_id}
-          {space ? ` · ${space.nume}` : ''} · creat {fmtDate(p.created_at)}
-          {verificator ? ` · verificator: ${verificator.nume}` : ''} ·{' '}
-          <Link to={`/idei/${p.idea_id}`} className="underline print:no-underline">
-            ideea de pornire
-          </Link>
+          {space ? (
+            <>
+              {' · '}
+              <Link to={`/teren/${space.id}`} className="underline print:no-underline">
+                {space.nume}
+              </Link>
+            </>
+          ) : null}{' '}
+          · creat {fmtDate(p.created_at)}
+          {verificator ? ` · verificator: ${verificator.nume}` : ''}
         </p>
+        <Disclaimer />
       </header>
 
-      {me ? <Actions p={p} me={me} onChange={pr.reload} /> : null}
-
       <div className="grid gap-6 lg:grid-cols-[1fr_340px] print:block">
-        <div className="space-y-6">
-          <Card className="print:border-0 print:shadow-none">
-            <CardHeader>
-              <CardTitle>Dosarul proiectului</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <DosarView dosar={p.dosar} />
-            </CardContent>
-          </Card>
-          <Card className="print:border-0 print:shadow-none">
-            <CardHeader>
-              <CardTitle>Cost estimativ</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
+        <Tabs defaultValue="dosar" className="min-w-0">
+          <TabsList className="print:hidden">
+            <TabsTrigger value="dosar">Dosar</TabsTrigger>
+            <TabsTrigger value="documente">Documente</TabsTrigger>
+          </TabsList>
+          <TabsContent value="dosar" className="mt-4 space-y-6">
+            <Block title="1. Rezumat">
+              <Rezumat dosar={dosar} />
+            </Block>
+            {teren ? (
+              <Block title="2. Terenul">
+                <TerenMap terenuri={[teren]} center={[teren.lat, teren.lng]} zoom={16} compact className="h-56 w-full print:hidden" />
+                <p className="text-sm text-muted-foreground">
+                  {teren.nume} · {teren.suprafata_mp ? `${teren.suprafata_mp} mp · ` : ''}
+                  {teren.lat.toFixed(5)}, {teren.lng.toFixed(5)}
+                </p>
+              </Block>
+            ) : null}
+            <Block title="3. Cost estimat">
               <CostBlock cost={p.cost} />
               <Disclaimer />
-            </CardContent>
-          </Card>
-          <Card className="print:border-0 print:shadow-none">
-            <CardHeader>
-              <CardTitle>Proiecte de referință</CardTitle>
-            </CardHeader>
-            <CardContent>
+            </Block>
+            {dosar.etape.length ? (
+              <Block title="4. Etape">
+                <EtapeList etape={dosar.etape} />
+              </Block>
+            ) : null}
+            {dosar.riscuri.length ? (
+              <Block title="5. Riscuri">
+                <BulletList items={dosar.riscuri} />
+              </Block>
+            ) : null}
+            {dosar.lista_verificare.length ? (
+              <Block title="6. Întrebări pentru Primărie">
+                <BulletList items={dosar.lista_verificare} />
+              </Block>
+            ) : null}
+            <Block title="7. Proiecte de referință">
               <ReferinteList referinte={p.referinte} />
-            </CardContent>
-          </Card>
-        </div>
+            </Block>
+          </TabsContent>
+          <TabsContent value="documente" className="mt-4">
+            <DocumenteTab proiectId={p.id} />
+          </TabsContent>
+        </Tabs>
         <aside className="space-y-6 print:mt-6">
+          {me ? <Actions p={p} me={me} onChange={pr.reload} /> : null}
           <Card className="print:border-0 print:shadow-none">
             <CardHeader>
-              <CardTitle>Istoric</CardTitle>
+              <CardTitle>8. Istoric</CardTitle>
             </CardHeader>
             <CardContent>
               <EvenimenteTimeline evenimente={p.evenimente} />

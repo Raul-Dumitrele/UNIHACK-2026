@@ -31,6 +31,30 @@ export interface paths {
         /** List Spaces */
         get: operations["list_spaces_spaces_get"];
         put?: never;
+        /**
+         * Mark Plot
+         * @description A free plot marked on the map by a user. Unverified: owner, legal status and availability are unknown.
+         */
+        post: operations["mark_plot_spaces_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/spaces/{space_id}/proiecte": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Space Projects
+         * @description Projects proposed on a plot: every submitted one (not a draft) plus the caller's own drafts.
+         */
+        get: operations["space_projects_spaces__space_id__proiecte_get"];
+        put?: never;
         post?: never;
         delete?: never;
         options?: never;
@@ -240,7 +264,11 @@ export interface paths {
         /** List Proiecte */
         get: operations["list_proiecte_proiecte_get"];
         put?: never;
-        post?: never;
+        /**
+         * Create Proiect Direct
+         * @description A project straight on a free plot: the description becomes a (hidden) idea owned by the author.
+         */
+        post: operations["create_proiect_direct_proiecte_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -309,6 +337,77 @@ export interface paths {
         put?: never;
         /** Decizie */
         post: operations["decizie_proiecte__proiect_id__decizie_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}/plan": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Proiect Plan */
+        get: operations["proiect_plan_proiecte__proiect_id__plan_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}/materiale": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Proiect Materiale */
+        get: operations["proiect_materiale_proiecte__proiect_id__materiale_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}/documente/{nume}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Proiect Document */
+        get: operations["proiect_document_proiecte__proiect_id__documente__nume__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/terenuri/potrivite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Terenuri Potrivite
+         * @description Free plots (Space.tip = teren_liber) ranked for a proposal, best first, with a score and a reason.
+         */
+        get: operations["terenuri_potrivite_terenuri_potrivite_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -446,6 +545,33 @@ export interface components {
              */
             referinte_citate: string[];
         };
+        /** Element */
+        Element: {
+            /** Id */
+            id: string;
+            /** Nume */
+            nume: string;
+            /** Tip */
+            tip: string;
+            /** X */
+            x: number;
+            /** Y */
+            y: number;
+            /** Latime M */
+            latime_m: number;
+            /** Lungime M */
+            lungime_m: number;
+            /**
+             * Zona Libera M
+             * @default 0
+             */
+            zona_libera_m: number;
+            /**
+             * Obligatoriu
+             * @default false
+             */
+            obligatoriu: boolean;
+        };
         /** Etapa */
         Etapa: {
             /** Nume */
@@ -518,6 +644,57 @@ export interface components {
             /** Verificator Id */
             verificator_id: string;
         };
+        /** LinieMaterial */
+        LinieMaterial: {
+            /** Articol */
+            articol: string | null;
+            /** Nume */
+            nume: string;
+            /** Unitate */
+            unitate: string;
+            /** Cantitate */
+            cantitate: number;
+            /** Ipoteza */
+            ipoteza: string;
+            pret_unitar?: components["schemas"]["PretUnitar"] | null;
+            /** Valoare Lei */
+            valoare_lei?: number | null;
+            /** Stare */
+            stare: string;
+            /**
+             * Motiv
+             * @default
+             */
+            motiv: string;
+        };
+        /** ListaMateriale */
+        ListaMateriale: {
+            /** Linii */
+            linii: components["schemas"]["LinieMaterial"][];
+            /** Subtotal Cotat Lei */
+            subtotal_cotat_lei: number;
+            /** Linii De Cotat */
+            linii_de_cotat: number;
+            /** Eticheta Subtotal */
+            eticheta_subtotal: string;
+            /**
+             * Sursa Preturi
+             * @default Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)
+             */
+            sursa_preturi: string;
+            /**
+             * Tva
+             * @default TVA: neprecizat în setul de date
+             */
+            tva: string;
+            /** Ipoteze */
+            ipoteze: string[];
+            /**
+             * Disclaimer
+             * @default Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse.
+             */
+            disclaimer: string;
+        };
         /** MatchOut */
         MatchOut: {
             space: components["schemas"]["SpaceOut"];
@@ -547,6 +724,23 @@ export interface components {
             /** Created At */
             created_at: string;
         };
+        /** Omis */
+        Omis: {
+            /** Nume */
+            nume: string;
+            /**
+             * Bucati
+             * @default 1
+             */
+            bucati: number;
+            /**
+             * Obligatoriu
+             * @default false
+             */
+            obligatoriu: boolean;
+            /** Motiv */
+            motiv: string;
+        };
         /** OwnerMessageIn */
         OwnerMessageIn: {
             /** Space Id */
@@ -558,15 +752,89 @@ export interface components {
             /** Mesaj */
             mesaj: string;
         };
+        /** PlanOut */
+        PlanOut: {
+            /** Tip Amenajare */
+            tip_amenajare: string;
+            /** Eticheta */
+            eticheta: string;
+            /** Suprafata Mp */
+            suprafata_mp: number;
+            /** Latime M */
+            latime_m: number;
+            /** Lungime M */
+            lungime_m: number;
+            /** Elemente */
+            elemente: components["schemas"]["Element"][];
+            /** Omise */
+            omise: components["schemas"]["Omis"][];
+            /** Complet */
+            complet: boolean;
+            /** Ipoteze */
+            ipoteze: string[];
+            /**
+             * Disclaimer
+             * @default Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.
+             */
+            disclaimer: string;
+            /** Suprafata Ocupata Mp */
+            suprafata_ocupata_mp: number;
+        };
+        /** PlotCandidateOut */
+        PlotCandidateOut: {
+            /** Space Id */
+            space_id: string;
+            /** Nume */
+            nume: string;
+            /** Cartier */
+            cartier: string | null;
+            /** Suprafata Mp */
+            suprafata_mp: number;
+            /** Scor */
+            scor: number;
+            /** Motiv */
+            motiv: string;
+            /** Complet */
+            complet: boolean;
+            /** Din Lista Primarie */
+            din_lista_primarie: boolean;
+            /** Is Demo */
+            is_demo: boolean;
+            /** Distanta Km */
+            distanta_km?: number | null;
+            /** Avertisment */
+            avertisment?: string | null;
+        };
+        /** PretUnitar */
+        PretUnitar: {
+            /** Articol */
+            articol: string;
+            /** Nume */
+            nume: string;
+            /** Unitate */
+            unitate: string;
+            /** Mediana Lei */
+            mediana_lei: number;
+            /** Min Lei */
+            min_lei: number;
+            /** Max Lei */
+            max_lei: number;
+            /** Observatii */
+            observatii: number;
+            /** Surse */
+            surse: string[];
+            /** Perioada */
+            perioada: string;
+        };
         /** ProiectCreate */
         ProiectCreate: {
             /** Space Id */
             space_id: string;
             /**
              * Tip Amenajare
-             * @enum {string}
+             * @description text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport
              */
-            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            tip_amenajare: string;
             /** Suprafata Mp */
             suprafata_mp?: number | null;
         };
@@ -582,9 +850,9 @@ export interface components {
             autor_id: string;
             /**
              * Tip Amenajare
-             * @enum {string}
+             * @description text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport
              */
-            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            tip_amenajare: string;
             /** Suprafata Mp */
             suprafata_mp: number;
             /**
@@ -612,6 +880,23 @@ export interface components {
              * @default []
              */
             evenimente: components["schemas"]["ProiectEvenimentOut"][];
+        };
+        /**
+         * ProiectDirectCreate
+         * @description POST /proiecte: a project straight on a free plot, without an idea or an interest threshold.
+         */
+        ProiectDirectCreate: {
+            /** Space Id */
+            space_id: string;
+            /**
+             * Tip Amenajare
+             * @description text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport
+             */
+            tip_amenajare: string;
+            /** Descriere */
+            descriere: string;
+            /** Suprafata Mp */
+            suprafata_mp?: number | null;
         };
         /** ProiectEvenimentOut */
         ProiectEvenimentOut: {
@@ -643,9 +928,9 @@ export interface components {
             autor_id: string;
             /**
              * Tip Amenajare
-             * @enum {string}
+             * @description text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport
              */
-            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            tip_amenajare: string;
             /** Suprafata Mp */
             suprafata_mp: number;
             /**
@@ -675,9 +960,9 @@ export interface components {
             id: string;
             /**
              * Tip Amenajare
-             * @enum {string}
+             * @description text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport
              */
-            tip_amenajare: "skatepark" | "loc_de_joaca" | "parc_caini" | "pista_biciclete" | "gradina_comunitara" | "teren_sport";
+            tip_amenajare: string;
             /** Oras */
             oras: string;
             /** An */
@@ -737,6 +1022,16 @@ export interface components {
             is_demo: boolean;
             /** Suprafata Mp */
             suprafata_mp?: number | null;
+            /** Cartier */
+            cartier?: string | null;
+            /** Sursa */
+            sursa?: string | null;
+            /** Sursa Detalii */
+            sursa_detalii?: string | null;
+            /** Status Verificare */
+            status_verificare?: string | null;
+            /** Descriere */
+            descriere?: string | null;
         };
         /** Structurat */
         Structurat: {
@@ -764,6 +1059,28 @@ export interface components {
             zgomot: "scazut" | "mediu" | "ridicat";
             /** Rezumat */
             rezumat: string;
+        };
+        /**
+         * TerenCreate
+         * @description POST /spaces: a free plot marked on the map by a user.
+         */
+        TerenCreate: {
+            /** Nume */
+            nume: string;
+            /**
+             * Lat
+             * @description Timișoara și împrejurimi
+             */
+            lat: number;
+            /**
+             * Lng
+             * @description Timișoara și împrejurimi
+             */
+            lng: number;
+            /** Suprafata Mp */
+            suprafata_mp: number;
+            /** Descriere */
+            descriere?: string | null;
         };
         /** TrimiteIn */
         TrimiteIn: {
@@ -836,6 +1153,8 @@ export interface operations {
                 categorie?: ("sport" | "cultura" | "educatie" | "social" | "creativ" | "tehnologie" | "altele") | null;
                 dotari?: ("scaune" | "mese" | "proiector" | "wifi" | "scena" | "oglinzi" | "vestiare" | "bucatarie" | "acces_rampa" | "curte" | "priza" | "tabla")[];
                 capacitate_min?: number | null;
+                /** @description ex. teren_liber */
+                tip?: string | null;
             };
             header?: never;
             path?: never;
@@ -851,6 +1170,130 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["SpaceOut"][];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    mark_plot_spaces_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TerenCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpaceOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    space_projects_spaces__space_id__proiecte_get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                space_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"][];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -1641,6 +2084,69 @@ export interface operations {
             };
         };
     };
+    create_proiect_direct_proiecte_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProiectDirectCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectDetaliuOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_proiect_proiecte__proiect_id__get: {
         parameters: {
             query?: never;
@@ -1885,6 +2391,228 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    proiect_plan_proiecte__proiect_id__plan_get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PlanOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    proiect_materiale_proiecte__proiect_id__materiale_get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListaMateriale"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    proiect_document_proiecte__proiect_id__documente__nume__get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+                nume: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description fișierul (SVG, DXF, PDF sau CSV) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/svg+xml": unknown;
+                    "application/dxf": unknown;
+                    "application/pdf": unknown;
+                    "text/csv": unknown;
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    terenuri_potrivite_terenuri_potrivite_get: {
+        parameters: {
+            query: {
+                /** @description tipul amenajării (vocabularul tip_amenajare sau text liber) */
+                tip_amenajare: string;
+                suprafata_minima?: number | null;
+                cartier?: string | null;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PlotCandidateOut"][];
+                };
             };
             /** @description Validation Error */
             422: {

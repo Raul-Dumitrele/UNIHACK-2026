@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { Bell, BarChart3, CalendarCheck, FlaskConical, Landmark, Lightbulb, Map, Plus } from 'lucide-react'
+import { Bell, BarChart3, FlaskConical, Landmark, Map } from 'lucide-react'
 import { api } from '@/api/client'
 import { Toaster } from '@/components/ui/sonner'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -11,10 +11,7 @@ import { ROL } from '@/lib/format'
 import { useUser } from '@/user'
 
 const NAV = [
-  { to: '/', label: 'Idei', icon: Lightbulb },
-  { to: '/idei/noua', label: 'Idee nouă', icon: Plus },
-  { to: '/harta', label: 'Hartă', icon: Map },
-  { to: '/rezervari', label: 'Rezervări', icon: CalendarCheck },
+  { to: '/', label: 'Hartă', icon: Map },
   { to: '/proiecte', label: 'Proiecte', icon: Landmark },
   { to: '/notificari', label: 'Notificări', icon: Bell },
   { to: '/impact', label: 'Impact', icon: BarChart3 },

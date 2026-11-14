@@ -1,22 +1,21 @@
-import { Car, Clock, Landmark, Send, Sparkles, Users } from 'lucide-react'
+import { Landmark, MapPin, Send } from 'lucide-react'
 import type { Impact } from '@/api/models'
 import { ErrorState, LoadingCards } from '@/components/StateViews'
 import { Card, CardContent } from '@/components/ui/card'
 import { useApi } from '@/lib/useApi'
+import { useTerenuri } from '@/lib/useTerenuri'
 
-const nf = new Intl.NumberFormat('ro-RO', { maximumFractionDigits: 1 })
+const nf = new Intl.NumberFormat('ro-RO', { maximumFractionDigits: 0 })
 
 export function ImpactPage() {
   const { data, error, loading, reload } = useApi<Impact>('/impact')
+  const terenuri = useTerenuri()
 
   const tiles = data
     ? [
-        { icon: Clock, label: 'Ore de spații recuperate', value: nf.format(data.ore_recuperate), note: 'din rezervări aprobate' },
-        { icon: Users, label: 'Oameni conectați', value: nf.format(data.oameni_conectati), note: 'participanți la activități' },
-        { icon: Car, label: 'Km economisiți', value: nf.format(data.km_economisiti), note: 'estimare: drumuri evitate' },
-        { icon: Sparkles, label: 'Proiecte active', value: nf.format(data.proiecte_active), note: 'idei care au loc' },
-        { icon: Send, label: 'Propuneri trimise', value: nf.format(data.proiecte_trimise), note: 'către Primărie' },
-        { icon: Landmark, label: 'Propuneri cu acord', value: nf.format(data.proiecte_cu_acord), note: 'acord de principiu (simulat)' },
+        { icon: MapPin, label: 'Terenuri libere pe hartă', value: terenuri.data ? nf.format(terenuri.terenuri.length) : '–', note: 'candidate pentru amenajare' },
+        { icon: Send, label: 'Proiecte trimise', value: nf.format(data.proiecte_trimise), note: 'către Primărie' },
+        { icon: Landmark, label: 'Proiecte cu acord', value: nf.format(data.proiecte_cu_acord), note: 'acord de principiu (simulat)' },
       ]
     : []
 
@@ -24,14 +23,14 @@ export function ImpactPage() {
     <section className="space-y-6">
       <div className="space-y-1">
         <h1 className="text-3xl font-semibold tracking-tight">Tablou de impact</h1>
-        <p className="text-muted-foreground">Ce s-a întâmplat în cartiere datorită spațiilor puse în comun.</p>
+        <p className="text-muted-foreground">De la terenuri libere la proiecte aprobate în principiu.</p>
       </div>
       {loading && !data ? (
-        <LoadingCards count={6} />
+        <LoadingCards count={3} />
       ) : error ? (
         <ErrorState message={error} onRetry={reload} />
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-3">
           {tiles.map(({ icon: Icon, label, value, note }) => (
             <Card key={label}>
               <CardContent className="space-y-3">
