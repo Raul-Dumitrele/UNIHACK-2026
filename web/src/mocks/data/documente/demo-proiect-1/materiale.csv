@@ -1,0 +1,12 @@
+﻿articol;denumire;cantitate;unitate;pret_unitar_median_lei;pret_min_lei;pret_max_lei;observatii_seap;valoare_lei;stare;motiv;ipoteza_cantitate;surse_seap
+banca;bancă de parc;3;buc;1575;550;2979;8;4725;cotat;;3 pe planul schematic;DA38648219 DA39650128 DA39836760 DA39513916 DA41135418
+cos_gunoi_stradal;coș de gunoi stradal;2;buc;290;149;1350;3;580;cotat;;2 pe planul schematic;DA41296145 DA34334173 DA40752322
+pavaj;pavaj din pavele (furnizare și/sau montaj);27;mp;;;;;;de cotat;doar 2 observații în SEAP pentru acest articol (minimum 3);suprafața aleii de acces din plan, pavată;
+;suprafață și module de skate;300;mp;;;;;;de cotat;aplicația nu are o sursă de preț pentru acest articol;suprafața din planul schematic;
+gard;împrejmuire (gard);100;ml;345,67;85,71;1028;13;34567;cotat;;împrejmuire pe tot conturul terenului (ipoteză);DA34764331 DA38762909 DA34764616 DA38646215 DA38923533
+gazon_rulou;gazon în rulou;269;mp;25;13,5;38;9;6725;cotat;;suprafața rămasă liberă pe plan, înierbată (ipoteză);DA36800373 DA36847092 DA38264037 DA36875403 DA41019170
+
+Subtotal articole cotate (incomplet: 2 articole de cotat);;;;;;;;46597
+Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)
+TVA: neprecizat în setul de date
+Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse.

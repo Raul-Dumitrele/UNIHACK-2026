@@ -1,8 +1,7 @@
 // Building blocks for "Propunere către Primărie". Everything shown comes from the API: no cost or text is
 // computed here (contract rule 10 + P3's notes).
-import type { ReactNode } from 'react'
 import { ExternalLink, Info } from 'lucide-react'
-import type { Cost, Dosar, ProiectEveniment, ProiectStare, Referinta } from '@/api/models'
+import type { Cost, Dosar, Etapa, ProiectEveniment, ProiectStare, Referinta } from '@/api/models'
 import { Badge } from '@/components/ui/badge'
 import { DEMO_USERS } from '@/demoUsers'
 import { DISCLAIMER, fmtDate, fmtLei, PROIECT_STARE, tipLabel } from '@/lib/format'
@@ -101,68 +100,55 @@ export function ReferinteList({ referinte }: { referinte: Referinta[] }) {
   )
 }
 
-export function DosarView({ dosar }: { dosar: Dosar }) {
+export function Rezumat({ dosar }: { dosar: Dosar }) {
   return (
-    <div className="space-y-5">
-      <Section title="Descriere">
+    <div className="space-y-4 text-sm leading-relaxed">
+      <div className="space-y-1.5">
+        <h3 className="font-semibold">Descriere</h3>
         <Paragraphs text={dosar.descriere} />
-      </Section>
-      <Section title="Justificare">
+      </div>
+      <div className="space-y-1.5">
+        <h3 className="font-semibold">Justificare</h3>
         <Paragraphs text={dosar.justificare} />
-      </Section>
+      </div>
       {dosar.componente.length ? (
-        <Section title="Componente">
+        <div className="space-y-1.5">
+          <h3 className="font-semibold">Componente</h3>
           <ul className="list-disc space-y-0.5 pl-5">
             {dosar.componente.map((x) => (
               <li key={x}>{x}</li>
             ))}
           </ul>
-        </Section>
-      ) : null}
-      {dosar.etape.length ? (
-        <Section title="Etape">
-          <ol className="space-y-1">
-            {dosar.etape.map((e, i) => (
-              <li key={e.nume} className="flex justify-between gap-3 rounded-lg bg-muted/50 px-3 py-2">
-                <span>
-                  {i + 1}. {e.nume}
-                </span>
-                <span className="shrink-0 text-muted-foreground tabular-nums">
-                  {e.durata_luni} {e.durata_luni === 1 ? 'lună' : 'luni'}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </Section>
-      ) : null}
-      {dosar.riscuri.length ? (
-        <Section title="Riscuri">
-          <ul className="list-disc space-y-0.5 pl-5">
-            {dosar.riscuri.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
-        </Section>
-      ) : null}
-      {dosar.lista_verificare.length ? (
-        <Section title="Întrebări pentru Primărie">
-          <ul className="list-disc space-y-0.5 pl-5">
-            {dosar.lista_verificare.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
-        </Section>
+        </div>
       ) : null}
     </div>
   )
 }
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
+export function EtapeList({ etape }: { etape: Etapa[] }) {
   return (
-    <section className="space-y-1.5 break-inside-avoid">
-      <h3 className="font-semibold">{title}</h3>
-      <div className="text-sm leading-relaxed">{children}</div>
-    </section>
+    <ol className="space-y-1 text-sm">
+      {etape.map((e, i) => (
+        <li key={e.nume} className="flex justify-between gap-3 rounded-lg bg-muted/50 px-3 py-2">
+          <span>
+            {i + 1}. {e.nume}
+          </span>
+          <span className="shrink-0 text-muted-foreground tabular-nums">
+            {e.durata_luni} {e.durata_luni === 1 ? 'lună' : 'luni'}
+          </span>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+export function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="list-disc space-y-0.5 pl-5 text-sm">
+      {items.map((x) => (
+        <li key={x}>{x}</li>
+      ))}
+    </ul>
   )
 }
 

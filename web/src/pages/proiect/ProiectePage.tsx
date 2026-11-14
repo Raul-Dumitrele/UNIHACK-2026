@@ -39,7 +39,7 @@ export function ProiectePage() {
         <EmptyState title="Niciun proiect deocamdată">
           {rol === 'primarie' || rol === 'verificator'
             ? 'Când apar propuneri pentru tine, le vezi aici.'
-            : 'Din pagina unei idei proprii care a atins pragul, apasă „Propune ca proiect către Primărie”.'}
+            : 'Alege un teren de pe hartă și apasă „Propune un proiect aici”.'}
         </EmptyState>
       ) : (
         <div className="space-y-3">

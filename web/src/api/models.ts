@@ -4,32 +4,33 @@ import type { components } from './schema'
 
 type S = components['schemas']
 
-export type Slot = S['Slot']
-export type Structurat = S['Structurat']
 export type User = S['UserOut']
 export type Space = S['SpaceOut']
-export type Idea = S['IdeaOut']
-export type IdeaCreate = S['IdeaCreate']
-export type Match = S['MatchOut']
-export type Booking = S['BookingOut']
-export type BookingCreate = S['BookingCreate']
 export type Notification = S['NotificationOut']
 export type Impact = S['Impact']
-export type OwnerMessage = S['OwnerMessageOut']
 
 // "Propunere către Primărie"
 export type Proiect = S['ProiectOut']
 export type ProiectDetaliu = S['ProiectDetaliuOut']
 export type ProiectEveniment = S['ProiectEvenimentOut']
-export type ProiectCreate = S['ProiectCreate']
+export type Etapa = S['Etapa']
 export type Referinta = S['Referinta']
 export type Cost = S['Cost']
 export type Dosar = S['Dosar']
 
 export type UserRole = User['rol']
-export type IdeaStatus = Idea['stare']
-export type BookingStatus = Booking['stare']
 export type ProiectStare = Proiect['stare']
 export type TipAmenajare = Proiect['tip_amenajare']
-export type Zi = Slot['zi']
-export type Dotare = Structurat['dotari'][number]
+
+// ---- Plot choice, plan, materials (P3's work, served by P1) ----
+export type TerenPotrivit = S['PlotCandidateOut']
+export type PlanSchematic = S['PlanOut']
+export type ElementOmis = S['Omis']
+export type ListaMateriale = S['ListaMateriale']
+export type LinieMaterial = S['LinieMaterial']
+export type PretUnitar = S['PretUnitar']
+export type FisierProiect = 'dosar.pdf' | 'plan.dxf' | 'materiale.csv' | 'plan.svg'
+
+/** POST /proiecte (tip_amenajare is free text) and POST /spaces (mark a plot). */
+export type ProiectNou = S['ProiectDirectCreate']
+export type TerenNou = S['TerenCreate']

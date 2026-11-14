@@ -1,5 +1,405 @@
 [
  {
+  "id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+  "idea_id": "b7cb9487-ead5-49fd-acaf-59fbab532f21",
+  "space_id": "teren-osm-1107708853",
+  "autor_id": "demo-user-1",
+  "tip_amenajare": "skatepark",
+  "suprafata_mp": 2102,
+  "stare": "acord_de_principiu",
+  "dosar": {
+   "titlu": "Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)",
+   "descriere": "Locuitorii propun o amenajare de tip „skatepark” la Teren viran, Tipografilor (candidat OSM), în cartierul Tipografilor, pe o suprafață de circa 2102 mp. Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria.",
+   "justificare": "Propunerea pornește de la ideea „Skatepark mic pentru adolescenții din cartier”. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
+   "componente": [
+    "zonă de skate",
+    "două terenuri de streetball",
+    "teren de volei și badminton",
+    "suporturi de biciclete, bănci și coșuri de gunoi",
+    "platformă de skate",
+    "rampe, trepte și bare pentru role, biciclete și skateboard"
+   ],
+   "etape": [
+    {
+     "nume": "Clarificări cu Primăria și consultarea vecinilor",
+     "durata_luni": 1.0
+    },
+    {
+     "nume": "Proiectare",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Avize și achiziția lucrărilor",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Execuție",
+     "durata_luni": 4.0
+    },
+    {
+     "nume": "Recepție și deschidere",
+     "durata_luni": 1.0
+    }
+   ],
+   "riscuri": [
+    "Terenul poate avea restricții de folosință care nu sunt cunoscute încă.",
+    "Costul real poate diferi de estimare, în funcție de proiectul tehnic și de prețurile actuale.",
+    "Fără un plan de întreținere, amenajarea se poate degrada repede.",
+    "Vecinii din imediata apropiere pot avea obiecții (zgomot, program de folosire)."
+   ],
+   "lista_verificare": [
+    "Cine administrează terenul și care este regimul lui juridic",
+    "Dacă amenajarea este compatibilă cu planurile urbanistice ale zonei",
+    "Ce avize sau autorizații ar putea fi necesare și cine le obține",
+    "Dacă proiectul poate intra în bugetul local sau într-un program de finanțare",
+    "Cine asigură întreținerea și siguranța după amenajare"
+   ],
+   "referinte_citate": [
+    "skatepark-satu-mare-2019",
+    "skatepark-alba-iulia-2013",
+    "skatepark-timisoara-2026",
+    "skatepark-cluj-napoca-2012",
+    "skatepark-brasov-2023"
+   ]
+  },
+  "referinte": [
+   {
+    "id": "skatepark-satu-mare-2019",
+    "tip_amenajare": "skatepark",
+    "oras": "Satu Mare",
+    "an": 2019,
+    "suprafata_mp": 2100,
+    "cost_total_lei": 615000,
+    "componente": [
+     "zonă de skate",
+     "două terenuri de streetball",
+     "teren de volei și badminton",
+     "suporturi de biciclete, bănci și coșuri de gunoi"
+    ],
+    "sursa_url": "https://www.economica.net/skatepark-de-peste-600-000-lei-realizat-prin-parteneriat-public-privat-la-satu-mare_167376.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "skatepark-alba-iulia-2013",
+    "tip_amenajare": "skatepark",
+    "oras": "Alba Iulia",
+    "an": 2013,
+    "suprafata_mp": 1868,
+    "cost_total_lei": 3971000,
+    "componente": [
+     "platformă de skate",
+     "rampe, trepte și bare pentru role, biciclete și skateboard"
+    ],
+    "sursa_url": "https://alba24.ro/aproape-4-milioane-de-lei-pentru-skatepark-ul-din-alba-iulia-de-5-ori-mai-scump-si-cu-elemente-mai-putine-decat-cel-din-cluj-napoca-204305.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "skatepark-timisoara-2026",
+    "tip_amenajare": "skatepark",
+    "oras": "Timișoara",
+    "an": 2026,
+    "suprafata_mp": 4300,
+    "cost_total_lei": 11000000,
+    "componente": [
+     "skatepark cu rampe, trepte și zonă de tip bowl",
+     "pumptrack",
+     "scenă în aer liber",
+     "zonă de cățărare",
+     "proiectare și execuție"
+    ],
+    "sursa_url": "https://www.zf.ro/zf-transilvania/primaria-timisoara-investeste-peste-11-mil-lei-pentru-amenajarea-23150901",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "skatepark-cluj-napoca-2012",
+    "tip_amenajare": "skatepark",
+    "oras": "Cluj-Napoca",
+    "an": 2012,
+    "suprafata_mp": 1012,
+    "cost_total_lei": 804000,
+    "componente": [
+     "șase elemente de skate individuale"
+    ],
+    "sursa_url": "https://alba24.ro/aproape-4-milioane-de-lei-pentru-skatepark-ul-din-alba-iulia-de-5-ori-mai-scump-si-cu-elemente-mai-putine-decat-cel-din-cluj-napoca-204305.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "skatepark-brasov-2023",
+    "tip_amenajare": "skatepark",
+    "oras": "Brașov",
+    "an": 2023,
+    "suprafata_mp": 9000,
+    "cost_total_lei": 11000000,
+    "componente": [
+     "pumptrack",
+     "zonă de sărituri",
+     "zonă street",
+     "toalete publice și puncte de vânzare",
+     "plase de protecție și iluminat",
+     "proiectare și execuție"
+    ],
+    "sursa_url": "https://economedia.ro/brasovul-construieste-un-parc-dedicat-patinatorilor-skaterilor-si-trotinetistilor-sub-podul-fartec.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   }
+  ],
+  "cost": {
+   "suficient": true,
+   "min_lei": 615600,
+   "mediana_lei": 2569100,
+   "max_lei": 5377200,
+   "moneda": "RON",
+   "ipoteze": [
+    "Bazat pe 5 proiecte de referință din anii 2012–2026 (Satu Mare, Alba Iulia, Timișoara, Cluj-Napoca, Brașov).",
+    "Cost pe mp = valoarea totală a proiectului de referință împărțită la suprafața lui, înmulțit cu suprafața propusă (2102 mp).",
+    "Prețuri nominale, fără actualizare la inflație.",
+    "TVA inclus sau nu, așa cum apare în sursă (deseori nu e precizat).",
+    "Multe valori sunt estimări din licitații sau bugete aprobate, nu costuri finale.",
+    "Proiectele de referință pot include lucrări care nu sunt cerute aici, și invers."
+   ],
+   "referinte_folosite": [
+    "skatepark-satu-mare-2019",
+    "skatepark-alba-iulia-2013",
+    "skatepark-timisoara-2026",
+    "skatepark-cluj-napoca-2012",
+    "skatepark-brasov-2023"
+   ],
+   "motiv": null
+  },
+  "created_at": "2026-11-14T22:58:13.592Z",
+  "updated_at": "2026-11-14T22:58:13.598Z",
+  "verificator_id": "demo-user-10",
+  "is_demo": false,
+  "evenimente": [
+   {
+    "id": "de79b165-59fc-4f25-b848-1cbbdae15982",
+    "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+    "user_id": "demo-user-1",
+    "stare_noua": "draft",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.592Z"
+   },
+   {
+    "id": "e1062edf-7a1e-4c4c-b724-5fe44d68aeef",
+    "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+    "user_id": "demo-user-1",
+    "stare_noua": "trimis",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.594Z"
+   },
+   {
+    "id": "64cf65e0-d237-4138-9929-92033466172a",
+    "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+    "user_id": "demo-user-9",
+    "stare_noua": "in_verificare",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.596Z"
+   },
+   {
+    "id": "1e4fffe6-b5fb-419d-8476-55792a7db633",
+    "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+    "user_id": "demo-user-10",
+    "stare_noua": "acord_de_principiu",
+    "mesaj": "Propunerea este în regulă pentru etapa următoare.",
+    "created_at": "2026-11-14T22:58:13.598Z"
+   }
+  ]
+ },
+ {
+  "id": "965f1516-f140-44d6-b724-de2dc45a1351",
+  "idea_id": "5b74aa1e-727d-4696-a041-0bfb4dcd43de",
+  "space_id": "teren-osm-1076560842",
+  "autor_id": "demo-user-1",
+  "tip_amenajare": "loc_de_joaca",
+  "suprafata_mp": 1813,
+  "stare": "draft",
+  "dosar": {
+   "titlu": "Amenajare: loc de joacă – Teren viran, Torontalului (candidat OSM)",
+   "descriere": "Locuitorii propun o amenajare de tip „loc de joacă” la Teren viran, Torontalului (candidat OSM), în cartierul Torontalului, pe o suprafață de circa 1813 mp. Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria.",
+   "justificare": "Propunerea pornește de la ideea „Loc de joacă pentru copiii din cartier”. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
+   "componente": [
+    "reabilitarea unui loc de joacă existent",
+    "suprafață de amortizare din scoarță de copac",
+    "zonă pentru copii cu dizabilități locomotorii",
+    "loc de joacă pentru copii",
+    "zonă de fitness accesibilă",
+    "alei și bănci"
+   ],
+   "etape": [
+    {
+     "nume": "Clarificări cu Primăria și consultarea vecinilor",
+     "durata_luni": 1.0
+    },
+    {
+     "nume": "Proiectare",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Avize și achiziția lucrărilor",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Execuție",
+     "durata_luni": 4.0
+    },
+    {
+     "nume": "Recepție și deschidere",
+     "durata_luni": 1.0
+    }
+   ],
+   "riscuri": [
+    "Terenul poate avea restricții de folosință care nu sunt cunoscute încă.",
+    "Costul real poate diferi de estimare, în funcție de proiectul tehnic și de prețurile actuale.",
+    "Fără un plan de întreținere, amenajarea se poate degrada repede.",
+    "Vecinii din imediata apropiere pot avea obiecții (zgomot, program de folosire)."
+   ],
+   "lista_verificare": [
+    "Cine administrează terenul și care este regimul lui juridic",
+    "Dacă amenajarea este compatibilă cu planurile urbanistice ale zonei",
+    "Ce avize sau autorizații ar putea fi necesare și cine le obține",
+    "Dacă proiectul poate intra în bugetul local sau într-un program de finanțare",
+    "Cine asigură întreținerea și siguranța după amenajare"
+   ],
+   "referinte_citate": [
+    "loc_de_joaca-carei-2023",
+    "loc_de_joaca-cluj-napoca-2022",
+    "loc_de_joaca-sebes-2018",
+    "loc_de_joaca-iasi-2025",
+    "loc_de_joaca-alba-iulia-recea-2024"
+   ]
+  },
+  "referinte": [
+   {
+    "id": "loc_de_joaca-carei-2023",
+    "tip_amenajare": "loc_de_joaca",
+    "oras": "Carei",
+    "an": 2023,
+    "suprafata_mp": 3360,
+    "cost_total_lei": 751483,
+    "componente": [
+     "reabilitarea unui loc de joacă existent",
+     "suprafață de amortizare din scoarță de copac",
+     "zonă pentru copii cu dizabilități locomotorii"
+    ],
+    "sursa_url": "https://www.municipiulcarei.ro/sites/default/files/Comunicate%20de%20presa/Anunt-de-presa-Carei-136040-de-finalizare-priectului%20(1).pdf",
+    "sursa_tip": "comunicat_primarie",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "loc_de_joaca-cluj-napoca-2022",
+    "tip_amenajare": "loc_de_joaca",
+    "oras": "Cluj-Napoca",
+    "an": 2022,
+    "suprafata_mp": 950,
+    "cost_total_lei": 1687000,
+    "componente": [
+     "loc de joacă pentru copii",
+     "zonă de fitness accesibilă",
+     "alei și bănci",
+     "arbori, gard viu și irigații",
+     "iluminat și coșuri de gunoi inteligente"
+    ],
+    "sursa_url": "https://actualdecluj.ro/firma-care-intretine-spatiile-verzi-din-cluj-face-noul-parculet-smart-din-cel-mai-mare-cartier-al-orasului-pentru-peste-16-milioane-lei/",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "loc_de_joaca-sebes-2018",
+    "tip_amenajare": "loc_de_joaca",
+    "oras": "Sebeș",
+    "an": 2018,
+    "suprafata_mp": 900,
+    "cost_total_lei": 316070,
+    "componente": [
+     "carusel, leagăn, tobogan și balansoar",
+     "aparate de fitness în aer liber",
+     "masă de tenis",
+     "bănci"
+    ],
+    "sursa_url": "https://alba24.ro/loc-de-joaca-pentru-copii-de-peste-70-000-de-euro-in-cartierul-mihail-kogalniceanu-din-sebes-682591.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "loc_de_joaca-iasi-2025",
+    "tip_amenajare": "loc_de_joaca",
+    "oras": "Iași",
+    "an": 2025,
+    "suprafata_mp": 5200,
+    "cost_total_lei": 3459693,
+    "componente": [
+     "loc de joacă cu tartan, leagăne, tobogane și nisipare",
+     "alei pietonale pavate",
+     "piste de biciclete separate",
+     "iluminat și gradene",
+     "spații verzi cu arbori"
+    ],
+    "sursa_url": "https://www.bzi.ro/in-iasi-va-fi-amenajata-o-noua-zona-de-recreere-si-spatii-de-joaca-pentru-copii-primaria-va-cheltui-in-prima-faza-peste-7-milioane-de-lei-5214175",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "loc_de_joaca-alba-iulia-recea-2024",
+    "tip_amenajare": "loc_de_joaca",
+    "oras": "Alba Iulia",
+    "an": 2024,
+    "suprafata_mp": 6039,
+    "cost_total_lei": 3301801,
+    "componente": [
+     "loc de joacă incluziv, cu leagăn accesibil și carusel",
+     "teren sintetic de minifotbal cu nocturnă",
+     "grup sanitar accesibil",
+     "alei, mobilier urban și iluminat",
+     "două podețe"
+    ],
+    "sursa_url": "https://alba24.ro/parc-cu-teren-de-sport-si-loc-de-joaca-pe-6000-mp-intr-un-cartier-din-alba-iulia-cat-este-investitia-aprobata-in-consiliul-local-1031192.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   }
+  ],
+  "cost": {
+   "suficient": true,
+   "min_lei": 405500,
+   "mediana_lei": 991300,
+   "max_lei": 3219500,
+   "moneda": "RON",
+   "ipoteze": [
+    "Bazat pe 5 proiecte de referință din anii 2018–2025 (Carei, Cluj-Napoca, Sebeș, Iași, Alba Iulia).",
+    "Cost pe mp = valoarea totală a proiectului de referință împărțită la suprafața lui, înmulțit cu suprafața propusă (1813 mp).",
+    "Prețuri nominale, fără actualizare la inflație.",
+    "TVA inclus sau nu, așa cum apare în sursă (deseori nu e precizat).",
+    "Multe valori sunt estimări din licitații sau bugete aprobate, nu costuri finale.",
+    "Proiectele de referință pot include lucrări care nu sunt cerute aici, și invers."
+   ],
+   "referinte_folosite": [
+    "loc_de_joaca-carei-2023",
+    "loc_de_joaca-cluj-napoca-2022",
+    "loc_de_joaca-sebes-2018",
+    "loc_de_joaca-iasi-2025",
+    "loc_de_joaca-alba-iulia-recea-2024"
+   ],
+   "motiv": null
+  },
+  "created_at": "2026-11-14T22:58:13.557Z",
+  "updated_at": "2026-11-14T22:58:13.557Z",
+  "verificator_id": null,
+  "is_demo": false,
+  "evenimente": [
+   {
+    "id": "4e90ad11-901c-4561-bb77-3f7c41d7593b",
+    "proiect_id": "965f1516-f140-44d6-b724-de2dc45a1351",
+    "user_id": "demo-user-1",
+    "stare_noua": "draft",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.558Z"
+   }
+  ]
+ },
+ {
   "id": "ec9fea17-6881-4b12-bea8-7a6e6cdb868f",
   "idea_id": "demo-idea-1",
   "space_id": "demo-space-teren-1",
@@ -189,6 +589,162 @@
   ]
  },
  {
+  "id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+  "idea_id": "890be1a8-1fab-4387-8cd6-05b0e82ff5ab",
+  "space_id": "teren-osm-445294489",
+  "autor_id": "demo-user-2",
+  "tip_amenajare": "parc_caini",
+  "suprafata_mp": 3064,
+  "stare": "clarificari",
+  "dosar": {
+   "titlu": "Amenajare: parc pentru câini – Teren viran, Steaua (candidat OSM)",
+   "descriere": "Locuitorii propun o amenajare de tip „parc pentru câini” la Teren viran, Steaua (candidat OSM), în cartierul Steaua, pe o suprafață de circa 3064 mp. Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria.",
+   "justificare": "Propunerea pornește de la ideea „Parc pentru câini, împrejmuit, cu zonă de joacă și apă”. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
+   "componente": [
+    "spațiu împrejmuit",
+    "coșuri de gunoi dedicate",
+    "trei spații împrejmuite de câte 300 mp",
+    "tunel, cerc și obstacole pentru sărituri"
+   ],
+   "etape": [
+    {
+     "nume": "Clarificări cu Primăria și consultarea vecinilor",
+     "durata_luni": 1.0
+    },
+    {
+     "nume": "Proiectare",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Avize și achiziția lucrărilor",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Execuție",
+     "durata_luni": 4.0
+    },
+    {
+     "nume": "Recepție și deschidere",
+     "durata_luni": 1.0
+    }
+   ],
+   "riscuri": [
+    "Terenul poate avea restricții de folosință care nu sunt cunoscute încă.",
+    "Costul real poate diferi de estimare, în funcție de proiectul tehnic și de prețurile actuale.",
+    "Fără un plan de întreținere, amenajarea se poate degrada repede.",
+    "Vecinii din imediata apropiere pot avea obiecții (zgomot, program de folosire)."
+   ],
+   "lista_verificare": [
+    "Cine administrează terenul și care este regimul lui juridic",
+    "Dacă amenajarea este compatibilă cu planurile urbanistice ale zonei",
+    "Ce avize sau autorizații ar putea fi necesare și cine le obține",
+    "Dacă proiectul poate intra în bugetul local sau într-un program de finanțare",
+    "Cine asigură întreținerea și siguranța după amenajare"
+   ],
+   "referinte_citate": [
+    "parc_caini-cluj-napoca-cetatuie-2017",
+    "parc_caini-cluj-napoca-manastur-2017",
+    "parc_caini-sibiu-2022"
+   ]
+  },
+  "referinte": [
+   {
+    "id": "parc_caini-cluj-napoca-cetatuie-2017",
+    "tip_amenajare": "parc_caini",
+    "oras": "Cluj-Napoca",
+    "an": 2017,
+    "suprafata_mp": 2400,
+    "cost_total_lei": null,
+    "componente": [
+     "spațiu împrejmuit",
+     "coșuri de gunoi dedicate"
+    ],
+    "sursa_url": "https://actualdecluj.ro/primaria-a-facut-parcuri-noi-pentru-catei/",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "parc_caini-cluj-napoca-manastur-2017",
+    "tip_amenajare": "parc_caini",
+    "oras": "Cluj-Napoca",
+    "an": 2017,
+    "suprafata_mp": 4000,
+    "cost_total_lei": null,
+    "componente": [
+     "spațiu împrejmuit",
+     "coșuri de gunoi dedicate"
+    ],
+    "sursa_url": "https://actualdecluj.ro/primaria-a-facut-parcuri-noi-pentru-catei/",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "parc_caini-sibiu-2022",
+    "tip_amenajare": "parc_caini",
+    "oras": "Sibiu",
+    "an": 2022,
+    "suprafata_mp": null,
+    "cost_total_lei": 600000,
+    "componente": [
+     "trei spații împrejmuite de câte 300 mp",
+     "tunel, cerc și obstacole pentru sărituri",
+     "cișmea, bănci, coșuri și dozator de pungi"
+    ],
+    "sursa_url": "https://www.g4media.ro/sibiul-va-avea-primele-trei-locuri-de-joaca-pentru-caini-spatii-de-300-de-metri-patrati-imprejmuite-dotate-cu-tunel-cercuri-si-obstacole-pentru-sarituri.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   }
+  ],
+  "cost": {
+   "suficient": false,
+   "min_lei": null,
+   "mediana_lei": null,
+   "max_lei": null,
+   "moneda": "RON",
+   "ipoteze": [],
+   "referinte_folosite": [],
+   "motiv": "Niciun proiect de referință nu are atât costul, cât și suprafața publicate."
+  },
+  "created_at": "2026-11-14T22:58:13.583Z",
+  "updated_at": "2026-11-14T22:58:13.588Z",
+  "verificator_id": "demo-user-10",
+  "is_demo": false,
+  "evenimente": [
+   {
+    "id": "32eac363-2b09-49b1-9e26-b67c9c8ab9b0",
+    "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+    "user_id": "demo-user-2",
+    "stare_noua": "draft",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.583Z"
+   },
+   {
+    "id": "32645c3c-3a69-4626-83ef-88adceced83f",
+    "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+    "user_id": "demo-user-2",
+    "stare_noua": "trimis",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.585Z"
+   },
+   {
+    "id": "3bb125ee-633e-49fa-a2f8-53e5d1a04302",
+    "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+    "user_id": "demo-user-9",
+    "stare_noua": "in_verificare",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.587Z"
+   },
+   {
+    "id": "09d75ebf-daa9-4577-a2c3-853f4d0730f6",
+    "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+    "user_id": "demo-user-10",
+    "stare_noua": "clarificari",
+    "mesaj": "Precizați cine întreține parcul după deschidere.",
+    "created_at": "2026-11-14T22:58:13.588Z"
+   }
+  ]
+ },
+ {
   "id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
   "idea_id": "demo-idea-7",
   "space_id": "demo-space-teren-1",
@@ -345,6 +901,103 @@
   ]
  },
  {
+  "id": "5ddf1697-df62-436f-a24d-c38c24c6d7bf",
+  "idea_id": "734b35af-1895-4842-99cf-7e5430c3014e",
+  "space_id": "teren-osm-1280529258",
+  "autor_id": "demo-user-3",
+  "tip_amenajare": "gradina_comunitara",
+  "suprafata_mp": 1140,
+  "stare": "in_verificare",
+  "dosar": {
+   "titlu": "Amenajare: grădină comunitară – Teren viran, Mehala (candidat OSM)",
+   "descriere": "Locuitorii propun o amenajare de tip „grădină comunitară” la Teren viran, Mehala (candidat OSM), în cartierul Mehala, pe o suprafață de circa 1140 mp. Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria.",
+   "justificare": "Propunerea pornește de la ideea „Grădină comunitară cu rame de plantare pentru locatarii blocurilor din jur”. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
+   "componente": [
+    "studiu de amplasament și proiect tehnic",
+    "lucrări de execuție pe amplasament",
+    "racorduri la utilități, dacă sunt necesare",
+    "semnalizare și acces pentru toți locuitorii"
+   ],
+   "etape": [
+    {
+     "nume": "Clarificări cu Primăria și consultarea vecinilor",
+     "durata_luni": 1.0
+    },
+    {
+     "nume": "Proiectare",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Avize și achiziția lucrărilor",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Execuție",
+     "durata_luni": 4.0
+    },
+    {
+     "nume": "Recepție și deschidere",
+     "durata_luni": 1.0
+    }
+   ],
+   "riscuri": [
+    "Terenul poate avea restricții de folosință care nu sunt cunoscute încă.",
+    "Costul real poate diferi de estimare, în funcție de proiectul tehnic și de prețurile actuale.",
+    "Fără un plan de întreținere, amenajarea se poate degrada repede.",
+    "Vecinii din imediata apropiere pot avea obiecții (zgomot, program de folosire)."
+   ],
+   "lista_verificare": [
+    "Cine administrează terenul și care este regimul lui juridic",
+    "Dacă amenajarea este compatibilă cu planurile urbanistice ale zonei",
+    "Ce avize sau autorizații ar putea fi necesare și cine le obține",
+    "Dacă proiectul poate intra în bugetul local sau într-un program de finanțare",
+    "Cine asigură întreținerea și siguranța după amenajare"
+   ],
+   "referinte_citate": []
+  },
+  "referinte": [],
+  "cost": {
+   "suficient": false,
+   "min_lei": null,
+   "mediana_lei": null,
+   "max_lei": null,
+   "moneda": "RON",
+   "ipoteze": [],
+   "referinte_folosite": [],
+   "motiv": "Niciun proiect de referință nu are atât costul, cât și suprafața publicate."
+  },
+  "created_at": "2026-11-14T22:58:13.574Z",
+  "updated_at": "2026-11-14T22:58:13.578Z",
+  "verificator_id": "demo-user-10",
+  "is_demo": false,
+  "evenimente": [
+   {
+    "id": "9d7e1619-48f6-4e99-92d2-f1f941be603f",
+    "proiect_id": "5ddf1697-df62-436f-a24d-c38c24c6d7bf",
+    "user_id": "demo-user-3",
+    "stare_noua": "draft",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.575Z"
+   },
+   {
+    "id": "cba2c53f-c440-43b8-8699-dbbb3ec2d5b5",
+    "proiect_id": "5ddf1697-df62-436f-a24d-c38c24c6d7bf",
+    "user_id": "demo-user-3",
+    "stare_noua": "trimis",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.576Z"
+   },
+   {
+    "id": "445d5b3c-298c-451e-b04b-c3dd14832afb",
+    "proiect_id": "5ddf1697-df62-436f-a24d-c38c24c6d7bf",
+    "user_id": "demo-user-9",
+    "stare_noua": "in_verificare",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.578Z"
+   }
+  ]
+ },
+ {
   "id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
   "idea_id": "demo-idea-6",
   "space_id": "demo-space-teren-1",
@@ -446,6 +1099,137 @@
     "stare_noua": "clarificari",
     "mesaj": "Vă rugăm să precizați cine se ocupă de întreținerea grădinii după amenajare.",
     "created_at": "2026-11-14T17:41:37.939Z"
+   }
+  ]
+ },
+ {
+  "id": "c0670cfd-8580-4471-b2a3-a5fa02c1e403",
+  "idea_id": "bcfec2d0-b32a-4680-bbd4-bc961ffeb8b4",
+  "space_id": "teren-osm-1413804572",
+  "autor_id": "demo-user-4",
+  "tip_amenajare": "teren_sport",
+  "suprafata_mp": 1589,
+  "stare": "trimis",
+  "dosar": {
+   "titlu": "Amenajare: teren de sport – Teren viran, Dorobanților (candidat OSM)",
+   "descriere": "Locuitorii propun o amenajare de tip „teren de sport” la Teren viran, Dorobanților (candidat OSM), în cartierul Dorobanților, pe o suprafață de circa 1589 mp. Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria.",
+   "justificare": "Propunerea pornește de la ideea „Teren de sport în aer liber pentru tinerii din zonă”. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
+   "componente": [
+    "teren multisport din granule de cauciuc",
+    "pistă de alergare",
+    "coșuri de baschet și porți de handbal",
+    "stâlpi și fileuri de tenis și volei",
+    "nocturnă LED",
+    "teren multifuncțional cu suprafață de joc de 20 x 40 m"
+   ],
+   "etape": [
+    {
+     "nume": "Clarificări cu Primăria și consultarea vecinilor",
+     "durata_luni": 1.0
+    },
+    {
+     "nume": "Proiectare",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Avize și achiziția lucrărilor",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Execuție",
+     "durata_luni": 4.0
+    },
+    {
+     "nume": "Recepție și deschidere",
+     "durata_luni": 1.0
+    }
+   ],
+   "riscuri": [
+    "Terenul poate avea restricții de folosință care nu sunt cunoscute încă.",
+    "Costul real poate diferi de estimare, în funcție de proiectul tehnic și de prețurile actuale.",
+    "Fără un plan de întreținere, amenajarea se poate degrada repede.",
+    "Vecinii din imediata apropiere pot avea obiecții (zgomot, program de folosire)."
+   ],
+   "lista_verificare": [
+    "Cine administrează terenul și care este regimul lui juridic",
+    "Dacă amenajarea este compatibilă cu planurile urbanistice ale zonei",
+    "Ce avize sau autorizații ar putea fi necesare și cine le obține",
+    "Dacă proiectul poate intra în bugetul local sau într-un program de finanțare",
+    "Cine asigură întreținerea și siguranța după amenajare"
+   ],
+   "referinte_citate": [
+    "teren_sport-alba-iulia-avram-iancu-2023",
+    "teren_sport-raducaneni-2026"
+   ]
+  },
+  "referinte": [
+   {
+    "id": "teren_sport-alba-iulia-avram-iancu-2023",
+    "tip_amenajare": "teren_sport",
+    "oras": "Alba Iulia",
+    "an": 2023,
+    "suprafata_mp": 1127,
+    "cost_total_lei": 405952,
+    "componente": [
+     "teren multisport din granule de cauciuc",
+     "pistă de alergare",
+     "coșuri de baschet și porți de handbal",
+     "stâlpi și fileuri de tenis și volei",
+     "nocturnă LED"
+    ],
+    "sursa_url": "https://alba24.ro/terenul-de-sport-de-la-scoala-avram-iancu-din-alba-iulia-va-fi-modernizat-care-este-valoarea-lucrarilor-1002753.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "teren_sport-raducaneni-2026",
+    "tip_amenajare": "teren_sport",
+    "oras": "Răducăneni",
+    "an": 2026,
+    "suprafata_mp": 1008,
+    "cost_total_lei": null,
+    "componente": [
+     "teren multifuncțional cu suprafață de joc de 20 x 40 m",
+     "împrejmuire perimetrală",
+     "trotuare"
+    ],
+    "sursa_url": "https://www.bzi.ro/primaria-raducaneni-va-construi-o-sala-de-sport-si-un-teren-de-sport-multifunctional-doar-lucrarile-au-o-valoare-de-peste-5-milioane-de-lei-5458078",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   }
+  ],
+  "cost": {
+   "suficient": false,
+   "min_lei": null,
+   "mediana_lei": null,
+   "max_lei": null,
+   "moneda": "RON",
+   "ipoteze": [],
+   "referinte_folosite": [
+    "teren_sport-alba-iulia-avram-iancu-2023"
+   ],
+   "motiv": "Doar un proiect de referință are atât costul, cât și suprafața publicate; sunt necesare cel puțin 2."
+  },
+  "created_at": "2026-11-14T22:58:13.565Z",
+  "updated_at": "2026-11-14T22:58:13.568Z",
+  "verificator_id": null,
+  "is_demo": false,
+  "evenimente": [
+   {
+    "id": "d17ac4e5-8972-452c-ae88-e675c5a29f42",
+    "proiect_id": "c0670cfd-8580-4471-b2a3-a5fa02c1e403",
+    "user_id": "demo-user-4",
+    "stare_noua": "draft",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.565Z"
+   },
+   {
+    "id": "d5983013-8574-4db0-8eb4-3f7e7abe0c17",
+    "proiect_id": "c0670cfd-8580-4471-b2a3-a5fa02c1e403",
+    "user_id": "demo-user-4",
+    "stare_noua": "trimis",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.568Z"
    }
   ]
  },
@@ -577,6 +1361,211 @@
     "stare_noua": "trimis",
     "mesaj": "Vă rugăm să analizați propunerea comunității.",
     "created_at": "2026-11-14T17:41:37.889Z"
+   }
+  ]
+ },
+ {
+  "id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+  "idea_id": "37deb624-2407-44fe-9a0b-b3577f32f225",
+  "space_id": "teren-osm-1481985560",
+  "autor_id": "demo-user-5",
+  "tip_amenajare": "pista_biciclete",
+  "suprafata_mp": 2616,
+  "stare": "respins",
+  "dosar": {
+   "titlu": "Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)",
+   "descriere": "Locuitorii propun o amenajare de tip „pistă de biciclete” la Teren viran, Cartierul Vienez (candidat OSM), în cartierul Cartierul Vienez, pe o suprafață de circa 2616 mp. Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria.",
+   "justificare": "Propunerea pornește de la ideea „Pistă pentru biciclete”. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
+   "componente": [
+    "pistă de 2 m lățime, circa 2,5 km",
+    "pistă de 2,5 m lățime, circa 2,8 km",
+    "borduri prefabricate",
+    "parapet pietonal",
+    "ziduri de sprijin și un podeț",
+    "rastele pentru biciclete"
+   ],
+   "etape": [
+    {
+     "nume": "Clarificări cu Primăria și consultarea vecinilor",
+     "durata_luni": 1.0
+    },
+    {
+     "nume": "Proiectare",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Avize și achiziția lucrărilor",
+     "durata_luni": 3.0
+    },
+    {
+     "nume": "Execuție",
+     "durata_luni": 4.0
+    },
+    {
+     "nume": "Recepție și deschidere",
+     "durata_luni": 1.0
+    }
+   ],
+   "riscuri": [
+    "Terenul poate avea restricții de folosință care nu sunt cunoscute încă.",
+    "Costul real poate diferi de estimare, în funcție de proiectul tehnic și de prețurile actuale.",
+    "Fără un plan de întreținere, amenajarea se poate degrada repede.",
+    "Vecinii din imediata apropiere pot avea obiecții (zgomot, program de folosire)."
+   ],
+   "lista_verificare": [
+    "Cine administrează terenul și care este regimul lui juridic",
+    "Dacă amenajarea este compatibilă cu planurile urbanistice ale zonei",
+    "Ce avize sau autorizații ar putea fi necesare și cine le obține",
+    "Dacă proiectul poate intra în bugetul local sau într-un program de finanțare",
+    "Cine asigură întreținerea și siguranța după amenajare"
+   ],
+   "referinte_citate": [
+    "pista_biciclete-braesti-2024",
+    "pista_biciclete-podu-iloaiei-2025",
+    "pista_biciclete-galda-de-jos-2025",
+    "pista_biciclete-calarasi-2025",
+    "pista_biciclete-alba-iulia-mamut-2024"
+   ]
+  },
+  "referinte": [
+   {
+    "id": "pista_biciclete-braesti-2024",
+    "tip_amenajare": "pista_biciclete",
+    "oras": "Brăești",
+    "an": 2024,
+    "suprafata_mp": 5208,
+    "cost_total_lei": 1126286,
+    "componente": [
+     "pistă de 2 m lățime, circa 2,5 km"
+    ],
+    "sursa_url": "https://www.bzi.ro/o-singura-firma-din-iasi-vrea-contractul-de-peste-un-milion-de-lei-din-comuna-braesti-in-localitate-vor-fi-realizate-piste-pentru-biciclete-4929132",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "pista_biciclete-podu-iloaiei-2025",
+    "tip_amenajare": "pista_biciclete",
+    "oras": "Podu Iloaiei",
+    "an": 2025,
+    "suprafata_mp": 7682,
+    "cost_total_lei": 2100840,
+    "componente": [
+     "pistă de 2,5 m lățime, circa 2,8 km",
+     "borduri prefabricate",
+     "parapet pietonal",
+     "ziduri de sprijin și un podeț",
+     "rastele pentru biciclete"
+    ],
+    "sursa_url": "https://www.bzi.ro/primarul-pnl-ioan-alexa-cheltuie-25-milioane-de-lei-pentru-construirea-pistelor-pentru-biciclete-in-podu-iloaiei-5266423",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "pista_biciclete-galda-de-jos-2025",
+    "tip_amenajare": "pista_biciclete",
+    "oras": "Galda de Jos",
+    "an": 2025,
+    "suprafata_mp": 10076,
+    "cost_total_lei": 1240520,
+    "componente": [
+     "pistă cu dublu sens de 2 m lățime, circa 2,5 km",
+     "îmbrăcăminte asfaltică pe straturi de piatră spartă și balast",
+     "borduri de separare față de drum",
+     "șanțuri și rigole pentru scurgerea apei"
+    ],
+    "sursa_url": "https://alba24.ro/pista-de-biciclete-de-25-km-intre-galda-de-jos-si-benic-licitatia-pentru-lucrari-lansata-in-seap-1082527.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "pista_biciclete-calarasi-2025",
+    "tip_amenajare": "pista_biciclete",
+    "oras": "Călărași",
+    "an": 2025,
+    "suprafata_mp": null,
+    "cost_total_lei": 6978834,
+    "componente": [
+     "pistă de circa 3,2 km care traversează parcuri ale orașului"
+    ],
+    "sursa_url": "https://primariacalarasi.ro/storage/2025/12/127227-Comunicat-presa-final-pista-biciclete.pdf",
+    "sursa_tip": "comunicat_primarie",
+    "data_accesarii": "2026-11-14"
+   },
+   {
+    "id": "pista_biciclete-alba-iulia-mamut-2024",
+    "tip_amenajare": "pista_biciclete",
+    "oras": "Alba Iulia",
+    "an": 2024,
+    "suprafata_mp": null,
+    "cost_total_lei": 2639353,
+    "componente": [
+     "două tronsoane cu dublu sens, 2,4 m lățime, circa 2,5 km",
+     "asfalt antiderapant încadrat de borduri",
+     "spații verzi refăcute și scurgerea apei pluviale",
+     "marcaje și indicatoare"
+    ],
+    "sursa_url": "https://alba24.ro/o-noua-pista-de-biciclete-la-alba-iulia-in-zona-dealului-mamut-ce-lungime-va-avea-si-ce-strazi-va-lega-licitatie-in-seap-1017978.html",
+    "sursa_tip": "presa",
+    "data_accesarii": "2026-11-14"
+   }
+  ],
+  "cost": {
+   "suficient": true,
+   "min_lei": 322100,
+   "mediana_lei": 565700,
+   "max_lei": 715500,
+   "moneda": "RON",
+   "ipoteze": [
+    "Bazat pe 3 proiecte de referință din anii 2024–2025 (Brăești, Podu Iloaiei, Galda de Jos).",
+    "Cost pe mp = valoarea totală a proiectului de referință împărțită la suprafața lui, înmulțit cu suprafața propusă (2616 mp).",
+    "Prețuri nominale, fără actualizare la inflație.",
+    "TVA inclus sau nu, așa cum apare în sursă (deseori nu e precizat).",
+    "Multe valori sunt estimări din licitații sau bugete aprobate, nu costuri finale.",
+    "Proiectele de referință pot include lucrări care nu sunt cerute aici, și invers."
+   ],
+   "referinte_folosite": [
+    "pista_biciclete-braesti-2024",
+    "pista_biciclete-podu-iloaiei-2025",
+    "pista_biciclete-galda-de-jos-2025"
+   ],
+   "motiv": null
+  },
+  "created_at": "2026-11-14T22:58:13.602Z",
+  "updated_at": "2026-11-14T22:58:13.607Z",
+  "verificator_id": "demo-user-10",
+  "is_demo": false,
+  "evenimente": [
+   {
+    "id": "bed80122-d587-461f-a480-40e82eb1b8cb",
+    "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+    "user_id": "demo-user-5",
+    "stare_noua": "draft",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.602Z"
+   },
+   {
+    "id": "e2266009-ba68-4709-b833-9193a73d04c7",
+    "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+    "user_id": "demo-user-5",
+    "stare_noua": "trimis",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.604Z"
+   },
+   {
+    "id": "5a9443ee-18c6-43a2-9c59-f6deec352ade",
+    "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+    "user_id": "demo-user-9",
+    "stare_noua": "in_verificare",
+    "mesaj": null,
+    "created_at": "2026-11-14T22:58:13.606Z"
+   },
+   {
+    "id": "c3c08c12-7add-494f-8fff-2b430b2cd7cb",
+    "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+    "user_id": "demo-user-10",
+    "stare_noua": "respins",
+    "mesaj": "Terenul este rezervat altei investiții.",
+    "created_at": "2026-11-14T22:58:13.607Z"
    }
   ]
  },
@@ -795,8 +1784,8 @@
   "stare": "in_verificare",
   "dosar": {
    "titlu": "Amenajare: skatepark – Teren liber de lângă blocuri (exemplu)",
-   "descriere": "Locuitorii propun o amenajare de tip „skatepark” la Teren liber de lângă blocuri (exemplu), în cartierul Fabric, pe o suprafață de circa 600 mp. Vrem un skatepark mic pe terenul liber din Fabric, pentru adolescenții din cartier, cu câteva rampe și bănci în aer liber.",
-   "justificare": "Propunerea pornește de la ideea „Skatepark mic pe terenul liber din Fabric”, susținută de 4 persoane din comunitate. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nCost estimat orientativ: între 175.700 și 1.534.900 lei, cu o valoare mediană de 733.300 lei, calculat din 5 proiecte de referință (skatepark-cluj-napoca-2012, skatepark-alba-iulia-2013, skatepark-satu-mare-2019, skatepark-timisoara-2026, skatepark-brasov-2023).\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
+   "descriere": "Locuitorii propun o amenajare de tip „skatepark” la Teren liber de lângă blocuri (exemplu), în cartierul Fabric, pe o suprafață de circa 600 mp. Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria.",
+   "justificare": "Propunerea pornește de la ideea „Skatepark mic pe terenul liber din Fabric”, susținută de 4 persoane din comunitate. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
    "componente": [
     "șase elemente de skate individuale",
     "platformă de skate",

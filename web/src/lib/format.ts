@@ -1,28 +1,7 @@
 // Romanian labels for contract enums and small display helpers. No business logic here.
-import type { BookingStatus, Dotare, IdeaStatus, ProiectStare, Slot, Structurat, UserRole, Zi } from '@/api/models'
+import type { ProiectStare, UserRole } from '@/api/models'
 
-export const ZI: Record<Zi, string> = {
-  luni: 'luni', marti: 'marți', miercuri: 'miercuri', joi: 'joi', vineri: 'vineri', sambata: 'sâmbătă', duminica: 'duminică',
-}
-
-export const CATEGORIE: Record<Structurat['categorie'], string> = {
-  sport: 'Sport', cultura: 'Cultură', educatie: 'Educație', social: 'Social', creativ: 'Creativ',
-  tehnologie: 'Tehnologie', altele: 'Altele',
-}
-
-export const ZGOMOT: Record<Structurat['zgomot'], string> = { scazut: 'Zgomot scăzut', mediu: 'Zgomot mediu', ridicat: 'Zgomot ridicat' }
-
-export const DOTARE: Record<Dotare, string> = {
-  scaune: 'scaune', mese: 'mese', proiector: 'proiector', wifi: 'wi-fi', scena: 'scenă', oglinzi: 'oglinzi',
-  vestiare: 'vestiare', bucatarie: 'bucătărie', acces_rampa: 'rampă de acces', curte: 'curte', priza: 'priză', tabla: 'tablă',
-}
-
-export const IDEA_STARE: Record<IdeaStatus, string> = { deschisa: 'Deschisă', prag_atins: 'Prag atins', rezervata: 'Rezervată' }
-export const BOOKING_STARE: Record<BookingStatus, string> = { cerut: 'În așteptare', aprobat: 'Aprobată', refuzat: 'Refuzată' }
 export const ROL: Record<UserRole, string> = { cetatean: 'cetățean', proprietar: 'proprietar', primarie: 'Primărie', verificator: 'verificator' }
-
-export const fmtSlot = (s: Slot) => `${ZI[s.zi]} ${s.de_la}–${s.pana_la}`
-export const slotKey = (s: Slot) => `${s.zi}|${s.de_la}|${s.pana_la}`
 
 const dateFmt = new Intl.DateTimeFormat('ro-RO', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
 export const fmtDate = (iso: string) => dateFmt.format(new Date(iso))
@@ -37,7 +16,7 @@ export function timeAgo(iso: string): string {
   return d < 30 ? `acum ${d} ${d === 1 ? 'zi' : 'zile'}` : fmtDate(iso)
 }
 
-// Space.tip is free text; the seed writes "teren liber". Match any spelling of it.
+// Space.tip is free text: the seed writes "teren liber", the contract says teren_liber. Match any spelling.
 export const isFreePlot = (tip: string) => tip.trim().toLowerCase().replace(/[\s_-]+/g, '_') === 'teren_liber'
 
 // ---- "Propunere către Primărie" ----

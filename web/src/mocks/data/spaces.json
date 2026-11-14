@@ -31,7 +31,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-11681144987",
@@ -62,7 +67,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-12329181697",
@@ -97,7 +107,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-13252338910",
@@ -128,7 +143,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-13726011332",
@@ -162,7 +182,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-14331543155",
@@ -193,7 +218,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-1997753981",
@@ -224,7 +254,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-6033828836",
@@ -259,7 +294,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-6041680185",
@@ -294,7 +334,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-6188312344",
@@ -328,7 +373,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-6959480014",
@@ -360,7 +410,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-8151079520",
@@ -394,7 +449,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-9713932761",
@@ -425,7 +485,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-9873971450",
@@ -459,7 +524,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-9873976588",
@@ -494,7 +564,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-9873982849",
@@ -528,7 +603,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-node-9873983339",
@@ -562,7 +642,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-relation-2602731",
@@ -577,11 +662,6 @@
   ],
   "sloturi": [
    {
-    "zi": "luni",
-    "de_la": "17:00",
-    "pana_la": "19:00"
-   },
-   {
     "zi": "miercuri",
     "de_la": "17:00",
     "pana_la": "19:00"
@@ -594,7 +674,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-100059899",
@@ -625,7 +710,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-100711051",
@@ -656,7 +746,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-102946713",
@@ -690,7 +785,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-104356325",
@@ -721,7 +821,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-106993887",
@@ -755,7 +860,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-107885703",
@@ -788,7 +898,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-110259300",
@@ -822,7 +937,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-111288519",
@@ -853,7 +973,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-111288574",
@@ -884,7 +1009,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-111459866",
@@ -918,7 +1048,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1130634170",
@@ -952,7 +1087,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1130911042",
@@ -983,7 +1123,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1219290853",
@@ -1014,7 +1159,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1219290854",
@@ -1028,19 +1178,24 @@
   ],
   "sloturi": [
    {
-    "zi": "marti",
+    "zi": "joi",
     "de_la": "18:00",
     "pana_la": "20:00"
    },
    {
-    "zi": "joi",
+    "zi": "sambata",
     "de_la": "18:00",
     "pana_la": "20:00"
    }
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1227723528",
@@ -1075,7 +1230,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1228690654",
@@ -1110,7 +1270,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1228690658",
@@ -1141,7 +1306,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1257527613",
@@ -1172,7 +1342,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1267929553",
@@ -1203,7 +1378,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-1269120196",
@@ -1234,7 +1414,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-142773377",
@@ -1270,7 +1455,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-160428019",
@@ -1301,7 +1491,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-164804617",
@@ -1332,7 +1527,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-181176869",
@@ -1367,7 +1567,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-190263438",
@@ -1401,7 +1606,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-193602647",
@@ -1433,7 +1643,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-194845433",
@@ -1468,7 +1683,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-195029767",
@@ -1502,7 +1722,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-195331657",
@@ -1535,7 +1760,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-211734324",
@@ -1566,7 +1796,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-221404008",
@@ -1597,7 +1832,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-222810827",
@@ -1628,7 +1868,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-228776092",
@@ -1659,7 +1904,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-24564874",
@@ -1695,7 +1945,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-33439621",
@@ -1726,7 +1981,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-360685979",
@@ -1757,7 +2017,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-40892755",
@@ -1788,7 +2053,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-41018511",
@@ -1819,7 +2089,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-417392928",
@@ -1850,7 +2125,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-420206783",
@@ -1885,7 +2165,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-443148632",
@@ -1918,7 +2203,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-462102443",
@@ -1949,7 +2239,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-463593723",
@@ -1975,11 +2270,21 @@
     "zi": "vineri",
     "de_la": "09:00",
     "pana_la": "13:00"
+   },
+   {
+    "zi": "duminica",
+    "de_la": "09:00",
+    "pana_la": "13:00"
    }
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-467220058",
@@ -2010,7 +2315,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-469389178",
@@ -2041,7 +2351,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-470153852",
@@ -2072,7 +2387,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-471111934",
@@ -2105,7 +2425,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-47569923",
@@ -2136,7 +2461,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-504705736",
@@ -2169,7 +2499,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-509484632",
@@ -2204,7 +2539,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-519955517",
@@ -2235,7 +2575,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-534587089",
@@ -2268,7 +2613,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-536702625",
@@ -2301,7 +2651,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-600387987",
@@ -2332,7 +2687,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-635641257",
@@ -2361,7 +2721,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-640501695",
@@ -2396,7 +2761,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-669322476",
@@ -2427,7 +2797,12 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-777564219",
@@ -2458,7 +2833,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-944288517",
@@ -2492,7 +2872,12 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-944816181",
@@ -2527,7 +2912,12 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "osm-way-98120802",
@@ -2558,12 +2948,17 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "cartier": null,
+  "sursa": "osm",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
  },
  {
   "id": "demo-space-teren-1",
   "nume": "Teren liber de lângă blocuri (exemplu)",
-  "tip": "teren liber",
+  "tip": "teren_liber",
   "lat": 45.756989,
   "lng": 21.249889,
   "capacitate": 0,
@@ -2571,6 +2966,425 @@
   "sloturi": [],
   "owner_id": "demo-user-9",
   "is_demo": true,
-  "suprafata_mp": 600
+  "suprafata_mp": 600,
+  "cartier": null,
+  "sursa": "demo",
+  "sursa_detalii": null,
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440964",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440964",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1799723,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 1; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440965",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440965",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1801268,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 2; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440966",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440966",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1802813,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 3; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440967",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440967",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1804358,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 4; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440968",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440968",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1805903,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 5; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440969",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440969",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1807449,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 6; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440970",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440970",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1808994,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 7; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440971",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440971",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1810539,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 8; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440972",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440972",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1812084,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 9; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440973",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440973",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1813629,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 10; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440974",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440974",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1815175,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 11; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440975",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440975",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.181672,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 12; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440976",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440976",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1818265,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 13; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440977",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440977",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.181981,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 14; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "lista-2019-440978",
+  "nume": "Teren din lista Primăriei (Legea 15/2003), str. Lt. Ovidiu Balea, CF 440978",
+  "tip": "teren_liber",
+  "lat": 45.7631866,
+  "lng": 21.1821355,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": false,
+  "suprafata_mp": 276,
+  "cartier": null,
+  "sursa": "lista_primarie",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 15; locatie_aproximativa; pozitie_schematica",
+  "status_verificare": null,
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-1524142704",
+  "nume": "Teren viran, Bucovina (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.772451,
+  "lng": 21.215825,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 4383,
+  "cartier": "Bucovina",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 1524142704, landuse=greenfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-1481985560",
+  "nume": "Teren viran, Cartierul Vienez (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.756852,
+  "lng": 21.219158,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 2616,
+  "cartier": "Cartierul Vienez",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 1481985560, landuse=brownfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-159603642",
+  "nume": "Teren viran, Complex Studențesc (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.750552,
+  "lng": 21.245052,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 1398,
+  "cartier": "Complex Studențesc",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 159603642, landuse=brownfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-1413804572",
+  "nume": "Teren viran, Dorobanților (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.760901,
+  "lng": 21.253054,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 1589,
+  "cartier": "Dorobanților",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 1413804572, landuse=brownfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-1280529258",
+  "nume": "Teren viran, Mehala (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.765671,
+  "lng": 21.20186,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 1140,
+  "cartier": "Mehala",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 1280529258, landuse=brownfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-445294489",
+  "nume": "Teren viran, Steaua (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.72461,
+  "lng": 21.202709,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 3064,
+  "cartier": "Steaua",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 445294489, landuse=brownfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-1107708853",
+  "nume": "Teren viran, Tipografilor (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.76714,
+  "lng": 21.239364,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 2102,
+  "cartier": "Tipografilor",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 1107708853, landuse=brownfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
+ },
+ {
+  "id": "teren-osm-1076560842",
+  "nume": "Teren viran, Torontalului (candidat OSM)",
+  "tip": "teren_liber",
+  "lat": 45.776799,
+  "lng": 21.21253,
+  "capacitate": 0,
+  "dotari": [],
+  "sloturi": [],
+  "owner_id": "demo-user-9",
+  "is_demo": true,
+  "suprafata_mp": 1813,
+  "cartier": "Torontalului",
+  "sursa": "osm",
+  "sursa_detalii": "OpenStreetMap way 1076560842, landuse=brownfield; aspect liber verificat pe imagini satelit; proprietar și statut neconfirmate",
+  "status_verificare": "neconfirmat",
+  "descriere": null
  }
 ]

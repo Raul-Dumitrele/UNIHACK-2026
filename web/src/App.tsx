@@ -1,16 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Layout } from './components/Layout'
-import { BookingsPage } from './pages/BookingsPage'
-import { IdeaDetailPage } from './pages/IdeaDetailPage'
-import { IdeasPage } from './pages/IdeasPage'
-import { ImpactPage } from './pages/ImpactPage'
-import { NewIdeaPage } from './pages/NewIdeaPage'
-import { NotificationsPage } from './pages/NotificationsPage'
-import { MapPage } from './pages/MapPage'
-import { ProiectDetaliuPage } from './pages/proiect/ProiectDetaliuPage'
-import { ProiectNouPage } from './pages/proiect/ProiectNouPage'
-import { ProiectePage } from './pages/proiect/ProiectePage'
-import { UserProvider } from './user'
+import { Layout } from '@/components/Layout'
+import { ImpactPage } from '@/pages/ImpactPage'
+import { MapPage } from '@/pages/MapPage'
+import { NotificationsPage } from '@/pages/NotificationsPage'
+import { ProiectDetaliuPage } from '@/pages/proiect/ProiectDetaliuPage'
+import { ProiectNouPage } from '@/pages/proiect/ProiectNouPage'
+import { ProiectePage } from '@/pages/proiect/ProiectePage'
+import { TerenDetaliuPage } from '@/pages/teren/TerenDetaliuPage'
+import { TerenNouPage } from '@/pages/teren/TerenNouPage'
+import { UserProvider } from '@/user'
 
 export default function App() {
   return (
@@ -18,16 +16,14 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route index element={<IdeasPage />} />
-            <Route path="idei/noua" element={<NewIdeaPage />} />
-            <Route path="harta" element={<MapPage />} />
-            <Route path="idei/:id" element={<IdeaDetailPage />} />
-            <Route path="rezervari" element={<BookingsPage />} />
+            <Route index element={<MapPage />} />
+            <Route path="teren/nou" element={<TerenNouPage />} />
+            <Route path="teren/:id" element={<TerenDetaliuPage />} />
+            <Route path="proiect/nou" element={<ProiectNouPage />} />
+            <Route path="proiecte" element={<ProiectePage />} />
+            <Route path="proiecte/:id" element={<ProiectDetaliuPage />} />
             <Route path="notificari" element={<NotificationsPage />} />
             <Route path="impact" element={<ImpactPage />} />
-            <Route path="proiecte" element={<ProiectePage />} />
-            <Route path="proiecte/nou" element={<ProiectNouPage />} />
-            <Route path="proiecte/:id" element={<ProiectDetaliuPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
