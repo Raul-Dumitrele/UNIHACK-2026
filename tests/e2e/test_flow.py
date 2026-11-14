@@ -151,5 +151,7 @@ async def test_impact_from_seed(client):
     r = await client.get("/impact")
     assert r.status_code == 200
     body = r.json()
-    assert set(body) == {"ore_recuperate", "oameni_conectati", "km_economisiti", "proiecte_active"}
+    assert set(body) == {"ore_recuperate", "oameni_conectati", "km_economisiti", "proiecte_active",
+                         "proiecte_trimise", "proiecte_cu_acord"}
+    assert body["proiecte_trimise"] >= 1  # the seeded city-hall proposal is in verification
     assert body["proiecte_active"] >= 5 and body["ore_recuperate"] > 0 and body["km_economisiti"] > 0
