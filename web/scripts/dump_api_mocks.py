@@ -1,17 +1,15 @@
 """Snapshot the REAL backend (P1's API over P3's seed) into web/src/mocks/data, so mocks match the API exactly.
 
-Run from a checkout that has both backend/app (P1) and backend/seed (P3), e.g. the integration branch:
+Run from the repo root (main has P1's backend and P3's seed), on a throwaway database:
 
-    git worktree add --detach /tmp/integ origin/integrare-2026-11-14
-    cd /tmp/integ
-    export DATABASE_URL=sqlite:////tmp/seed.db GEMINI_API_KEY=
-    PYTHONPATH=. <repo>/backend/.venv/bin/python -m backend.seed.run
-    PYTHONPATH=. <repo>/backend/.venv/bin/python -m uvicorn backend.app.main:app --port 8010 &
-    PYTHONPATH=. <repo>/backend/.venv/bin/python <repo>/web/scripts/dump_api_mocks.py http://localhost:8010 <repo>/web/src/mocks/data
+    export DATABASE_URL=sqlite:////tmp/loccomun-mocks.db GEMINI_API_KEY= REFERENCES_LIVE_SEARCH=false
+    backend/.venv/bin/python -m backend.seed.run
+    backend/.venv/bin/python -m uvicorn backend.app.main:app --port 8010 &
+    # optional: create projects in every state through the API, so the mocks cover them
+    PYTHONPATH=. backend/.venv/bin/python web/scripts/dump_api_mocks.py http://localhost:8010 web/src/mocks/data
 
-Everything comes from API responses, except two lists the API does not expose (read from the same DB through
-P1's own response schemas): bookings (GET /bookings is not in the contract) and interests (for the mock's
-"one interest per user" rule). Nothing is computed here.
+Everything comes from API responses, except interests (not exposed by the API; read from the same DB through
+P1's model, for the mock's "one interest per user" rule). Nothing is computed here.
 """
 import json
 import sys
@@ -20,7 +18,7 @@ from pathlib import Path
 import httpx
 from sqlmodel import Session, select
 
-from backend.app import models, schemas
+from backend.app import models
 from backend.app.db import engine
 
 API = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8010"
@@ -53,8 +51,12 @@ def main() -> None:
         for p in get("/proiecte", u["id"]):
             proiecte[p["id"]] = get(f"/proiecte/{p['id']}", u["id"])
 
+    bookings: dict[str, dict] = {}
+    for u in users:
+        for bk in get("/bookings", u["id"]):
+            bookings[bk["id"]] = bk
+
     with Session(engine) as s:
-        bookings = [schemas.BookingOut.model_validate(b).model_dump(mode="json") for b in s.exec(select(models.Booking))]
         interests = [{"user_id": i.user_id, "idea_id": i.idea_id} for i in s.exec(select(models.Interest))]
 
     OUT.mkdir(parents=True, exist_ok=True)
@@ -63,7 +65,8 @@ def main() -> None:
     payloads = {
         "users": users, "spaces": spaces, "ideas": ideas, "matches": matches, "impact": impact,
         "notifications": sorted(notifications.values(), key=lambda n: n["created_at"], reverse=True),
-        "proiecte": list(proiecte.values()), "bookings": bookings, "interests": interests,
+        "proiecte": list(proiecte.values()),
+        "bookings": sorted(bookings.values(), key=lambda b: b["created_at"], reverse=True), "interests": interests,
     }
     for name, payload in payloads.items():
         (OUT / f"{name}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

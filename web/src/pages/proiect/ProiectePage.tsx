@@ -3,6 +3,7 @@
 import { Link } from 'react-router-dom'
 import { ChevronRight, Landmark } from 'lucide-react'
 import type { Proiect } from '@/api/models'
+import { DemoBadge } from '@/components/DemoBadge'
 import { ProiectStatusBadge } from '@/components/proiect/parts'
 import { EmptyState, ErrorState, LoadingCards } from '@/components/StateViews'
 import { Card, CardContent } from '@/components/ui/card'
@@ -52,6 +53,7 @@ export function ProiectePage() {
                   <div className="min-w-0 flex-1 space-y-1">
                     <div className="flex flex-wrap items-center gap-2">
                       <ProiectStatusBadge stare={p.stare} />
+                      <DemoBadge show={p.is_demo} />
                       <span className="text-xs text-muted-foreground">
                         {tipLabel(p.tip_amenajare)} · {p.suprafata_mp} mp
                       </span>

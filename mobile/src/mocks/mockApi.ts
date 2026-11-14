@@ -166,12 +166,16 @@ export function handleMock(method: string, path: string, body: Body, userId: str
     })
   }
 
-  // PROVISIONAL: GET /bookings  (not in the contract; requests I made + requests for spaces I own)
+  // GET /bookings: requests for my ideas + requests for spaces I own, newest first
   if (m === 'GET' && p === '/bookings') {
     if (!me) return needUser()
     const mine = new Set(db.spaces.filter((s) => s.owner_id === me.id).map((s) => s.id))
     const myIdeas = new Set(db.ideas.filter((i) => i.author_id === me.id).map((i) => i.id))
-    return ok(db.bookings.filter((b) => mine.has(b.space_id) || myIdeas.has(b.idea_id)))
+    return ok(
+      db.bookings
+        .filter((b) => mine.has(b.space_id) || myIdeas.has(b.idea_id))
+        .sort((a, b) => b.created_at.localeCompare(a.created_at)),
+    )
   }
 
   // POST /bookings {idea_id, space_id, slot}  (rule 3)

@@ -1,6 +1,6 @@
 [
  {
-  "id": "c3bac3ce-7d6b-431e-9f02-7b1d19642a36",
+  "id": "ec9fea17-6881-4b12-bea8-7a6e6cdb868f",
   "idea_id": "demo-idea-1",
   "space_id": "demo-space-teren-1",
   "autor_id": "demo-user-1",
@@ -173,22 +173,23 @@
    ],
    "motiv": null
   },
-  "created_at": "2026-11-14T15:24:58.502Z",
-  "updated_at": "2026-11-14T15:24:58.502Z",
+  "created_at": "2026-11-14T17:41:37.854Z",
+  "updated_at": "2026-11-14T17:41:37.854Z",
   "verificator_id": null,
+  "is_demo": false,
   "evenimente": [
    {
-    "id": "d772422f-a54a-4f15-8caf-54765c527516",
-    "proiect_id": "c3bac3ce-7d6b-431e-9f02-7b1d19642a36",
+    "id": "acf894e2-0c3b-4d4c-8fd9-23a44eeaf32e",
+    "proiect_id": "ec9fea17-6881-4b12-bea8-7a6e6cdb868f",
     "user_id": "demo-user-1",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.502Z"
+    "created_at": "2026-11-14T17:41:37.855Z"
    }
   ]
  },
  {
-  "id": "d3353ba2-35a3-494a-9bc4-b57b0f578ed2",
+  "id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
   "idea_id": "demo-idea-7",
   "space_id": "demo-space-teren-1",
   "autor_id": "demo-user-2",
@@ -304,46 +305,47 @@
    "referinte_folosite": [],
    "motiv": "Niciun proiect de referință nu are atât costul, cât și suprafața publicate."
   },
-  "created_at": "2026-11-14T15:24:58.605Z",
-  "updated_at": "2026-11-14T15:24:58.634Z",
+  "created_at": "2026-11-14T17:41:37.959Z",
+  "updated_at": "2026-11-14T17:41:37.987Z",
   "verificator_id": "demo-user-10",
+  "is_demo": false,
   "evenimente": [
    {
-    "id": "7bd5359e-d272-4521-818d-03a081bd1c6d",
-    "proiect_id": "d3353ba2-35a3-494a-9bc4-b57b0f578ed2",
+    "id": "617f33b4-dbd8-490e-94e2-d9bfe3af3072",
+    "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
     "user_id": "demo-user-2",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.605Z"
+    "created_at": "2026-11-14T17:41:37.959Z"
    },
    {
-    "id": "e48bf118-3d4b-4254-bdaf-6c1fe0cd0aa2",
-    "proiect_id": "d3353ba2-35a3-494a-9bc4-b57b0f578ed2",
+    "id": "2f380e14-f4db-493a-8f19-bc39159c4091",
+    "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
     "user_id": "demo-user-2",
     "stare_noua": "trimis",
     "mesaj": "Vă rugăm să analizați propunerea comunității.",
-    "created_at": "2026-11-14T15:24:58.615Z"
+    "created_at": "2026-11-14T17:41:37.969Z"
    },
    {
-    "id": "4455f96e-5c29-46d8-88b4-0f5c3c83d8dd",
-    "proiect_id": "d3353ba2-35a3-494a-9bc4-b57b0f578ed2",
+    "id": "5dec1101-7ed0-42f5-9199-f7c2e5a9b62c",
+    "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
     "user_id": "demo-user-9",
     "stare_noua": "in_verificare",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.625Z"
+    "created_at": "2026-11-14T17:41:37.978Z"
    },
    {
-    "id": "ebd9d814-2090-4e2a-b979-a6a27356e037",
-    "proiect_id": "d3353ba2-35a3-494a-9bc4-b57b0f578ed2",
+    "id": "6d5e4913-fba1-47fe-8847-9c9b67db2dc5",
+    "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
     "user_id": "demo-user-10",
     "stare_noua": "acord_de_principiu",
     "mesaj": "Propunerea este oportună; urmează studiul de fezabilitate.",
-    "created_at": "2026-11-14T15:24:58.634Z"
+    "created_at": "2026-11-14T17:41:37.987Z"
    }
   ]
  },
  {
-  "id": "a24342b2-1ee8-4c10-b1c0-c57b9d2e9052",
+  "id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
   "idea_id": "demo-idea-6",
   "space_id": "demo-space-teren-1",
   "autor_id": "demo-user-3",
@@ -408,46 +410,47 @@
    "referinte_folosite": [],
    "motiv": "Niciun proiect de referință nu are atât costul, cât și suprafața publicate."
   },
-  "created_at": "2026-11-14T15:24:58.555Z",
-  "updated_at": "2026-11-14T15:24:58.585Z",
+  "created_at": "2026-11-14T17:41:37.910Z",
+  "updated_at": "2026-11-14T17:41:37.939Z",
   "verificator_id": "demo-user-10",
+  "is_demo": false,
   "evenimente": [
    {
-    "id": "90091eac-445d-4432-8f44-5dcfee05ff63",
-    "proiect_id": "a24342b2-1ee8-4c10-b1c0-c57b9d2e9052",
+    "id": "c628764e-8839-4199-aa37-660125197124",
+    "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
     "user_id": "demo-user-3",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.555Z"
+    "created_at": "2026-11-14T17:41:37.910Z"
    },
    {
-    "id": "57ef345c-0867-463d-b624-ac514b325f1b",
-    "proiect_id": "a24342b2-1ee8-4c10-b1c0-c57b9d2e9052",
+    "id": "a8cbb9dc-233c-4a4a-8bc5-70ac575a6c26",
+    "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
     "user_id": "demo-user-3",
     "stare_noua": "trimis",
     "mesaj": "Vă rugăm să analizați propunerea comunității.",
-    "created_at": "2026-11-14T15:24:58.564Z"
+    "created_at": "2026-11-14T17:41:37.919Z"
    },
    {
-    "id": "0dfc243e-0878-4392-a4b3-fdff931b2b5c",
-    "proiect_id": "a24342b2-1ee8-4c10-b1c0-c57b9d2e9052",
+    "id": "98e58630-557c-4933-a0f6-b7a5df89b1ae",
+    "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
     "user_id": "demo-user-9",
     "stare_noua": "in_verificare",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.575Z"
+    "created_at": "2026-11-14T17:41:37.929Z"
    },
    {
-    "id": "4fa7f7e3-b66f-4804-9ebe-a276310e61ca",
-    "proiect_id": "a24342b2-1ee8-4c10-b1c0-c57b9d2e9052",
+    "id": "97bf85fa-758d-4a23-8116-fd6cbd94cd14",
+    "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
     "user_id": "demo-user-10",
     "stare_noua": "clarificari",
     "mesaj": "Vă rugăm să precizați cine se ocupă de întreținerea grădinii după amenajare.",
-    "created_at": "2026-11-14T15:24:58.585Z"
+    "created_at": "2026-11-14T17:41:37.939Z"
    }
   ]
  },
  {
-  "id": "467d8b3a-b3af-4113-a8c1-7e67a8c0c3f6",
+  "id": "515ac44c-f260-4b5a-9a88-fb2677513aad",
   "idea_id": "demo-idea-4",
   "space_id": "demo-space-teren-1",
   "autor_id": "demo-user-4",
@@ -554,30 +557,31 @@
    ],
    "motiv": "Doar un proiect de referință are atât costul, cât și suprafața publicate; sunt necesare cel puțin 2."
   },
-  "created_at": "2026-11-14T15:24:58.524Z",
-  "updated_at": "2026-11-14T15:24:58.534Z",
+  "created_at": "2026-11-14T17:41:37.879Z",
+  "updated_at": "2026-11-14T17:41:37.889Z",
   "verificator_id": null,
+  "is_demo": false,
   "evenimente": [
    {
-    "id": "335b9e3b-b2b6-4e79-93e3-50ad8de99e45",
-    "proiect_id": "467d8b3a-b3af-4113-a8c1-7e67a8c0c3f6",
+    "id": "481ebb26-4ea6-4e3b-acb8-a586ccb2aef9",
+    "proiect_id": "515ac44c-f260-4b5a-9a88-fb2677513aad",
     "user_id": "demo-user-4",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.524Z"
+    "created_at": "2026-11-14T17:41:37.879Z"
    },
    {
-    "id": "d51967d3-c0a5-486f-9ea7-44d7a1166e79",
-    "proiect_id": "467d8b3a-b3af-4113-a8c1-7e67a8c0c3f6",
+    "id": "e335e671-c062-4a38-a95e-bd9dbf96fe16",
+    "proiect_id": "515ac44c-f260-4b5a-9a88-fb2677513aad",
     "user_id": "demo-user-4",
     "stare_noua": "trimis",
     "mesaj": "Vă rugăm să analizați propunerea comunității.",
-    "created_at": "2026-11-14T15:24:58.534Z"
+    "created_at": "2026-11-14T17:41:37.889Z"
    }
   ]
  },
  {
-  "id": "7d487e4d-9bb8-44f3-9f16-ee250f85d814",
+  "id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
   "idea_id": "demo-idea-5",
   "space_id": "demo-space-teren-1",
   "autor_id": "demo-user-5",
@@ -742,41 +746,42 @@
    ],
    "motiv": null
   },
-  "created_at": "2026-11-14T15:24:58.654Z",
-  "updated_at": "2026-11-14T15:24:58.683Z",
+  "created_at": "2026-11-14T17:41:38.007Z",
+  "updated_at": "2026-11-14T17:41:38.035Z",
   "verificator_id": "demo-user-10",
+  "is_demo": false,
   "evenimente": [
    {
-    "id": "b5ff0c12-7107-413c-b21e-4e652091ce8f",
-    "proiect_id": "7d487e4d-9bb8-44f3-9f16-ee250f85d814",
+    "id": "13fd1753-2543-4a19-b227-b656d72df67d",
+    "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
     "user_id": "demo-user-5",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.654Z"
+    "created_at": "2026-11-14T17:41:38.007Z"
    },
    {
-    "id": "fa621d6b-3167-4c1e-9483-68ad9e7918eb",
-    "proiect_id": "7d487e4d-9bb8-44f3-9f16-ee250f85d814",
+    "id": "f9cd1a63-9431-4d76-a5d1-dc228b32f4f8",
+    "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
     "user_id": "demo-user-5",
     "stare_noua": "trimis",
     "mesaj": "Vă rugăm să analizați propunerea comunității.",
-    "created_at": "2026-11-14T15:24:58.664Z"
+    "created_at": "2026-11-14T17:41:38.016Z"
    },
    {
-    "id": "69bf045a-f82d-486c-9324-2f99f8db4714",
-    "proiect_id": "7d487e4d-9bb8-44f3-9f16-ee250f85d814",
+    "id": "5bb0cef2-0e7e-4393-8e39-7816067b7994",
+    "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
     "user_id": "demo-user-9",
     "stare_noua": "in_verificare",
     "mesaj": null,
-    "created_at": "2026-11-14T15:24:58.674Z"
+    "created_at": "2026-11-14T17:41:38.026Z"
    },
    {
-    "id": "35dd0993-fc95-4b7f-87e9-d2018b1e9717",
-    "proiect_id": "7d487e4d-9bb8-44f3-9f16-ee250f85d814",
+    "id": "08a831ee-c49d-4a07-bb34-81395282c319",
+    "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
     "user_id": "demo-user-10",
     "stare_noua": "respins",
     "mesaj": "Terenul este rezervat pentru un alt proiect al municipalității.",
-    "created_at": "2026-11-14T15:24:58.683Z"
+    "created_at": "2026-11-14T17:41:38.035Z"
    }
   ]
  },
@@ -954,6 +959,7 @@
   "created_at": "2026-11-06T10:00:00.000Z",
   "updated_at": "2026-11-10T09:00:00.000Z",
   "verificator_id": "demo-user-10",
+  "is_demo": true,
   "evenimente": [
    {
     "id": "demo-proiect-1-ev-1",

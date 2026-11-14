@@ -8,7 +8,18 @@
    "categorie": "sport",
    "persoane": 24,
    "dotari": [],
-   "program": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    }
+   ],
    "zgomot": "ridicat",
    "rezumat": "Turneu de baschet 3x3 pentru tinerii din cartier"
   },
@@ -31,7 +42,18 @@
     "priza",
     "wifi"
    ],
-   "program": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    }
+   ],
    "zgomot": "scazut",
    "rezumat": "Curs gratuit de programare pentru copii de 10-14 ani"
   },
@@ -53,7 +75,18 @@
     "mese",
     "scaune"
    ],
-   "program": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    }
+   ],
    "zgomot": "scazut",
    "rezumat": "Club de lectură pentru seniori din Iosefin"
   },
@@ -100,7 +133,18 @@
    "categorie": "social",
    "persoane": 25,
    "dotari": [],
-   "program": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    }
+   ],
    "zgomot": "scazut",
    "rezumat": "Skatepark mic pe terenul liber din Fabric"
   },
@@ -121,7 +165,18 @@
    "dotari": [
     "mese"
    ],
-   "program": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "13:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "13:00"
+    }
+   ],
    "zgomot": "scazut",
    "rezumat": "Întâlnire de schimb de cărți și semințe între vecini"
   },
@@ -142,7 +197,18 @@
    "dotari": [
     "proiector"
    ],
-   "program": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "18:00",
+     "pana_la": "20:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "18:00",
+     "pana_la": "20:00"
+    }
+   ],
    "zgomot": "scazut",
    "rezumat": "Seară de film documentar despre natură în cartier"
   },
@@ -164,7 +230,18 @@
     "mese",
     "bucatarie"
    ],
-   "program": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    }
+   ],
    "zgomot": "mediu",
    "rezumat": "Atelier de gătit sănătos pentru părinți și copii"
   },

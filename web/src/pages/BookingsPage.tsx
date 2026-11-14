@@ -1,4 +1,4 @@
-// Owner panel + my requests. Uses GET /bookings, which is PROVISIONAL (not in the contract; served by the mocks).
+// Owner panel + my requests. GET /bookings returns the user's requests (as idea author) and those for spaces they own.
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Check, Loader2, X } from 'lucide-react'
@@ -37,17 +37,6 @@ export function BookingsPage() {
 
       {loading ? (
         <LoadingCards count={3} />
-      ) : bookings.errorStatus === 405 ? (
-        <EmptyState
-          title="Lista rezervărilor nu este încă disponibilă în API"
-          action={
-            <Button asChild variant="outline" size="sm">
-              <Link to="/notificari">Deschide notificările</Link>
-            </Button>
-          }
-        >
-          Backend-ul nu are încă GET /bookings. Ca proprietar, aprobi sau refuzi cererile direct din Notificări.
-        </EmptyState>
       ) : error ? (
         <ErrorState message={error} onRetry={() => (bookings.reload(), ideas.reload(), spaces.reload())} />
       ) : (

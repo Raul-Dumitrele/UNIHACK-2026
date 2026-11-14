@@ -6,6 +6,7 @@ import { ArrowLeft, Loader2, Printer, Send } from 'lucide-react'
 import { toast } from 'sonner'
 import { api } from '@/api/client'
 import type { Proiect, ProiectDetaliu, Space } from '@/api/models'
+import { DemoBadge } from '@/components/DemoBadge'
 import { CostBlock, Disclaimer, DosarView, EvenimenteTimeline, ProiectStatusBadge, ReferinteList } from '@/components/proiect/parts'
 import { ErrorState, LoadingCards } from '@/components/StateViews'
 import { Button } from '@/components/ui/button'
@@ -47,6 +48,7 @@ export function ProiectDetaliuPage() {
       <header className="space-y-2">
         <div className="flex flex-wrap items-center gap-2">
           <ProiectStatusBadge stare={p.stare} />
+          <DemoBadge show={p.is_demo} />
           <span className="text-sm text-muted-foreground">
             {tipLabel(p.tip_amenajare)} · {p.suprafata_mp} mp
           </span>
