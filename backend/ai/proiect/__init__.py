@@ -281,3 +281,6 @@ def template_dosar(idea: Any, space: Any, tip_amenajare: str, suprafata_mp: floa
     """Same result as generate_dosar without Gemini (offline seed, demos)."""
     context, refs, cost = _inputs(idea, space, tip_amenajare, suprafata_mp, referinte, cost)
     return _list_check(finalize(template_draft(context, refs), refs, cost), space)
+
+
+from backend.ai.proiect.plots import PlotCandidate, find_plots  # noqa: E402  (re-export; plots uses design only)
