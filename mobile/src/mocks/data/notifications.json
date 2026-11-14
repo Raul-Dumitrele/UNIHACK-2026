@@ -1,0 +1,362 @@
+[
+ {
+  "id": "291a96e1-7615-4463-b7bd-98402a3afe88",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-5",
+  "booking_id": null,
+  "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
+  "mesaj": "Proiectul „Amenajare: pistă de biciclete – Teren liber de lângă blocuri (exemplu)” a fost respins. Terenul este rezervat pentru un alt proiect al municipalității.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:38.035Z"
+ },
+ {
+  "id": "a5653ce5-2cbd-478b-a489-fa102987fac1",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-5",
+  "booking_id": null,
+  "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
+  "mesaj": "Proiectul „Amenajare: pistă de biciclete – Teren liber de lângă blocuri (exemplu)” a fost respins. Terenul este rezervat pentru un alt proiect al municipalității.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:38.035Z"
+ },
+ {
+  "id": "49e48f6d-f00d-4b45-b968-f0735560f39f",
+  "user_id": "demo-user-10",
+  "idea_id": "demo-idea-5",
+  "booking_id": null,
+  "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
+  "mesaj": "Ai de verificat proiectul „Amenajare: pistă de biciclete – Teren liber de lângă blocuri (exemplu)”.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:38.026Z"
+ },
+ {
+  "id": "57a601ca-e0ee-4723-89e0-f594b900200d",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-5",
+  "booking_id": null,
+  "proiect_id": "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: pistă de biciclete – Teren liber de lângă blocuri (exemplu)”.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:38.017Z"
+ },
+ {
+  "id": "e4719a84-a633-4224-966e-28d623f3bb64",
+  "user_id": "demo-user-2",
+  "idea_id": "demo-idea-7",
+  "booking_id": null,
+  "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
+  "mesaj": "Proiectul „Amenajare: parc pentru câini – Teren liber de lângă blocuri (exemplu)” a primit acord de principiu (simulat). Propunerea este oportună; urmează studiul de fezabilitate.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.988Z"
+ },
+ {
+  "id": "042d4e43-6fba-42b6-b290-7e9d04044af2",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-7",
+  "booking_id": null,
+  "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
+  "mesaj": "Proiectul „Amenajare: parc pentru câini – Teren liber de lângă blocuri (exemplu)” a primit acord de principiu (simulat). Propunerea este oportună; urmează studiul de fezabilitate.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.988Z"
+ },
+ {
+  "id": "ecfc076e-f6b8-4b5e-832c-152cd998a88f",
+  "user_id": "demo-user-10",
+  "idea_id": "demo-idea-7",
+  "booking_id": null,
+  "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
+  "mesaj": "Ai de verificat proiectul „Amenajare: parc pentru câini – Teren liber de lângă blocuri (exemplu)”.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.978Z"
+ },
+ {
+  "id": "7c8fdb09-8775-4e01-aa92-8ff1aacd401c",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-7",
+  "booking_id": null,
+  "proiect_id": "b69d1a9e-3563-42a0-b34d-b747b0311c48",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: parc pentru câini – Teren liber de lângă blocuri (exemplu)”.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.969Z"
+ },
+ {
+  "id": "3040cb39-337f-49fd-9092-0f994276ccde",
+  "user_id": "demo-user-3",
+  "idea_id": "demo-idea-6",
+  "booking_id": null,
+  "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
+  "mesaj": "Proiectul „Amenajare: grădină comunitară – Teren liber de lângă blocuri (exemplu)” necesită clarificări. Vă rugăm să precizați cine se ocupă de întreținerea grădinii după amenajare.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.939Z"
+ },
+ {
+  "id": "5e4ad3e2-2847-4433-8ed9-8ec0925007c2",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-6",
+  "booking_id": null,
+  "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
+  "mesaj": "Proiectul „Amenajare: grădină comunitară – Teren liber de lângă blocuri (exemplu)” necesită clarificări. Vă rugăm să precizați cine se ocupă de întreținerea grădinii după amenajare.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.939Z"
+ },
+ {
+  "id": "261d5751-eb26-4104-8fd0-910ebe80fad6",
+  "user_id": "demo-user-10",
+  "idea_id": "demo-idea-6",
+  "booking_id": null,
+  "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
+  "mesaj": "Ai de verificat proiectul „Amenajare: grădină comunitară – Teren liber de lângă blocuri (exemplu)”.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.929Z"
+ },
+ {
+  "id": "d3a6294e-72c9-4bfb-8739-4d022a9a0620",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-6",
+  "booking_id": null,
+  "proiect_id": "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: grădină comunitară – Teren liber de lângă blocuri (exemplu)”.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.920Z"
+ },
+ {
+  "id": "3807f743-63bb-43f8-a459-703e11721be3",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-4",
+  "booking_id": null,
+  "proiect_id": "515ac44c-f260-4b5a-9a88-fb2677513aad",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: teren de sport – Teren liber de lângă blocuri (exemplu)”.",
+  "citita": false,
+  "created_at": "2026-11-14T17:41:37.890Z"
+ },
+ {
+  "id": "demo-booking-3-notif-aprobata",
+  "user_id": "demo-user-4",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-3",
+  "proiect_id": null,
+  "mesaj": "Rezervarea pentru „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica (sâmbătă 14 noiembrie, 18:00) a fost aprobată.",
+  "citita": false,
+  "created_at": "2026-11-13T18:00:00.000Z"
+ },
+ {
+  "id": "demo-booking-4-notif-cerere",
+  "user_id": "demo-user-8",
+  "idea_id": "demo-idea-2",
+  "booking_id": "demo-booking-4",
+  "proiect_id": null,
+  "mesaj": "Cerere nouă de rezervare: „Club de lectură pentru seniori din Iosefin” la Casa de Cultură a Studenților, duminică 15 noiembrie, 09:00.",
+  "citita": false,
+  "created_at": "2026-11-13T17:00:00.000Z"
+ },
+ {
+  "id": "demo-idea-2-notif-prag",
+  "user_id": "demo-user-2",
+  "idea_id": "demo-idea-2",
+  "booking_id": null,
+  "proiect_id": null,
+  "mesaj": "Ideea „Club de lectură pentru seniori din Iosefin” a atins pragul: 3 persoane interesate.",
+  "citita": false,
+  "created_at": "2026-11-13T16:30:00.000Z"
+ },
+ {
+  "id": "demo-booking-3-notif-cerere",
+  "user_id": "demo-user-6",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-3",
+  "proiect_id": null,
+  "mesaj": "Cerere nouă de rezervare: „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica, sâmbătă 14 noiembrie, 18:00.",
+  "citita": false,
+  "created_at": "2026-11-13T13:30:00.000Z"
+ },
+ {
+  "id": "demo-booking-2-notif-refuzata",
+  "user_id": "demo-user-4",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-2",
+  "proiect_id": null,
+  "mesaj": "Rezervarea pentru „Turneu de baschet 3x3 pentru tinerii din cartier” la Teren UVT (duminică 15 noiembrie, 10:00) a fost refuzată.",
+  "citita": false,
+  "created_at": "2026-11-13T13:00:00.000Z"
+ },
+ {
+  "id": "demo-booking-2-notif-cerere",
+  "user_id": "demo-user-6",
+  "idea_id": "demo-idea-4",
+  "booking_id": "demo-booking-2",
+  "proiect_id": null,
+  "mesaj": "Cerere nouă de rezervare: „Turneu de baschet 3x3 pentru tinerii din cartier” la Teren UVT, duminică 15 noiembrie, 10:00.",
+  "citita": false,
+  "created_at": "2026-11-13T11:00:00.000Z"
+ },
+ {
+  "id": "demo-idea-4-notif-prag",
+  "user_id": "demo-user-4",
+  "idea_id": "demo-idea-4",
+  "booking_id": null,
+  "proiect_id": null,
+  "mesaj": "Ideea „Turneu de baschet 3x3 pentru tinerii din cartier” a atins pragul: 3 persoane interesate.",
+  "citita": false,
+  "created_at": "2026-11-13T10:30:00.000Z"
+ },
+ {
+  "id": "demo-booking-1-notif-aprobata",
+  "user_id": "demo-user-1",
+  "idea_id": "demo-idea-1",
+  "booking_id": "demo-booking-1",
+  "proiect_id": null,
+  "mesaj": "Rezervarea pentru „Atelier de reparat biciclete pentru vecini” la Faber (duminică 15 noiembrie, 17:00) a fost aprobată.",
+  "citita": false,
+  "created_at": "2026-11-12T14:00:00.000Z"
+ },
+ {
+  "id": "demo-booking-1-notif-cerere",
+  "user_id": "demo-user-7",
+  "idea_id": "demo-idea-1",
+  "booking_id": "demo-booking-1",
+  "proiect_id": null,
+  "mesaj": "Cerere nouă de rezervare: „Atelier de reparat biciclete pentru vecini” la Faber, duminică 15 noiembrie, 17:00.",
+  "citita": false,
+  "created_at": "2026-11-12T08:00:00.000Z"
+ },
+ {
+  "id": "demo-idea-1-notif-prag",
+  "user_id": "demo-user-1",
+  "idea_id": "demo-idea-1",
+  "booking_id": null,
+  "proiect_id": null,
+  "mesaj": "Ideea „Atelier de reparat biciclete pentru vecini” a atins pragul: 3 persoane interesate.",
+  "citita": false,
+  "created_at": "2026-11-11T12:40:00.000Z"
+ },
+ {
+  "id": "demo-proiect-1-ev-3-notif-demo-user-5",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "proiect_id": "demo-proiect-1",
+  "mesaj": "Propunerea „Skatepark mic pe terenul liber din Fabric” a intrat în verificare. Mesaj: Dosarul a fost preluat pentru verificare.",
+  "citita": false,
+  "created_at": "2026-11-10T09:00:00.000Z"
+ },
+ {
+  "id": "demo-proiect-1-ev-2-notif-demo-user-5",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "proiect_id": "demo-proiect-1",
+  "mesaj": "Propunerea „Skatepark mic pe terenul liber din Fabric” a fost trimisă către Primărie.",
+  "citita": false,
+  "created_at": "2026-11-07T12:00:00.000Z"
+ },
+ {
+  "id": "demo-proiect-1-ev-2-notif-demo-user-9",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "proiect_id": "demo-proiect-1",
+  "mesaj": "Propunere nouă de skatepark: „Skatepark mic pe terenul liber din Fabric”.",
+  "citita": false,
+  "created_at": "2026-11-07T12:00:00.000Z"
+ },
+ {
+  "id": "demo-idea-8-notif-prag",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "proiect_id": null,
+  "mesaj": "Ideea „Skatepark mic pe terenul liber din Fabric” a atins pragul: 3 persoane interesate.",
+  "citita": false,
+  "created_at": "2026-11-04T17:10:00.000Z"
+ },
+ {
+  "id": "demo-booking-7-notif-aprobata",
+  "user_id": "demo-user-2",
+  "idea_id": "demo-idea-7",
+  "booking_id": "demo-booking-7",
+  "proiect_id": null,
+  "mesaj": "Rezervarea pentru „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților (duminică 8 noiembrie, 09:00) a fost aprobată.",
+  "citita": false,
+  "created_at": "2026-10-22T16:30:00.000Z"
+ },
+ {
+  "id": "demo-booking-7-notif-cerere",
+  "user_id": "demo-user-8",
+  "idea_id": "demo-idea-7",
+  "booking_id": "demo-booking-7",
+  "proiect_id": null,
+  "mesaj": "Cerere nouă de rezervare: „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților, duminică 8 noiembrie, 09:00.",
+  "citita": false,
+  "created_at": "2026-10-22T12:00:00.000Z"
+ },
+ {
+  "id": "demo-idea-7-notif-prag",
+  "user_id": "demo-user-2",
+  "idea_id": "demo-idea-7",
+  "booking_id": null,
+  "proiect_id": null,
+  "mesaj": "Ideea „Întâlnire de schimb de cărți și semințe între vecini” a atins pragul: 3 persoane interesate.",
+  "citita": false,
+  "created_at": "2026-10-21T17:45:00.000Z"
+ },
+ {
+  "id": "demo-booking-6-notif-aprobata",
+  "user_id": "demo-user-3",
+  "idea_id": "demo-idea-6",
+  "booking_id": "demo-booking-6",
+  "proiect_id": null,
+  "mesaj": "Rezervarea pentru „Seară de film documentar despre natură în cartier” la Casa Artelor (duminică 1 noiembrie, 17:00) a fost aprobată.",
+  "citita": false,
+  "created_at": "2026-10-18T09:00:00.000Z"
+ },
+ {
+  "id": "demo-booking-6-notif-cerere",
+  "user_id": "demo-user-6",
+  "idea_id": "demo-idea-6",
+  "booking_id": "demo-booking-6",
+  "proiect_id": null,
+  "mesaj": "Cerere nouă de rezervare: „Seară de film documentar despre natură în cartier” la Casa Artelor, duminică 1 noiembrie, 17:00.",
+  "citita": false,
+  "created_at": "2026-10-17T10:00:00.000Z"
+ },
+ {
+  "id": "demo-idea-6-notif-prag",
+  "user_id": "demo-user-3",
+  "idea_id": "demo-idea-6",
+  "booking_id": null,
+  "proiect_id": null,
+  "mesaj": "Ideea „Seară de film documentar despre natură în cartier” a atins pragul: 3 persoane interesate.",
+  "citita": false,
+  "created_at": "2026-10-16T10:00:00.000Z"
+ },
+ {
+  "id": "demo-booking-5-notif-aprobata",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-5",
+  "booking_id": "demo-booking-5",
+  "proiect_id": null,
+  "mesaj": "Rezervarea pentru „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților (duminică 25 octombrie, 09:00) a fost aprobată.",
+  "citita": false,
+  "created_at": "2026-10-14T15:00:00.000Z"
+ },
+ {
+  "id": "demo-booking-5-notif-cerere",
+  "user_id": "demo-user-8",
+  "idea_id": "demo-idea-5",
+  "booking_id": "demo-booking-5",
+  "proiect_id": null,
+  "mesaj": "Cerere nouă de rezervare: „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților, duminică 25 octombrie, 09:00.",
+  "citita": false,
+  "created_at": "2026-10-14T08:00:00.000Z"
+ },
+ {
+  "id": "demo-idea-5-notif-prag",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-5",
+  "booking_id": null,
+  "proiect_id": null,
+  "mesaj": "Ideea „Atelier de gătit sănătos pentru părinți și copii” a atins pragul: 3 persoane interesate.",
+  "citita": false,
+  "created_at": "2026-10-13T12:00:00.000Z"
+ }
+]
