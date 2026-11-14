@@ -152,6 +152,7 @@ def build_seed(start: date | None = None) -> SeedData:
     teren = proiect_demo.build_teren(extra)
     spaces.append(teren)
     spaces += terenuri.build_terenuri_lista()  # Legea 15/2003 list plots (no slots, never matched)
+    spaces += terenuri.build_terenuri_osm()  # free plots spotted on OSM (P2's list), unconfirmed
     idea = next(i for i in ideas if i["id"] == extra["idea"]["id"])
     proiect, events = proiect_demo.build_proiect(extra, idea, teren)
     notifications += proiect_demo.build_notifications(proiect, events, idea, users)

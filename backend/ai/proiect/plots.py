@@ -52,12 +52,12 @@ def _get(obj: Any, *names: str, default: Any = None) -> Any:
 
 
 def default_spaces() -> list[dict]:
-    """The seed's free plots (offline): the Legea 15/2003 list and the demo plot."""
+    """The seed's free plots (offline): the Legea 15/2003 list, the OSM candidates and the demo plot."""
     from backend.seed.proiect_demo import FILE, build_teren  # seed layer, loaded on demand
-    from backend.seed.terenuri import DATA, build_terenuri_lista
+    from backend.seed.terenuri import DATA, build_terenuri_lista, build_terenuri_osm
 
     extra = json.loads((DATA / FILE).read_text(encoding="utf-8"))
-    return [*build_terenuri_lista(), build_teren(extra)]
+    return [*build_terenuri_lista(), *build_terenuri_osm(), build_teren(extra)]
 
 
 def from_city_hall_list(space: Any) -> bool:

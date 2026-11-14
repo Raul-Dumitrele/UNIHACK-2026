@@ -39,9 +39,12 @@ async def test_listed_plots_are_ranked_and_marked_to_confirm(client):
     assert all(p["suprafata_mp"] >= 250 for p in plots)
 
 
-async def test_big_project_only_fits_the_demo_plot(client):
-    plots = await _plots(client, tip_amenajare="skatepark", suprafata_minima=500)
-    assert [p["space_id"] for p in plots] == ["demo-space-teren-1"] and plots[0]["is_demo"]
+async def test_big_project_goes_to_the_osm_candidates_or_the_demo_plot(client):
+    plots = await _plots(client, tip_amenajare="skatepark", suprafata_minima=500, cartier="Steaua")
+    ids = [p["space_id"] for p in plots]
+    assert ids[0] == "teren-osm-445294489"  # the OSM candidate in Steaua
+    assert "demo-space-teren-1" in ids and all(p["is_demo"] for p in plots)
+    assert not any(p["din_lista_primarie"] for p in plots)
 
 
 async def test_project_on_a_listed_lot_has_plan_materials_and_documents(client):

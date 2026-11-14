@@ -1,3 +1,4 @@
+import json
 from datetime import date, datetime
 from types import SimpleNamespace
 
@@ -409,3 +410,30 @@ def test_list_selection_threshold_and_cap(monkeypatch, min_count, rows, expected
     fake.append({"cf": "small", "pozitie": 99, "suprafata_mp": 120, "strada": "s"})
     fake.append({"cf": "nowhere", "pozitie": 98, "suprafata_mp": 900, "strada": "unknown"})
     assert len(terenuri.select(fake, {"s": {}})) == expected
+
+
+def test_every_free_plot_has_a_district_and_list_plots_are_unconfirmed(data):
+    from backend.seed.contract import contract_rows
+
+    plots = [s for s in contract_rows(data)["Space"] if s["tip"] == "teren_liber"]
+    assert plots and all(p["cartier"] for p in plots)
+    assert all(p["status_verificare"] == "neconfirmat" for p in plots if p["sursa"] == "lista_primarie")
+
+
+def test_osm_plots_loader(tmp_path):
+    """P2's OSM plot list (synthetic rows here): demo data, unconfirmed, inside Timișoara only."""
+    from backend.seed import terenuri
+
+    assert terenuri.build_terenuri_osm(tmp_path / "missing.json") == []
+    path = tmp_path / "terenuri_osm.json"
+    path.write_text(json.dumps([
+        {"id": "osm-way-1", "nume": "Teren viran A", "lat": 45.75, "lng": 21.23, "suprafata_mp": 820.4},
+        {"id": "osm-way-2", "name": "Teren B", "lat": 45.76, "lon": 21.20, "suprafata_mp": 500, "cartier": "Fabric"},
+        {"id": "osm-way-3", "nume": "Prea departe", "lat": 44.43, "lng": 26.10, "suprafata_mp": 900},
+        {"id": "osm-way-4", "nume": "Fără suprafață", "lat": 45.75, "lng": 21.23},
+    ]), encoding="utf-8")
+    rows = terenuri.build_terenuri_osm(path)
+    assert [r["id"] for r in rows] == ["teren-osm-way-1", "teren-osm-way-2"]
+    assert all(r["kind"] == "teren_liber" and r["is_demo"] is True and r["source"] == "osm"
+               and r["status_verificare"] == "neconfirmat" and r["capacity"] == 0 for r in rows)
+    assert rows[0]["suprafata_mp"] == 820 and rows[0]["neighborhood"] and rows[1]["neighborhood"] == "Fabric"
