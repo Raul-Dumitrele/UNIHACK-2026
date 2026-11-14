@@ -128,3 +128,11 @@
   color: var(--foreground);
   border-color: var(--border);
 }
+
+/* Printable project dossier (browser "Save as PDF"). */
+@media print {
+  @page { margin: 16mm; }
+  body { background: #fff; color: #000; }
+  [data-sonner-toaster] { display: none !important; }
+  a { color: inherit; }
+}

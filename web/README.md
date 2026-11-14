@@ -22,7 +22,6 @@ npm run build                # typecheck + build
 npm run typecheck
 npm run lint
 npm run gen:types            # src/api/schema.d.ts din docs/openapi.json
-npm run mocks:update         # recopiază exemplele lui P3 (după ce ajung în main)
 npx shadcn@latest add <nume> # componentă nouă
 ```
 

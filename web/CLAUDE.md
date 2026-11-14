@@ -18,11 +18,14 @@ lucide-react icons, Geist font, Leaflet (react-leaflet), MSW 3 for mocks.
 - Import from `src` with the `@/` alias.
 
 ## Types and mocks
-- `src/api/types.ts` is PROVISIONAL (copied from P3's example payloads). When P1 publishes `docs/openapi.json`,
-  run `npm run gen:types` and move to `src/api/schema.d.ts`; report any tsc diff instead of working around it.
-- `src/mocks/mockApi.ts` is an in-memory fake backend over `src/mocks/data/*.json` (P3 examples).
+- Types come from `docs/openapi.json`: `npm run gen:types` -> `src/api/schema.d.ts` (never edit by hand);
+  `src/api/models.ts` gives them short names. Fields marked PROVISIONAL there are not in openapi yet.
+  After regenerating, report any tsc diff instead of working around it.
+- `src/mocks/mockApi.ts` is an in-memory fake of P1's backend that follows the contract rules, over
+  `src/mocks/data/*.json` (P3's demo seed converted to contract shape by `scripts/seed_to_mocks.py`).
   `VITE_USE_MOCKS=true` turns it on (MSW, `src/mocks/browser.ts`). Endpoints marked PROVISIONAL are not in the contract.
-- mobile/ keeps a copy of `src/mocks` and `src/api/types.ts`: after editing them run `npm run sync:mocks` in mobile/.
+- Never compute business values (costs, scores, statuses) in the UI: they come from the API (or the mock standing in for it).
+- mobile/ keeps a copy of `src/mocks` and `src/api/{models,schema.d}.ts`: after editing them run `npm run sync:mocks` in mobile/.
 
 ## Commands
-npm run dev | npm run build | npm run typecheck | npm run lint | npm run gen:types | npm run mocks:update
+npm run dev | npm run build | npm run typecheck | npm run lint | npm run gen:types
