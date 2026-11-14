@@ -1,0 +1,229 @@
+{
+ "tip_amenajare": "gradina_comunitara",
+ "eticheta": "grădină comunitară",
+ "suprafata_mp": 276.0,
+ "latime_m": 12.0,
+ "lungime_m": 23.0,
+ "elemente": [
+  {
+   "id": "e1",
+   "nume": "alee de acces",
+   "tip": "alee",
+   "x": 1.0,
+   "y": 1.0,
+   "latime_m": 10.0,
+   "lungime_m": 1.5,
+   "zona_libera_m": 0.0,
+   "obligatoriu": false
+  },
+  {
+   "id": "e2",
+   "nume": "strat înălțat 1",
+   "tip": "strat",
+   "x": 1.6,
+   "y": 3.1,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e3",
+   "nume": "strat înălțat 2",
+   "tip": "strat",
+   "x": 5.8,
+   "y": 3.1,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e4",
+   "nume": "strat înălțat 3",
+   "tip": "strat",
+   "x": 1.6,
+   "y": 5.5,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e5",
+   "nume": "strat înălțat 4",
+   "tip": "strat",
+   "x": 5.8,
+   "y": 5.5,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e6",
+   "nume": "strat înălțat 5",
+   "tip": "strat",
+   "x": 1.6,
+   "y": 7.9,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e7",
+   "nume": "strat înălțat 6",
+   "tip": "strat",
+   "x": 5.8,
+   "y": 7.9,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e8",
+   "nume": "strat înălțat 7",
+   "tip": "strat",
+   "x": 1.6,
+   "y": 10.3,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e9",
+   "nume": "strat înălțat 8",
+   "tip": "strat",
+   "x": 5.8,
+   "y": 10.3,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e10",
+   "nume": "strat înălțat 9",
+   "tip": "strat",
+   "x": 1.6,
+   "y": 12.7,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e11",
+   "nume": "strat înălțat 10",
+   "tip": "strat",
+   "x": 5.8,
+   "y": 12.7,
+   "latime_m": 3.0,
+   "lungime_m": 1.2,
+   "zona_libera_m": 0.6,
+   "obligatoriu": true
+  },
+  {
+   "id": "e12",
+   "nume": "magazie de unelte",
+   "tip": "magazie",
+   "x": 1.5,
+   "y": 15.0,
+   "latime_m": 2.5,
+   "lungime_m": 2.0,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e13",
+   "nume": "zonă de compost",
+   "tip": "compost",
+   "x": 5.0,
+   "y": 15.0,
+   "latime_m": 2.0,
+   "lungime_m": 1.5,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e14",
+   "nume": "rezervor de apă",
+   "tip": "apa",
+   "x": 9.7,
+   "y": 2.8,
+   "latime_m": 1.0,
+   "lungime_m": 1.0,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false
+  },
+  {
+   "id": "e15",
+   "nume": "bancă 1",
+   "tip": "banca",
+   "x": 8.0,
+   "y": 15.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e16",
+   "nume": "bancă 2",
+   "tip": "banca",
+   "x": 1.5,
+   "y": 18.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e17",
+   "nume": "bancă 3",
+   "tip": "banca",
+   "x": 4.3,
+   "y": 18.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e18",
+   "nume": "coș de gunoi 1",
+   "tip": "cos",
+   "x": 9.7,
+   "y": 5.2,
+   "latime_m": 0.6,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false
+  },
+  {
+   "id": "e19",
+   "nume": "coș de gunoi 2",
+   "tip": "cos",
+   "x": 9.7,
+   "y": 7.6,
+   "latime_m": 0.6,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false
+  }
+ ],
+ "omise": [],
+ "complet": true,
+ "ipoteze": [
+  "Lățimea terenului: 12 m (dată); lungimea rezultă din suprafață: 23 m.",
+  "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
+  "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
+  "Intrarea e pe latura de jos, cu o alee de 1,5 m."
+ ],
+ "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
+ "suprafata_ocupata_mp": 63.96,
+ "is_demo": true
+}
