@@ -32,7 +32,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 1; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440965",
@@ -50,7 +51,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 2; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440966",
@@ -68,7 +70,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 3; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440967",
@@ -86,7 +89,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 4; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440968",
@@ -104,7 +108,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 5; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440969",
@@ -122,7 +127,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 6; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440970",
@@ -140,7 +146,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 7; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440971",
@@ -158,7 +165,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 8; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440972",
@@ -176,7 +184,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 9; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440973",
@@ -194,7 +203,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 10; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440974",
@@ -212,7 +222,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 11; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440975",
@@ -230,7 +241,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 12; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440976",
@@ -248,7 +260,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 13; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440977",
@@ -266,7 +279,8 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 14; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  },
  {
   "id": "lista-2019-440978",
@@ -284,6 +298,7 @@
   "suprafata_mp": 276,
   "source": "lista_primarie",
   "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 15; locatie_aproximativa; pozitie_schematica",
-  "is_demo": false
+  "is_demo": false,
+  "status_verificare": "neconfirmat"
  }
 ]

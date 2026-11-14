@@ -79,8 +79,9 @@ def contract_rows(data: SeedData) -> dict[str, list[dict]]:
             "sloturi": sorted(sloturi.get(s["id"], []), key=_key), "owner_id": s["owner_id"],
             "is_demo": s.get("is_demo", True),  # list plots (Legea 15/2003) are real: is_demo=false
             "suprafata_mp": s.get("suprafata_mp"),  # free plots (kind teren_liber) only
-            # Not in the contract yet (ask P1): written as soon as the Space model has these fields.
+            "cartier": s.get("neighborhood"),  # nearest OSM district centre (DATA.md)
             "sursa": s.get("source"), "sursa_detalii": s.get("sursa_detalii"),
+            "status_verificare": s.get("status_verificare"),
         } for s in spaces],
         "Idea": [{
             "id": i["id"], "author_id": i["author_id"], "titlu": i["title"][:80], "descriere": i["text"],

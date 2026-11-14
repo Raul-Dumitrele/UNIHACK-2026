@@ -76,5 +76,51 @@ def build_terenuri_lista() -> list[dict]:
             "address": f"{street}, Timișoara", "neighborhood": nearest_neighborhood((place["lat"], place["lon"])),
             "capacity": 0, "amenities": [], "setting": "exterior", "owner_id": CITY_HALL_OWNER,
             "suprafata_mp": r["suprafata_mp"], "source": SOURCE, "sursa_detalii": details, "is_demo": False,
+            "status_verificare": "neconfirmat",  # may have been allotted since (Legea 15/2003)
+        })
+    return spaces
+
+
+# Free plots spotted on OpenStreetMap (list made by P2: web/src/mocks/data/terenuri_osm.json, copied here so
+# the seed stays inside backend/). Nothing about them is confirmed: owner, legal status and availability are
+# unknown, so they are demo data (is_demo=true, "exemplu" badge) with status_verificare=neconfirmat.
+OSM_FILE = DATA / "terenuri_osm.json"
+OSM_SOURCE = "osm"
+TIMISOARA_BOX = (45.6, 45.9, 21.0, 21.45)  # lat min, lat max, lng min, lng max (same as POST /spaces)
+
+
+def _pick(row: dict, *names: str):
+    for n in names:
+        if row.get(n) not in (None, ""):
+            return row[n]
+    return None
+
+
+def build_terenuri_osm(path: Path | None = None) -> list[dict]:
+    """[] when the file is missing; rows without coordinates, area or outside Timișoara are skipped."""
+    path = path or OSM_FILE
+    if not path.exists():
+        return []
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    rows = doc if isinstance(doc, list) else doc.get("terenuri", [])
+    lat_min, lat_max, lng_min, lng_max = TIMISOARA_BOX
+    spaces = []
+    for n, row in enumerate(rows, 1):
+        lat, lon = _pick(row, "lat"), _pick(row, "lng", "lon")
+        area = _pick(row, "suprafata_mp", "area_m2")
+        if lat is None or lon is None or not area or not (lat_min <= lat <= lat_max and lng_min <= lon <= lng_max):
+            continue
+        raw_id = str(_pick(row, "id") or n)
+        details = _pick(row, "sursa_detalii") or ("teren identificat pe OpenStreetMap; proprietar, regim juridic "
+                                                  "și disponibilitate necunoscute")
+        spaces.append({
+            "id": raw_id if raw_id.startswith("teren-osm-") else f"teren-osm-{raw_id.removeprefix('osm-')}",
+            "name": _pick(row, "nume", "name") or f"Teren liber (OpenStreetMap) {n}",
+            "kind": "teren_liber", "kind_label": "teren liber",
+            "lat": round(float(lat), 7), "lon": round(float(lon), 7), "address": _pick(row, "adresa", "address"),
+            "neighborhood": _pick(row, "cartier") or nearest_neighborhood((float(lat), float(lon))),
+            "capacity": 0, "amenities": [], "setting": "exterior", "owner_id": CITY_HALL_OWNER,
+            "suprafata_mp": round(float(area)), "source": OSM_SOURCE, "sursa_detalii": details,
+            "status_verificare": "neconfirmat", "is_demo": True,
         })
     return spaces

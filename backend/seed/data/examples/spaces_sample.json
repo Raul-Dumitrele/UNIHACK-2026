@@ -32,8 +32,10 @@
   "owner_id": "demo-user-7",
   "is_demo": true,
   "suprafata_mp": null,
+  "cartier": "Lipovei",
   "sursa": "osm",
-  "sursa_detalii": null
+  "sursa_detalii": null,
+  "status_verificare": null
  },
  {
   "id": "osm-node-11681144987",
@@ -65,8 +67,10 @@
   "owner_id": "demo-user-8",
   "is_demo": true,
   "suprafata_mp": null,
+  "cartier": "Iosefin",
   "sursa": "osm",
-  "sursa_detalii": null
+  "sursa_detalii": null,
+  "status_verificare": null
  },
  {
   "id": "osm-node-12329181697",
@@ -102,8 +106,10 @@
   "owner_id": "demo-user-6",
   "is_demo": true,
   "suprafata_mp": null,
+  "cartier": "Planetelor",
   "sursa": "osm",
-  "sursa_detalii": null
+  "sursa_detalii": null,
+  "status_verificare": null
  },
  {
   "id": "osm-node-13252338910",
@@ -135,8 +141,10 @@
   "owner_id": "demo-user-6",
   "is_demo": true,
   "suprafata_mp": null,
+  "cartier": "Dacia",
   "sursa": "osm",
-  "sursa_detalii": null
+  "sursa_detalii": null,
+  "status_verificare": null
  },
  {
   "id": "osm-node-13726011332",
@@ -171,7 +179,9 @@
   "owner_id": "demo-user-8",
   "is_demo": true,
   "suprafata_mp": null,
+  "cartier": "Blașcovici",
   "sursa": "osm",
-  "sursa_detalii": null
+  "sursa_detalii": null,
+  "status_verificare": null
  }
 ]
