@@ -131,7 +131,11 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        /**
+         * List Bookings
+         * @description Requests I made (author of the idea) plus requests for spaces I own.
+         */
+        get: operations["list_bookings_bookings_get"];
         put?: never;
         /** Create Booking */
         post: operations["create_booking_bookings_post"];
@@ -599,6 +603,11 @@ export interface components {
             /** Verificator Id */
             verificator_id?: string | null;
             /**
+             * Is Demo
+             * @default false
+             */
+            is_demo: boolean;
+            /**
              * Evenimente
              * @default []
              */
@@ -654,6 +663,11 @@ export interface components {
             updated_at: string;
             /** Verificator Id */
             verificator_id?: string | null;
+            /**
+             * Is Demo
+             * @default false
+             */
+            is_demo: boolean;
         };
         /** Referinta */
         Referinta: {
@@ -1135,6 +1149,65 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["OwnerMessageOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_bookings_bookings_get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookingOut"][];
                 };
             };
             /** @description X-User-Id lipsă sau necunoscut */
