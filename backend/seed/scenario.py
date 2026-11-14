@@ -68,6 +68,7 @@ def apply_states(ideas: list[dict], slots: list[dict], interests: list[dict], bo
     for idea in ideas:
         count = sum(1 for i in interests if i["idea_id"] == idea["id"])
         idea["interest_count"] = count
+        idea["prag"] = threshold
         if any(b["idea_id"] == idea["id"] for b in approved):
             idea["status"] = "rezervata"
         else:

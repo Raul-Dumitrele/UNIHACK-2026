@@ -151,10 +151,10 @@ def test_format_local():
 
 
 def test_demo_impact_is_not_empty(data):
-    from backend.impact import compute_impact
+    from backend.impact import impact_report
     from backend.seed.scenario import approved_for_impact
 
-    r = compute_impact(approved_for_impact(data.bookings, data.spaces, data.slots, data.interests, data.users))
+    r = impact_report(approved_for_impact(data.bookings, data.spaces, data.slots, data.interests, data.users))
     assert r.rezervari_aprobate == 5 and r.idei_realizate == 5
     assert len(r.pe_saptamani) >= 3 and r.km_economisiti > 0
 
@@ -189,29 +189,22 @@ class _Base(SQLModel, registry=_reg):
 class User(_Base, table=True):
     __tablename__ = "seedtest_user"
     id: str = Field(primary_key=True)
-    name: str
-    is_demo: bool = False
+    nume: str
+    rol: str
 
 
 class Space(_Base, table=True):
     __tablename__ = "seedtest_space"
     id: str = Field(primary_key=True)
-    name: str
-    capacity: int
-    amenities: list[str] = Field(sa_column=Column(JSON))
+    nume: str
+    capacitate: int
+    dotari: list[str] = Field(sa_column=Column(JSON))
+    sloturi: list[dict] = Field(sa_column=Column(JSON))
     owner_id: str
     is_demo: bool = False
 
 
-class Slot(_Base, table=True):
-    __tablename__ = "seedtest_slot"
-    id: str = Field(primary_key=True)
-    space_id: str
-    starts_at: datetime
-    ends_at: datetime
-
-
-FAKE_MODELS = SimpleNamespace(User=User, Space=Space, Slot=Slot)  # no Idea: must be skipped
+FAKE_MODELS = SimpleNamespace(User=User, Space=Space)  # no Idea: must be skipped
 
 
 def _count(session, model):
@@ -219,28 +212,90 @@ def _count(session, model):
 
 
 def test_seed_is_idempotent(data, capsys):
+    from backend.seed.contract import contract_rows
+
+    rows = contract_rows(data)
     engine = create_engine("sqlite://")
     _Base.metadata.create_all(engine)
     with Session(engine) as session:
         first = seed(session, data, FAKE_MODELS)
-        counts = [_count(session, m) for m in (User, Space, Slot)]
+        counts = [_count(session, m) for m in (User, Space)]
         second = seed(session, data, FAKE_MODELS)
-        assert [_count(session, m) for m in (User, Space, Slot)] == counts
-    assert first == second == {"User": len(data.users), "Space": len(data.spaces), "Slot": len(data.slots)}
+        assert [_count(session, m) for m in (User, Space)] == counts
+    assert first == second == {"User": len(rows["User"]), "Space": len(rows["Space"])}
     assert "model Idea not defined yet" in capsys.readouterr().err
 
 
 def test_seed_upsert_updates_existing_rows(data):
+    from backend.seed.contract import contract_rows
+
+    space = contract_rows(data)["Space"][0]
     engine = create_engine("sqlite://")
     _Base.metadata.create_all(engine)
     with Session(engine) as session:
         seed(session, data, FAKE_MODELS)
-        session.get(Space, data.spaces[0]["id"]).name = "modificat"
+        session.get(Space, space["id"]).nume = "modificat"
         session.commit()
         seed(session, data, FAKE_MODELS)
         session.expire_all()
-        assert session.get(Space, data.spaces[0]["id"]).name == data.spaces[0]["name"]
-        assert isinstance(session.get(Slot, data.slots[0]["id"]).starts_at, datetime)
+        assert session.get(Space, space["id"]).nume == space["nume"]
+        assert session.get(Space, space["id"]).sloturi == space["sloturi"]
+
+
+# --- contract shapes (docs/CONTRACT.md; schemas and models from backend/app, owned by P1) ---
+
+def test_contract_rows_validate_against_p1_schemas(data):
+    from backend.app.schemas import BookingOut, IdeaOut, NotificationOut, SpaceOut, UserOut
+    from backend.seed.contract import contract_rows
+
+    rows = contract_rows(data)
+    for name, schema in [("User", UserOut), ("Space", SpaceOut), ("Booking", BookingOut),
+                         ("Notification", NotificationOut)]:
+        for row in rows[name]:
+            schema.model_validate(row)
+    for row in rows["Idea"]:
+        IdeaOut.model_validate({**row, "created_at": datetime.fromisoformat(row["created_at"])})
+
+
+def test_contract_rows_are_consistent(data):
+    from backend.seed.contract import contract_rows
+
+    rows = contract_rows(data)
+    users = {u["id"]: u for u in rows["User"]}
+    spaces = {s["id"]: s for s in rows["Space"]}
+    ideas = {i["id"]: i for i in rows["Idea"]}
+    assert {u["rol"] for u in users.values()} == {"cetatean", "proprietar"}  # contract roles only
+    assert all(s["owner_id"] in users and users[s["owner_id"]]["rol"] == "proprietar" for s in spaces.values())
+    assert all(i["author_id"] in users and len(i["titlu"]) <= 80 for i in ideas.values())
+    assert all(it["user_id"] in users and it["idea_id"] in ideas for it in rows["Interest"])
+    assert all(n["user_id"] in users and n["idea_id"] in ideas for n in rows["Notification"])
+    assert "demo-space-teren-1" not in spaces  # the proposal extension is not in the contract yet
+    for b in rows["Booking"]:
+        assert b["space_id"] in spaces and b["stare"] in {"cerut", "aprobat", "refuzat"}
+        if b["stare"] == "aprobat":  # rule 4: an approved slot leaves the space's availability
+            assert b["slot"] not in spaces[b["space_id"]]["sloturi"]
+    for i in ideas.values():
+        assert i["interesati"] == sum(1 for it in rows["Interest"] if it["idea_id"] == i["id"])
+        assert i["stare"] in {"deschisa", "prag_atins", "rezervata"}
+
+
+def test_seed_into_p1_models_and_impact(data):
+    from backend.app import models
+    from backend.impact import compute_impact
+    from backend.seed.contract import contract_rows
+
+    rows = contract_rows(data)
+    engine = create_engine("sqlite://")
+    SQLModel.metadata.create_all(engine)
+    with Session(engine) as session:
+        seed(session, data)
+        seed(session, data)
+        for name in ("User", "Space", "Idea", "Interest", "Booking", "Notification"):
+            assert _count(session, getattr(models, name)) == len(rows[name]), name
+        impact = compute_impact(session)
+    approved = [b for b in rows["Booking"] if b["stare"] == "aprobat"]
+    assert impact.proiecte_active == len({b["idea_id"] for b in approved}) == 5
+    assert impact.ore_recuperate > 0 and impact.oameni_conectati > 0 and impact.km_economisiti > 0
 
 
 # --- "Propunere către Primărie" demo (proiect_demo) ---

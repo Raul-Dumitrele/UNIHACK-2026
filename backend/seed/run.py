@@ -1,9 +1,9 @@
 """Offline, idempotent seeding: upsert by stable id. Never calls the network.
     python -m backend.seed.run
 
-Binding to the database: each record list maps to a SQLModel class in backend.app.models by name.
-Only fields that exist on the model are written; a missing model is skipped with a notice
-(models are owned by P1 and still being defined).
+Writes the contract tables (docs/CONTRACT.md, backend/app/models.py) from backend.seed.contract.
+Only fields that exist on the model are written; a model that does not exist yet (the city-hall proposal
+extension: Proiect, ProiectEveniment) is skipped with a notice.
 """
 import sys
 from datetime import date
@@ -11,14 +11,10 @@ from datetime import date
 from sqlmodel import Session, SQLModel
 
 from backend.seed.build import SeedData, build_seed
+from backend.seed.contract import contract_rows
 
-# Insert order respects foreign keys: users -> spaces -> slots -> ideas -> interests/bookings -> proiecte
-# -> proiect events -> notifications (which may point at a proiect).
-TABLES = [
-    ("users", "User"), ("spaces", "Space"), ("slots", "Slot"), ("ideas", "Idea"),
-    ("interests", "Interest"), ("bookings", "Booking"), ("proiecte", "Proiect"),
-    ("proiect_evenimente", "ProiectEveniment"), ("notifications", "Notification"),
-]
+# Insert order respects foreign keys: users -> spaces -> ideas -> interests/bookings -> proiecte -> notifications.
+TABLES = ["User", "Space", "Idea", "Interest", "Booking", "Proiect", "ProiectEveniment", "Notification"]
 
 
 def upsert(session: Session, model: type[SQLModel], rows: list[dict]) -> int:
@@ -34,14 +30,15 @@ def seed(session: Session, data: SeedData | None = None, models: object | None =
     if models is None:
         from backend.app import models as app_models
         models = app_models
-    data = data or build_seed()
+    rows = contract_rows(data or build_seed())
     written: dict[str, int] = {}
-    for attr, name in TABLES:
+    for name in TABLES:
         model = getattr(models, name, None)
         if model is None:
-            print(f"seed: model {name} not defined yet, skipping {attr}", file=sys.stderr)
+            print(f"seed: model {name} not defined yet, skipping", file=sys.stderr)
             continue
-        written[name] = upsert(session, model, getattr(data, attr))
+        written[name] = upsert(session, model, rows[name])
+        session.flush()  # parents before children (foreign keys)
     session.commit()
     return written
 

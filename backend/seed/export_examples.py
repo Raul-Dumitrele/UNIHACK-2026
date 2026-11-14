@@ -1,43 +1,48 @@
-"""Write example payloads from the demo seed, so web/mobile can build screens before the API exists.
+"""Write example payloads from the demo seed, so web/mobile can build screens with real-looking data.
 
     python -m backend.seed.export_examples
-Output: backend/seed/data/examples/*.json (shapes are P3 proposals; docs/CONTRACT.md stays the authority).
-The slot date is fixed so the files do not change on every run.
+Output: backend/seed/data/examples/*.json in the contract shapes (docs/CONTRACT.md): users, spaces_sample,
+ideas, bookings, notifications, impact (computed by backend.impact.compute_impact on a throwaway database).
+The city-hall proposal extension (not in the contract yet) is exported as P3 proposals: teren_liber,
+proiecte, proiect_evenimente. The slot date is fixed so the files do not change on every run.
 """
 import json
 import sys
 from datetime import date
 from pathlib import Path
 
-from backend.ai.matching import match_spaces
-from backend.impact import compute_impact
 from backend.seed.build import build_seed
-from backend.seed.scenario import approved_for_impact
+from backend.seed.contract import contract_rows
 
 OUT = Path(__file__).resolve().parent / "data" / "examples"
 EXAMPLE_START = date(2026, 11, 16)
 
 
+def _impact(data) -> dict:
+    from sqlmodel import Session, SQLModel, create_engine
+
+    from backend.app import models  # noqa: F401  (registers the contract tables)
+    from backend.impact import compute_impact
+    from backend.seed.run import seed
+
+    engine = create_engine("sqlite://")
+    SQLModel.metadata.create_all(engine)
+    with Session(engine) as session:
+        seed(session, data)
+        return compute_impact(session).model_dump(mode="json")
+
+
 def build_examples(start: date = EXAMPLE_START) -> dict[str, object]:
     data = build_seed(start)
-    hood = {u["id"]: u["neighborhood"] for u in data.users}
-    matches = {
-        idea["id"]: [m.model_dump(mode="json") for m in
-                     match_spaces(idea["dossier"], data.spaces, hood[idea["author_id"]], limit=5)]
-        for idea in data.ideas
-    }
-    impact = compute_impact(approved_for_impact(data.bookings, data.spaces, data.slots, data.interests, data.users),
-                            data.proiecte)
+    rows = contract_rows(data)
     return {
-        "users": data.users,
-        "ideas": data.ideas,
-        "matches": matches,
-        "spaces_sample": data.spaces[:5],
-        "slots_sample": [s for s in data.slots if s["space_id"] == data.spaces[0]["id"]],
-        "bookings": data.bookings,
-        "notifications": data.notifications,
-        "impact": impact.model_dump(mode="json"),
-        # "Propunere către Primărie": the free plot, one project (dossier, references, cost) and its history.
+        "users": rows["User"],
+        "spaces_sample": rows["Space"][:5],
+        "ideas": rows["Idea"],
+        "bookings": rows["Booking"],
+        "notifications": rows["Notification"],
+        "impact": _impact(data),
+        # "Propunere către Primărie": P3 proposals, not in docs/CONTRACT.md yet.
         "teren_liber": [s for s in data.spaces if s["kind"] == "teren_liber"],
         "proiecte": data.proiecte,
         "proiect_evenimente": data.proiect_evenimente,
@@ -46,7 +51,11 @@ def build_examples(start: date = EXAMPLE_START) -> dict[str, object]:
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, payload in build_examples().items():
+    payloads = build_examples()
+    for stale in OUT.glob("*.json"):
+        if stale.stem not in payloads:
+            stale.unlink()  # shapes that are no longer part of the examples (e.g. pre-contract matches)
+    for name, payload in payloads.items():
         (OUT / f"{name}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"wrote examples to {OUT}")
     return 0
