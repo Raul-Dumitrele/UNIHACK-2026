@@ -65,3 +65,18 @@ def test_km_from_participant_neighborhoods():
     mixed = compute_impact([ApprovedBooking("i1", "s1", start, end, 2, **FABRIC_SPACE,
                                             participant_neighborhoods=("Cetate", "Nicăieri", "Fabric"))])
     assert mixed.km_economisiti == KM_PER_PARTICIPANT
+
+
+def test_proposals_default_to_zero():
+    r = compute_impact([])
+    assert (r.proiecte_trimise, r.proiecte_cu_acord) == (0, 0)
+
+
+def test_proposals_sent_and_agreed():
+    class Row:
+        stare = "acord_de_principiu"
+
+    states = ["draft", "trimis", "in_verificare", "clarificari", "respins", {"stare": "acord_de_principiu"}, Row()]
+    r = compute_impact([], states)
+    assert r.proiecte_trimise == 6  # every state except draft
+    assert r.proiecte_cu_acord == 2

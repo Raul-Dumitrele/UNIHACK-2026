@@ -6,6 +6,7 @@ from collections import Counter
 from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Any
 
 from pydantic import BaseModel
 
@@ -49,6 +50,19 @@ class ImpactReport(BaseModel):
     pe_cartiere: dict[str, int] = {}  # approved bookings per district of the space
     pe_tip_spatiu: dict[str, int] = {}  # approved bookings per space type (Romanian label)
     pe_saptamani: list[WeekStats] = []
+    proiecte_trimise: int = 0  # proposals past draft (sent to the city hall, in any later state)
+    proiecte_cu_acord: int = 0  # proposals with a (simulated) agreement in principle
+
+
+PROIECT_DRAFT = "draft"
+PROIECT_ACORD = "acord_de_principiu"
+
+
+def _stare(p: Any) -> str:
+    """A project row, dict or plain state string -> its state."""
+    if isinstance(p, str):
+        return p
+    return str(p.get("stare") if isinstance(p, dict) else getattr(p, "stare", ""))
 
 
 def _hours(b: ApprovedBooking) -> float:
@@ -78,8 +92,10 @@ def _by_week(bookings: list[ApprovedBooking]) -> list[WeekStats]:
     ]
 
 
-def compute_impact(bookings: Iterable[ApprovedBooking]) -> ImpactReport:
+def compute_impact(bookings: Iterable[ApprovedBooking], proiecte: Iterable[Any] = ()) -> ImpactReport:
+    """`proiecte`: Proiect rows/dicts (or their `stare` strings), in any state; optional."""
     bookings = list(bookings)
+    stari = [_stare(p) for p in proiecte]
     located = [b for b in bookings if b.space_lat is not None and b.space_lon is not None]
     return ImpactReport(
         idei_realizate=len({b.idea_id for b in bookings}),
@@ -97,4 +113,6 @@ def compute_impact(bookings: Iterable[ApprovedBooking]) -> ImpactReport:
         pe_tip_spatiu=dict(sorted(Counter(KIND_LABELS.get(b.space_kind, b.space_kind)
                                           for b in bookings if b.space_kind).items())),
         pe_saptamani=_by_week(bookings),
+        proiecte_trimise=sum(1 for s in stari if s and s != PROIECT_DRAFT),
+        proiecte_cu_acord=sum(1 for s in stari if s == PROIECT_ACORD),
     )
