@@ -302,8 +302,8 @@ def test_seed_into_p1_models_and_impact(data):
         for name in ("User", "Space", "Idea", "Interest", "Booking", "Notification", "Proiect", "ProiectEveniment"):
             assert _count(session, getattr(models, name)) == len(rows[name]), name
         impact = compute_impact(session)
-    approved = [b for b in rows["Booking"] if b["stare"] == "aprobat"]
-    assert impact.proiecte_active == len({b["idea_id"] for b in approved}) == 5
+    active = [i for i in rows["Idea"] if i["stare"] in ("prag_atins", "rezervata")]
+    assert impact.proiecte_active == len(active) == 7  # definition shared with P1: past the threshold
     assert impact.ore_recuperate > 0 and impact.oameni_conectati > 0 and impact.km_economisiti > 0
     assert (impact.proiecte_trimise, impact.proiecte_cu_acord) == (1, 0)  # demo project is in verification
 
