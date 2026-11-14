@@ -133,8 +133,9 @@ class Referinta(BaseModel):
     @field_validator("sursa_tip")
     @classmethod
     def _source(cls, v: str) -> str:
-        if v not in SOURCE_TYPES:
-            raise ValueError(f"sursa_tip necunoscut: {v!r}")
+        # Free text in the contract; the hand-collected base is held to SOURCE_TYPES by read_file().
+        if not (v or "").strip():
+            raise ValueError("sursa_tip lipsește")
         return v
 
     @field_serializer("suprafata_mp", "cost_total_lei")
@@ -163,7 +164,9 @@ def read_file(path: Path) -> tuple[list[Referinta], list[tuple[str, str]]]:
             reason = "; ".join(f"{'.'.join(map(str, e['loc']))}: {e['msg']}" for e in errors) or str(exc)
             rejected.append((rid, reason))
             continue
-        if ref.tip_amenajare != expected:
+        if ref.sursa_tip not in SOURCE_TYPES:
+            rejected.append((rid, f"sursa_tip: sursa_tip necunoscut: {ref.sursa_tip!r}"))
+        elif ref.tip_amenajare != expected:
             rejected.append((rid, f"tip_amenajare {ref.tip_amenajare!r} diferă de fișier ({expected!r})"))
         elif ref.id in seen:
             rejected.append((rid, "id duplicat"))

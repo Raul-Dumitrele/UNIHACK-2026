@@ -42,15 +42,19 @@ def _hhmm(h: int, m: int = 0) -> str:
     return f"{min(max(h, 0), 23):02d}:{min(max(m, 0), 59):02d}"
 
 
+DEFAULT_DAYS = ("sambata", "duminica")  # no day in the text: propose the weekend (P1 matches on program)
+
+
 def parse_program(text: str, duration_hours: float) -> list[Slot]:
-    """Weekly slots stated in the text ("sâmbăta 10-14", "joi seara", "în weekend dimineața").
-    No day in the text -> [] (nothing is invented)."""
+    """Weekly slots from the text ("sâmbăta 10-14", "joi seara", "în weekend dimineața").
+    No day in the text -> a default proposal on the weekend, at the stated time (else 10:00) and
+    duration, so matching always has something to overlap; the author can change it later."""
     norm = normalize(text or "")
     days = [d for d, pattern in DAYS if re.search(pattern, norm)]
     if re.search(r"\bweekend", norm):
-        days += [d for d in ("sambata", "duminica") if d not in days]
+        days += [d for d in DEFAULT_DAYS if d not in days]
     if not days:
-        return []
+        days = list(DEFAULT_DAYS)
     start = end = None
     if m := _RANGE.search(norm):
         h1, m1, h2, m2 = int(m[1]), int(m[2] or 0), int(m[3]), int(m[4] or 0)
