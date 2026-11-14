@@ -32,6 +32,19 @@ REJECTED = [
     ("Cos de gunoi din plastic 35 litri", "34928480-6", 639),  # indoor bin, no quantity
     ("LEAGAN PENTRU COPII 2 buc", "44000000-0", 6723),  # CPV outside playground equipment
     ("Reparatii foisor 1 buc", "45000000-7", 2000),
+    # Found by reading every row of the 2023-2026 run by hand:
+    ("FAGURIA GARDLOX MANUSILVER SPRAY ORAL 30ML ANTIBIOTICE SA", "33690000-3", 518),  # ml = millilitres
+    ("GAZON RULOU ROYAL SECETA LA  ROLA DE 1 MP", "03451000-6", 17850),  # roll size, not quantity
+    ("Reconditionare 70 buc banca rustica", "39113600-3", 22050),
+    ("Banca INALTIME 77 TEAVA DE 48X2 LUNGIME 160 RIGLA DE LEMN 8 BUCATI", "39113600-3", 18000),
+    ("Tobogan drept H90 - piesa de schimb pentru echipament de joaca (6 buc)", "37535200-9", 6780),
+    ("FOISOR PAZA TIP CONTAINER – 2 BUC", "44211000-2", 38500),
+    ("Covor cauciuc cu insertie 3mm - rola 12 mp", "19510000-4", 1200),
+    ("DOCUMENTTIE TEHNICA IMPREJMUIRE PINA LA 100 ML", "71320000-7", 10000),
+    ("REABILITARE IMPREJMUIRE  SCOALA TATARANI JUDETUL DAMBOVITA - 40 ML", "45340000-2", 55014),
+    ("Lucrari de dezafectare imprejmuire Giulesti 210ml", "45340000-2", 56000),
+    ("Lucrari de executie soclu gard sediu Anina - c.c.a 70ML", "45340000-2", 68423),
+    ("SUPORT BICICLETA 60X38X25 CM BUC 5,00 183,00 768,91 146,09 20 3001192 CAPAC WC ATLANT", "39000000-2", 1598),
 ]
 
 
