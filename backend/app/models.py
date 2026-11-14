@@ -39,6 +39,8 @@ class Space(SQLModel, table=True):
     cartier: str | None = None
     sursa: str | None = None
     sursa_detalii: str | None = None
+    status_verificare: str | None = None
+    descriere: str | None = None
 
 
 class Idea(SQLModel, table=True):

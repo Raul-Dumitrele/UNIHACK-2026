@@ -14,9 +14,11 @@ Dotare = Literal[
 IdeaStatus = Literal["deschisa", "prag_atins", "rezervata"]
 BookingStatus = Literal["cerut", "aprobat", "refuzat"]
 UserRole = Literal["cetatean", "proprietar", "primarie", "verificator"]
-TipAmenajare = Literal[
+# Suggested values for tip_amenajare (the field itself is free text: "foisor", "parc acvatic"...).
+TIP_AMENAJARE_SUGESTII = (
     "skatepark", "loc_de_joaca", "parc_caini", "pista_biciclete", "gradina_comunitara", "teren_sport",
-]
+)
+TipAmenajare = Annotated[str, Field(min_length=2, max_length=80, description="text liber; sugestii: " + ", ".join(TIP_AMENAJARE_SUGESTII))]
 ProiectStare = Literal["draft", "trimis", "in_verificare", "clarificari", "acord_de_principiu", "respins"]
 DISCLAIMER = (
     "Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; "
@@ -96,6 +98,8 @@ class SpaceOut(ORM):
     cartier: str | None = None
     sursa: str | None = None
     sursa_detalii: str | None = None
+    status_verificare: str | None = None
+    descriere: str | None = None
 
 
 class IdeaCreate(BaseModel):
@@ -291,3 +295,12 @@ PlanOut = create_model(
     **{name: (f.annotation, f) for name, f in Scene.model_fields.items()},
     suprafata_ocupata_mp=(float, ...),
 )
+
+
+class TerenCreate(BaseModel):
+    """POST /spaces: a free plot marked on the map by a user."""
+    nume: str = Field(min_length=3, max_length=120)
+    lat: float = Field(ge=45.6, le=45.9, description="Timișoara și împrejurimi")
+    lng: float = Field(ge=21.0, le=21.45, description="Timișoara și împrejurimi")
+    suprafata_mp: int = Field(ge=10, le=1_000_000)
+    descriere: str | None = Field(default=None, max_length=1000)

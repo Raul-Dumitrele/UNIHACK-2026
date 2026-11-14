@@ -83,7 +83,7 @@ def _build_proiect(session: Session, user: User, idea: Idea, space: Space, tip: 
     return proiect
 
 
-@router.post("/proiecte", response_model=ProiectOut, status_code=201, responses=ERRORS)
+@router.post("/proiecte", response_model=ProiectDetaliuOut, status_code=201, responses=ERRORS)
 def create_proiect_direct(body: ProiectDirectCreate, user: User = Depends(current_user), session: Session = Depends(get_session)):
     """A project straight on a free plot: the description becomes a (hidden) idea owned by the author."""
     space = session.get(Space, body.space_id)
@@ -98,7 +98,8 @@ def create_proiect_direct(body: ProiectDirectCreate, user: User = Depends(curren
     )
     session.add(idea)
     session.flush()
-    return _build_proiect(session, user, idea, space, body.tip_amenajare, body.suprafata_mp)
+    p = _build_proiect(session, user, idea, space, body.tip_amenajare, body.suprafata_mp)
+    return _detaliu(session, p)
 
 
 @router.get("/proiecte", response_model=list[ProiectOut], responses=ERRORS)
@@ -118,6 +119,10 @@ def get_proiect(proiect_id: str, user: User = Depends(current_user), session: Se
     p = get_proiect_or_404(session, proiect_id)
     if not _can_see(user, p):
         raise HTTPException(403, "Nu ai acces la acest proiect.")
+    return _detaliu(session, p)
+
+
+def _detaliu(session: Session, p: Proiect) -> ProiectDetaliuOut:
     ev = session.exec(
         select(ProiectEveniment).where(ProiectEveniment.proiect_id == p.id).order_by(ProiectEveniment.created_at)
     ).all()

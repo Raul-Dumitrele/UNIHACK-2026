@@ -65,7 +65,48 @@ def test_post_proiecte_errors(client, plots):
     assert client.post("/proiecte", json={"space_id": "t-mare", "tip_amenajare": "skatepark", "descriere": "x y z"}).status_code == 401
     assert _direct(client, plots["other"], space_id="nu-exista").status_code == 404
     assert _direct(client, plots["other"], descriere="").status_code == 422
-    assert _direct(client, plots["other"], tip_amenajare="piscina").status_code == 422
+    assert _direct(client, plots["other"], tip_amenajare="").status_code == 422
+
+
+def test_tip_amenajare_is_free_text(client, plots):
+    r = _direct(client, plots["other"], tip_amenajare="foișor")
+    assert r.status_code == 201 and r.json()["tip_amenajare"] == "foișor"
+    assert client.get("/terenuri/potrivite", params={"tip_amenajare": "parc acvatic"}).status_code == 200
+
+
+def test_post_proiecte_returns_detail_with_first_event(client, plots):
+    p = _direct(client, plots["other"]).json()
+    assert [e["stare_noua"] for e in p["evenimente"]] == ["draft"]
+
+
+def test_mark_plot_on_map(client, plots):
+    body = {"nume": "Teren viran lângă școală", "lat": 45.75, "lng": 21.23, "suprafata_mp": 850, "descriere": "neîngrijit"}
+    r = client.post("/spaces", json=body, headers=h(plots["other"]))
+    assert r.status_code == 201
+    s = r.json()
+    assert s["tip"] == "teren_liber" and s["is_demo"] is False and s["owner_id"] == plots["other"]
+    assert s["sursa"] == "marcat_de_utilizator" and s["status_verificare"] == "neverificat" and s["descriere"] == "neîngrijit"
+    assert s["id"] in {x["id"] for x in client.get("/spaces", params={"tip": "teren_liber"}).json()}
+    assert client.post("/proiecte", json={"space_id": s["id"], "tip_amenajare": "loc_de_joaca", "descriere": "Loc de joacă"},
+                       headers=h(plots["other"])).status_code == 201
+
+
+def test_mark_plot_errors(client, plots):
+    ok = {"nume": "Teren", "lat": 45.75, "lng": 21.23, "suprafata_mp": 500}
+    assert client.post("/spaces", json=ok).status_code == 401
+    for bad in ({**ok, "lat": 44.43}, {**ok, "suprafata_mp": 0}, {**ok, "nume": ""}):
+        assert client.post("/spaces", json=bad, headers=h(plots["other"])).status_code == 422
+
+
+def test_projects_on_a_plot_public_and_own_drafts(client, plots):
+    draft = _direct(client, plots["other"]).json()["id"]
+    sent = _direct(client, plots["author"]).json()["id"]
+    client.post(f"/proiecte/{sent}/trimite", json={}, headers=h(plots["author"]))
+    ids = lambda **kw: {p["id"] for p in client.get("/spaces/t-mare/proiecte", **kw).json()}  # noqa: E731
+    assert ids() == {sent}                                   # anonymous: only submitted
+    assert ids(headers=h(plots["other"])) == {sent, draft}   # plus own drafts
+    assert ids(headers=h(plots["author"])) == {sent}
+    assert client.get("/spaces/nu-exista/proiecte").status_code == 404
 
 
 def test_plan_materiale_and_documents(client, plots):

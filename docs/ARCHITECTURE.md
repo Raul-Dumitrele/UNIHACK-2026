@@ -6,7 +6,13 @@
 - **Module P3**: `backend/ai/` (Gemini + fallback), `backend/impact/`, `backend/seed/`. P1 le importă prin `backend/app/p3.py` (real dacă există, altfel `stubs/`).
 - **Date**: SQLite. Câmpurile complexe (dotari, sloturi, structurat) sunt JSON.
 
-## Flux pas cu pas
+## Flux principal (din 15.11)
+1. `GET /spaces?tip=teren_liber` / `GET /terenuri/potrivite` (find_plots) sau `POST /spaces` (teren marcat pe hartă).
+2. `POST /proiecte` -> structure_idea -> find_references -> estimate_cost -> generate_dosar -> proiect `draft`.
+3. `GET /proiecte/{id}/plan`, `/materiale`, `/documente/{plan.svg|plan.dxf|dosar.pdf|materiale.csv}` (P3, deterministe).
+4. trimite -> înaintează -> decizie (vezi mai jos); notificări la fiecare pas.
+
+## Flux vechi (în API, nu în UI)
 1. `POST /ideas` -> `ai.structure_idea` -> idee `deschisa` cu dosar structurat.
 2. `GET /ideas/{id}/matches` -> scor 0-100 și motiv per spațiu.
 3. `POST /ideas/{id}/interest` -> la prag, idee `prag_atins` + notificare autor.

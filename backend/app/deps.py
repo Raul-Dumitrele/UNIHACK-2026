@@ -17,6 +17,15 @@ def current_user(
     return user
 
 
+
+def optional_user(
+    x_user_id: str | None = Header(default=None),
+    session: Session = Depends(get_session),
+) -> User | None:
+    """Like current_user, but anonymous callers get None instead of 401."""
+    return session.get(User, x_user_id) if x_user_id else None
+
+
 ERRORS = {
     401: {"description": "X-User-Id lipsă sau necunoscut"},
     403: {"description": "Acțiune interzisă"},

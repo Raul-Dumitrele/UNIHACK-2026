@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     database_url: str = f"sqlite:///{ROOT / 'loccomun.db'}"
     gemini_api_key: str = ""
     gemini_model: str = "gemini-3.5-flash-lite"
-    cors_origins: str = "http://localhost:5173"
+    cors_origins: str = "http://localhost:5173,http://localhost:5174,http://localhost:8081"
 
     @field_validator("database_url")
     @classmethod

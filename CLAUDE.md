@@ -1,7 +1,7 @@
 # Loc Comun - UniHack 2026
 
 ## Obiectiv
-Idee -> dosar structurat de AI -> spații libere potrivite -> interes din comunitate -> aprobare rezervare de către proprietar -> tablou de impact.
+Teren liber în Timișoara -> proiect complet generat (dosar, cost, plan SVG/DXF, materiale, PDF) -> Primărie -> verificator -> acord de principiu (simulat). Rezervările de spații nu mai sunt în UI.
 
 ## Monorepo și zone (fiecare modifică doar zona sa)
 - P1 (Raul): CLAUDE.md, README.md, Makefile, .gitignore, .env.example, scripts/, .githooks/, docs/CONTRACT.md, docs/openapi.json, docs/ARCHITECTURE.md, backend/__init__.py, backend/pytest.ini, backend/app/, backend/requirements.txt, backend/tests/app/
@@ -20,7 +20,7 @@ Python 3.11+ (FastAPI + SQLModel, SQLite) | React + Vite + TS | Expo + TS | Gemi
 6. Proiectul vechi („Semnal”) e abandonat; codul lui e doar în tag-ul git `arhiva-semnal`
 
 ## Comenzi (din rădăcină)
-scripts/setup.ps1 | scripts/dev.ps1 | scripts/test.ps1 | scripts/smoke.ps1 | make openapi
+Windows: scripts/setup.ps1 | seed.ps1 | dev.ps1 | test.ps1 | smoke.ps1 · macOS/Linux: sh scripts/setup.sh | seed.sh | dev.sh | test.sh | smoke.sh · make openapi
 
 ## Cum lucrezi
 Plan înainte de cod. Referă fișiere precise. Răspunsuri scurte.

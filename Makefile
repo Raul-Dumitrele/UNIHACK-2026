@@ -1,18 +1,28 @@
-.PHONY: setup dev test smoke openapi
+.PHONY: setup dev test smoke openapi seed
 
+# Windows venv uses Scripts/, macOS/Linux use bin/.
+ifeq ($(OS),Windows_NT)
 PY := backend/.venv/Scripts/python
+SH := powershell -ExecutionPolicy Bypass -File scripts/$(1).ps1
+else
+PY := backend/.venv/bin/python
+SH := sh scripts/$(1).sh
+endif
 
 setup:
-	powershell -ExecutionPolicy Bypass -File scripts/setup.ps1
+	$(call SH,setup)
 
 dev:
 	$(PY) -m uvicorn backend.app.main:app --reload --port 8000
 
 test:
-	cd backend && .venv/Scripts/python -m pytest tests/app
+	$(call SH,test)
 
 smoke:
-	powershell -ExecutionPolicy Bypass -File scripts/smoke.ps1
+	$(call SH,smoke)
+
+seed:
+	$(PY) -m backend.seed.run
 
 openapi:
 	$(PY) scripts/export_openapi.py

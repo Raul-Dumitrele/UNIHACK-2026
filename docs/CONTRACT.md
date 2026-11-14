@@ -12,7 +12,8 @@ Orice schimbare se agreează în echipă; după schimbare: `make openapi` (sau `
 - Notificările sunt doar în aplicație (stare idee/rezervare), nu alerte despre oraș.
 
 ## Flux
-idee -> dosar structurat de AI -> spații potrivite -> interes din comunitate -> aprobare rezervare de către proprietar -> tablou de impact
+teren liber (hartă, căutare sau marcat de utilizator) -> proiect complet generat (dosar, cost din proiecte reale, plan SVG/DXF, materiale cu prețuri SEAP, dosar PDF) -> trimis la Primărie -> verificator -> acord de principiu (simulat) / clarificări / respins
+Fluxul vechi (idei cu prag de interes, potrivire cu spații existente, rezervări) rămâne în API, dar nu mai e folosit în UI.
 
 ## Vocabulare
 | Nume | Valori |
@@ -21,7 +22,7 @@ idee -> dosar structurat de AI -> spații potrivite -> interes din comunitate ->
 | categorie | sport, cultura, educatie, social, creativ, tehnologie, altele |
 | zgomot | scazut, mediu, ridicat |
 | dotari | scaune, mese, proiector, wifi, scena, oglinzi, vestiare, bucatarie, acces_rampa, curte, priza, tabla |
-| tip_amenajare | skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport |
+| tip_amenajare | **text liber** (2–80 caractere); sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport |
 
 `Slot` = `{zi, de_la: "HH:MM", pana_la: "HH:MM"}` (`de_la` < `pana_la`, aceeași zi).
 
@@ -37,7 +38,7 @@ idee -> dosar structurat de AI -> spații potrivite -> interes din comunitate ->
 | Entitate | Câmpuri |
 |---|---|
 | User | id, nume, rol (UserRole), cartier, lat, lng |
-| Space | id, nume, tip (text liber; include `teren_liber`), lat, lng, capacitate, dotari[], sloturi[Slot], owner_id, is_demo, suprafata_mp? (int), cartier? (text), sursa? (text, ex. `lista_primarie`), sursa_detalii? (text) |
+| Space | id, nume, tip (text liber; include `teren_liber`), lat, lng, capacitate, dotari[], sloturi[Slot], owner_id, is_demo, suprafata_mp? (int), cartier? (text), sursa? (text, ex. `lista_primarie`), sursa_detalii? (text), status_verificare? (text, ex. `neverificat`), descriere? (text) |
 | Idea | id, author_id, titlu, descriere, structurat (Structurat), prag (implicit 5), interesati, stare (IdeaStatus), is_demo, created_at |
 | Structurat | categorie, persoane, dotari[], program[Slot], zgomot, rezumat |
 | Interest | id, user_id, idea_id, created_at; unic pe (user_id, idea_id) |
@@ -62,6 +63,8 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 | GET | /health | - | `{status}` | |
 | GET | /users | - | User[] | pentru selectorul demo |
 | GET | /spaces | filtre: `tip` (ex. `teren_liber`), `categorie`, `dotari` (repetat), `capacitate_min` | Space[] | |
+| POST | /spaces | `{nume, lat, lng, suprafata_mp, descriere?}` | Space (201) | autentificat; teren liber marcat pe hartă; regula 14 |
+| GET | /spaces/{id}/proiecte | - | Proiect[] | public; proiectele trimise (≠ draft) pe teren + ciornele proprii (dacă e trimis `X-User-Id`) |
 | POST | /ideas | `{descriere, titlu?, prag?}` | Idea (201) | autentificat; vezi regula 1 |
 | GET | /ideas | - | Idea[] | |
 | GET | /ideas/{id} | - | Idea | 404 dacă nu există |
@@ -81,7 +84,7 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 | POST | /proiecte/{id}/inainteaza | `{verificator_id}` | Proiect | autentificat; primarie; regula 8 |
 | POST | /proiecte/{id}/decizie | `{stare: acord_de_principiu\|respins\|clarificari, mesaj}` | Proiect | autentificat; verificator desemnat; regula 8 |
 | GET | /terenuri/potrivite | `tip_amenajare` (obligatoriu), `suprafata_minima?`, `cartier?`, `limit?` (implicit 10) | PlotCandidate[] | terenuri libere potrivite, cel mai bun primul; regula 11 |
-| POST | /proiecte | `{space_id, tip_amenajare, descriere, suprafata_mp?}` | Proiect draft (201) | autentificat; proiect direct pe teren, fără idee și fără prag; regula 12 |
+| POST | /proiecte | `{space_id, tip_amenajare, descriere, suprafata_mp?}` | Proiect draft + `evenimente[]` (201) | autentificat; proiect direct pe teren, fără idee și fără prag; regula 12 |
 | GET | /proiecte/{id}/plan | - | Plan | autentificat; vizibilitate ca la GET /proiecte/{id} |
 | GET | /proiecte/{id}/materiale | - | ListaMateriale | autentificat; vizibilitate ca la GET /proiecte/{id} |
 | GET | /proiecte/{id}/documente/{nume} | `nume` ∈ plan.svg, plan.dxf, dosar.pdf, materiale.csv | fișier | autentificat; `Content-Disposition: attachment; filename="proiect-<id>-<nume>"`; alt nume -> 404; vizibilitate ca la GET /proiecte/{id} |
@@ -110,6 +113,8 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 11. **Terenuri potrivite.** `GET /terenuri/potrivite` apelează `find_plots` (P3) peste spațiile cu `tip = teren_liber`. PlotCandidate: `{space_id, nume, cartier?, suprafata_mp, scor (0-100), motiv, complet, din_lista_primarie, is_demo, distanta_km?, avertisment?}`. Terenurile mai mici decât `suprafata_minima` sunt excluse. Pentru terenurile din lista Primăriei (Legea 15/2003, destinate locuințelor pentru tineri) `avertisment` spune că folosirea pentru o amenajare publică trebuie aprobată de Primărie.
 12. **Proiect direct pe teren.** `POST /proiecte` structurează `descriere` (`structure_idea`), creează o idee internă a autorului (stare `prag_atins`, prag 1) și apoi același lanț ca la regula 6. 404 spațiu inexistent, 422 fără suprafață sau `tip_amenajare` necunoscut.
 13. **Plan, materiale, documente** (P3, deterministe, fără AI): Plan = `{tip_amenajare, eticheta, suprafata_mp, latime_m, lungime_m, elemente[], omise[], complet, ..., suprafata_ocupata_mp}`; ListaMateriale = `{linii[{articol, nume, unitate, cantitate, ipoteza, pret_unitar{mediana_lei, min_lei, max_lei, observatii, surse[], perioada}?, valoare_lei?, stare: cotat|de_cotat, motiv}], subtotal_cotat_lei, linii_de_cotat, eticheta_subtotal, sursa_preturi, tva, ipoteze[], disclaimer}`. Forma exactă: `docs/openapi.json`. Planul e o schiță orientativă, nu un proiect tehnic.
+14. **Teren marcat de utilizator.** `POST /spaces` creează un `Space` cu `tip = teren_liber`, `is_demo = false`, `owner_id` = utilizatorul, `sursa = marcat_de_utilizator`, `status_verificare = neverificat`, `cartier` = cel mai apropiat cartier (dacă se poate calcula). Coordonatele trebuie să fie în zona Timișoarei (lat 45.6–45.9, lng 21.0–21.45), altfel 422. Proprietarul real, regimul juridic și disponibilitatea NU sunt cunoscute; UI-ul le afișează ca „de verificat cu Primăria”.
+15. **Ce NU oferă API-ul:** buget pe componente separat (îl acoperă `cost` + lista de materiale), firme reale. `acte[]` (pașii de autorizare) și `firma` (profilul firmei căutate, fără nume reale) urmează de la P3 în `dosar`; până atunci UI-ul nu le afișează.
 
 ## Funcții între module (P3 -> P1)
 - `backend.ai.structure_idea(text: str) -> Structurat` (validare Pydantic, fallback determinist fără Gemini)

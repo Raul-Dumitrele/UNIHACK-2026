@@ -152,6 +152,151 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "spaces"
+        ],
+        "summary": "Mark Plot",
+        "description": "A free plot marked on the map by a user. Unverified: owner, legal status and availability are unknown.",
+        "operationId": "mark_plot_spaces_post",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TerenCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpaceOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spaces/{space_id}/proiecte": {
+      "get": {
+        "tags": [
+          "spaces"
+        ],
+        "summary": "Space Projects",
+        "description": "Projects proposed on a plot: every submitted one (not a draft) plus the caller's own drafts.",
+        "operationId": "space_projects_spaces__space_id__proiecte_get",
+        "parameters": [
+          {
+            "name": "space_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Space Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProiectOut"
+                  },
+                  "title": "Response Space Projects Spaces  Space Id  Proiecte Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/ideas": {
@@ -1003,7 +1148,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProiectOut"
+                  "$ref": "#/components/schemas/ProiectDetaliuOut"
                 }
               }
             }
@@ -2746,15 +2891,10 @@
           },
           "tip_amenajare": {
             "type": "string",
-            "enum": [
-              "skatepark",
-              "loc_de_joaca",
-              "parc_caini",
-              "pista_biciclete",
-              "gradina_comunitara",
-              "teren_sport"
-            ],
-            "title": "Tip Amenajare"
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Tip Amenajare",
+            "description": "text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport"
           },
           "suprafata_mp": {
             "anyOf": [
@@ -2796,15 +2936,10 @@
           },
           "tip_amenajare": {
             "type": "string",
-            "enum": [
-              "skatepark",
-              "loc_de_joaca",
-              "parc_caini",
-              "pista_biciclete",
-              "gradina_comunitara",
-              "teren_sport"
-            ],
-            "title": "Tip Amenajare"
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Tip Amenajare",
+            "description": "text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport"
           },
           "suprafata_mp": {
             "type": "integer",
@@ -2893,15 +3028,10 @@
           },
           "tip_amenajare": {
             "type": "string",
-            "enum": [
-              "skatepark",
-              "loc_de_joaca",
-              "parc_caini",
-              "pista_biciclete",
-              "gradina_comunitara",
-              "teren_sport"
-            ],
-            "title": "Tip Amenajare"
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Tip Amenajare",
+            "description": "text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport"
           },
           "descriere": {
             "type": "string",
@@ -3002,15 +3132,10 @@
           },
           "tip_amenajare": {
             "type": "string",
-            "enum": [
-              "skatepark",
-              "loc_de_joaca",
-              "parc_caini",
-              "pista_biciclete",
-              "gradina_comunitara",
-              "teren_sport"
-            ],
-            "title": "Tip Amenajare"
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Tip Amenajare",
+            "description": "text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport"
           },
           "suprafata_mp": {
             "type": "integer",
@@ -3091,15 +3216,10 @@
           },
           "tip_amenajare": {
             "type": "string",
-            "enum": [
-              "skatepark",
-              "loc_de_joaca",
-              "parc_caini",
-              "pista_biciclete",
-              "gradina_comunitara",
-              "teren_sport"
-            ],
-            "title": "Tip Amenajare"
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Tip Amenajare",
+            "description": "text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport"
           },
           "oras": {
             "type": "string",
@@ -3304,6 +3424,28 @@
               }
             ],
             "title": "Sursa Detalii"
+          },
+          "status_verificare": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Verificare"
+          },
+          "descriere": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Descriere"
           }
         },
         "type": "object",
@@ -3393,6 +3535,57 @@
           "rezumat"
         ],
         "title": "Structurat"
+      },
+      "TerenCreate": {
+        "properties": {
+          "nume": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 3,
+            "title": "Nume"
+          },
+          "lat": {
+            "type": "number",
+            "maximum": 45.9,
+            "minimum": 45.6,
+            "title": "Lat",
+            "description": "Timișoara și împrejurimi"
+          },
+          "lng": {
+            "type": "number",
+            "maximum": 21.45,
+            "minimum": 21.0,
+            "title": "Lng",
+            "description": "Timișoara și împrejurimi"
+          },
+          "suprafata_mp": {
+            "type": "integer",
+            "maximum": 1000000.0,
+            "minimum": 10.0,
+            "title": "Suprafata Mp"
+          },
+          "descriere": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Descriere"
+          }
+        },
+        "type": "object",
+        "required": [
+          "nume",
+          "lat",
+          "lng",
+          "suprafata_mp"
+        ],
+        "title": "TerenCreate",
+        "description": "POST /spaces: a free plot marked on the map by a user."
       },
       "TrimiteIn": {
         "properties": {
