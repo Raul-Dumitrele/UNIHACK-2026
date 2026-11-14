@@ -3,4 +3,4 @@ from backend.app.schemas import Impact
 
 
 def compute_impact(session) -> Impact:
-    return Impact(ore_recuperate=0, oameni_conectati=0, km_economisiti=0, proiecte_active=0)
+    return Impact(ore_recuperate=0, oameni_conectati=0, km_economisiti=0, proiecte_active=0, proiecte_trimise=0, proiecte_cu_acord=0)
