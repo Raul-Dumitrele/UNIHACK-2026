@@ -5,6 +5,9 @@ import { http, HttpResponse, passthrough } from 'msw'
 import { API_URL } from '@/config'
 import { handleMock } from './mockApi'
 
+// Documents of the mock projects (SVG, DXF, PDF, CSV), served as real files by Vite.
+const FILE_URLS = import.meta.glob('./data/documente/*/*', { query: '?url', import: 'default', eager: true }) as Record<string, string>
+
 const handler = http.all(`${API_URL}/*`, async ({ request }) => {
   const url = new URL(request.url)
   const body = ['POST', 'PATCH', 'PUT'].includes(request.method)
@@ -13,6 +16,12 @@ const handler = http.all(`${API_URL}/*`, async ({ request }) => {
   const userId = request.headers.get('X-User-Id') ?? ''
   const res = handleMock(request.method, url.pathname + url.search, body, userId)
   if (!res) return passthrough()
+  if (res.file) {
+    const href = FILE_URLS[`./data/documente/${res.file.key}`]
+    if (!href) return HttpResponse.json({ detail: 'Documentul nu există.' }, { status: 404 })
+    const blob = await (await fetch(href)).blob()
+    return new HttpResponse(blob, { headers: { 'Content-Type': res.file.contentType } })
+  }
   return HttpResponse.json(res.body as never, { status: res.status })
 })
 

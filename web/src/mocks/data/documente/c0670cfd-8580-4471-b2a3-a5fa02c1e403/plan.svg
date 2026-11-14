@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="980" viewBox="0 0 720 980" font-family="Arial, Helvetica, sans-serif" font-size="12">
+<title>Amenajare: teren de sport – Teren viran, Dorobanților (candidat OSM)</title>
+<rect width="720" height="980" fill="#ffffff"/>
+<text x="64" y="28" font-size="18" font-weight="bold">Amenajare: teren de sport – Teren viran, Dorobanților (candidat OSM)</text>
+<text x="64" y="48" fill="#555">teren de sport · teren de 1589 mp (32,5 × 48,89 m) · plan schematic</text>
+<g id="TEREN">
+<rect x="64.0" y="76.0" width="372.26" height="560.00" fill="#eef4e8" stroke="#2f4f2f" stroke-width="2"/>
+</g>
+<g id="ELEMENTE">
+<rect id="e1" x="75.45" y="607.36" width="349.36" height="17.18" fill="#d9d4c7" stroke="#333" stroke-width="1"><title>alee de acces</title></rect>
+<rect x="75.45" y="240.83" width="194.72" height="366.54" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e2" x="86.91" y="252.28" width="171.81" height="343.63" fill="#e3a07a" stroke="#333" stroke-width="1"><title>teren multisport</title></rect>
+<rect x="270.18" y="589.04" width="32.07" height="18.33" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e3" x="275.9" y="594.76" width="20.62" height="6.87" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 1</title></rect>
+<rect x="302.25" y="589.04" width="32.07" height="18.33" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e4" x="307.98" y="594.76" width="20.62" height="6.87" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 2</title></rect>
+<rect x="334.32" y="589.04" width="32.07" height="18.33" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e5" x="340.05" y="594.76" width="20.62" height="6.87" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 3</title></rect>
+<rect x="366.39" y="593.62" width="13.75" height="13.75" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e6" x="369.83" y="597.06" width="6.87" height="6.87" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 1</title></rect>
+<rect x="380.14" y="593.62" width="13.75" height="13.75" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e7" x="383.57" y="597.06" width="6.87" height="6.87" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 2</title></rect>
+</g>
+<g id="TEXT">
+<text x="250.13" y="619.95" text-anchor="middle" font-size="11">1</text>
+<text x="172.82" y="428.09" text-anchor="middle" font-size="11">2</text>
+<text x="286.21" y="602.20" text-anchor="middle" font-size="8">3</text>
+<text x="318.29" y="602.20" text-anchor="middle" font-size="8">4</text>
+<text x="350.36" y="602.20" text-anchor="middle" font-size="8">5</text>
+<text x="373.27" y="604.50" text-anchor="middle" font-size="8">6</text>
+<text x="387.01" y="604.50" text-anchor="middle" font-size="8">7</text>
+</g>
+<g id="COTE" stroke="#000" stroke-width="1">
+<line x1="64.0" y1="658.0" x2="436.26" y2="658.0"/>
+<line x1="64.0" y1="653.0" x2="64.0" y2="663.0"/>
+<line x1="436.26" y1="653.0" x2="436.26" y2="663.0"/>
+<line x1="38" y1="636.0" x2="38" y2="76.0"/>
+<line x1="33" y1="636.0" x2="43" y2="636.0"/>
+<line x1="33" y1="76.0" x2="43" y2="76.0"/>
+</g>
+<text x="250.13" y="676.0" text-anchor="middle">32,5 m</text>
+<text x="30" y="356.0" text-anchor="middle" transform="rotate(-90 30 356.0)">48,89 m</text>
+<text x="64" y="692.0" font-weight="bold">Legendă</text>
+<text x="64" y="708.0">1. alee de acces (30,5 × 1,5 m)</text>
+<text x="64" y="724.0">2. teren multisport (15 × 30 m)</text>
+<text x="64" y="740.0">3. bancă 1 (1,8 × 0,6 m)</text>
+<text x="64" y="756.0">4. bancă 2 (1,8 × 0,6 m)</text>
+<text x="64" y="772.0">5. bancă 3 (1,8 × 0,6 m)</text>
+<text x="64" y="788.0">6. coș de gunoi 1 (0,6 × 0,6 m)</text>
+<text x="64" y="804.0">7. coș de gunoi 2 (0,6 × 0,6 m)</text>
+<text x="64" y="836.0" font-size="11" fill="#555">Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 32,5 × 48,89 m cu aceeași</text>
+<text x="64" y="852.0" font-size="11" fill="#555">suprafață.</text>
+<text x="64" y="868.0" font-size="11" fill="#555">Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu</text>
+<text x="64" y="884.0" font-size="11" fill="#555">valori din standarde sau din fișe de produs.</text>
+<text x="64" y="900.0" font-size="11" fill="#555">Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).</text>
+<text x="64" y="916.0" font-size="11" fill="#555">Intrarea e pe latura de jos, cu o alee de 1,5 m.</text>
+<text x="64" y="932.0" font-size="11" fill="#555">Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de</text>
+<text x="64" y="948.0" font-size="11" fill="#555">lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.</text>
+</svg>

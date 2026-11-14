@@ -1,5 +1,155 @@
 [
  {
+  "id": "6fc2431d-11c2-4973-a492-aca9deec8015",
+  "user_id": "demo-user-5",
+  "idea_id": "37deb624-2407-44fe-9a0b-b3577f32f225",
+  "booking_id": null,
+  "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+  "mesaj": "Proiectul „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)” a fost respins. Terenul este rezervat altei investiții.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.608Z"
+ },
+ {
+  "id": "aa5a4908-83bc-4dec-abed-a334419e437f",
+  "user_id": "demo-user-9",
+  "idea_id": "37deb624-2407-44fe-9a0b-b3577f32f225",
+  "booking_id": null,
+  "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+  "mesaj": "Proiectul „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)” a fost respins. Terenul este rezervat altei investiții.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.608Z"
+ },
+ {
+  "id": "491e6da2-b395-4f17-85ab-46ab3ac70f19",
+  "user_id": "demo-user-10",
+  "idea_id": "37deb624-2407-44fe-9a0b-b3577f32f225",
+  "booking_id": null,
+  "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+  "mesaj": "Ai de verificat proiectul „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.606Z"
+ },
+ {
+  "id": "468a749b-de8a-43d1-a859-59a2fc812530",
+  "user_id": "demo-user-9",
+  "idea_id": "37deb624-2407-44fe-9a0b-b3577f32f225",
+  "booking_id": null,
+  "proiect_id": "1fb7839e-f6e4-4c93-a477-e3bf64646624",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.604Z"
+ },
+ {
+  "id": "57cda393-e9f8-4433-b154-f35c7024dba7",
+  "user_id": "demo-user-1",
+  "idea_id": "b7cb9487-ead5-49fd-acaf-59fbab532f21",
+  "booking_id": null,
+  "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+  "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a primit acord de principiu (simulat). Propunerea este în regulă pentru etapa următoare.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.598Z"
+ },
+ {
+  "id": "a739de87-bff4-4b0d-9e28-3bd9763c59bd",
+  "user_id": "demo-user-9",
+  "idea_id": "b7cb9487-ead5-49fd-acaf-59fbab532f21",
+  "booking_id": null,
+  "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+  "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a primit acord de principiu (simulat). Propunerea este în regulă pentru etapa următoare.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.598Z"
+ },
+ {
+  "id": "e9e69af3-e120-4893-9228-3af76318dfed",
+  "user_id": "demo-user-10",
+  "idea_id": "b7cb9487-ead5-49fd-acaf-59fbab532f21",
+  "booking_id": null,
+  "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+  "mesaj": "Ai de verificat proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.596Z"
+ },
+ {
+  "id": "e001c90b-47ba-4532-a3e3-8c51ad9547c0",
+  "user_id": "demo-user-9",
+  "idea_id": "b7cb9487-ead5-49fd-acaf-59fbab532f21",
+  "booking_id": null,
+  "proiect_id": "e2c3acac-0f1a-44b8-b418-64506250b32e",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.594Z"
+ },
+ {
+  "id": "3afe1212-1053-46ae-b7a7-fd91960441f3",
+  "user_id": "demo-user-2",
+  "idea_id": "890be1a8-1fab-4387-8cd6-05b0e82ff5ab",
+  "booking_id": null,
+  "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+  "mesaj": "Proiectul „Amenajare: parc pentru câini – Teren viran, Steaua (candidat OSM)” necesită clarificări. Precizați cine întreține parcul după deschidere.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.589Z"
+ },
+ {
+  "id": "ea858e0c-80d4-490a-abff-29e42e100e8f",
+  "user_id": "demo-user-9",
+  "idea_id": "890be1a8-1fab-4387-8cd6-05b0e82ff5ab",
+  "booking_id": null,
+  "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+  "mesaj": "Proiectul „Amenajare: parc pentru câini – Teren viran, Steaua (candidat OSM)” necesită clarificări. Precizați cine întreține parcul după deschidere.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.589Z"
+ },
+ {
+  "id": "c9d45a4d-2500-487a-ac3f-c9564d3e6071",
+  "user_id": "demo-user-10",
+  "idea_id": "890be1a8-1fab-4387-8cd6-05b0e82ff5ab",
+  "booking_id": null,
+  "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+  "mesaj": "Ai de verificat proiectul „Amenajare: parc pentru câini – Teren viran, Steaua (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.587Z"
+ },
+ {
+  "id": "bf7a514e-ae87-4e05-b5d1-e3dc6bb7df95",
+  "user_id": "demo-user-9",
+  "idea_id": "890be1a8-1fab-4387-8cd6-05b0e82ff5ab",
+  "booking_id": null,
+  "proiect_id": "3c354a6f-2866-4554-98f6-aa60c7d618bd",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: parc pentru câini – Teren viran, Steaua (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.585Z"
+ },
+ {
+  "id": "86be3d34-3fff-4b8c-8ab6-d07e1c4e29f1",
+  "user_id": "demo-user-10",
+  "idea_id": "734b35af-1895-4842-99cf-7e5430c3014e",
+  "booking_id": null,
+  "proiect_id": "5ddf1697-df62-436f-a24d-c38c24c6d7bf",
+  "mesaj": "Ai de verificat proiectul „Amenajare: grădină comunitară – Teren viran, Mehala (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.579Z"
+ },
+ {
+  "id": "f21397ef-cc87-406a-afae-0d68570cd22f",
+  "user_id": "demo-user-9",
+  "idea_id": "734b35af-1895-4842-99cf-7e5430c3014e",
+  "booking_id": null,
+  "proiect_id": "5ddf1697-df62-436f-a24d-c38c24c6d7bf",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: grădină comunitară – Teren viran, Mehala (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.577Z"
+ },
+ {
+  "id": "3f23bcff-f133-4a50-963c-d94993f82c12",
+  "user_id": "demo-user-9",
+  "idea_id": "bcfec2d0-b32a-4680-bbd4-bc961ffeb8b4",
+  "booking_id": null,
+  "proiect_id": "c0670cfd-8580-4471-b2a3-a5fa02c1e403",
+  "mesaj": "Proiect nou trimis spre analiză: „Amenajare: teren de sport – Teren viran, Dorobanților (candidat OSM)”.",
+  "citita": false,
+  "created_at": "2026-11-14T22:58:13.569Z"
+ },
+ {
   "id": "291a96e1-7615-4463-b7bd-98402a3afe88",
   "user_id": "demo-user-5",
   "idea_id": "demo-idea-5",
@@ -135,7 +285,7 @@
   "idea_id": "demo-idea-4",
   "booking_id": "demo-booking-3",
   "proiect_id": null,
-  "mesaj": "Rezervarea pentru „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica (sâmbătă 14 noiembrie, 18:00) a fost aprobată.",
+  "mesaj": "Rezervarea pentru „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica (marți 17 noiembrie, 18:00) a fost aprobată.",
   "citita": false,
   "created_at": "2026-11-13T18:00:00.000Z"
  },
@@ -165,7 +315,7 @@
   "idea_id": "demo-idea-4",
   "booking_id": "demo-booking-3",
   "proiect_id": null,
-  "mesaj": "Cerere nouă de rezervare: „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica, sâmbătă 14 noiembrie, 18:00.",
+  "mesaj": "Cerere nouă de rezervare: „Turneu de baschet 3x3 pentru tinerii din cartier” la Baza sportivă Electrica, marți 17 noiembrie, 18:00.",
   "citita": false,
   "created_at": "2026-11-13T13:30:00.000Z"
  },
@@ -275,7 +425,7 @@
   "idea_id": "demo-idea-7",
   "booking_id": "demo-booking-7",
   "proiect_id": null,
-  "mesaj": "Rezervarea pentru „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților (duminică 8 noiembrie, 09:00) a fost aprobată.",
+  "mesaj": "Rezervarea pentru „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților (luni 9 noiembrie, 09:00) a fost aprobată.",
   "citita": false,
   "created_at": "2026-10-22T16:30:00.000Z"
  },
@@ -285,7 +435,7 @@
   "idea_id": "demo-idea-7",
   "booking_id": "demo-booking-7",
   "proiect_id": null,
-  "mesaj": "Cerere nouă de rezervare: „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților, duminică 8 noiembrie, 09:00.",
+  "mesaj": "Cerere nouă de rezervare: „Întâlnire de schimb de cărți și semințe între vecini” la Casa de Cultură a Studenților, luni 9 noiembrie, 09:00.",
   "citita": false,
   "created_at": "2026-10-22T12:00:00.000Z"
  },
@@ -305,7 +455,7 @@
   "idea_id": "demo-idea-6",
   "booking_id": "demo-booking-6",
   "proiect_id": null,
-  "mesaj": "Rezervarea pentru „Seară de film documentar despre natură în cartier” la Casa Artelor (duminică 1 noiembrie, 17:00) a fost aprobată.",
+  "mesaj": "Rezervarea pentru „Seară de film documentar despre natură în cartier” la Casa Artelor (luni 2 noiembrie, 17:00) a fost aprobată.",
   "citita": false,
   "created_at": "2026-10-18T09:00:00.000Z"
  },
@@ -315,7 +465,7 @@
   "idea_id": "demo-idea-6",
   "booking_id": "demo-booking-6",
   "proiect_id": null,
-  "mesaj": "Cerere nouă de rezervare: „Seară de film documentar despre natură în cartier” la Casa Artelor, duminică 1 noiembrie, 17:00.",
+  "mesaj": "Cerere nouă de rezervare: „Seară de film documentar despre natură în cartier” la Casa Artelor, luni 2 noiembrie, 17:00.",
   "citita": false,
   "created_at": "2026-10-17T10:00:00.000Z"
  },
@@ -335,7 +485,7 @@
   "idea_id": "demo-idea-5",
   "booking_id": "demo-booking-5",
   "proiect_id": null,
-  "mesaj": "Rezervarea pentru „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților (duminică 25 octombrie, 09:00) a fost aprobată.",
+  "mesaj": "Rezervarea pentru „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților (luni 26 octombrie, 09:00) a fost aprobată.",
   "citita": false,
   "created_at": "2026-10-14T15:00:00.000Z"
  },
@@ -345,7 +495,7 @@
   "idea_id": "demo-idea-5",
   "booking_id": "demo-booking-5",
   "proiect_id": null,
-  "mesaj": "Cerere nouă de rezervare: „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților, duminică 25 octombrie, 09:00.",
+  "mesaj": "Cerere nouă de rezervare: „Atelier de gătit sănătos pentru părinți și copii” la Casa de Cultură a Studenților, luni 26 octombrie, 09:00.",
   "citita": false,
   "created_at": "2026-10-14T08:00:00.000Z"
  },
