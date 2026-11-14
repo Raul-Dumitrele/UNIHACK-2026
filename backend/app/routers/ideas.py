@@ -6,6 +6,8 @@ from backend.app import p3
 from backend.app.db import get_session
 from backend.app.deps import ERRORS, current_user
 from backend.app.models import Idea, Interest, Space, User
+from backend.app.services.matching import score_space
+from backend.app.services.notify import notify
 from backend.app.schemas import IdeaCreate, IdeaOut, MatchOut, OwnerMessageIn, OwnerMessageOut
 
 router = APIRouter(tags=["ideas"])
@@ -46,9 +48,17 @@ def get_idea(idea_id: str, session: Session = Depends(get_session)):
 
 @router.get("/ideas/{idea_id}/matches", response_model=list[MatchOut], responses=ERRORS)
 def idea_matches(idea_id: str, session: Session = Depends(get_session)):
-    get_idea_or_404(session, idea_id)
-    # TODO(faza 1): scor 30% capacitate + 30% suprapunere + 20% dotari + 20% distanta, motiv in romana.
-    return []
+    idea = get_idea_or_404(session, idea_id)
+    interested = session.exec(select(User).join(Interest, Interest.user_id == User.id).where(Interest.idea_id == idea.id)).all()
+    people = interested or [session.get(User, idea.author_id)]
+    points = [(u.lat, u.lng) for u in people if u]
+    matches = []
+    for space in session.exec(select(Space)).all():
+        if not space.sloturi:  # only spaces that still have free slots
+            continue
+        r = score_space(idea.structurat, space, points, len(interested))
+        matches.append(MatchOut(space=space, **r))
+    return sorted(matches, key=lambda m: m.scor, reverse=True)
 
 
 @router.post("/ideas/{idea_id}/interest", response_model=IdeaOut, status_code=201, responses=ERRORS)
@@ -61,7 +71,9 @@ def add_interest(idea_id: str, user: User = Depends(current_user), session: Sess
         session.rollback()
         raise HTTPException(409, "Ți-ai exprimat deja interesul pentru această idee.")
     idea.interesati += 1
-    # TODO(faza 1): la interesati >= prag si stare=deschisa -> prag_atins + notificare catre autor.
+    if idea.interesati >= idea.prag and idea.stare == "deschisa":
+        idea.stare = "prag_atins"
+        notify(session, idea.author_id, idea.id, f"Ideea „{idea.titlu}” a atins pragul de interes ({idea.prag}). Poți cere o rezervare.")
     session.add(idea)
     session.commit()
     session.refresh(idea)

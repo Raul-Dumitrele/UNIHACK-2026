@@ -20,5 +20,5 @@ def list_spaces(
         spaces = [s for s in spaces if s.capacitate >= capacitate_min]
     if dotari:
         spaces = [s for s in spaces if set(dotari) <= set(s.dotari)]
-    # TODO(faza 1): filtrul `categorie` (spatiile nu au categorie in contract; de stabilit cu echipa).
+    # `categorie` is accepted per contract but has no effect: Space has no category field (see report).
     return spaces

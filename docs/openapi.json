@@ -799,6 +799,461 @@
         }
       }
     },
+    "/ideas/{idea_id}/proiect": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Create Proiect",
+        "operationId": "create_proiect_ideas__idea_id__proiect_post",
+        "parameters": [
+          {
+            "name": "idea_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Idea Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProiectCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProiectOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte": {
+      "get": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "List Proiecte",
+        "operationId": "list_proiecte_proiecte_get",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProiectOut"
+                  },
+                  "title": "Response List Proiecte Proiecte Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte/{proiect_id}": {
+      "get": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Get Proiect",
+        "operationId": "get_proiect_proiecte__proiect_id__get",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProiectDetaliuOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte/{proiect_id}/trimite": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Trimite",
+        "operationId": "trimite_proiecte__proiect_id__trimite_post",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrimiteIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProiectOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte/{proiect_id}/inainteaza": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Inainteaza",
+        "operationId": "inainteaza_proiecte__proiect_id__inainteaza_post",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InainteazaIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProiectOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte/{proiect_id}/decizie": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Decizie",
+        "operationId": "decizie_proiecte__proiect_id__decizie_post",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecizieIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProiectOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -836,6 +1291,17 @@
           },
           "slot": {
             "$ref": "#/components/schemas/Slot"
+          },
+          "mesaj": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mesaj"
           }
         },
         "type": "object",
@@ -875,6 +1341,17 @@
           "created_at": {
             "type": "string",
             "title": "Created At"
+          },
+          "mesaj": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mesaj"
           }
         },
         "type": "object",
@@ -904,6 +1381,195 @@
           "stare"
         ],
         "title": "BookingUpdate"
+      },
+      "Cost": {
+        "properties": {
+          "suficient": {
+            "type": "boolean",
+            "title": "Suficient"
+          },
+          "min_lei": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min Lei"
+          },
+          "mediana_lei": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mediana Lei"
+          },
+          "max_lei": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Lei"
+          },
+          "moneda": {
+            "type": "string",
+            "const": "RON",
+            "title": "Moneda",
+            "default": "RON"
+          },
+          "ipoteze": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Ipoteze",
+            "default": []
+          },
+          "referinte_folosite": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Referinte Folosite",
+            "default": []
+          },
+          "motiv": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Motiv"
+          }
+        },
+        "type": "object",
+        "required": [
+          "suficient"
+        ],
+        "title": "Cost"
+      },
+      "DecizieIn": {
+        "properties": {
+          "stare": {
+            "type": "string",
+            "enum": [
+              "acord_de_principiu",
+              "respins",
+              "clarificari"
+            ],
+            "title": "Stare"
+          },
+          "mesaj": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mesaj"
+          }
+        },
+        "type": "object",
+        "required": [
+          "stare"
+        ],
+        "title": "DecizieIn"
+      },
+      "Dosar": {
+        "properties": {
+          "titlu": {
+            "type": "string",
+            "title": "Titlu"
+          },
+          "descriere": {
+            "type": "string",
+            "title": "Descriere"
+          },
+          "justificare": {
+            "type": "string",
+            "title": "Justificare"
+          },
+          "componente": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Componente",
+            "default": []
+          },
+          "etape": {
+            "items": {
+              "$ref": "#/components/schemas/Etapa"
+            },
+            "type": "array",
+            "title": "Etape",
+            "default": []
+          },
+          "riscuri": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Riscuri",
+            "default": []
+          },
+          "lista_verificare": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Lista Verificare",
+            "default": []
+          },
+          "referinte_citate": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Referinte Citate",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "titlu",
+          "descriere",
+          "justificare"
+        ],
+        "title": "Dosar"
+      },
+      "Etapa": {
+        "properties": {
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "durata_luni": {
+            "type": "number",
+            "title": "Durata Luni"
+          }
+        },
+        "type": "object",
+        "required": [
+          "nume",
+          "durata_luni"
+        ],
+        "title": "Etapa"
       },
       "HTTPValidationError": {
         "properties": {
@@ -1034,6 +1700,16 @@
           "proiecte_active": {
             "type": "integer",
             "title": "Proiecte Active"
+          },
+          "proiecte_trimise": {
+            "type": "integer",
+            "title": "Proiecte Trimise",
+            "default": 0
+          },
+          "proiecte_cu_acord": {
+            "type": "integer",
+            "title": "Proiecte Cu Acord",
+            "default": 0
           }
         },
         "type": "object",
@@ -1044,6 +1720,19 @@
           "proiecte_active"
         ],
         "title": "Impact"
+      },
+      "InainteazaIn": {
+        "properties": {
+          "verificator_id": {
+            "type": "string",
+            "title": "Verificator Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "verificator_id"
+        ],
+        "title": "InainteazaIn"
       },
       "MatchOut": {
         "properties": {
@@ -1102,6 +1791,17 @@
             ],
             "title": "Booking Id"
           },
+          "proiect_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proiect Id"
+          },
           "mesaj": {
             "type": "string",
             "title": "Mesaj"
@@ -1156,6 +1856,378 @@
           "mesaj"
         ],
         "title": "OwnerMessageOut"
+      },
+      "ProiectCreate": {
+        "properties": {
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "tip_amenajare": {
+            "type": "string",
+            "enum": [
+              "skatepark",
+              "loc_de_joaca",
+              "parc_caini",
+              "pista_biciclete",
+              "gradina_comunitara",
+              "teren_sport"
+            ],
+            "title": "Tip Amenajare"
+          },
+          "suprafata_mp": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suprafata Mp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "space_id",
+          "tip_amenajare"
+        ],
+        "title": "ProiectCreate"
+      },
+      "ProiectDetaliuOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "idea_id": {
+            "type": "string",
+            "title": "Idea Id"
+          },
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "autor_id": {
+            "type": "string",
+            "title": "Autor Id"
+          },
+          "tip_amenajare": {
+            "type": "string",
+            "enum": [
+              "skatepark",
+              "loc_de_joaca",
+              "parc_caini",
+              "pista_biciclete",
+              "gradina_comunitara",
+              "teren_sport"
+            ],
+            "title": "Tip Amenajare"
+          },
+          "suprafata_mp": {
+            "type": "integer",
+            "title": "Suprafata Mp"
+          },
+          "stare": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "trimis",
+              "in_verificare",
+              "clarificari",
+              "acord_de_principiu",
+              "respins"
+            ],
+            "title": "Stare"
+          },
+          "dosar": {
+            "$ref": "#/components/schemas/Dosar"
+          },
+          "referinte": {
+            "items": {
+              "$ref": "#/components/schemas/Referinta"
+            },
+            "type": "array",
+            "title": "Referinte"
+          },
+          "cost": {
+            "$ref": "#/components/schemas/Cost"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "verificator_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verificator Id"
+          },
+          "evenimente": {
+            "items": {
+              "$ref": "#/components/schemas/ProiectEvenimentOut"
+            },
+            "type": "array",
+            "title": "Evenimente",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "idea_id",
+          "space_id",
+          "autor_id",
+          "tip_amenajare",
+          "suprafata_mp",
+          "stare",
+          "dosar",
+          "referinte",
+          "cost",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "ProiectDetaliuOut"
+      },
+      "ProiectEvenimentOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "proiect_id": {
+            "type": "string",
+            "title": "Proiect Id"
+          },
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "stare_noua": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "trimis",
+              "in_verificare",
+              "clarificari",
+              "acord_de_principiu",
+              "respins"
+            ],
+            "title": "Stare Noua"
+          },
+          "mesaj": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mesaj"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "proiect_id",
+          "user_id",
+          "stare_noua",
+          "created_at"
+        ],
+        "title": "ProiectEvenimentOut"
+      },
+      "ProiectOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "idea_id": {
+            "type": "string",
+            "title": "Idea Id"
+          },
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "autor_id": {
+            "type": "string",
+            "title": "Autor Id"
+          },
+          "tip_amenajare": {
+            "type": "string",
+            "enum": [
+              "skatepark",
+              "loc_de_joaca",
+              "parc_caini",
+              "pista_biciclete",
+              "gradina_comunitara",
+              "teren_sport"
+            ],
+            "title": "Tip Amenajare"
+          },
+          "suprafata_mp": {
+            "type": "integer",
+            "title": "Suprafata Mp"
+          },
+          "stare": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "trimis",
+              "in_verificare",
+              "clarificari",
+              "acord_de_principiu",
+              "respins"
+            ],
+            "title": "Stare"
+          },
+          "dosar": {
+            "$ref": "#/components/schemas/Dosar"
+          },
+          "referinte": {
+            "items": {
+              "$ref": "#/components/schemas/Referinta"
+            },
+            "type": "array",
+            "title": "Referinte"
+          },
+          "cost": {
+            "$ref": "#/components/schemas/Cost"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "verificator_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verificator Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "idea_id",
+          "space_id",
+          "autor_id",
+          "tip_amenajare",
+          "suprafata_mp",
+          "stare",
+          "dosar",
+          "referinte",
+          "cost",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "ProiectOut"
+      },
+      "Referinta": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "tip_amenajare": {
+            "type": "string",
+            "enum": [
+              "skatepark",
+              "loc_de_joaca",
+              "parc_caini",
+              "pista_biciclete",
+              "gradina_comunitara",
+              "teren_sport"
+            ],
+            "title": "Tip Amenajare"
+          },
+          "oras": {
+            "type": "string",
+            "title": "Oras"
+          },
+          "an": {
+            "type": "integer",
+            "title": "An"
+          },
+          "suprafata_mp": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suprafata Mp"
+          },
+          "cost_total_lei": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cost Total Lei"
+          },
+          "componente": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Componente",
+            "default": []
+          },
+          "sursa_url": {
+            "type": "string",
+            "title": "Sursa Url"
+          },
+          "sursa_tip": {
+            "type": "string",
+            "title": "Sursa Tip"
+          },
+          "data_accesarii": {
+            "type": "string",
+            "format": "date",
+            "title": "Data Accesarii"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "tip_amenajare",
+          "oras",
+          "an",
+          "sursa_url",
+          "sursa_tip",
+          "data_accesarii"
+        ],
+        "title": "Referinta"
       },
       "Slot": {
         "properties": {
@@ -1252,6 +2324,17 @@
           "is_demo": {
             "type": "boolean",
             "title": "Is Demo"
+          },
+          "suprafata_mp": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suprafata Mp"
           }
         },
         "type": "object",
@@ -1342,6 +2425,23 @@
         ],
         "title": "Structurat"
       },
+      "TrimiteIn": {
+        "properties": {
+          "mesaj": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mesaj"
+          }
+        },
+        "type": "object",
+        "title": "TrimiteIn"
+      },
       "UserOut": {
         "properties": {
           "id": {
@@ -1356,7 +2456,9 @@
             "type": "string",
             "enum": [
               "cetatean",
-              "proprietar"
+              "proprietar",
+              "primarie",
+              "verificator"
             ],
             "title": "Rol"
           },
