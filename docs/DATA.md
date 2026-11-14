@@ -335,6 +335,35 @@ python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără
 - **Câmpurile `sursa` și `sursa_detalii`** nu sunt încă în contract. Seed-ul le trimite, iar ele se salvează imediat ce P1 le adaugă în modelul `Space`.
 - **Dosarul:** pentru aceste terenuri, `generate_dosar` pune primul în `lista_verificare` punctul: „Confirmarea faptului că terenul nu a fost atribuit între timp (Legea 15/2003) și a disponibilității lui pentru uz comunitar”.
 
+## Planul schematic (`backend/ai/proiect/design/`)
+`backend.ai.proiect` e acum pachet; importurile vechi (`from backend.ai.proiect import generate_dosar`) rămân valabile.
+
+- `build_scene(tip_amenajare, suprafata_mp, latime_m=None) -> Scene`: amplasare deterministă, fără AI. Coordonate în metri, originea în colțul stânga-jos, axa y în sus (ca în CAD).
+  - Forma: dreptunghi 2:3 cu suprafața dată; cu `latime_m` (de ex. lot de 12 m) lungimea rezultă din suprafață.
+  - Margine liberă de 1 m pe contur, alee de acces de 1,5 m pe latura de jos (la pista de biciclete: buclă de 2,5 m pe contur).
+  - Elementele se așază pe rânduri, în ordinea din catalog (elementul principal primul). Fiecare își păstrează zona liberă din jur; ce nu încape nu se desenează, ci apare în `omise`, cu motiv. `complet = false` dacă lipsește un element obligatoriu.
+  - Orice tip: tipurile din catalog (cele 6 din contract + foișor) au elemente proprii; orice alt text („fântână arteziană”) primește o zonă propusă și mobilier de bază, fără detalii inventate.
+- **Dimensiunile din `catalog.py` sunt ipoteze schematice ale aplicației**, nu valori din standarde sau fișe de produs. Scena le enumeră în `ipoteze`, iar fiecare plan poartă `PLAN_DISCLAIMER`: „Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.”
+- `build_plan_svg(scene, titlu)`: SVG de sine stătător; elementele sunt numerotate, cu legendă, cote și note.
+- `build_plan_dxf(scene, titlu)`: DXF ASCII R12 (AC1009), scris manual (`ezdxf` cere numpy). Doar entități R12: POLYLINE închis, LINE, TEXT (cotele sunt LINE + TEXT). Straturi: `TEREN`, `ELEMENTE` (cu zonele libere în gri), `COTE`, `TEXT`. Diacriticele sunt transliterate (R12 are text ASCII).
+- Exemple: `python -m backend.seed.export_planuri` scrie `backend/seed/data/exemple/plan_<tip>_<mp>mp.{json,svg,dxf}`: fiecare tip pe 600 mp (terenul demo) și două loturi de 276 mp × 12 m, ca cele din lista Primăriei.
+
+## Alegerea terenului (`find_plots`)
+`backend.ai.proiect.find_plots(tip_amenajare, suprafata_minima, cartier=None, spaces=None, limit=10) -> list[PlotCandidate]`. Fiecare candidat are `space_id`, `nume`, `cartier`, `suprafata_mp`, `scor` (0-100), `motiv` (în română), `complet`, `din_lista_primarie`, `is_demo`, `distanta_km`.
+
+- Candidații: Space-urile `teren_liber`. Implicit, cele din seed (cele 15 loturi `lista-2019-*` și terenul demo); P1 poate trimite rândurile din baza de date (dicționare sau obiecte ORM).
+- Terenurile sub `suprafata_minima` sunt excluse.
+
+| Criteriu | Puncte | Regulă |
+|---|---|---|
+| încape | 60 | 45 dacă toate elementele obligatorii încap pe planul schematic, + 15 × fracția dotărilor opționale care încap |
+| loc | 30 | în cartier: 30; altfel ≤ 1 km: 30, apoi scade liniar până la 0 la 8 km; fără cartier sau cartier necunoscut: 15 |
+| mărime | 10 | ≤ 2× suprafața minimă: 10; ≤ 4×: 5; mai mare: 0 (un teren mare rămâne pentru un proiect mai mare) |
+
+- Ordinea: scor, apoi terenul mai mic, apoi id-ul.
+- Loturile din listă sunt desenate cu 12 m lățime, ca pe hartă. Motivul lor spune mereu „din lista Primăriei (Legea 15/2003), de confirmat: poate fi atribuit între timp”.
+- Loturile nu se unesc: pozițiile lor sunt schematice, deci alăturarea ar fi inventată. Consecință: un skatepark de peste 276 mp găsește azi doar terenul demo.
+
 ## Stratul LLM: lanț de rezervă peste furnizori gratuiți
 Funcțiile `structure_idea`, `owner_message`, `classify_proposal` și `generate_dosar` nu mai depind doar de Gemini. Toate trec prin `backend.ai.llm.generate_json(prompt, schema, system=None, task=..., validator=None)`, care încearcă, în ordine, toate modelele gratuite configurate. Dacă niciunul nu răspunde valid, funcția apelantă folosește fallback-ul determinist de până acum. Semnăturile din contract nu se schimbă.
 
