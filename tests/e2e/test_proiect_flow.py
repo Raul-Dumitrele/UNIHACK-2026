@@ -1,8 +1,6 @@
 """"Propunere către Primărie", end to end: create -> trimite -> inainteaza -> decizie.
 
-Endpoints belong to P1 and are not built yet, so every test is xfail(strict=True): once one passes
-the run fails and the marker must be removed. Request bodies follow the contract extension agreed by
-the team; fields still being finalized in docs/CONTRACT.md are best guesses.
+Endpoints belong to P1 (rules 6-8 in docs/CONTRACT.md); the dossier, references and cost come from P3.
 """
 import pytest
 
@@ -10,7 +8,6 @@ from conftest import as_user
 
 pytestmark = pytest.mark.anyio
 
-NOT_BUILT = pytest.mark.xfail(strict=True, reason="proiect rule still TODO in P1's router (faza B)")
 AUTHOR = "demo-user-5"  # author of demo-idea-8 (threshold reached in the seed)
 VERIFIER = "demo-user-10"
 CITY_HALL = "demo-user-9"
@@ -43,7 +40,6 @@ async def test_create_project_has_dossier_references_and_cost(client):
     assert set(p["dosar"]["referinte_citate"]) <= {r["id"] for r in p["referinte"]}
 
 
-@NOT_BUILT
 async def test_full_chain_to_agreement_in_principle(client):
     p = await _create(client)
     assert (await _step(client, p["id"], "trimite", AUTHOR))["stare"] == "trimis"
@@ -59,7 +55,6 @@ async def test_full_chain_to_agreement_in_principle(client):
     assert listed.status_code == 200 and any(x["id"] == p["id"] for x in listed.json())
 
 
-@NOT_BUILT
 async def test_only_the_right_roles_can_move_a_project(client):
     p = await _create(client)
     other = await client.post(f"/proiecte/{p['id']}/trimite", json={}, headers=as_user(RESIDENT))
@@ -73,7 +68,6 @@ async def test_only_the_right_roles_can_move_a_project(client):
     assert early.status_code == 403
 
 
-@NOT_BUILT
 async def test_clarifications_and_rejection_are_recorded(client):
     p = await _create(client)
     await _step(client, p["id"], "trimite", AUTHOR)
@@ -91,7 +85,6 @@ async def test_clarifications_and_rejection_are_recorded(client):
     assert bad.status_code == 422  # a message is required when rejecting
 
 
-@NOT_BUILT
 async def test_author_is_notified_and_impact_counts_projects(client):
     p = await _create(client)
     await _step(client, p["id"], "trimite", AUTHOR)

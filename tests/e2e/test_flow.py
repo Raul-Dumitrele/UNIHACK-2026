@@ -1,7 +1,6 @@
 """Main demo flow, end to end, against P1's API on a temporary database seeded by P3.
 
-Shapes and rules follow docs/CONTRACT.md. Rules P1 still marks as TODO are xfail(strict=True): once P1
-implements one, its test XPASSes, the run fails, and the marker must be removed.
+Shapes and rules follow docs/CONTRACT.md; every rule is implemented by P1 and checked here.
 """
 import pytest
 
@@ -9,7 +8,6 @@ from conftest import as_user
 
 pytestmark = pytest.mark.anyio
 
-P1_TODO = pytest.mark.xfail(strict=True, reason="rule still TODO in P1's router (see docs/CONTRACT.md)")
 AUTHOR = "demo-user-1"
 NEIGHBOURS = ["demo-user-2", "demo-user-3", "demo-user-4"]
 IDEA_TEXT = ("Atelier de reparat biciclete pentru vecini, sâmbătă 10-13, 15 oameni, 3 ore. "
@@ -57,7 +55,6 @@ async def test_interest_once_per_user(client):
     assert again.status_code == 409
 
 
-@P1_TODO
 async def test_threshold_moves_idea_to_prag_atins(client):
     idea = await _create_idea(client, prag=2)
     for user in NEIGHBOURS[:2]:
@@ -66,7 +63,6 @@ async def test_threshold_moves_idea_to_prag_atins(client):
     assert r.json()["stare"] == "prag_atins"
 
 
-@P1_TODO
 async def test_matches_have_score_and_reason(client):
     r = await client.get("/ideas/demo-idea-3/matches")
     assert r.status_code == 200
@@ -102,7 +98,6 @@ async def test_booking_request_and_owner_decision(client, seed_data):
     assert again.status_code == 409
 
 
-@P1_TODO
 async def test_approval_reserves_idea_takes_slot_and_notifies(client, seed_data):
     space = _bookable_space(seed_data, skip={_bookable_space(seed_data)["id"]})
     slot = space["sloturi"][0]
