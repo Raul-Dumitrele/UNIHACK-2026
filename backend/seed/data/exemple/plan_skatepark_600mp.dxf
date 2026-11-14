@@ -1,0 +1,1368 @@
+  0
+SECTION
+  2
+HEADER
+  9
+$ACADVER
+  1
+AC1009
+  9
+$EXTMIN
+ 10
+-3.4200
+ 20
+-10.7920
+ 30
+0.0000
+  9
+$EXTMAX
+ 10
+20.0000
+ 20
+33.4200
+ 30
+0.0000
+  0
+ENDSEC
+  0
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+LTYPE
+ 70
+1
+  0
+LTYPE
+  2
+CONTINUOUS
+ 70
+0
+  3
+Solid line
+ 72
+65
+ 73
+0
+ 40
+0.0000
+  0
+ENDTAB
+  0
+TABLE
+  2
+LAYER
+ 70
+4
+  0
+LAYER
+  2
+TEREN
+ 70
+0
+ 62
+3
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+ELEMENTE
+ 70
+0
+ 62
+5
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+COTE
+ 70
+0
+ 62
+1
+  6
+CONTINUOUS
+  0
+LAYER
+  2
+TEXT
+ 70
+0
+ 62
+7
+  6
+CONTINUOUS
+  0
+ENDTAB
+  0
+ENDSEC
+  0
+SECTION
+  2
+ENTITIES
+  0
+POLYLINE
+  8
+TEREN
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+TEREN
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+TEREN
+ 10
+20.0000
+ 20
+0.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+TEREN
+ 10
+20.0000
+ 20
+30.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+TEREN
+ 10
+0.0000
+ 20
+30.0000
+ 30
+0.0000
+  0
+SEQEND
+  8
+TEREN
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.0000
+ 20
+1.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+19.0000
+ 20
+1.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+19.0000
+ 20
+2.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.0000
+ 20
+2.5000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+9.8100
+ 20
+1.5600
+ 30
+0.0000
+ 40
+0.3800
+  1
+1
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.0000
+ 20
+2.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.0000
+ 20
+2.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.0000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.0000
+ 20
+24.5000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+2.0000
+ 20
+3.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.0000
+ 20
+3.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.0000
+ 20
+23.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+2.0000
+ 20
+23.5000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+9.3100
+ 20
+13.3100
+ 30
+0.0000
+ 40
+0.3800
+  1
+2
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.0000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.8000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.8000
+ 20
+26.1000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.0000
+ 20
+26.1000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.5000
+ 20
+25.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.3000
+ 20
+25.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.3000
+ 20
+25.6000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+1.5000
+ 20
+25.6000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+2.2100
+ 20
+25.1100
+ 30
+0.0000
+ 40
+0.3800
+  1
+3
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.8000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+6.6000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+6.6000
+ 20
+26.1000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.8000
+ 20
+26.1000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+4.3000
+ 20
+25.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+6.1000
+ 20
+25.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+6.1000
+ 20
+25.6000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+4.3000
+ 20
+25.6000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+5.0100
+ 20
+25.1100
+ 30
+0.0000
+ 40
+0.3800
+  1
+4
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+6.6000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+9.4000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+9.4000
+ 20
+26.1000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+6.6000
+ 20
+26.1000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+7.1000
+ 20
+25.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+8.9000
+ 20
+25.0000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+8.9000
+ 20
+25.6000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+7.1000
+ 20
+25.6000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+7.8100
+ 20
+25.1100
+ 30
+0.0000
+ 40
+0.3800
+  1
+5
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+9.4000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.6000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.6000
+ 20
+25.7000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+9.4000
+ 20
+25.7000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+9.7000
+ 20
+24.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.3000
+ 20
+24.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.3000
+ 20
+25.4000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+9.7000
+ 20
+25.4000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+9.8100
+ 20
+24.9100
+ 30
+0.0000
+ 40
+0.3800
+  1
+6
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.6000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+11.8000
+ 20
+24.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+11.8000
+ 20
+25.7000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.6000
+ 20
+25.7000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.9000
+ 20
+24.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+11.5000
+ 20
+24.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+11.5000
+ 20
+25.4000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+10.9000
+ 20
+25.4000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+11.0100
+ 20
+24.9100
+ 30
+0.0000
+ 40
+0.3800
+  1
+7
+  0
+LINE
+  8
+COTE
+ 10
+0.0000
+ 20
+-1.1400
+ 30
+0.0000
+ 11
+20.0000
+ 21
+-1.1400
+ 31
+0.0000
+  0
+LINE
+  8
+COTE
+ 10
+0.0000
+ 20
+-1.3300
+ 30
+0.0000
+ 11
+0.0000
+ 21
+-0.9500
+ 31
+0.0000
+  0
+LINE
+  8
+COTE
+ 10
+20.0000
+ 20
+-1.3300
+ 30
+0.0000
+ 11
+20.0000
+ 21
+-0.9500
+ 31
+0.0000
+  0
+TEXT
+  8
+COTE
+ 10
+10.0000
+ 20
+-1.7480
+ 30
+0.0000
+ 40
+0.3800
+  1
+20 m
+  0
+LINE
+  8
+COTE
+ 10
+-1.1400
+ 20
+0.0000
+ 30
+0.0000
+ 11
+-1.1400
+ 21
+30.0000
+ 31
+0.0000
+  0
+LINE
+  8
+COTE
+ 10
+-1.3300
+ 20
+0.0000
+ 30
+0.0000
+ 11
+-0.9500
+ 21
+0.0000
+ 31
+0.0000
+  0
+LINE
+  8
+COTE
+ 10
+-1.3300
+ 20
+30.0000
+ 30
+0.0000
+ 11
+-0.9500
+ 21
+30.0000
+ 31
+0.0000
+  0
+TEXT
+  8
+COTE
+ 10
+-1.3680
+ 20
+15.0000
+ 30
+0.0000
+ 40
+0.3800
+  1
+30 m
+ 50
+90.0000
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+32.2800
+ 30
+0.0000
+ 40
+0.6080
+  1
+Plan schematic: skatepark, 600 mp
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+31.1400
+ 30
+0.0000
+ 40
+0.3800
+  1
+skatepark - teren de 600 mp (20 x 30 m) - plan schematic, unitati: metri
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-2.8880
+ 30
+0.0000
+ 40
+0.3040
+  1
+1. alee de acces (18 x 1,5 m)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-3.4960
+ 30
+0.0000
+ 40
+0.3040
+  1
+2. zona de skate (rampe si obstacole) (15 x 20 m)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-4.1040
+ 30
+0.0000
+ 40
+0.3040
+  1
+3. banca 1 (1,8 x 0,6 m)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-4.7120
+ 30
+0.0000
+ 40
+0.3040
+  1
+4. banca 2 (1,8 x 0,6 m)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-5.3200
+ 30
+0.0000
+ 40
+0.3040
+  1
+5. banca 3 (1,8 x 0,6 m)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-5.9280
+ 30
+0.0000
+ 40
+0.3040
+  1
+6. cos de gunoi 1 (0,6 x 0,6 m)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-6.5360
+ 30
+0.0000
+ 40
+0.3040
+  1
+7. cos de gunoi 2 (0,6 x 0,6 m)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-7.1440
+ 30
+0.0000
+ 40
+0.3040
+  1
+Nu incape: zona pentru incepatori - nu mai incape pe teren (are nevoie de cel putin 6 x 7 m, cu zona libera din jur)
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-7.7520
+ 30
+0.0000
+ 40
+0.3040
+  1
+Forma reala a terenului nu e cunoscuta: planul foloseste un dreptunghi de 20 x 30 m cu aceeasi suprafata.
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-8.3600
+ 30
+0.0000
+ 40
+0.3040
+  1
+Dimensiunile elementelor si zonele libere din jurul lor sunt ipoteze schematice ale aplicatiei, nu valori din standarde sau din fise de produs.
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-8.9680
+ 30
+0.0000
+ 40
+0.3040
+  1
+Pe contur ramane o margine libera de 1 m (imprejmuire, vegetatie).
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-9.5760
+ 30
+0.0000
+ 40
+0.3040
+  1
+Intrarea e pe latura de jos, cu o alee de 1,5 m.
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-10.1840
+ 30
+0.0000
+ 40
+0.3040
+  1
+Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reala o stabileste un proiectant autorizat, dupa masuratori pe teren.
+  0
+ENDSEC
+  0
+EOF

@@ -7,7 +7,6 @@ from backend.ai.costs import Cost, estimate_cost
 from backend.ai.proiect import (
     BASE_CHECKS,
     DISCLAIMER,
-    cost_sentence,
     generate_dosar,
     money_mentions,
 )
@@ -40,19 +39,10 @@ GOOD = {
 
 
 def _gemini(monkeypatch, *answers):
-    """Fake key and a scripted Gemini: each call returns the next answer (dict, str or exception)."""
-    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
-    prompts = []
+    """Scripted LLM chain for generate_dosar (one model: an invalid or money answer is retried once)."""
+    from backend.tests.ai.conftest import fake_chain
 
-    def fake(settings, prompt):
-        prompts.append(prompt)
-        answer = answers[min(len(prompts), len(answers)) - 1]
-        if isinstance(answer, Exception):
-            raise answer
-        return answer if isinstance(answer, str) else json.dumps(answer, ensure_ascii=False)
-
-    monkeypatch.setattr(proiect, "_generate", fake)
-    return prompts
+    return fake_chain(monkeypatch, "backend.ai.proiect", *answers)
 
 
 def _all_text(d) -> str:
@@ -61,8 +51,8 @@ def _all_text(d) -> str:
 
 
 def _assert_only_injected_money(d, cost: Cost):
-    """Every amount of money in the dossier comes from the code-inserted cost sentence."""
-    assert sorted(money_mentions(_all_text(d))) == sorted(money_mentions(cost_sentence(cost)))
+    """No amount of money anywhere in the dossier text: figures live only in the Cost object."""
+    assert money_mentions(_all_text(d)) == []
 
 
 @pytest.mark.parametrize("text", ["250.000 lei", "costă 1,2 milioane euro", "RON 5000", "€300", "3 mii de lei",
@@ -80,8 +70,7 @@ def test_template_without_key(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "")
     d = generate_dosar(IDEA, SPACE, "skatepark", 600, REFS, COST)
     assert d.justificare.endswith(DISCLAIMER)
-    assert (cost_sentence(COST) in d.justificare)
-    assert "600.000" in d.justificare and "900.000" in d.justificare
+    assert "600.000" not in d.justificare and "lei" not in d.justificare  # figures only in Cost
     assert "5.000 lei" not in _all_text(d)  # money from the idea text is not copied
     _assert_only_injected_money(d, COST)
     assert set(BASE_CHECKS) <= set(d.lista_verificare)
@@ -93,7 +82,7 @@ def test_template_with_insufficient_cost(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "")
     cost = estimate_cost([_r("ref-a", 1000, 1_000_000)], 600)
     d = generate_dosar(IDEA, SPACE, "foișor", 50, [], cost)
-    assert "nu poate fi estimat" in d.justificare and money_mentions(_all_text(d)) == []
+    assert cost.suficient is False and money_mentions(_all_text(d)) == []  # the UI shows Cost.motiv
     assert d.referinte_citate == [] and d.componente and d.justificare.endswith(DISCLAIMER)
     assert "foisor" not in d.titlu and "foișor" in d.titlu
 
@@ -104,7 +93,7 @@ def test_gemini_answer_is_used_and_finalized(monkeypatch):
     assert len(prompts) == 1
     assert d.titlu == GOOD["titlu"]
     assert d.referinte_citate == ["ref-a"]  # ids not in the input are dropped
-    assert d.justificare.endswith(DISCLAIMER) and (cost_sentence(COST) in d.justificare)
+    assert d.justificare.endswith(DISCLAIMER)
     assert set(BASE_CHECKS) <= set(d.lista_verificare) and "Cine administrează terenul" in d.lista_verificare
     _assert_only_injected_money(d, COST)
 
@@ -154,7 +143,7 @@ def test_accepts_dicts_and_orm_like_objects(monkeypatch):
 
     d = generate_dosar(Row(), SPACE, "skatepark", 600, [r.model_dump(mode="json") for r in REFS],
                        COST.model_dump(mode="json"))
-    assert "Rezumat" in d.descriere and d.justificare.endswith(DISCLAIMER)
+    assert "Detaliile tehnice" in d.descriere and "Rezumat" not in d.descriere and d.justificare.endswith(DISCLAIMER)
 
 
 def test_values_are_clamped(monkeypatch):
@@ -167,6 +156,7 @@ def test_values_are_clamped(monkeypatch):
 
 def test_web_notes_reach_gemini_when_live_search_is_on(monkeypatch):
     prompts = _gemini(monkeypatch, GOOD)
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")  # web notes use Google Search grounding (Gemini only)
     monkeypatch.setenv("REFERENCES_LIVE_SEARCH", "true")
     monkeypatch.setattr("backend.ai.references.search.research_notes",
                         lambda tip: ["Bazine separate pentru copii", "Necesită sistem de filtrare a apei"])
@@ -181,3 +171,13 @@ def test_no_web_notes_when_live_search_is_off(monkeypatch):
                         lambda tip: pytest.fail("live search is off in unit tests"))
     generate_dosar(IDEA, SPACE, "skatepark", 600, REFS, COST)
     assert '"informatii_gasite": []' in prompts[0]
+
+
+def test_list_plot_adds_the_legea_15_check(monkeypatch):
+    from backend.ai.proiect import LIST_CHECK
+
+    monkeypatch.setenv("GEMINI_API_KEY", "")
+    plot = {"id": "lista-2019-440964", "nume": "Teren din lista Primăriei", "cartier": "Ronaț"}
+    d = generate_dosar(IDEA, plot, "skatepark", 276, REFS, COST)
+    assert d.lista_verificare[0] == LIST_CHECK
+    assert LIST_CHECK not in generate_dosar(IDEA, SPACE, "skatepark", 600, REFS, COST).lista_verificare

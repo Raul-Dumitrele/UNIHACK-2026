@@ -31,21 +31,15 @@ def test_fallback_classifies_any_proposal(no_key, text, tip, label):
 
 
 def _fake_gemini(monkeypatch, answer):
-    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    from backend.tests.ai.conftest import fake_chain
 
-    class Models:
-        def generate_content(self, **kw):
-            if isinstance(answer, Exception):
-                raise answer
-            return type("R", (), {"text": json.dumps(answer, ensure_ascii=False)})()
-
-    monkeypatch.setattr(proposal, "_client", lambda *a: type("C", (), {"models": Models()})())
+    return fake_chain(monkeypatch, "backend.ai.proposal", answer, tries=1)
 
 
 def test_gemini_label_is_kept_and_synonyms_are_canonical(monkeypatch):
     _fake_gemini(monkeypatch, {"eticheta": "Patinoar în aer liber", "cuvinte_cautare": ["patinoar", "gheață"]})
     c = classify_proposal("iarna vrem să patinăm în cartier")
-    assert (c.tip_amenajare, c.eticheta, c.source) == ("patinoar_in_aer_liber", "patinoar în aer liber", "gemini")
+    assert (c.tip_amenajare, c.eticheta, c.source) == ("patinoar_in_aer_liber", "patinoar în aer liber", "llm")
     assert c.cuvinte_cautare == ["patinoar", "gheață"]
     _fake_gemini(monkeypatch, {"eticheta": "Loc de joacă pentru copii", "cuvinte_cautare": []})
     assert classify_proposal("ceva pentru copii").tip_amenajare == "loc_de_joaca"

@@ -1,0 +1,400 @@
+{
+  "_about": "Every free provider and every text-capable model from the source list (embeddings excluded: they cannot answer a prompt). The app reads only this file, never the internet list. Providers with a key in .env, and keyless providers (only with LLM_ALLOW_KEYLESS=true; off by default), join the chain; check.py and bench.py decide which models stay. Entries marked de_verificat need a live check before they are trusted.",
+  "verified_on": "2026-11-14",
+  "source": "https://github.com/mnfst/awesome-free-llm-apis (README.md + data.json, lastUpdated in repo). The originally requested list github.com/cheahjs/free-llm-api-resources returns 404 (repository removed); its mirror jtig37/free-llm-api-resources was last updated 2024-08-21 and is too old to use.",
+  "providers": [
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "kind": "gemini",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta",
+      "openai_base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "key_env": "GEMINI_API_KEY",
+      "key_required": true,
+      "gateway": false,
+      "signup_url": "https://aistudio.google.com/app/apikey",
+      "limits": {
+        "rpm": null,
+        "rpd": null,
+        "note": "Google no longer publishes per-model free-tier limits; check quotas in AI Studio. de_verificat"
+      },
+      "models": [
+        "gemini-3.5-flash-lite",
+        "gemini-3.1-flash-lite",
+        "gemini-3.8-flash",
+        "gemini-3.6-flash",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemma-4-31b-it",
+        "gemma-4-26b-a4b-it"
+      ],
+      "notes": [
+        "Free-tier prompts may be used by Google to improve products (except EEA/CH/UK users).",
+        "Terms: an API client made available to users in the EEA, CH or UK must use Paid Services. Relevant if the app is used by people in Romania beyond a demo.",
+        "gemini-3.1-flash-lite is deprecated (shutdown 2027-05-07).",
+        "Model order: the two models that answered the live check on 2026-11-14 come first (used when no chain_order.json exists)."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "kind": "openai_compat",
+      "base_url": "https://api.groq.com/openai/v1",
+      "key_env": "GROQ_API_KEY",
+      "key_required": true,
+      "gateway": false,
+      "signup_url": "https://console.groq.com/keys",
+      "limits": {
+        "rpm": 30,
+        "rpd": 1000,
+        "note": "8,000 TPM, 200,000 TPD per model on the Free Plan"
+      },
+      "models": [
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b",
+        "qwen/qwen3.8-27b"
+      ],
+      "notes": [
+        "No credit card. Very fast inference."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "kind": "openai_compat",
+      "base_url": "https://openrouter.ai/api/v1",
+      "key_env": "OPENROUTER_API_KEY",
+      "key_required": true,
+      "gateway": true,
+      "signup_url": "https://openrouter.ai/keys",
+      "limits": {
+        "rpm": 20,
+        "rpd": 50,
+        "note": "Counted across ALL free models together; 1,000 RPD after buying 10 credits"
+      },
+      "models": [
+        "google/gemma-4-31b-it:free",
+        "google/gemma-4-26b-a4b-it:free",
+        "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "nvidia/nemotron-3.5-lightning:free",
+        "nvidia/nemotron-3.5-super-vl:free",
+        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "dots-studio/dots-3-note-preview:free",
+        "recursive/flint-v1.0:free",
+        "liquid/lfm-2.5-2.6b:free",
+        "openrouter/free",
+        "cohere/north-mini-code:free"
+      ],
+      "notes": [
+        "Free providers may log prompts for training."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "kind": "openai_compat",
+      "base_url": "https://api.cohere.ai/compatibility/v1",
+      "key_env": "COHERE_API_KEY",
+      "key_required": true,
+      "gateway": false,
+      "signup_url": "https://dashboard.cohere.com/api-keys",
+      "limits": {
+        "rpm": 20,
+        "rpd": null,
+        "note": "Trial key: 1,000 API calls per MONTH; non-commercial use only"
+      },
+      "models": [
+        "command-a-03-2025",
+        "command-a-plus-05-2026",
+        "command-r-plus-08-2024",
+        "command-r-08-2024",
+        "command-r7b-12-2024",
+        "c4ai-aya-expanse-32b",
+        "command-r7b-arabic-02-2025",
+        "command-a-reasoning-08-2025",
+        "command-a-translate-08-2025",
+        "command-a-vision-07-2025",
+        "c4ai-aya-vision-32b"
+      ],
+      "notes": [
+        "Aya Expanse is multilingual; worth benchmarking for Romanian."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA NIM",
+      "kind": "openai_compat",
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "key_env": "NVIDIA_API_KEY",
+      "key_required": true,
+      "gateway": true,
+      "signup_url": "https://build.nvidia.com/explore/discover",
+      "limits": {
+        "rpm": null,
+        "rpd": null,
+        "note": "No public table; varies per model and load. de_verificat"
+      },
+      "models": [
+        "nvidia/nemotron-3-ultra-550b-a55b",
+        "openai/gpt-oss-20b"
+      ],
+      "notes": [
+        "100+ models: the rest come from /v1/models discovery.",
+        "Prototyping/testing only; production needs an NVIDIA AI Enterprise licence.",
+        "Trial use: do not submit personal data; usage is logged."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare Workers AI",
+      "kind": "openai_compat",
+      "base_url": "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1",
+      "key_env": "CLOUDFLARE_API_KEY",
+      "extra_env": {
+        "account_id": "CLOUDFLARE_ACCOUNT_ID"
+      },
+      "key_required": true,
+      "gateway": true,
+      "signup_url": "https://dash.cloudflare.com/profile/api-tokens",
+      "limits": {
+        "rpm": null,
+        "rpd": null,
+        "note": "10,000 Neurons/day shared across all models, reset 00:00 UTC; over the limit the request fails (no billing)"
+      },
+      "models": [
+        "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "@cf/openai/gpt-oss-120b",
+        "@cf/google/gemma-4-26b-a4b-it",
+        "@cf/zai-org/glm-4.7-flash",
+        "@cf/mistralai/mistral-small-3.1-24b-instruct",
+        "@cf/meta/llama-4-scout-17b-16e-instruct",
+        "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+      ],
+      "notes": [
+        "Needs the account id in the URL as well as the token.",
+        "55+ more models via discovery; 7 named models need the paid plan."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "zai",
+      "name": "Z AI (Zhipu)",
+      "kind": "openai_compat",
+      "base_url": "https://api.z.ai/api/paas/v4",
+      "key_env": "ZAI_API_KEY",
+      "key_required": true,
+      "gateway": false,
+      "signup_url": "https://open.bigmodel.cn/usercenter/apikeys",
+      "limits": {
+        "rpm": null,
+        "rpd": null,
+        "note": "1 concurrent request per model"
+      },
+      "models": [
+        "glm-4.7-flash",
+        "glm-4.5-flash",
+        "glm-4.6v-flash"
+      ],
+      "notes": [
+        "International endpoint (api.z.ai) serves the same free models; mainland endpoint: https://open.bigmodel.cn/api/paas/v4.",
+        "OpenAI-compatible chat/completions shape: de_verificat."
+      ],
+      "status": "de_verificat"
+    },
+    {
+      "id": "aionlabs",
+      "name": "Aion Labs",
+      "kind": "openai_compat",
+      "base_url": "https://api.aionlabs.ai/v1",
+      "key_env": "AIONLABS_API_KEY",
+      "key_required": true,
+      "gateway": false,
+      "signup_url": "https://www.aionlabs.ai/app/api-keys/",
+      "limits": {
+        "rpm": 15,
+        "rpd": null,
+        "note": "20K tokens/day"
+      },
+      "models": [
+        "aion-labs/aion-3.0-mini",
+        "aion-labs/aion-3.0",
+        "aion-labs/aion-2.0",
+        "aion-labs/aion-rp-llama-3.1-8b"
+      ],
+      "notes": [
+        "Specialised for roleplay and storytelling; likely weak for structured JSON.",
+        "OpenAI compatibility not stated explicitly: de_verificat."
+      ],
+      "status": "de_verificat"
+    },
+    {
+      "id": "gonka",
+      "name": "Gonka Broker",
+      "kind": "openai_compat",
+      "base_url": "https://proxy.gonkabroker.com/v1",
+      "key_env": "GONKA_API_KEY",
+      "key_required": true,
+      "gateway": true,
+      "signup_url": "https://app.gonkabroker.com/signup",
+      "limits": {
+        "rpm": null,
+        "rpd": null,
+        "note": "~1M tokens/MONTH shared; lower rate on free funds (maxRpm from /test-auth)"
+      },
+      "models": [
+        "deepseek-ai/DeepSeek-V4-Flash-0731",
+        "zai-org/GLM-5.3-Flash",
+        "MiniMaxAI/MiniMax-M2.7"
+      ],
+      "notes": [
+        "Requires SMS verification with a real phone number.",
+        "BAAI/bge-m3 not listed: embeddings model, cannot answer a prompt."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "llm7",
+      "name": "LLM7.io",
+      "kind": "openai_compat",
+      "base_url": "https://api.llm7.io/v1",
+      "key_env": "LLM7_API_KEY",
+      "key_required": false,
+      "gateway": true,
+      "signup_url": "https://token.llm7.io",
+      "limits": {
+        "rpm": 60,
+        "rpd": null,
+        "note": "Free token: 1 RPS, 60 RPM, 250 req/hour, 100K tokens/24h; may be reduced without notice"
+      },
+      "models": [
+        "gpt-oss:20b",
+        "mistral-Nemo-Instruct-2407",
+        "codestral-latest"
+      ],
+      "notes": [
+        "Works anonymously too (no key); catalog rotates often."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo Code gateway",
+      "kind": "openai_compat",
+      "base_url": "https://api.kilo.ai/api/gateway",
+      "key_env": "KILO_API_KEY",
+      "key_required": false,
+      "gateway": true,
+      "signup_url": "https://app.kilo.ai/profile",
+      "limits": {
+        "rpm": null,
+        "rpd": null,
+        "note": "200 requests/hour per IP for free models"
+      },
+      "models": [
+        "kilo-auto/free",
+        "nvidia/nemotron-3.5-lightning:free",
+        "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "nvidia/nemotron-3.5-super-vl:free",
+        "dots-studio/dots-3-note-preview:free",
+        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "cohere/north-mini-code:free",
+        "openrouter/free",
+        "stealth/glyph-cluster"
+      ],
+      "notes": [
+        "Free models need no API key.",
+        "kilo-auto/free may route to providers that log prompts and outputs; NVIDIA endpoints: trial use, no personal data, logged.",
+        "Catalog can lag what is served."
+      ],
+      "status": "ok"
+    },
+    {
+      "id": "ovh",
+      "name": "OVHcloud AI Endpoints",
+      "kind": "openai_compat",
+      "base_url": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
+      "key_env": "OVH_API_KEY",
+      "key_required": false,
+      "gateway": false,
+      "signup_url": "https://www.ovhcloud.com/en/public-cloud/ai-endpoints/catalog/",
+      "limits": {
+        "rpm": 2,
+        "rpd": null,
+        "note": "Anonymous: 2 RPM per IP per model. With a key: 400 RPM but billed pay-as-you-go"
+      },
+      "models": [
+        "gpt-oss-120b",
+        "Meta-Llama-3_3-70B-Instruct",
+        "Qwen3.6-27B",
+        "Qwen3.8-27B",
+        "gpt-oss-20b",
+        "Qwen3.5-9B",
+        "Mistral-Small-3.2-24B-Instruct-2506",
+        "Qwen3.5-397B-A17B",
+        "Qwen2.5-VL-72B-Instruct"
+      ],
+      "notes": [
+        "Free only WITHOUT a key; a key switches to paid usage.",
+        "Hosted in the EU.",
+        "Mistral-Small-3.2 end of life 2026-11-04 (already passed): de_verificat.",
+        "send_key=false: the chain never sends a key here (a key means paid usage)."
+      ],
+      "status": "ok",
+      "send_key": false
+    },
+    {
+      "id": "modelscope",
+      "name": "ModelScope",
+      "kind": "openai_compat",
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "key_env": "MODELSCOPE_API_KEY",
+      "key_required": true,
+      "gateway": true,
+      "signup_url": "https://modelscope.cn/my/myaccesstoken",
+      "limits": {
+        "rpm": null,
+        "rpd": 2000,
+        "note": "2,000 RPD total, <=500 RPD per model (dynamic)"
+      },
+      "models": [
+        "Qwen/Qwen3.5-35B-A3B",
+        "Qwen/Qwen3.5-27B"
+      ],
+      "notes": [
+        "Requires Alibaba Cloud binding + real-name verification; cannot be tested from outside mainland China.",
+        "Used when its key is in .env; registration needs mainland-China verification."
+      ],
+      "status": "de_verificat"
+    },
+    {
+      "id": "siliconflow",
+      "name": "SiliconFlow",
+      "kind": "openai_compat",
+      "base_url": "https://api.siliconflow.cn/v1",
+      "key_env": "SILICONFLOW_API_KEY",
+      "key_required": true,
+      "gateway": false,
+      "signup_url": "https://cloud.siliconflow.cn/account/ak",
+      "limits": {
+        "rpm": null,
+        "rpd": null,
+        "note": "not published"
+      },
+      "models": [
+        "XingChenAGI/Xing4.0-29B",
+        "tencent/Hunyuan-MT-7B"
+      ],
+      "notes": [
+        "Real-name verification with mainland-Chinese documents; cannot be tested from outside mainland China.",
+        "Hunyuan-MT is a translation model.",
+        "Used when its key is in .env; registration needs mainland-China verification."
+      ],
+      "status": "de_verificat"
+    }
+  ]
+}

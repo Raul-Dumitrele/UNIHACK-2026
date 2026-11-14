@@ -61,7 +61,8 @@ def test_ids_unique_and_everything_is_demo(data):
     for rows in (data.users, data.spaces, data.slots, data.ideas):
         ids = [r["id"] for r in rows]
         assert len(ids) == len(set(ids))
-        assert all(r["is_demo"] is True for r in rows)
+        # Everything is demo data except the plots from the city hall's Legea 15/2003 list (real, is_demo=false).
+        assert all(r["is_demo"] is (not r["id"].startswith("lista-")) for r in rows)
 
 
 def test_references_are_consistent(data):
@@ -269,7 +270,7 @@ def test_contract_rows_are_consistent(data):
     ideas = {i["id"]: i for i in rows["Idea"]}
     assert {u["rol"] for u in users.values()} == {"cetatean", "proprietar", "primarie", "verificator"}
     assert all(s["owner_id"] in users and users[s["owner_id"]]["rol"] ==
-               ("primarie" if s["tip"] == "teren liber" else "proprietar") for s in spaces.values())
+               ("primarie" if s["tip"] == "teren_liber" else "proprietar") for s in spaces.values())
     assert all(i["author_id"] in users and len(i["titlu"]) <= 80 for i in ideas.values())
     assert all(it["user_id"] in users and it["idea_id"] in ideas for it in rows["Interest"])
     assert all(n["user_id"] in users and n["idea_id"] in ideas for n in rows["Notification"])
@@ -277,6 +278,7 @@ def test_contract_rows_are_consistent(data):
     assert teren["suprafata_mp"] == 600 and teren["sloturi"] == []
     [p] = rows["Proiect"]
     assert p["verificator_id"] == "demo-user-10" and p["stare"] == "in_verificare" and p["space_id"] in spaces
+    assert p["is_demo"] is True  # badge "exemplu" (Proiect.is_demo in the contract)
     assert all(e["proiect_id"] == p["id"] for e in rows["ProiectEveniment"])
     assert {n["proiect_id"] for n in rows["Notification"] if n["proiect_id"]} == {p["id"]}
     for b in rows["Booking"]:
@@ -319,7 +321,7 @@ def test_city_hall_and_verifier_accounts(data):
 def test_free_plot_is_never_matched_or_bookable(data):
     from backend.ai.matching import match_spaces
 
-    [teren] = [s for s in data.spaces if s["kind"] == "teren_liber"]
+    [teren] = [s for s in data.spaces if s["id"] == "demo-space-teren-1"]
     assert teren["suprafata_mp"] == 600 and teren["is_demo"] and teren["neighborhood"] == "Fabric"
     assert not any(sl["space_id"] == teren["id"] for sl in data.slots)
     for idea in data.ideas:
@@ -327,8 +329,7 @@ def test_free_plot_is_never_matched_or_bookable(data):
 
 
 def test_demo_project(data):
-    from backend.ai.proiect import DISCLAIMER, cost_sentence, money_mentions
-    from backend.ai.costs import Cost
+    from backend.ai.proiect import DISCLAIMER, money_mentions
 
     [p] = data.proiecte
     ideas = {i["id"]: i for i in data.ideas}
@@ -340,7 +341,7 @@ def test_demo_project(data):
     assert p["dosar"]["justificare"].endswith(DISCLAIMER)
     assert set(p["dosar"]["referinte_citate"]) <= {r["id"] for r in p["referinte"]}
     text = p["dosar"]["descriere"] + p["dosar"]["justificare"]
-    assert sorted(money_mentions(text)) == sorted(money_mentions(cost_sentence(Cost(**p["cost"]))))
+    assert money_mentions(text) == []  # figures only in p["cost"]
 
 
 def test_demo_project_events_and_notifications(data):
@@ -356,7 +357,55 @@ def test_demo_project_events_and_notifications(data):
 def test_project_is_offline_and_deterministic(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "would-be-used-if-called")
     monkeypatch.setenv("REFERENCES_LIVE_SEARCH", "true")
-    monkeypatch.setattr("backend.ai.proiect._generate", lambda *a: pytest.fail("seed must not call Gemini"))
+    monkeypatch.setenv("LLM_ENABLED", "true")
+    monkeypatch.setattr("backend.ai.llm.chain.complete", lambda *a, **k: pytest.fail("seed must not call an LLM"))
     monkeypatch.setattr("backend.ai.references.search.search_references",
                         lambda *a: pytest.fail("seed must not search the web"))
     assert build_seed(START).proiecte == build_seed(START).proiecte
+
+
+# --- plots from the city hall's Legea 15/2003 list (backend/seed/terenuri.py) ---
+
+def test_list_plots_follow_the_rule(data):
+    from backend.seed import terenuri
+
+    plots = [s for s in data.spaces if s["id"].startswith("lista-")]
+    assert terenuri.MIN_PLOTS <= len(plots) <= terenuri.MAX_PLOTS
+    assert all(p["suprafata_mp"] >= terenuri.MIN_AREA_MP and p["kind"] == "teren_liber" for p in plots)
+    assert all(p["is_demo"] is False and p["owner_id"] == "demo-user-9" and p["source"] == "lista_primarie" for p in plots)
+    assert all(p["sursa_detalii"].startswith("HCL 20/2019, anexa nr. 1, poz.") for p in plots)
+    assert all("locatie_aproximativa" in p["sursa_detalii"] for p in plots)  # street only, no house number
+    assert len({p["id"] for p in plots}) == len(plots)
+
+
+def test_list_plots_are_side_by_side_not_stacked(data):
+    from backend.ai.geo import distance_km
+    from backend.seed import terenuri
+
+    plots = [s for s in data.spaces if s["id"].startswith("lista-")]
+    points = [(p["lat"], p["lon"]) for p in plots]
+    assert len(set(points)) == len(plots)  # no two plots on the same map point
+    gaps = [distance_km(a, b) * 1000 for a, b in zip(points, points[1:])]
+    assert all(abs(g - terenuri.LOT_WIDTH_M) < 0.5 for g in gaps)  # adjacent lots, ~12 m apart, list order
+    centre = (sum(p[0] for p in points) / len(points), sum(p[1] for p in points) / len(points))
+    assert distance_km(centre, (45.7631866, 21.1810539)) < 0.005  # centred on the geocoded street point
+    assert all("pozitie_schematica" in p["sursa_detalii"] for p in plots)
+
+
+def test_list_plots_in_contract_rows(data):
+    from backend.seed.contract import contract_rows
+
+    rows = [s for s in contract_rows(data)["Space"] if s["id"].startswith("lista-")]
+    assert rows and all(r["tip"] == "teren_liber" and r["sloturi"] == [] and r["is_demo"] is False for r in rows)
+    assert all(r["sursa"] == "lista_primarie" for r in rows)
+
+
+@pytest.mark.parametrize("min_count, rows, expected", [(5, 4, 0), (5, 5, 5), (5, 30, 15)])
+def test_list_selection_threshold_and_cap(monkeypatch, min_count, rows, expected):
+    from backend.seed import terenuri
+
+    monkeypatch.setattr(terenuri, "MIN_PLOTS", min_count)
+    fake = [{"cf": str(i), "pozitie": i, "suprafata_mp": 276, "strada": "s"} for i in range(rows)]
+    fake.append({"cf": "small", "pozitie": 99, "suprafata_mp": 120, "strada": "s"})
+    fake.append({"cf": "nowhere", "pozitie": 98, "suprafata_mp": 900, "strada": "unknown"})
+    assert len(terenuri.select(fake, {"s": {}})) == expected

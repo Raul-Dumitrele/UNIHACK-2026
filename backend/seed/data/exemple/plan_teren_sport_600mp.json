@@ -1,0 +1,97 @@
+{
+ "tip_amenajare": "teren_sport",
+ "eticheta": "teren de sport",
+ "suprafata_mp": 600.0,
+ "latime_m": 20.0,
+ "lungime_m": 30.0,
+ "elemente": [
+  {
+   "id": "e1",
+   "nume": "alee de acces",
+   "tip": "alee",
+   "x": 1.0,
+   "y": 1.0,
+   "latime_m": 18.0,
+   "lungime_m": 1.5,
+   "zona_libera_m": 0.0,
+   "obligatoriu": false
+  },
+  {
+   "id": "e2",
+   "nume": "teren multisport",
+   "tip": "sport",
+   "x": 2.0,
+   "y": 3.5,
+   "latime_m": 15.0,
+   "lungime_m": 11.0,
+   "zona_libera_m": 1.0,
+   "obligatoriu": true
+  },
+  {
+   "id": "e3",
+   "nume": "bancă 1",
+   "tip": "banca",
+   "x": 1.5,
+   "y": 16.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e4",
+   "nume": "bancă 2",
+   "tip": "banca",
+   "x": 4.3,
+   "y": 16.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e5",
+   "nume": "bancă 3",
+   "tip": "banca",
+   "x": 7.1,
+   "y": 16.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e6",
+   "nume": "coș de gunoi 1",
+   "tip": "cos",
+   "x": 9.7,
+   "y": 15.8,
+   "latime_m": 0.6,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false
+  },
+  {
+   "id": "e7",
+   "nume": "coș de gunoi 2",
+   "tip": "cos",
+   "x": 10.9,
+   "y": 15.8,
+   "latime_m": 0.6,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false
+  }
+ ],
+ "omise": [],
+ "complet": true,
+ "ipoteze": [
+  "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
+  "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
+  "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
+  "Intrarea e pe latura de jos, cu o alee de 1,5 m."
+ ],
+ "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
+ "suprafata_ocupata_mp": 195.96,
+ "is_demo": true
+}

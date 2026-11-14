@@ -1,0 +1,3 @@
+# Runtime artefacts of the LLM chain: never committed (may contain model answers or machine-specific results).
+cache/
+models_live.json

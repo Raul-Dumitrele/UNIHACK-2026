@@ -13,7 +13,7 @@ from pathlib import Path
 from backend.ai.fallback import build_fallback
 from backend.ai.geo import nearest_neighborhood
 from backend.ai.matching import KIND_LABELS
-from backend.seed import proiect_demo, scenario
+from backend.seed import proiect_demo, scenario, terenuri
 
 DATA = Path(__file__).resolve().parent / "data"
 SLOT_DAYS = 14
@@ -151,6 +151,7 @@ def build_seed(start: date | None = None) -> SeedData:
     # "Propunere către Primărie": a free plot (no slots, never matched: capacity 0) and one project.
     teren = proiect_demo.build_teren(extra)
     spaces.append(teren)
+    spaces += terenuri.build_terenuri_lista()  # Legea 15/2003 list plots (no slots, never matched)
     idea = next(i for i in ideas if i["id"] == extra["idea"]["id"])
     proiect, events = proiect_demo.build_proiect(extra, idea, teren)
     notifications += proiect_demo.build_notifications(proiect, events, idea, users)

@@ -31,7 +31,9 @@
   ],
   "owner_id": "demo-user-7",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "sursa": "osm",
+  "sursa_detalii": null
  },
  {
   "id": "osm-node-11681144987",
@@ -62,7 +64,9 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "sursa": "osm",
+  "sursa_detalii": null
  },
  {
   "id": "osm-node-12329181697",
@@ -97,7 +101,9 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "sursa": "osm",
+  "sursa_detalii": null
  },
  {
   "id": "osm-node-13252338910",
@@ -128,7 +134,9 @@
   ],
   "owner_id": "demo-user-6",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "sursa": "osm",
+  "sursa_detalii": null
  },
  {
   "id": "osm-node-13726011332",
@@ -162,6 +170,8 @@
   ],
   "owner_id": "demo-user-8",
   "is_demo": true,
-  "suprafata_mp": null
+  "suprafata_mp": null,
+  "sursa": "osm",
+  "sursa_detalii": null
  }
 ]

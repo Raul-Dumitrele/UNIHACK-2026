@@ -1,0 +1,141 @@
+{
+ "tip_amenajare": "pista_biciclete",
+ "eticheta": "pistă de biciclete",
+ "suprafata_mp": 600.0,
+ "latime_m": 20.0,
+ "lungime_m": 30.0,
+ "elemente": [
+  {
+   "id": "e1",
+   "nume": "pistă de biciclete (latura de jos)",
+   "tip": "pista",
+   "x": 1.0,
+   "y": 1.0,
+   "latime_m": 18.0,
+   "lungime_m": 2.5,
+   "zona_libera_m": 0.0,
+   "obligatoriu": true
+  },
+  {
+   "id": "e2",
+   "nume": "pistă de biciclete (latura de sus)",
+   "tip": "pista",
+   "x": 1.0,
+   "y": 26.5,
+   "latime_m": 18.0,
+   "lungime_m": 2.5,
+   "zona_libera_m": 0.0,
+   "obligatoriu": true
+  },
+  {
+   "id": "e3",
+   "nume": "pistă de biciclete (latura stângă)",
+   "tip": "pista",
+   "x": 1.0,
+   "y": 3.5,
+   "latime_m": 2.5,
+   "lungime_m": 23.0,
+   "zona_libera_m": 0.0,
+   "obligatoriu": true
+  },
+  {
+   "id": "e4",
+   "nume": "pistă de biciclete (latura dreaptă)",
+   "tip": "pista",
+   "x": 16.5,
+   "y": 3.5,
+   "latime_m": 2.5,
+   "lungime_m": 23.0,
+   "zona_libera_m": 0.0,
+   "obligatoriu": true
+  },
+  {
+   "id": "e5",
+   "nume": "rastel pentru biciclete",
+   "tip": "rastel",
+   "x": 4.0,
+   "y": 4.0,
+   "latime_m": 3.0,
+   "lungime_m": 1.0,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e6",
+   "nume": "zonă de învățare pentru copii",
+   "tip": "pista",
+   "x": 4.0,
+   "y": 6.0,
+   "latime_m": 8.0,
+   "lungime_m": 6.0,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e7",
+   "nume": "bancă 1",
+   "tip": "banca",
+   "x": 8.0,
+   "y": 4.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e8",
+   "nume": "bancă 2",
+   "tip": "banca",
+   "x": 10.8,
+   "y": 4.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e9",
+   "nume": "bancă 3",
+   "tip": "banca",
+   "x": 13.6,
+   "y": 4.0,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false
+  },
+  {
+   "id": "e10",
+   "nume": "coș de gunoi 1",
+   "tip": "cos",
+   "x": 12.8,
+   "y": 5.8,
+   "latime_m": 0.6,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false
+  },
+  {
+   "id": "e11",
+   "nume": "coș de gunoi 2",
+   "tip": "cos",
+   "x": 14.0,
+   "y": 5.8,
+   "latime_m": 0.6,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false
+  }
+ ],
+ "omise": [],
+ "complet": true,
+ "ipoteze": [
+  "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
+  "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
+  "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
+  "Pista e o buclă de 2,5 m lățime pe conturul terenului."
+ ],
+ "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
+ "suprafata_ocupata_mp": 259.96,
+ "is_demo": true
+}

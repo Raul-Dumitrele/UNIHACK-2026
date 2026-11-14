@@ -17,6 +17,9 @@ class AISettings(BaseSettings):
     # Live web search for reference projects and project notes (Gemini + Google Search). Needs the key;
     # REFERENCES_LIVE_SEARCH=false turns it off (tests, offline demos).
     references_live_search: bool = True
+    # Wall-clock cap for one live reference search (search + extraction + page checks). When it runs out,
+    # the candidates verified so far are used and nothing is cached, so a later request finishes the job.
+    references_search_budget_s: float = 25.0
 
 
 def get_settings() -> AISettings:

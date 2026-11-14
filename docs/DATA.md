@@ -48,9 +48,9 @@ Calculul detaliat (pe cartiere, pe săptămâni, proiecte trimise) rămâne disp
 
 Seed-ul în forma contractului:
 - **Roluri:** `locuitor` devine `cetatean`; `proprietar`, `primarie` și `verificator` rămân la fel.
-- **Teren liber și proiect:** terenul liber e un `Space` cu `tip = teren liber` și `suprafata_mp`. Proiectul demo are `verificator_id` = contul de verificator care l-a preluat. Evenimentele lui și notificările cu `proiect_id` intră și ele în baza de date.
+- **Teren liber și proiect:** terenul liber e un `Space` cu `tip = teren_liber` (valoarea din contract) și `suprafata_mp`. Proiectul demo are `verificator_id` = contul de verificator care l-a preluat. Evenimentele lui și notificările cu `proiect_id` intră și ele în baza de date.
 - **Utilizatori:** `lat`/`lng` sunt centrul cartierului.
-- **Spații:** `tip` = eticheta în română; `dotari` sunt traduse în vocabularul contractului.
+- **Spații:** `tip` = eticheta în română (bibliotecă, centru comunitar...), cu excepția terenului liber, care are `teren_liber`; `dotari` sunt traduse în vocabularul contractului.
 - **Sloturi:** `sloturi` e programul săptămânal, în ora Timișoarei, fără sloturile ocupate de rezervările aprobate.
 - **Rezervări:** `slot` e intervalul săptămânal; `stare` e `cerut`, `aprobat` sau `refuzat`.
 - **Exemple pentru web/mobil:** `backend/seed/data/examples/*.json` au forma din contract. `impact.json` e calculat cu `compute_impact` pe o bază temporară.
@@ -264,7 +264,7 @@ Căutarea live e **pornită implicit** când există o cheie Gemini. `REFERENCES
 
    Altfel cifra rămâne `null`. Intrările cu cifre confirmate primesc `sursa_tip = cautare_ai_verificata`, iar celelalte `cautare_ai`.
 5. Rezultatele se salvează în `backend/ai/references/cache/<tip>.json` (ignorat de git), pentru 7 zile.
-6. Orice eroare (cotă 429, timeout) întoarce `[]` și se folosește baza locală.
+6. Căutarea are o limită de timp totală (`REFERENCES_SEARCH_BUDGET_S`, implicit 25 s). Când se termină, se folosesc candidații verificați până atunci și nu se salvează nimic în cache, ca o cerere ulterioară să termine căutarea. Orice eroare (cotă 429, timeout) întoarce `[]` și se folosește baza locală. Pentru demo e recomandat `REFERENCES_LIVE_SEARCH=false`, ca nimic să nu depindă de rețea.
 
 ### `estimate_cost(referinte, suprafata_mp)`
 Calculul e determinist și nu folosește AI.
@@ -279,8 +279,8 @@ Calculul e determinist și nu folosește AI.
 - Gemini scrie textul pornind de la idee, spațiu și componentele referințelor. **Nu vede nicio cifră de cost**, nici pe cele ale referințelor, ci doar dacă estimarea e disponibilă.
 - Răspunsul e validat cu Pydantic. Dacă textul conține o sumă de bani (lei, RON, euro, €, „mii/milioane de lei”), răspunsul e respins. Se încearcă **încă o dată**, apoi se folosește **șablonul de rezervă**, care are aceeași formă și nu folosește Gemini.
 - Codul adaugă apoi:
-  - propoziția cu costul, din `estimate_cost`, la finalul `justificare`;
-  - textul obligatoriu (regula 10 din contract), la finalul `justificare`, după propoziția cu costul: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”;
+  - textul obligatoriu (regula 10 din contract), la finalul `justificare`: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”;
+  - **nicio cifră de cost în textul dosarului**: costul stă doar în obiectul `Cost` (interval, mediană, ipoteze sau `motiv`), pe care UI-ul îl afișează separat. Dacă estimarea nu e posibilă, motivul e tot în `Cost.motiv`.
   - punctele de bază din `lista_verificare` (cine administrează terenul, planurile urbanistice, eventualele avize, finanțarea, întreținerea), formulate ca întrebări de clarificat, fără afirmații legale ferme.
 - `referinte_citate` păstrează doar id-uri din lista primită.
 - Contractul cere lei și mp ca numere întregi: la ieșire, `cost_total_lei` și `suprafata_mp` sunt rotunjite, iar baza păstrează zecimalele din sursă.
@@ -304,3 +304,194 @@ python -m backend.seed.run                   # seed (offline, idempotent)
 python -m backend.seed.export_examples       # regenerează exemplele pentru web/mobil
 python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără rețea)
 ```
+
+## Terenuri din lista Primăriei (Legea 15/2003)
+**Ipoteză de lucru a echipei:** terenurile din lista validată de Consiliul Local pentru Legea 15/2003 sunt folosite în aplicație ca terenuri libere ale Primăriei. În aplicație apar doar ca „din lista Primăriei, de confirmat”.
+
+**Atenție la două lucruri:**
+- Legea 15/2003 destinează aceste parcele **locuințelor tinerilor**.
+- Parcelele pot fi **atribuite între timp**.
+
+### Sursele (colectate pe 2026-11-14)
+- **Site-ul oficial:** [primariatm.ro/hcl](https://www.primariatm.ro/hcl). `hcl.usr.ro` nu a fost folosit, pentru că interzice accesul automat (`robots.txt`: `Disallow: /`).
+- **[HCL 20/29.01.2019](https://www.primariatm.ro/hcl/2019/20), Anexa nr. 1:** lista comisiei pentru Legea 15/2003, nr. SC2019-276. Are text, deci a putut fi extrasă: **128 de parcele**, toate pe str. Lt. Ovidiu Balea (Ronaț), cu 276 mp (80 de parcele) și 252 mp (48). Anexa dă doar CF-ul și numărul cadastral, fără număr de stradă.
+- **[HCL 25/2020](https://www.primariatm.ro/hcl/2020/25):** documentele sunt **scanate** (imagini fără text) și nu au putut fi citite automat.
+- **Ediții 2021–2026:** nu au fost găsite publicate.
+- **Documentele originale** sunt în `backend/seed/data/sursa/l15/`, cu `manifest.json` (URL-ul oficial al fiecărui document). Scanările din 2020 nu sunt comise. Lista extrasă e în `backend/seed/data/terenuri_l15_2019.json`.
+
+### Locația
+- Geocodarea s-a făcut o singură dată, cu Nominatim (OpenStreetMap, ODbL), cu cel mult 1 cerere pe secundă. Rezultatul e în cache, în `backend/seed/data/geocode_cache.json`.
+- Strada nu există ca obiect separat în OSM. Punctul folosit e o adresă de pe aceeași stradă, marcat `locatie_aproximativa`.
+- **Pe hartă**, parcelele sunt așezate **una lângă alta**: un rând de loturi alăturate de circa 12 m (un lot de 276 mp are aproximativ 12 m × 23 m), în ordinea din listă, centrat pe punctul străzii. Anexa nu publică poziția fiecărei parcele, deci așezarea e **schematică** (`pozitie_schematica` în `sursa_detalii`). Limitele reale sunt în cadastru, după CF și numărul cadastral.
+
+### Regula din seed (`backend/seed/terenuri.py`)
+- **Filtrul:** suprafață de cel puțin **250 mp** (prag stabilit de echipă; inițial 300 mp, pe care nu-l atingea nicio parcelă) și locație găsită.
+- **Selecția:** cele mai bune **15** (suprafața cea mai mare, apoi ordinea din listă). Dacă rămân sub 5, nu se adaugă nimic.
+- **Fiecare teren** e un `Space` cu:
+  - `tip = teren_liber`, `suprafata_mp`, `sloturi = []`, `capacitate = 0`, deci nu apare la potriviri;
+  - proprietar contul de primărie (`demo-user-9`) și **`is_demo = false`**;
+  - `sursa = lista_primarie` și `sursa_detalii = „HCL 20/2019, anexa nr. 1, poz. <n>; locatie_aproximativa”`;
+  - id-ul `lista-2019-<cf>`.
+- **Câmpurile `sursa` și `sursa_detalii`** nu sunt încă în contract. Seed-ul le trimite, iar ele se salvează imediat ce P1 le adaugă în modelul `Space`.
+- **Dosarul:** pentru aceste terenuri, `generate_dosar` pune primul în `lista_verificare` punctul: „Confirmarea faptului că terenul nu a fost atribuit între timp (Legea 15/2003) și a disponibilității lui pentru uz comunitar”.
+
+## Planul schematic (`backend/ai/proiect/design/`)
+`backend.ai.proiect` e acum pachet; importurile vechi (`from backend.ai.proiect import generate_dosar`) rămân valabile.
+
+- `build_scene(tip_amenajare, suprafata_mp, latime_m=None) -> Scene`: amplasare deterministă, fără AI. Coordonate în metri, originea în colțul stânga-jos, axa y în sus (ca în CAD).
+  - Forma: dreptunghi 2:3 cu suprafața dată; cu `latime_m` (de ex. lot de 12 m) lungimea rezultă din suprafață.
+  - Margine liberă de 1 m pe contur, alee de acces de 1,5 m pe latura de jos (la pista de biciclete: buclă de 2,5 m pe contur).
+  - Elementele se așază pe rânduri, în ordinea din catalog (elementul principal primul). Fiecare își păstrează zona liberă din jur; ce nu încape nu se desenează, ci apare în `omise`, cu motiv. `complet = false` dacă lipsește un element obligatoriu.
+  - Orice tip: tipurile din catalog (cele 6 din contract + foișor) au elemente proprii; orice alt text („fântână arteziană”) primește o zonă propusă și mobilier de bază, fără detalii inventate.
+- **Dimensiunile din `catalog.py` sunt ipoteze schematice ale aplicației**, nu valori din standarde sau fișe de produs. Scena le enumeră în `ipoteze`, iar fiecare plan poartă `PLAN_DISCLAIMER`: „Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.”
+- `build_plan_svg(scene, titlu)`: SVG de sine stătător; elementele sunt numerotate, cu legendă, cote și note.
+- `build_plan_dxf(scene, titlu)`: DXF ASCII R12 (AC1009), scris manual (`ezdxf` cere numpy). Doar entități R12: POLYLINE închis, LINE, TEXT (cotele sunt LINE + TEXT). Straturi: `TEREN`, `ELEMENTE` (cu zonele libere în gri), `COTE`, `TEXT`. Diacriticele sunt transliterate (R12 are text ASCII).
+- Exemple: `python -m backend.seed.export_planuri` scrie `backend/seed/data/exemple/plan_<tip>_<mp>mp.{json,svg,dxf}`: fiecare tip pe 600 mp (terenul demo) și două loturi de 276 mp × 12 m, ca cele din lista Primăriei.
+
+## Alegerea terenului (`find_plots`)
+`backend.ai.proiect.find_plots(tip_amenajare, suprafata_minima, cartier=None, spaces=None, limit=10) -> list[PlotCandidate]`. Fiecare candidat are `space_id`, `nume`, `cartier`, `suprafata_mp`, `scor` (0-100), `motiv` (în română), `complet`, `din_lista_primarie`, `is_demo`, `distanta_km`.
+
+- Candidații: Space-urile `teren_liber`. Implicit, cele din seed (cele 15 loturi `lista-2019-*` și terenul demo); P1 poate trimite rândurile din baza de date (dicționare sau obiecte ORM).
+- Terenurile sub `suprafata_minima` sunt excluse.
+
+| Criteriu | Puncte | Regulă |
+|---|---|---|
+| încape | 60 | 45 dacă toate elementele obligatorii încap pe planul schematic, + 15 × fracția dotărilor opționale care încap |
+| loc | 30 | în cartier: 30; altfel ≤ 1 km: 30, apoi scade liniar până la 0 la 8 km; fără cartier sau cartier necunoscut: 15 |
+| mărime | 10 | ≤ 2× suprafața minimă: 10; ≤ 4×: 5; mai mare: 0 (un teren mare rămâne pentru un proiect mai mare) |
+
+- Ordinea: scor, apoi terenul mai mic, apoi id-ul.
+- Loturile din listă sunt desenate cu 12 m lățime, ca pe hartă. Motivul lor spune mereu „din lista Primăriei (Legea 15/2003), de confirmat: poate fi atribuit între timp”.
+- Loturile nu se unesc: pozițiile lor sunt schematice, deci alăturarea ar fi inventată. Consecință: un skatepark de peste 276 mp găsește azi doar terenul demo.
+
+## Prețuri unitare (SEAP, date deschise)
+**Nu există o sursă publică de prețuri unitare per articol.** Ce am verificat pe 2026-11-14:
+- **Standardele de cost** pentru investiții publice (HG 363/2010, HG 1394/2010) au fost **abrogate în 2018**. Ordinul MDLPA 1321/2021 (Anghel Saligny) are plafoane doar pentru apă, canalizare și drumuri.
+- **Contractele SEAP și OpenTender** au doar valori totale.
+- **Studiile de fezabilitate publicate** dau de obicei doar totalul (de ex. SF Sector 6, skatepark și parc pentru câini: 1.105.529,39 lei fără TVA).
+
+**Sursa folosită:** exporturile „Achiziții directe” din seturile [achizitii-publice-&lt;an&gt;](https://data.gov.ro/dataset/achizitii-publice-2025) de pe data.gov.ro, publicate de Autoritatea pentru Digitalizarea României, cu licența **CC BY 4.0** (2021+). Atribuirea trebuie afișată oriunde apar prețurile.
+- **Limita setului:** fiecare achiziție are o denumire liberă, un cod CPV și valoarea, dar **nicio coloană de cantitate**.
+- **Regula (`backend/ai/proiect/preturi.py`):** o achiziție devine observație doar dacă denumirea are **un singur articol** și **o singură cantitate explicită** în unitatea articolului: „Achizitie 30 buc. Banci pentru parc”, „MONTAJ PAVELE BETON 100 mp”.
+  - Sunt excluse pachetele, seturile, loturile, reparațiile, serviciile și denumirile cu două articole („pergola cu 2 bănci si masa”, „… + remodelare teren”).
+  - Sunt excluse și cantitățile pe palet („9,6 MP/PAL”) și materialele care nu sunt articolul (bandă de avertizare, plasă de gard).
+  - Fiecare articol are coduri CPV permise.
+- **Prețul unitar** = valoarea achiziției / cantitate. Un articol are preț doar cu **cel puțin 3 observații** (prag fixat înainte de rezultate). Se afișează mediana, min–max, numărul de observații, perioada și numerele DA cele mai apropiate de mediană.
+- **TVA: neprecizat în setul de date.** Valorile sunt prețuri plătite de cumpărători publici, nu un standard.
+- **Colectare:** `python -m backend.seed.fetch_preturi` (o singură dată, cu rețea). Rezultatul e `backend/ai/proiect/data/preturi_seap.json`, cu fiecare observație (DA, dată, CPV, denumirea originală, cantitate, valoare), ca să poată fi verificată rând cu rând. Testele reaplică regulile pe fiecare observație comisă.
+  - Fișierele `.xls` vechi și `.ods` sunt sărite (fără dependențe), iar lista lor e în JSON.
+  - Coloanele diferă între ani: 2023 are `VALOARE_ATRIBUITA_RON`, 2025+ are `VALOARE_ACHIZITIE_RON`. JSON-ul notează coloana folosită.
+
+## Lista de materiale (`lista_materiale(scene)`)
+- Cantitățile vin din planul schematic. Fiecare linie are `ipoteza`, de exemplu:
+  - bănci = câte sunt pe plan;
+  - alee pavată = suprafața aleii;
+  - pardoseală de protecție = echipamentele de joacă cu zona lor liberă;
+  - gard = perimetrul;
+  - gazon = suprafața rămasă.
+- Fără preț (sub 3 observații sau articol fără sursă) linia e **„de cotat”**, cu motivul.
+- `subtotal_cotat_lei` acoperă doar liniile cotate și se afișează **doar** ca „Subtotal articole cotate (incomplet: N articole de cotat)”. **Nu este costul proiectului**; estimarea de cost rămâne `Cost` (din proiecte de referință).
+
+## Documente (`backend.ai.proiect.documente`)
+- `build_documente(proiect, space) -> {"plan.svg", "plan.dxf", "dosar.pdf", "materiale.csv": (bytes, media type)}`, plus `plan_json` și `materiale_json`.
+- Proiectul și spațiul sunt în forma din contract (dicționare sau rânduri ORM; `dosar`/`cost` pot fi și text JSON). Rezultatul e determinist.
+- **Dosarul PDF** e scris manual (PDF 1.4, fără dependențe):
+  - conținut: textele dosarului, estimarea de cost, referințele, planul desenat vectorial, lista de materiale și textul din regula 10;
+  - fonturi: Helvetica standard, cu codificare pentru ă/ș/ț (`/Differences` + `/ToUnicode`, deci copierea și căutarea dau ș/ț corecte);
+  - fără dată de creare, ca fișierul să fie identic la fiecare generare.
+- **`materiale.csv`:** separator `;`, virgulă zecimală, UTF-8 cu BOM, ca să se deschidă direct în Excel în română.
+- Terenurile din lista Primăriei sunt desenate cu 12 m lățime, iar dosarul lor spune „de confirmat”.
+- **Cereri către P1** (propunere de contract):
+  - `GET /terenuri/potrivite`, `GET /proiecte/{id}/plan`, `GET /proiecte/{id}/materiale`;
+  - `GET /proiecte/{id}/documente/{plan.svg|plan.dxf|dosar.pdf|materiale.csv}`;
+  - vizibilitatea e aceeași ca la `GET /proiecte/{id}`.
+
+## Stratul LLM: lanț de rezervă peste furnizori gratuiți
+Funcțiile `structure_idea`, `owner_message`, `classify_proposal` și `generate_dosar` nu mai depind doar de Gemini. Toate trec prin `backend.ai.llm.generate_json(prompt, schema, system=None, task=..., validator=None)`, care încearcă, în ordine, toate modelele gratuite configurate. Dacă niciunul nu răspunde valid, funcția apelantă folosește fallback-ul determinist de până acum. Semnăturile din contract nu se schimbă.
+
+Căutarea pe web pentru referințe (`references/search.py`, Google Search grounding) rămâne doar pe Gemini, pentru că ceilalți furnizori nu au căutare.
+
+### Registrul (`backend/ai/llm/registry.json`)
+- **Sursa:** construit o singură dată, pe 2026-11-14, din [mnfst/awesome-free-llm-apis](https://github.com/mnfst/awesome-free-llm-apis). Lista cerută inițial, `cheahjs/free-llm-api-resources`, nu mai există (404).
+- **Aplicația nu descarcă lista;** citește doar registrul comis în repo.
+- **Ce conține:** 14 furnizori și toate modelele lor care pot genera text. Lipsesc doar modelele de embeddings, care nu pot răspunde la un prompt.
+
+| Furnizor | Cheie în `.env` | Modele | Limite gratuite | Stare |
+|---|---|---|---|---|
+| Google Gemini | `GEMINI_API_KEY` | 8 | Google no longer publishes per-model free-tier limits; check quotas in AI Studio. de_verificat | ok |
+| Groq | `GROQ_API_KEY` | 3 | 8,000 TPM, 200,000 TPD per model on the Free Plan | ok |
+| OpenRouter | `OPENROUTER_API_KEY` | 11 | Counted across ALL free models together; 1,000 RPD after buying 10 credits | ok |
+| Cohere | `COHERE_API_KEY` | 11 | Trial key: 1,000 API calls per MONTH; non-commercial use only | ok |
+| NVIDIA NIM | `NVIDIA_API_KEY` | 2 | No public table; varies per model and load. de_verificat | ok |
+| Cloudflare Workers AI | `CLOUDFLARE_API_KEY + CLOUDFLARE_ACCOUNT_ID` | 7 | 10,000 Neurons/day shared across all models, reset 00:00 UTC; over the limit the request fails (no billing) | ok |
+| Z AI (Zhipu) | `ZAI_API_KEY` | 3 | 1 concurrent request per model | de verificat |
+| Aion Labs | `AIONLABS_API_KEY` | 4 | 20K tokens/day | de verificat |
+| Gonka Broker | `GONKA_API_KEY` | 3 | ~1M tokens/MONTH shared; lower rate on free funds (maxRpm from /test-auth) | ok |
+| LLM7.io | `LLM7_API_KEY (opțional; merge și fără)` | 3 | Free token: 1 RPS, 60 RPM, 250 req/hour, 100K tokens/24h; may be reduced without notice | ok |
+| Kilo Code gateway | `KILO_API_KEY (opțional; merge și fără)` | 9 | 200 requests/hour per IP for free models | ok |
+| OVHcloud AI Endpoints | `niciuna (cu cheie devine plătit; lanțul nu trimite cheie)` | 9 | Anonymous: 2 RPM per IP per model. With a key: 400 RPM but billed pay-as-you-go | ok |
+| ModelScope | `MODELSCOPE_API_KEY` | 2 | 2,000 RPD total, <=500 RPD per model (dynamic) | de verificat |
+| SiliconFlow | `SILICONFLOW_API_KEY` | 2 | not published | de verificat |
+
+„De verificat” înseamnă că sursa nu confirmă tot: compatibilitatea OpenAI la Z AI și Aion Labs, iar ModelScope și SiliconFlow se pot testa doar din China. Toți intră în lanț când au cheie, iar `check` arată dacă răspund.
+
+**Confidențialitate:**
+- Modelele gratuite de la OpenRouter și Kilo, precum și NVIDIA, pot păstra cererile.
+- Gemini gratuit le poate folosi pentru antrenare (în afara SEE).
+- Termenii Google cer servicii plătite pentru o aplicație folosită de oameni din SEE.
+
+Aplicația trimite doar date demo și textul ideilor. Jurnalele conțin doar furnizorul, modelul, rezultatul și durata, niciodată conținutul sau cheile.
+
+### Cum funcționează lanțul (`chain.py`)
+- **Ordinea:**
+  1. `LLM_CHAIN` (dacă e setat);
+  2. altfel `chain_order.json` (scris de `bench`), filtrat după `LLM_MIN_PASS_RATE`;
+  3. altfel ordinea din registru, fără modelele pe care ultimul `check` le-a găsit căzute.
+- **Cine intră:** doar furnizorii activi, adică cei cu cheie, plus cei fără cheie doar când `LLM_ALLOW_KEYLESS=true` (implicit e oprit).
+- **Cache:** întâi se caută un răspuns salvat (`backend/ai/llm/cache/`, ignorat de git).
+- **Trecerea la modelul următor:**
+  - 429: furnizorul e sărit până trece `Retry-After`, altfel 60 s;
+  - 5xx, timeout, eroare de rețea;
+  - JSON invalid sau respins de validator după o reîncercare pe același model (de exemplu, un dosar care conține sume de bani).
+- **401/403:** furnizorul e dezactivat până la repornire, cu un mesaj clar în jurnal.
+- **Limite:**
+  - `LLM_TOTAL_BUDGET_S` de timp total pe cerere și `LLM_MAX_ATTEMPTS` încercări;
+  - un model căzut e sărit `LLM_COOLDOWN_S` (5 minute);
+  - limita pe minut (RPM) a fiecărui furnizor, din registru.
+
+  Când nimic nu merge, se ridică `LLMUnavailable`, iar apelantul folosește fallback-ul.
+- **În teste** lanțul e oprit (sub pytest, sau cu `LLM_ENABLED=false`), deci nicio suită nu apelează furnizori reali.
+
+### Variabile de mediu (de adăugat de P1 în `.env.example`)
+| Variabilă | Implicit | Rol |
+|---|---|---|
+| `GROQ_API_KEY`, `OPENROUTER_API_KEY`, `COHERE_API_KEY`, `NVIDIA_API_KEY`, `CLOUDFLARE_API_KEY`, `CLOUDFLARE_ACCOUNT_ID`, `ZAI_API_KEY`, `AIONLABS_API_KEY`, `GONKA_API_KEY`, `LLM7_API_KEY`, `KILO_API_KEY`, `MODELSCOPE_API_KEY`, `SILICONFLOW_API_KEY` | gol | cheile furnizorilor (`GEMINI_API_KEY` există deja) |
+| `LLM_ENABLED` | activ, în afara testelor | `false` oprește lanțul și folosește doar fallback-ul |
+| `LLM_CHAIN` | gol | ordine forțată, ex. `groq:openai/gpt-oss-120b,gemini:gemini-3.5-flash-lite` |
+| `LLM_TIMEOUT_S` | 15 | timp maxim pe cerere |
+| `LLM_TOTAL_BUDGET_S` | 20 | timp total pe apel, cu toate încercările |
+| `LLM_MAX_ATTEMPTS` | 4 | încercări pe apel |
+| `LLM_MIN_PASS_RATE` | 0.7 | pragul din bench; 0 = toate modelele care răspund |
+| `LLM_ALLOW_KEYLESS` | false | `true` adaugă LLM7, Kilo și OVH, care merg fără cheie (implicit oprit: o instalare nouă apelează doar furnizorii cu cheie în `.env`) |
+| `LLM_CACHE` | true | cache pe disc pentru răspunsuri |
+| `LLM_COOLDOWN_S` | 300 | pauza pentru un model căzut |
+
+### Comenzi
+```
+python -m backend.ai.llm.check                 # cine răspunde acum -> models_live.json (ignorat de git)
+python -m backend.ai.llm.bench --max-models 3  # scor pe modele -> chain_order.json (comis); --write-docs actualizează tabelul de mai jos
+python -m backend.ai.llm.pregenerate           # umple cache-ul pentru demo (ideile, mesajele și dosarul demo)
+python -m backend.ai.llm.sync_registry         # doar pentru dezvoltare: diferențele față de lista online, nu modifică nimic
+```
+
+### Bench
+- **Ce testează:** 10 idei etichetate din `eval_ideas.json` (promptul lui `structure_idea`) și 3 cazuri `owner_message`.
+- **Ce măsoară:**
+  - JSON valid (`pass_rate`);
+  - acuratețea față de etichete (categorie, participanți, interior/exterior);
+  - limba română: diacritice, fără cuvinte englezești, lungime rezonabilă;
+  - latența mediană.
+- **Scorul:** `100 × (0.35 JSON + 0.35 acuratețe + 0.15 română + 0.15 viteză)`.
+- **Ritmul:** respectă RPM-ul și nu planifică mai mult de 80% din cota zilnică (RPD). La OVH lasă 31 s între cererile către același model.
+- **Ordinea și pragul** se schimbă fără un bench nou: `LLM_MIN_PASS_RATE` se aplică la încărcare, iar `LLM_CHAIN` are prioritate.
+

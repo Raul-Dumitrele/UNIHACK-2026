@@ -1,0 +1,19 @@
+{
+ "_about": "Nominatim (OpenStreetMap) geocoding cache for the Legea 15/2003 lists; queried once by hand, max 1 req/s. Data (c) OpenStreetMap contributors, ODbL.",
+ "queried_on": "2026-11-14",
+ "streets": {
+  "str. Ovidiu Balea": {
+   "lat": 45.7631866,
+   "lon": 21.1810539,
+   "precis": false,
+   "metoda": "Strada Locotenent Ovidiu Balea (Ronaț) nu există ca stradă în OSM; punctul este o adresă de pe aceeași stradă din OSM (osm: shop, 'Strada Locotenent Ovidiu Balea, Ronaț, 300619')",
+   "interogari": [
+    "street=Strada Ovidiu Balea",
+    "q=Strada Ovidiu Balea, Timișoara",
+    "q=Ovidiu Balea, Timis, Romania (1 rezultat)",
+    "street=Strada Locotenent Ovidiu Balea",
+    "q=Strada Locotenent Ovidiu Balea, Timișoara"
+   ]
+  }
+ }
+}

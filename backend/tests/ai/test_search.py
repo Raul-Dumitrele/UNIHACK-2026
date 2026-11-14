@@ -218,3 +218,13 @@ def test_research_notes_drop_money_and_are_cached(monkeypatch, cache):
 def test_research_notes_failure_is_empty(monkeypatch, cache):
     monkeypatch.setattr(search, "_search", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("429")))
     assert search.research_notes("parc acvatic") == []
+
+
+def test_search_stops_at_the_time_budget_and_does_not_cache(web, cache, monkeypatch):
+    web["sources"] = [Source(uri=f"https://s{i}.test/x") for i in range(3)]
+    web["candidates"] = [_cand(sursa_index=i, oras=f"Oras{i}") for i in range(3)]
+    clock = iter([0.0, 1.0, 30.0, 31.0, 32.0])  # start, first candidate in time, then past the 25 s budget
+    monkeypatch.setattr(search.time, "monotonic", lambda: next(clock))
+    refs = search.search_references("foisor")
+    assert len(refs) == 1
+    assert not (cache / "foisor.json").exists()  # partial result: a later request searches again

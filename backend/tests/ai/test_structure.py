@@ -36,26 +36,20 @@ def fake_key(monkeypatch):
 
 
 def _gemini_returns(monkeypatch, result):
-    calls = []
+    """The LLM chain answers `result` (scripted, one model, no network); returns the prompts sent."""
+    from backend.tests.ai.conftest import fake_chain
 
-    def fake(settings, prompt):
-        calls.append((settings.gemini_model, prompt))
-        if isinstance(result, Exception):
-            raise result
-        return result
-
-    monkeypatch.setattr(gemini, "_generate", fake)
-    return calls
+    return fake_chain(monkeypatch, "backend.ai.gemini", result, tries=1)
 
 
 # --- fallback (the common path) ---
 
-def test_without_key_uses_fallback(no_key, monkeypatch):
-    calls = _gemini_returns(monkeypatch, AssertionError("must not call Gemini"))
+def test_unavailable_chain_uses_fallback(no_key, monkeypatch):
+    calls = _gemini_returns(monkeypatch, RuntimeError("no model answered"))
     d = structure_dossier(BIKES)
     assert isinstance(d, IdeaDossier)
     assert d.source == "fallback"
-    assert calls == []
+    assert len(calls) == 1
 
 
 def test_fallback_extracts_fields(no_key):
@@ -121,10 +115,9 @@ def test_normalize_handles_cedilla_variants():
 def test_gemini_success(fake_key, monkeypatch):
     calls = _gemini_returns(monkeypatch, json.dumps(GOOD))
     d = structure_dossier(BIKES)
-    assert d.source == "gemini"
+    assert d.source == "llm"
     assert d.title == "Atelier de reparat biciclete"
-    assert calls[0][0] == "test-model"
-    assert BIKES in calls[0][1]
+    assert BIKES in calls[0] and "exact aceste chei" in calls[0]
 
 
 @pytest.mark.parametrize(
@@ -149,7 +142,7 @@ def test_gemini_values_are_clamped(fake_key, monkeypatch):
     _gemini_returns(monkeypatch, json.dumps({**GOOD, "expected_participants": 99999, "duration_hours": 0,
                                              "needs": ["Mese", "mese", ""] + [f"x{i}" for i in range(20)]}))
     d = structure_dossier(BIKES)
-    assert d.source == "gemini"
+    assert d.source == "llm"
     assert d.expected_participants == 500
     assert d.duration_hours == 0.5
     assert d.needs[0] == "mese" and len(d.needs) == 10
