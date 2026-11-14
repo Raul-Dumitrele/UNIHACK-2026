@@ -26,7 +26,8 @@ def build_examples(start: date = EXAMPLE_START) -> dict[str, object]:
                      match_spaces(idea["dossier"], data.spaces, hood[idea["author_id"]], limit=5)]
         for idea in data.ideas
     }
-    impact = compute_impact(approved_for_impact(data.bookings, data.spaces, data.slots, data.interests, data.users))
+    impact = compute_impact(approved_for_impact(data.bookings, data.spaces, data.slots, data.interests, data.users),
+                            data.proiecte)
     return {
         "users": data.users,
         "ideas": data.ideas,
@@ -36,6 +37,10 @@ def build_examples(start: date = EXAMPLE_START) -> dict[str, object]:
         "bookings": data.bookings,
         "notifications": data.notifications,
         "impact": impact.model_dump(mode="json"),
+        # "Propunere către Primărie": the free plot, one project (dossier, references, cost) and its history.
+        "teren_liber": [s for s in data.spaces if s["kind"] == "teren_liber"],
+        "proiecte": data.proiecte,
+        "proiect_evenimente": data.proiect_evenimente,
     }
 
 

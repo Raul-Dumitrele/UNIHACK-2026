@@ -200,5 +200,30 @@
   "is_demo": true,
   "interest_count": 3,
   "status": "rezervata"
+ },
+ {
+  "id": "demo-idea-8",
+  "author_id": "demo-user-5",
+  "created_at": "2026-11-03T10:00:00+00:00",
+  "text": "Vrem un skatepark mic pe terenul liber din Fabric, pentru adolescenții din cartier, cu câteva rampe și bănci în aer liber.",
+  "title": "Skatepark mic pe terenul liber din Fabric",
+  "dossier": {
+   "title": "Skatepark mic pe terenul liber din Fabric",
+   "summary": "Vrem un skatepark mic pe terenul liber din Fabric, pentru adolescenții din cartier, cu câteva rampe și bănci în aer liber.",
+   "category": "comunitate",
+   "audience": "adolescenți",
+   "expected_participants": 25,
+   "duration_hours": 2.0,
+   "needs": [],
+   "setting": "exterior",
+   "tags": [
+    "comunitate",
+    "cartier"
+   ],
+   "source": "fallback"
+  },
+  "is_demo": true,
+  "interest_count": 4,
+  "status": "prag_atins"
  }
 ]

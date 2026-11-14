@@ -67,7 +67,9 @@ def test_ids_unique_and_everything_is_demo(data):
 def test_references_are_consistent(data):
     users = {u["id"]: u for u in data.users}
     space_ids = {s["id"] for s in data.spaces}
-    assert all(users[s["owner_id"]]["role"] == "proprietar" for s in data.spaces)
+    # Bookable spaces belong to owners; the free plot of the city-hall proposal belongs to the city hall.
+    assert all(users[s["owner_id"]]["role"] == ("primarie" if s["kind"] == "teren_liber" else "proprietar")
+               for s in data.spaces)
     assert all(sl["space_id"] in space_ids for sl in data.slots)
     assert all(i["author_id"] in users for i in data.ideas)
 
@@ -129,7 +131,8 @@ def test_past_events_have_past_slots(data):
 def test_notifications(data):
     users = {u["id"] for u in data.users}
     kinds = {n["kind"] for n in data.notifications}
-    assert kinds == {"prag_atins", "cerere_rezervare", "rezervare_aprobata", "rezervare_refuzata"}
+    assert kinds == {"prag_atins", "cerere_rezervare", "rezervare_aprobata", "rezervare_refuzata",
+                     "proiect_trimis", "proiect_in_verificare"}
     assert all(n["user_id"] in users and n["text"] and n["read"] is False for n in data.notifications)
     owners = {s["id"]: s["owner_id"] for s in data.spaces}
     for n in data.notifications:
@@ -238,3 +241,57 @@ def test_seed_upsert_updates_existing_rows(data):
         session.expire_all()
         assert session.get(Space, data.spaces[0]["id"]).name == data.spaces[0]["name"]
         assert isinstance(session.get(Slot, data.slots[0]["id"]).starts_at, datetime)
+
+
+# --- "Propunere către Primărie" demo (proiect_demo) ---
+
+def test_city_hall_and_verifier_accounts(data):
+    roles = {u["id"]: u["role"] for u in data.users}
+    assert roles["demo-user-9"] == "primarie" and roles["demo-user-10"] == "verificator"
+    assert all(u["is_demo"] for u in data.users)
+
+
+def test_free_plot_is_never_matched_or_bookable(data):
+    from backend.ai.matching import match_spaces
+
+    [teren] = [s for s in data.spaces if s["kind"] == "teren_liber"]
+    assert teren["suprafata_mp"] == 600 and teren["is_demo"] and teren["neighborhood"] == "Fabric"
+    assert not any(sl["space_id"] == teren["id"] for sl in data.slots)
+    for idea in data.ideas:
+        assert teren["id"] not in {m.space_id for m in match_spaces(idea["dossier"], data.spaces, limit=100)}
+
+
+def test_demo_project(data):
+    from backend.ai.proiect import DISCLAIMER, cost_sentence, money_mentions
+    from backend.ai.costs import Cost
+
+    [p] = data.proiecte
+    ideas = {i["id"]: i for i in data.ideas}
+    assert p["idea_id"] == "demo-idea-8" and ideas["demo-idea-8"]["status"] == "prag_atins"
+    assert p["space_id"] == "demo-space-teren-1" and p["tip_amenajare"] == "skatepark" and p["is_demo"]
+    assert p["stare"] == "in_verificare" == data.proiect_evenimente[-1]["stare_noua"]
+    assert p["cost"]["suficient"] and p["cost"]["moneda"] == "RON"
+    assert set(p["cost"]["referinte_folosite"]) <= {r["id"] for r in p["referinte"]}
+    assert p["dosar"]["descriere"].endswith(DISCLAIMER)
+    assert set(p["dosar"]["referinte_citate"]) <= {r["id"] for r in p["referinte"]}
+    text = p["dosar"]["descriere"] + p["dosar"]["justificare"]
+    assert sorted(money_mentions(text)) == sorted(money_mentions(cost_sentence(Cost(**p["cost"]))))
+
+
+def test_demo_project_events_and_notifications(data):
+    events = data.proiect_evenimente
+    assert [e["stare_noua"] for e in events] == ["draft", "trimis", "in_verificare"]
+    assert [e["created_at"] for e in events] == sorted(e["created_at"] for e in events)
+    notes = [n for n in data.notifications if n.get("proiect_id")]
+    assert {(n["kind"], n["user_id"]) for n in notes} == {
+        ("proiect_trimis", "demo-user-5"), ("proiect_trimis", "demo-user-9"), ("proiect_in_verificare", "demo-user-5"),
+    }
+
+
+def test_project_is_offline_and_deterministic(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "would-be-used-if-called")
+    monkeypatch.setenv("REFERENCES_LIVE_SEARCH", "true")
+    monkeypatch.setattr("backend.ai.proiect._generate", lambda *a: pytest.fail("seed must not call Gemini"))
+    monkeypatch.setattr("backend.ai.references.search.search_references",
+                        lambda *a: pytest.fail("seed must not search the web"))
+    assert build_seed(START).proiecte == build_seed(START).proiecte

@@ -54,5 +54,19 @@
   "role": "proprietar",
   "neighborhood": "Șagului",
   "is_demo": true
+ },
+ {
+  "id": "demo-user-9",
+  "name": "Cont demo Primărie",
+  "role": "primarie",
+  "neighborhood": "Cetate",
+  "is_demo": true
+ },
+ {
+  "id": "demo-user-10",
+  "name": "Cont demo verificator",
+  "role": "verificator",
+  "neighborhood": "Cetate",
+  "is_demo": true
  }
 ]

@@ -99,6 +99,53 @@
   "is_demo": true
  },
  {
+  "id": "demo-idea-8-notif-prag",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "kind": "prag_atins",
+  "created_at": "2026-11-04T17:10:00+00:00",
+  "text": "Ideea „Skatepark mic pe terenul liber din Fabric” a atins pragul: 3 persoane interesate.",
+  "read": false,
+  "is_demo": true
+ },
+ {
+  "id": "demo-proiect-1-ev-2-notif-demo-user-5",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "proiect_id": "demo-proiect-1",
+  "kind": "proiect_trimis",
+  "created_at": "2026-11-07T12:00:00+00:00",
+  "read": false,
+  "is_demo": true,
+  "text": "Propunerea „Skatepark mic pe terenul liber din Fabric” a fost trimisă către Primărie."
+ },
+ {
+  "id": "demo-proiect-1-ev-2-notif-demo-user-9",
+  "user_id": "demo-user-9",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "proiect_id": "demo-proiect-1",
+  "kind": "proiect_trimis",
+  "created_at": "2026-11-07T12:00:00+00:00",
+  "read": false,
+  "is_demo": true,
+  "text": "Propunere nouă de skatepark: „Skatepark mic pe terenul liber din Fabric”."
+ },
+ {
+  "id": "demo-proiect-1-ev-3-notif-demo-user-5",
+  "user_id": "demo-user-5",
+  "idea_id": "demo-idea-8",
+  "booking_id": null,
+  "proiect_id": "demo-proiect-1",
+  "kind": "proiect_in_verificare",
+  "created_at": "2026-11-10T09:00:00+00:00",
+  "read": false,
+  "is_demo": true,
+  "text": "Propunerea „Skatepark mic pe terenul liber din Fabric” a intrat în verificare. Mesaj: Dosarul a fost preluat pentru verificare."
+ },
+ {
   "id": "demo-idea-1-notif-prag",
   "user_id": "demo-user-1",
   "idea_id": "demo-idea-1",

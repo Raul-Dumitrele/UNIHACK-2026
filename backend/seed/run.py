@@ -12,10 +12,12 @@ from sqlmodel import Session, SQLModel
 
 from backend.seed.build import SeedData, build_seed
 
-# Insert order respects foreign keys: users -> spaces -> slots -> ideas -> interests/bookings -> notifications.
+# Insert order respects foreign keys: users -> spaces -> slots -> ideas -> interests/bookings -> proiecte
+# -> proiect events -> notifications (which may point at a proiect).
 TABLES = [
     ("users", "User"), ("spaces", "Space"), ("slots", "Slot"), ("ideas", "Idea"),
-    ("interests", "Interest"), ("bookings", "Booking"), ("notifications", "Notification"),
+    ("interests", "Interest"), ("bookings", "Booking"), ("proiecte", "Proiect"),
+    ("proiect_evenimente", "ProiectEveniment"), ("notifications", "Notification"),
 ]
 
 

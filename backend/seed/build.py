@@ -13,7 +13,7 @@ from pathlib import Path
 from backend.ai.fallback import build_fallback
 from backend.ai.geo import nearest_neighborhood
 from backend.ai.matching import KIND_LABELS
-from backend.seed import scenario
+from backend.seed import proiect_demo, scenario
 
 DATA = Path(__file__).resolve().parent / "data"
 SLOT_DAYS = 14
@@ -55,6 +55,8 @@ class SeedData:
     interests: list[dict] = field(default_factory=list)
     bookings: list[dict] = field(default_factory=list)
     notifications: list[dict] = field(default_factory=list)
+    proiecte: list[dict] = field(default_factory=list)
+    proiect_evenimente: list[dict] = field(default_factory=list)
 
 
 def load_json(name: str) -> dict:
@@ -132,7 +134,8 @@ def build_ideas(demo: dict) -> list[dict]:
 
 
 def build_seed(start: date | None = None) -> SeedData:
-    demo, osm = load_json("demo.json"), load_json("osm_spaces.json")
+    extra = load_json(proiect_demo.FILE)
+    demo, osm = proiect_demo.merge_demo(load_json("demo.json"), extra), load_json("osm_spaces.json")
     users = build_users(demo)
     owners = [u["id"] for u in users if u["role"] == "proprietar"]
     spaces = build_spaces(osm, owners)
@@ -143,6 +146,14 @@ def build_seed(start: date | None = None) -> SeedData:
     bookings = scenario.build_bookings(demo, ideas, users, spaces, slots, start, make_slot)
     threshold = demo["interest_threshold"]
     scenario.apply_states(ideas, slots, interests, bookings, threshold)
+    notifications = scenario.build_notifications(ideas, spaces, slots, interests, bookings, threshold, LOCAL_TZ)
+
+    # "Propunere către Primărie": a free plot (no slots, never matched: capacity 0) and one project.
+    teren = proiect_demo.build_teren(extra)
+    spaces.append(teren)
+    idea = next(i for i in ideas if i["id"] == extra["idea"]["id"])
+    proiect, events = proiect_demo.build_proiect(extra, idea, teren)
+    notifications += proiect_demo.build_notifications(proiect, events, idea, users)
     return SeedData(
         users=users,
         spaces=spaces,
@@ -150,5 +161,7 @@ def build_seed(start: date | None = None) -> SeedData:
         ideas=ideas,
         interests=interests,
         bookings=bookings,
-        notifications=scenario.build_notifications(ideas, spaces, slots, interests, bookings, threshold, LOCAL_TZ),
+        notifications=sorted(notifications, key=lambda n: (n["created_at"], n["id"])),
+        proiecte=[proiect],
+        proiect_evenimente=events,
     )

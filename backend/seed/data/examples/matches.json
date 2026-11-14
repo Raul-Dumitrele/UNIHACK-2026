@@ -329,5 +329,52 @@
    "neighborhood": "Elisabetin",
    "missing_needs": []
   }
+ ],
+ "demo-idea-8": [
+  {
+   "space_id": "osm-way-1130911042",
+   "space_name": "Baza sportivă STPT",
+   "score": 89,
+   "reason": "Încape 25 persoane (50 locuri); la 1,4 km, în Telegrafului",
+   "distance_km": 1.4,
+   "neighborhood": "Telegrafului",
+   "missing_needs": []
+  },
+  {
+   "space_id": "osm-way-1219290854",
+   "space_name": "Baza sportivă Electrica",
+   "score": 89,
+   "reason": "Încape 25 persoane (50 locuri); la 1,6 km, în Complex Studențesc",
+   "distance_km": 1.6,
+   "neighborhood": "Complex Studențesc",
+   "missing_needs": []
+  },
+  {
+   "space_id": "osm-way-470153852",
+   "space_name": "Ștrandul UMT",
+   "score": 89,
+   "reason": "Încape 25 persoane (40 locuri); la 1,6 km, în Telegrafului",
+   "distance_km": 1.6,
+   "neighborhood": "Telegrafului",
+   "missing_needs": []
+  },
+  {
+   "space_id": "osm-way-111288519",
+   "space_name": "Baza Sportivă nr. 2 Politehnica",
+   "score": 89,
+   "reason": "Încape 25 persoane (50 locuri); la 1,7 km, în Olimpia-Stadion",
+   "distance_km": 1.7,
+   "neighborhood": "Olimpia-Stadion",
+   "missing_needs": []
+  },
+  {
+   "space_id": "osm-way-1219290853",
+   "space_name": "Teren UVT",
+   "score": 89,
+   "reason": "Încape 25 persoane (60 locuri); la 1,7 km, în Complex Studențesc",
+   "distance_km": 1.7,
+   "neighborhood": "Complex Studențesc",
+   "missing_needs": []
+  }
  ]
 }
