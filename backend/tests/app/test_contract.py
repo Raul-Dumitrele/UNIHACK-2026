@@ -35,7 +35,8 @@ def test_list_endpoints_shapes(client, world):
     idea = client.get("/ideas/i1").json()
     assert set(idea) == IDEA_KEYS and idea["created_at"].endswith("Z")
     assert client.get("/ideas").json()[0]["id"] == "i1"
-    assert client.get("/ideas/i1/matches").json() == []
+    m = client.get("/ideas/i1/matches").json()
+    assert set(m[0]) == {"space", "scor", "motiv", "suprapunere"} and 0 <= m[0]["scor"] <= 100
     assert set(client.get("/impact").json()) == {"ore_recuperate", "oameni_conectati", "km_economisiti", "proiecte_active", "proiecte_trimise", "proiecte_cu_acord"}
 
 

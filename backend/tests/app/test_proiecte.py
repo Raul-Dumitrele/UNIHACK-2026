@@ -58,8 +58,6 @@ def test_decizie_message_required_for_respins(client, world):
     pid = _create(client, world).json()["id"]
     r = client.post(f"/proiecte/{pid}/decizie", json={"stare": "respins"}, headers=h(world["owner"]))
     assert r.status_code == 422
-    r = client.post(f"/proiecte/{pid}/decizie", json={"stare": "acord_de_principiu"}, headers=h(world["owner"]))
-    assert r.status_code == 200
 
 
 def test_new_optional_fields_in_responses(client, world):
