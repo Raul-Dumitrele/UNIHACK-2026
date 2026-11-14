@@ -1,0 +1,78 @@
+{
+  "tip_amenajare": "loc_de_joaca",
+  "colectat": "2026-11-14",
+  "referinte": [
+    {
+      "id": "loc_de_joaca-sebes-2018",
+      "tip_amenajare": "loc_de_joaca",
+      "oras": "Sebeș",
+      "an": 2018,
+      "suprafata_mp": 900,
+      "cost_total_lei": 316070,
+      "componente": ["carusel, leagăn, tobogan și balansoar", "aparate de fitness în aer liber", "masă de tenis", "bănci"],
+      "sursa_url": "https://alba24.ro/loc-de-joaca-pentru-copii-de-peste-70-000-de-euro-in-cartierul-mihail-kogalniceanu-din-sebes-682591.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "loc_de_joaca-carei-2023",
+      "tip_amenajare": "loc_de_joaca",
+      "oras": "Carei",
+      "an": 2023,
+      "suprafata_mp": 3360,
+      "cost_total_lei": 751483.35,
+      "componente": ["reabilitarea unui loc de joacă existent", "suprafață de amortizare din scoarță de copac", "zonă pentru copii cu dizabilități locomotorii"],
+      "sursa_url": "https://www.municipiulcarei.ro/sites/default/files/Comunicate%20de%20presa/Anunt-de-presa-Carei-136040-de-finalizare-priectului%20(1).pdf",
+      "sursa_tip": "comunicat_primarie",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "loc_de_joaca-iasi-2025",
+      "tip_amenajare": "loc_de_joaca",
+      "oras": "Iași",
+      "an": 2025,
+      "suprafata_mp": 5200,
+      "cost_total_lei": 3459693,
+      "componente": ["loc de joacă cu tartan, leagăne, tobogane și nisipare", "alei pietonale pavate", "piste de biciclete separate", "iluminat și gradene", "spații verzi cu arbori"],
+      "sursa_url": "https://www.bzi.ro/in-iasi-va-fi-amenajata-o-noua-zona-de-recreere-si-spatii-de-joaca-pentru-copii-primaria-va-cheltui-in-prima-faza-peste-7-milioane-de-lei-5214175",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "loc_de_joaca-alba-iulia-recea-2024",
+      "tip_amenajare": "loc_de_joaca",
+      "oras": "Alba Iulia",
+      "an": 2024,
+      "suprafata_mp": 6039,
+      "cost_total_lei": 3301801.39,
+      "componente": ["loc de joacă incluziv, cu leagăn accesibil și carusel", "teren sintetic de minifotbal cu nocturnă", "grup sanitar accesibil", "alei, mobilier urban și iluminat", "două podețe"],
+      "sursa_url": "https://alba24.ro/parc-cu-teren-de-sport-si-loc-de-joaca-pe-6000-mp-intr-un-cartier-din-alba-iulia-cat-este-investitia-aprobata-in-consiliul-local-1031192.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "loc_de_joaca-cluj-napoca-2022",
+      "tip_amenajare": "loc_de_joaca",
+      "oras": "Cluj-Napoca",
+      "an": 2022,
+      "suprafata_mp": 950,
+      "cost_total_lei": 1687000,
+      "componente": ["loc de joacă pentru copii", "zonă de fitness accesibilă", "alei și bănci", "arbori, gard viu și irigații", "iluminat și coșuri de gunoi inteligente"],
+      "sursa_url": "https://actualdecluj.ro/firma-care-intretine-spatiile-verzi-din-cluj-face-noul-parculet-smart-din-cel-mai-mare-cartier-al-orasului-pentru-peste-16-milioane-lei/",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "loc_de_joaca-alba-iulia-goldis-2024",
+      "tip_amenajare": "loc_de_joaca",
+      "oras": "Alba Iulia",
+      "an": 2024,
+      "suprafata_mp": 428,
+      "cost_total_lei": null,
+      "componente": ["tobogane cu turnuri, balansoare, leagăne și carusel", "dale de cauciuc și gazon", "zonă de fitness pentru adulți", "bănci acoperite și cișmea", "iluminat LED"],
+      "sursa_url": "https://alba24.ro/un-loc-de-joaca-din-alba-iulia-reamenajat-si-dotat-cu-echipamente-moderne-si-sigure-pentru-copii-achizitie-lansata-de-primarie-1026033.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    }
+  ]
+}

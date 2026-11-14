@@ -1,0 +1,279 @@
+{
+ "source": "OpenStreetMap via Overpass API",
+ "attribution": "© OpenStreetMap contributors (ODbL)",
+ "license": "ODbL-1.0",
+ "fetched_at": "2026-11-13T22:52:03+00:00",
+ "bbox": [
+  45.7,
+  21.14,
+  45.81,
+  21.32
+ ],
+ "query": "[out:json][timeout:90];\nnwr[\"place\"~\"^(suburb|quarter|neighbourhood)$\"][\"name\"](45.7,21.14,45.81,21.32);\nout center tags;",
+ "neighborhoods": [
+  {
+   "name": "Antene",
+   "place": "quarter",
+   "lat": 45.764809,
+   "lon": 21.23197
+  },
+  {
+   "name": "Aradului",
+   "place": "suburb",
+   "lat": 45.77443,
+   "lon": 21.223589
+  },
+  {
+   "name": "Aradului Est",
+   "place": "suburb",
+   "lat": 45.774944,
+   "lon": 21.226102
+  },
+  {
+   "name": "Aradului Vest",
+   "place": "suburb",
+   "lat": 45.774952,
+   "lon": 21.218466
+  },
+  {
+   "name": "Bastion",
+   "place": "suburb",
+   "lat": 45.756861,
+   "lon": 21.235767
+  },
+  {
+   "name": "Blașcovici",
+   "place": "suburb",
+   "lat": 45.755508,
+   "lon": 21.20069
+  },
+  {
+   "name": "Braytim - Timișoara Sud",
+   "place": "suburb",
+   "lat": 45.725988,
+   "lon": 21.241557
+  },
+  {
+   "name": "Bucovina",
+   "place": "suburb",
+   "lat": 45.769603,
+   "lon": 21.214818
+  },
+  {
+   "name": "Buziașului",
+   "place": "suburb",
+   "lat": 45.739523,
+   "lon": 21.262947
+  },
+  {
+   "name": "Cartierul Vienez",
+   "place": "neighbourhood",
+   "lat": 45.754373,
+   "lon": 21.217908
+  },
+  {
+   "name": "Cetate",
+   "place": "suburb",
+   "lat": 45.756038,
+   "lon": 21.228846
+  },
+  {
+   "name": "Ciarda Roșie",
+   "place": "suburb",
+   "lat": 45.727379,
+   "lon": 21.26715
+  },
+  {
+   "name": "Circumvalațiunii",
+   "place": "suburb",
+   "lat": 45.759345,
+   "lon": 21.214032
+  },
+  {
+   "name": "Complex Studențesc",
+   "place": "suburb",
+   "lat": 45.749043,
+   "lon": 21.242317
+  },
+  {
+   "name": "Crișan",
+   "place": "suburb",
+   "lat": 45.761942,
+   "lon": 21.264914
+  },
+  {
+   "name": "Cvartal UMT",
+   "place": "neighbourhood",
+   "lat": 45.776524,
+   "lon": 21.263102
+  },
+  {
+   "name": "Dacia",
+   "place": "suburb",
+   "lat": 45.765843,
+   "lon": 21.220009
+  },
+  {
+   "name": "Dâmbovița",
+   "place": "suburb",
+   "lat": 45.733957,
+   "lon": 21.198609
+  },
+  {
+   "name": "Dorobanților",
+   "place": "neighbourhood",
+   "lat": 45.762993,
+   "lon": 21.258041
+  },
+  {
+   "name": "Elisabetin",
+   "place": "suburb",
+   "lat": 45.74162,
+   "lon": 21.225628
+  },
+  {
+   "name": "Europa",
+   "place": "neighbourhood",
+   "lat": 45.728427,
+   "lon": 21.295844
+  },
+  {
+   "name": "Fabric",
+   "place": "suburb",
+   "lat": 45.756989,
+   "lon": 21.249889
+  },
+  {
+   "name": "Fratelia",
+   "place": "suburb",
+   "lat": 45.723551,
+   "lon": 21.214725
+  },
+  {
+   "name": "Freidorf",
+   "place": "suburb",
+   "lat": 45.727077,
+   "lon": 21.180557
+  },
+  {
+   "name": "Ghiroda Nouă",
+   "place": "suburb",
+   "lat": 45.760585,
+   "lon": 21.278898
+  },
+  {
+   "name": "Girocului",
+   "place": "suburb",
+   "lat": 45.731847,
+   "lon": 21.231879
+  },
+  {
+   "name": "Iosefin",
+   "place": "suburb",
+   "lat": 45.74424,
+   "lon": 21.209053
+  },
+  {
+   "name": "Kuncz",
+   "place": "neighbourhood",
+   "lat": 45.747102,
+   "lon": 21.264601
+  },
+  {
+   "name": "Lipovei",
+   "place": "suburb",
+   "lat": 45.775082,
+   "lon": 21.239442
+  },
+  {
+   "name": "Mehala",
+   "place": "suburb",
+   "lat": 45.764247,
+   "lon": 21.204089
+  },
+  {
+   "name": "Modern",
+   "place": "suburb",
+   "lat": 45.766348,
+   "lon": 21.269712
+  },
+  {
+   "name": "Olimpia-Stadion",
+   "place": "suburb",
+   "lat": 45.741308,
+   "lon": 21.246474
+  },
+  {
+   "name": "Planetelor",
+   "place": "suburb",
+   "lat": 45.710391,
+   "lon": 21.238244
+  },
+  {
+   "name": "Plopi",
+   "place": "suburb",
+   "lat": 45.749882,
+   "lon": 21.279949
+  },
+  {
+   "name": "Prințul Turcesc - Lunei",
+   "place": "suburb",
+   "lat": 45.752418,
+   "lon": 21.257548
+  },
+  {
+   "name": "Ronaț",
+   "place": "suburb",
+   "lat": 45.756701,
+   "lon": 21.187325
+  },
+  {
+   "name": "Șagului",
+   "place": "suburb",
+   "lat": 45.729382,
+   "lon": 21.21076
+  },
+  {
+   "name": "Serena",
+   "place": "neighbourhood",
+   "lat": 45.730311,
+   "lon": 21.323795
+  },
+  {
+   "name": "Slavik",
+   "place": "neighbourhood",
+   "lat": 45.756774,
+   "lon": 21.303798
+  },
+  {
+   "name": "Soarelui",
+   "place": "suburb",
+   "lat": 45.734108,
+   "lon": 21.248727
+  },
+  {
+   "name": "Steaua",
+   "place": "suburb",
+   "lat": 45.72351,
+   "lon": 21.204066
+  },
+  {
+   "name": "Telegrafului",
+   "place": "suburb",
+   "lat": 45.768464,
+   "lon": 21.251708
+  },
+  {
+   "name": "Tipografilor",
+   "place": "suburb",
+   "lat": 45.761561,
+   "lon": 21.238251
+  },
+  {
+   "name": "Torontalului",
+   "place": "suburb",
+   "lat": 45.773587,
+   "lon": 21.211952
+  }
+ ]
+}

@@ -1,0 +1,254 @@
+[
+ {
+  "id": "demo-idea-1",
+  "author_id": "demo-user-1",
+  "titlu": "Atelier de reparat biciclete pentru vecini",
+  "descriere": "Vreau să organizez un atelier de reparat biciclete pentru vecini, sâmbăta dimineața, cam 15 oameni, 3 ore. Avem nevoie de mese și o priză.",
+  "structurat": {
+   "categorie": "creativ",
+   "persoane": 15,
+   "dotari": [
+    "mese",
+    "priza"
+   ],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "13:00"
+    }
+   ],
+   "zgomot": "mediu",
+   "rezumat": "Atelier de reparat biciclete pentru vecini"
+  },
+  "prag": 3,
+  "interesati": 4,
+  "stare": "rezervata",
+  "is_demo": true,
+  "created_at": "2026-11-10T17:00:00+00:00"
+ },
+ {
+  "id": "demo-idea-2",
+  "author_id": "demo-user-2",
+  "titlu": "Club de lectură pentru seniori din Iosefin",
+  "descriere": "Propun un club de lectură pentru seniori din Iosefin, o dată pe săptămână, 2 ore, cu scaune și o masă mare.",
+  "structurat": {
+   "categorie": "cultura",
+   "persoane": 30,
+   "dotari": [
+    "mese",
+    "scaune"
+   ],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    }
+   ],
+   "zgomot": "scazut",
+   "rezumat": "Club de lectură pentru seniori din Iosefin"
+  },
+  "prag": 3,
+  "interesati": 3,
+  "stare": "prag_atins",
+  "is_demo": true,
+  "created_at": "2026-11-11T09:30:00+00:00"
+ },
+ {
+  "id": "demo-idea-3",
+  "author_id": "demo-user-3",
+  "titlu": "Curs gratuit de programare pentru copii de 10-14 ani",
+  "descriere": "Curs gratuit de programare pentru copii de 10-14 ani, 12 copii, avem nevoie de proiector, wifi și prize.",
+  "structurat": {
+   "categorie": "tehnologie",
+   "persoane": 12,
+   "dotari": [
+    "proiector",
+    "priza",
+    "wifi"
+   ],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    }
+   ],
+   "zgomot": "scazut",
+   "rezumat": "Curs gratuit de programare pentru copii de 10-14 ani"
+  },
+  "prag": 3,
+  "interesati": 2,
+  "stare": "deschisa",
+  "is_demo": true,
+  "created_at": "2026-11-12T15:00:00+00:00"
+ },
+ {
+  "id": "demo-idea-4",
+  "author_id": "demo-user-4",
+  "titlu": "Turneu de baschet 3x3 pentru tinerii din cartier",
+  "descriere": "Turneu de baschet 3x3 pentru tinerii din cartier, 24 de participanți, 4 ore, pe un teren în aer liber.",
+  "structurat": {
+   "categorie": "sport",
+   "persoane": 24,
+   "dotari": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "14:00"
+    }
+   ],
+   "zgomot": "ridicat",
+   "rezumat": "Turneu de baschet 3x3 pentru tinerii din cartier"
+  },
+  "prag": 3,
+  "interesati": 3,
+  "stare": "rezervata",
+  "is_demo": true,
+  "created_at": "2026-11-12T18:45:00+00:00"
+ },
+ {
+  "id": "demo-idea-5",
+  "author_id": "demo-user-5",
+  "titlu": "Atelier de gătit sănătos pentru părinți și copii",
+  "descriere": "Atelier de gătit sănătos pentru părinți și copii, 10 persoane, 2 ore, avem nevoie de bucătărie și mese.",
+  "structurat": {
+   "categorie": "creativ",
+   "persoane": 10,
+   "dotari": [
+    "mese",
+    "bucatarie"
+   ],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    }
+   ],
+   "zgomot": "mediu",
+   "rezumat": "Atelier de gătit sănătos pentru părinți și copii"
+  },
+  "prag": 3,
+  "interesati": 3,
+  "stare": "rezervata",
+  "is_demo": true,
+  "created_at": "2026-10-12T16:00:00+00:00"
+ },
+ {
+  "id": "demo-idea-6",
+  "author_id": "demo-user-3",
+  "titlu": "Seară de film documentar despre natură în cartier",
+  "descriere": "Seară de film documentar despre natură în cartier, 40 de persoane, avem nevoie de proiector, ecran și boxe.",
+  "structurat": {
+   "categorie": "cultura",
+   "persoane": 40,
+   "dotari": [
+    "proiector"
+   ],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "18:00",
+     "pana_la": "20:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "18:00",
+     "pana_la": "20:00"
+    }
+   ],
+   "zgomot": "scazut",
+   "rezumat": "Seară de film documentar despre natură în cartier"
+  },
+  "prag": 3,
+  "interesati": 4,
+  "stare": "rezervata",
+  "is_demo": true,
+  "created_at": "2026-10-14T18:30:00+00:00"
+ },
+ {
+  "id": "demo-idea-7",
+  "author_id": "demo-user-2",
+  "titlu": "Întâlnire de schimb de cărți și semințe între vecini",
+  "descriere": "Întâlnire de schimb de cărți și semințe între vecini, 20 de persoane, 3 ore, cu mese.",
+  "structurat": {
+   "categorie": "social",
+   "persoane": 20,
+   "dotari": [
+    "mese"
+   ],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "13:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "13:00"
+    }
+   ],
+   "zgomot": "scazut",
+   "rezumat": "Întâlnire de schimb de cărți și semințe între vecini"
+  },
+  "prag": 3,
+  "interesati": 3,
+  "stare": "rezervata",
+  "is_demo": true,
+  "created_at": "2026-10-20T09:00:00+00:00"
+ },
+ {
+  "id": "demo-idea-8",
+  "author_id": "demo-user-5",
+  "titlu": "Skatepark mic pe terenul liber din Fabric",
+  "descriere": "Vrem un skatepark mic pe terenul liber din Fabric, pentru adolescenții din cartier, cu câteva rampe și bănci în aer liber.",
+  "structurat": {
+   "categorie": "social",
+   "persoane": 25,
+   "dotari": [],
+   "program": [
+    {
+     "zi": "sambata",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    },
+    {
+     "zi": "duminica",
+     "de_la": "10:00",
+     "pana_la": "12:00"
+    }
+   ],
+   "zgomot": "scazut",
+   "rezumat": "Skatepark mic pe terenul liber din Fabric"
+  },
+  "prag": 3,
+  "interesati": 4,
+  "stare": "prag_atins",
+  "is_demo": true,
+  "created_at": "2026-11-03T10:00:00+00:00"
+ }
+]

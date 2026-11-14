@@ -1,0 +1,3 @@
+# Live search results, written at runtime. Not committed (they are re-created on demand).
+*
+!.gitignore

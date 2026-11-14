@@ -1,0 +1,19 @@
+[
+ {
+  "id": "demo-space-teren-1",
+  "name": "Teren liber de lângă blocuri (exemplu)",
+  "kind": "teren_liber",
+  "kind_label": "teren liber",
+  "lat": 45.756989,
+  "lon": 21.249889,
+  "address": null,
+  "neighborhood": "Fabric",
+  "capacity": 0,
+  "amenities": [],
+  "setting": "exterior",
+  "owner_id": "demo-user-9",
+  "suprafata_mp": 600,
+  "source": "demo",
+  "is_demo": true
+ }
+]

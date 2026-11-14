@@ -1,0 +1,30 @@
+{
+  "tip_amenajare": "teren_sport",
+  "colectat": "2026-11-14",
+  "referinte": [
+    {
+      "id": "teren_sport-alba-iulia-avram-iancu-2023",
+      "tip_amenajare": "teren_sport",
+      "oras": "Alba Iulia",
+      "an": 2023,
+      "suprafata_mp": 1127,
+      "cost_total_lei": 405952.42,
+      "componente": ["teren multisport din granule de cauciuc", "pistă de alergare", "coșuri de baschet și porți de handbal", "stâlpi și fileuri de tenis și volei", "nocturnă LED"],
+      "sursa_url": "https://alba24.ro/terenul-de-sport-de-la-scoala-avram-iancu-din-alba-iulia-va-fi-modernizat-care-este-valoarea-lucrarilor-1002753.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "teren_sport-raducaneni-2026",
+      "tip_amenajare": "teren_sport",
+      "oras": "Răducăneni",
+      "an": 2026,
+      "suprafata_mp": 1008,
+      "cost_total_lei": null,
+      "componente": ["teren multifuncțional cu suprafață de joc de 20 x 40 m", "împrejmuire perimetrală", "trotuare"],
+      "sursa_url": "https://www.bzi.ro/primaria-raducaneni-va-construi-o-sala-de-sport-si-un-teren-de-sport-multifunctional-doar-lucrarile-au-o-valoare-de-peste-5-milioane-de-lei-5458078",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    }
+  ]
+}

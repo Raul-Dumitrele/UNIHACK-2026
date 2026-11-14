@@ -1,0 +1,19 @@
+{
+  "nota": "Populația orașelor care apar în referințe, folosită doar la departajare. Comunele (Galda de Jos, Brăești, Răducăneni) lipsesc din listă și ajung ultimele la departajare.",
+  "sursa": "Recensământul Populației și Locuințelor 2021, coloana „Populație (2021)” din lista orașelor României",
+  "sursa_url": "https://ro.wikipedia.org/wiki/Lista_ora%C8%99elor_din_Rom%C3%A2nia",
+  "data_accesarii": "2026-11-14",
+  "populatie": {
+    "Timișoara": 250849,
+    "Cluj-Napoca": 286598,
+    "Iași": 271692,
+    "Brașov": 237589,
+    "Sibiu": 134309,
+    "Satu Mare": 91520,
+    "Alba Iulia": 64227,
+    "Călărași": 58215,
+    "Sebeș": 26490,
+    "Carei": 18957,
+    "Podu Iloaiei": 8992
+  }
+}
