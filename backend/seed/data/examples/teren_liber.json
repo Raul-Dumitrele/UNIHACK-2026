@@ -22,7 +22,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1799723,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -31,7 +31,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 1; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 1; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -40,7 +40,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1801268,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -49,7 +49,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 2; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 2; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -58,7 +58,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1802813,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -67,7 +67,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 3; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 3; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -76,7 +76,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1804358,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -85,7 +85,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 4; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 4; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -94,7 +94,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1805903,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -103,7 +103,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 5; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 5; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -112,7 +112,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1807449,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -121,7 +121,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 6; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 6; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -130,7 +130,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1808994,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -139,7 +139,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 7; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 7; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -157,7 +157,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 8; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 8; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -166,7 +166,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1812084,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -175,7 +175,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 9; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 9; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -184,7 +184,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1813629,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -193,7 +193,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 10; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 10; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -202,7 +202,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1815175,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -211,7 +211,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 11; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 11; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -220,7 +220,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.181672,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -229,7 +229,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 12; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 12; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -238,7 +238,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1818265,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -247,7 +247,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 13; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 13; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -256,7 +256,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.181981,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -265,7 +265,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 14; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 14; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  },
  {
@@ -274,7 +274,7 @@
   "kind": "teren_liber",
   "kind_label": "teren liber",
   "lat": 45.7631866,
-  "lon": 21.1810539,
+  "lon": 21.1821355,
   "address": "str. Lt. Ovidiu Balea, Timișoara",
   "neighborhood": "Ronaț",
   "capacity": 0,
@@ -283,7 +283,7 @@
   "owner_id": "demo-user-9",
   "suprafata_mp": 276,
   "source": "lista_primarie",
-  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 15; locatie_aproximativa",
+  "sursa_detalii": "HCL 20/2019, anexa nr. 1, poz. 15; locatie_aproximativa; pozitie_schematica",
   "is_demo": false
  }
 ]

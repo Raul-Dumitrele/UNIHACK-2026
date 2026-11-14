@@ -378,6 +378,20 @@ def test_list_plots_follow_the_rule(data):
     assert len({p["id"] for p in plots}) == len(plots)
 
 
+def test_list_plots_are_side_by_side_not_stacked(data):
+    from backend.ai.geo import distance_km
+    from backend.seed import terenuri
+
+    plots = [s for s in data.spaces if s["id"].startswith("lista-")]
+    points = [(p["lat"], p["lon"]) for p in plots]
+    assert len(set(points)) == len(plots)  # no two plots on the same map point
+    gaps = [distance_km(a, b) * 1000 for a, b in zip(points, points[1:])]
+    assert all(abs(g - terenuri.LOT_WIDTH_M) < 0.5 for g in gaps)  # adjacent lots, ~12 m apart, list order
+    centre = (sum(p[0] for p in points) / len(points), sum(p[1] for p in points) / len(points))
+    assert distance_km(centre, (45.7631866, 21.1810539)) < 0.005  # centred on the geocoded street point
+    assert all("pozitie_schematica" in p["sursa_detalii"] for p in plots)
+
+
 def test_list_plots_in_contract_rows(data):
     from backend.seed.contract import contract_rows
 

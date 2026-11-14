@@ -9,6 +9,7 @@ Rule: plots of at least MIN_AREA_MP with a resolved location, best MAX_PLOTS (la
 order); if fewer than MIN_PLOTS remain, none are added.
 """
 import json
+import math
 from pathlib import Path
 
 from backend.ai.geo import nearest_neighborhood
@@ -22,6 +23,16 @@ MIN_PLOTS = 5
 CITY_HALL_OWNER = "demo-user-9"
 SOURCE = "lista_primarie"
 STREET_LABEL = {"str. Ovidiu Balea": "str. Lt. Ovidiu Balea"}
+# The annex gives no position per plot, only the street. Plots that share a street point are laid out side by
+# side (adjacent lots in list order, centred on that point) so they do not stack on the map. The layout is
+# schematic and marked "pozitie_schematica"; real lot boundaries are in the cadastre (CF / nr. cadastral).
+LOT_WIDTH_M = 12.0  # a 276 m² lot is roughly 12 m × 23 m
+METERS_PER_DEG_LAT = 111_320.0
+
+
+def _side_by_side(lat: float, lon: float, index: int, count: int) -> tuple[float, float]:
+    offset_m = (index - (count - 1) / 2) * LOT_WIDTH_M
+    return lat, lon + offset_m / (METERS_PER_DEG_LAT * math.cos(math.radians(lat)))
 
 
 def _load(name: str) -> dict:
@@ -48,13 +59,20 @@ def select(rows: list[dict], streets: dict) -> list[dict]:
 def build_terenuri_lista() -> list[dict]:
     streets = _load(GEOCODE_FILE.name).get("streets", {})
     spaces = []
-    for r in select(candidates(), streets):
+    chosen = select(candidates(), streets)
+    per_street: dict[str, int] = {}
+    for r in chosen:
+        per_street[r["strada"]] = per_street.get(r["strada"], 0) + 1
+    seen: dict[str, int] = {}
+    for r in chosen:
         place = streets[r["strada"]]
         street = STREET_LABEL.get(r["strada"], r["strada"])
-        details = r["sursa_detalii"] + ("" if place.get("precis") else "; locatie_aproximativa")
+        index = seen[r["strada"]] = seen.get(r["strada"], -1) + 1
+        lat, lon = _side_by_side(place["lat"], place["lon"], index, per_street[r["strada"]])
+        details = r["sursa_detalii"] + ("" if place.get("precis") else "; locatie_aproximativa; pozitie_schematica")
         spaces.append({
             "id": r["id"], "name": f"Teren din lista Primăriei (Legea 15/2003), {street}, CF {r['cf']}",
-            "kind": "teren_liber", "kind_label": "teren liber", "lat": place["lat"], "lon": place["lon"],
+            "kind": "teren_liber", "kind_label": "teren liber", "lat": round(lat, 7), "lon": round(lon, 7),
             "address": f"{street}, Timișoara", "neighborhood": nearest_neighborhood((place["lat"], place["lon"])),
             "capacity": 0, "amenities": [], "setting": "exterior", "owner_id": CITY_HALL_OWNER,
             "suprafata_mp": r["suprafata_mp"], "source": SOURCE, "sursa_detalii": details, "is_demo": False,
