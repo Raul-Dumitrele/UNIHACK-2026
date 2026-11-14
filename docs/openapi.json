@@ -5,6 +5,800 @@
     "version": "0.1.0"
   },
   "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "List Users",
+        "operationId": "list_users_users_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/UserOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Users Users Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spaces": {
+      "get": {
+        "tags": [
+          "spaces"
+        ],
+        "summary": "List Spaces",
+        "operationId": "list_spaces_spaces_get",
+        "parameters": [
+          {
+            "name": "categorie",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "sport",
+                    "cultura",
+                    "educatie",
+                    "social",
+                    "creativ",
+                    "tehnologie",
+                    "altele"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Categorie"
+            }
+          },
+          {
+            "name": "dotari",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "scaune",
+                  "mese",
+                  "proiector",
+                  "wifi",
+                  "scena",
+                  "oglinzi",
+                  "vestiare",
+                  "bucatarie",
+                  "acces_rampa",
+                  "curte",
+                  "priza",
+                  "tabla"
+                ],
+                "type": "string"
+              },
+              "default": [],
+              "title": "Dotari"
+            }
+          },
+          {
+            "name": "capacitate_min",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Capacitate Min"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpaceOut"
+                  },
+                  "title": "Response List Spaces Spaces Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ideas": {
+      "post": {
+        "tags": [
+          "ideas"
+        ],
+        "summary": "Create Idea",
+        "operationId": "create_idea_ideas_post",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IdeaCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdeaOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ideas"
+        ],
+        "summary": "List Ideas",
+        "operationId": "list_ideas_ideas_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdeaOut"
+                  },
+                  "title": "Response List Ideas Ideas Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ideas/{idea_id}": {
+      "get": {
+        "tags": [
+          "ideas"
+        ],
+        "summary": "Get Idea",
+        "operationId": "get_idea_ideas__idea_id__get",
+        "parameters": [
+          {
+            "name": "idea_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Idea Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdeaOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ideas/{idea_id}/matches": {
+      "get": {
+        "tags": [
+          "ideas"
+        ],
+        "summary": "Idea Matches",
+        "operationId": "idea_matches_ideas__idea_id__matches_get",
+        "parameters": [
+          {
+            "name": "idea_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Idea Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchOut"
+                  },
+                  "title": "Response Idea Matches Ideas  Idea Id  Matches Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ideas/{idea_id}/interest": {
+      "post": {
+        "tags": [
+          "ideas"
+        ],
+        "summary": "Add Interest",
+        "operationId": "add_interest_ideas__idea_id__interest_post",
+        "parameters": [
+          {
+            "name": "idea_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Idea Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdeaOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ideas/{idea_id}/owner-message": {
+      "post": {
+        "tags": [
+          "ideas"
+        ],
+        "summary": "Owner Message",
+        "operationId": "owner_message_ideas__idea_id__owner_message_post",
+        "parameters": [
+          {
+            "name": "idea_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Idea Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnerMessageIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnerMessageOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bookings": {
+      "post": {
+        "tags": [
+          "bookings"
+        ],
+        "summary": "Create Booking",
+        "operationId": "create_booking_bookings_post",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bookings/{booking_id}": {
+      "patch": {
+        "tags": [
+          "bookings"
+        ],
+        "summary": "Decide Booking",
+        "operationId": "decide_booking_bookings__booking_id__patch",
+        "parameters": [
+          {
+            "name": "booking_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Booking Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications": {
+      "get": {
+        "tags": [
+          "notifications"
+        ],
+        "summary": "List Notifications",
+        "operationId": "list_notifications_notifications_get",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NotificationOut"
+                  },
+                  "title": "Response List Notifications Notifications Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications/{notification_id}/read": {
+      "patch": {
+        "tags": [
+          "notifications"
+        ],
+        "summary": "Mark Read",
+        "operationId": "mark_read_notifications__notification_id__read_patch",
+        "parameters": [
+          {
+            "name": "notification_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Notification Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/impact": {
+      "get": {
+        "tags": [
+          "impact"
+        ],
+        "summary": "Get Impact",
+        "operationId": "get_impact_impact_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Impact"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -25,6 +819,610 @@
             }
           }
         }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BookingCreate": {
+        "properties": {
+          "idea_id": {
+            "type": "string",
+            "title": "Idea Id"
+          },
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "slot": {
+            "$ref": "#/components/schemas/Slot"
+          }
+        },
+        "type": "object",
+        "required": [
+          "idea_id",
+          "space_id",
+          "slot"
+        ],
+        "title": "BookingCreate"
+      },
+      "BookingOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "idea_id": {
+            "type": "string",
+            "title": "Idea Id"
+          },
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "slot": {
+            "$ref": "#/components/schemas/Slot"
+          },
+          "stare": {
+            "type": "string",
+            "enum": [
+              "cerut",
+              "aprobat",
+              "refuzat"
+            ],
+            "title": "Stare"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "idea_id",
+          "space_id",
+          "slot",
+          "stare",
+          "created_at"
+        ],
+        "title": "BookingOut"
+      },
+      "BookingUpdate": {
+        "properties": {
+          "stare": {
+            "type": "string",
+            "enum": [
+              "aprobat",
+              "refuzat"
+            ],
+            "title": "Stare"
+          }
+        },
+        "type": "object",
+        "required": [
+          "stare"
+        ],
+        "title": "BookingUpdate"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "IdeaCreate": {
+        "properties": {
+          "descriere": {
+            "type": "string",
+            "minLength": 3,
+            "title": "Descriere"
+          },
+          "titlu": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Titlu"
+          },
+          "prag": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prag"
+          }
+        },
+        "type": "object",
+        "required": [
+          "descriere"
+        ],
+        "title": "IdeaCreate"
+      },
+      "IdeaOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "author_id": {
+            "type": "string",
+            "title": "Author Id"
+          },
+          "titlu": {
+            "type": "string",
+            "title": "Titlu"
+          },
+          "descriere": {
+            "type": "string",
+            "title": "Descriere"
+          },
+          "structurat": {
+            "$ref": "#/components/schemas/Structurat"
+          },
+          "prag": {
+            "type": "integer",
+            "title": "Prag"
+          },
+          "interesati": {
+            "type": "integer",
+            "title": "Interesati"
+          },
+          "stare": {
+            "type": "string",
+            "enum": [
+              "deschisa",
+              "prag_atins",
+              "rezervata"
+            ],
+            "title": "Stare"
+          },
+          "is_demo": {
+            "type": "boolean",
+            "title": "Is Demo"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "author_id",
+          "titlu",
+          "descriere",
+          "structurat",
+          "prag",
+          "interesati",
+          "stare",
+          "is_demo",
+          "created_at"
+        ],
+        "title": "IdeaOut"
+      },
+      "Impact": {
+        "properties": {
+          "ore_recuperate": {
+            "type": "number",
+            "title": "Ore Recuperate"
+          },
+          "oameni_conectati": {
+            "type": "integer",
+            "title": "Oameni Conectati"
+          },
+          "km_economisiti": {
+            "type": "number",
+            "title": "Km Economisiti"
+          },
+          "proiecte_active": {
+            "type": "integer",
+            "title": "Proiecte Active"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ore_recuperate",
+          "oameni_conectati",
+          "km_economisiti",
+          "proiecte_active"
+        ],
+        "title": "Impact"
+      },
+      "MatchOut": {
+        "properties": {
+          "space": {
+            "$ref": "#/components/schemas/SpaceOut"
+          },
+          "scor": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Scor"
+          },
+          "motiv": {
+            "type": "string",
+            "title": "Motiv"
+          },
+          "suprapunere": {
+            "items": {
+              "$ref": "#/components/schemas/Slot"
+            },
+            "type": "array",
+            "title": "Suprapunere"
+          }
+        },
+        "type": "object",
+        "required": [
+          "space",
+          "scor",
+          "motiv",
+          "suprapunere"
+        ],
+        "title": "MatchOut"
+      },
+      "NotificationOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "idea_id": {
+            "type": "string",
+            "title": "Idea Id"
+          },
+          "booking_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Booking Id"
+          },
+          "mesaj": {
+            "type": "string",
+            "title": "Mesaj"
+          },
+          "citita": {
+            "type": "boolean",
+            "title": "Citita"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "user_id",
+          "idea_id",
+          "booking_id",
+          "mesaj",
+          "citita",
+          "created_at"
+        ],
+        "title": "NotificationOut"
+      },
+      "OwnerMessageIn": {
+        "properties": {
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "slot": {
+            "$ref": "#/components/schemas/Slot"
+          }
+        },
+        "type": "object",
+        "required": [
+          "space_id",
+          "slot"
+        ],
+        "title": "OwnerMessageIn"
+      },
+      "OwnerMessageOut": {
+        "properties": {
+          "mesaj": {
+            "type": "string",
+            "title": "Mesaj"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mesaj"
+        ],
+        "title": "OwnerMessageOut"
+      },
+      "Slot": {
+        "properties": {
+          "zi": {
+            "type": "string",
+            "enum": [
+              "luni",
+              "marti",
+              "miercuri",
+              "joi",
+              "vineri",
+              "sambata",
+              "duminica"
+            ],
+            "title": "Zi"
+          },
+          "de_la": {
+            "type": "string",
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "title": "De La"
+          },
+          "pana_la": {
+            "type": "string",
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "title": "Pana La"
+          }
+        },
+        "type": "object",
+        "required": [
+          "zi",
+          "de_la",
+          "pana_la"
+        ],
+        "title": "Slot"
+      },
+      "SpaceOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "tip": {
+            "type": "string",
+            "title": "Tip"
+          },
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lng": {
+            "type": "number",
+            "title": "Lng"
+          },
+          "capacitate": {
+            "type": "integer",
+            "title": "Capacitate"
+          },
+          "dotari": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "scaune",
+                "mese",
+                "proiector",
+                "wifi",
+                "scena",
+                "oglinzi",
+                "vestiare",
+                "bucatarie",
+                "acces_rampa",
+                "curte",
+                "priza",
+                "tabla"
+              ]
+            },
+            "type": "array",
+            "title": "Dotari"
+          },
+          "sloturi": {
+            "items": {
+              "$ref": "#/components/schemas/Slot"
+            },
+            "type": "array",
+            "title": "Sloturi"
+          },
+          "owner_id": {
+            "type": "string",
+            "title": "Owner Id"
+          },
+          "is_demo": {
+            "type": "boolean",
+            "title": "Is Demo"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "nume",
+          "tip",
+          "lat",
+          "lng",
+          "capacitate",
+          "dotari",
+          "sloturi",
+          "owner_id",
+          "is_demo"
+        ],
+        "title": "SpaceOut"
+      },
+      "Structurat": {
+        "properties": {
+          "categorie": {
+            "type": "string",
+            "enum": [
+              "sport",
+              "cultura",
+              "educatie",
+              "social",
+              "creativ",
+              "tehnologie",
+              "altele"
+            ],
+            "title": "Categorie"
+          },
+          "persoane": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Persoane"
+          },
+          "dotari": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "scaune",
+                "mese",
+                "proiector",
+                "wifi",
+                "scena",
+                "oglinzi",
+                "vestiare",
+                "bucatarie",
+                "acces_rampa",
+                "curte",
+                "priza",
+                "tabla"
+              ]
+            },
+            "type": "array",
+            "title": "Dotari",
+            "default": []
+          },
+          "program": {
+            "items": {
+              "$ref": "#/components/schemas/Slot"
+            },
+            "type": "array",
+            "title": "Program",
+            "default": []
+          },
+          "zgomot": {
+            "type": "string",
+            "enum": [
+              "scazut",
+              "mediu",
+              "ridicat"
+            ],
+            "title": "Zgomot"
+          },
+          "rezumat": {
+            "type": "string",
+            "title": "Rezumat"
+          }
+        },
+        "type": "object",
+        "required": [
+          "categorie",
+          "persoane",
+          "zgomot",
+          "rezumat"
+        ],
+        "title": "Structurat"
+      },
+      "UserOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "rol": {
+            "type": "string",
+            "enum": [
+              "cetatean",
+              "proprietar"
+            ],
+            "title": "Rol"
+          },
+          "cartier": {
+            "type": "string",
+            "title": "Cartier"
+          },
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lng": {
+            "type": "number",
+            "title": "Lng"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "nume",
+          "rol",
+          "cartier",
+          "lat",
+          "lng"
+        ],
+        "title": "UserOut"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
       }
     }
   }

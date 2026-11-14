@@ -1,10 +1,13 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from backend.app.config import settings
 from backend.app.db import init_db
+from backend.app.routers import bookings, ideas, impact, notifications, spaces, users
 
 
 @asynccontextmanager
@@ -20,6 +23,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error(_: Request, exc: RequestValidationError):
+    parts = [f"{'.'.join(str(p) for p in e['loc'][1:]) or e['loc'][0]}: {e['msg']}" for e in exc.errors()]
+    return JSONResponse(status_code=422, content={"detail": "Date invalide - " + "; ".join(parts)})
+
+
+for _router in (users, spaces, ideas, bookings, notifications, impact):
+    app.include_router(_router.router)
 
 
 @app.get("/health")
