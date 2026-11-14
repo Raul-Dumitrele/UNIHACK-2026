@@ -7,7 +7,7 @@ from backend.tests.app.conftest import h
 
 PROIECT_KEYS = {
     "id", "idea_id", "space_id", "autor_id", "verificator_id", "tip_amenajare", "suprafata_mp",
-    "stare", "dosar", "referinte", "cost", "created_at", "updated_at",
+    "stare", "dosar", "referinte", "cost", "created_at", "updated_at", "is_demo",
 }
 
 
@@ -84,3 +84,24 @@ def test_init_db_adds_missing_columns(tmp_path, monkeypatch):
     with eng.connect() as c:
         assert c.execute(text("SELECT nume FROM space")).scalar() == "Vechi"
     assert Proiect.__tablename__ == "proiect"
+
+
+def test_proiect_has_is_demo_default_false(client, world):
+    p = _create(client, world).json()
+    assert p["is_demo"] is False
+
+
+def test_init_db_adds_not_null_column_with_default(tmp_path, monkeypatch):
+    """An old proiect table without is_demo is upgraded; existing rows get false."""
+    import backend.app.db as db
+
+    eng = create_engine(f"sqlite:///{(tmp_path / 'old2.db').as_posix()}")
+    with eng.begin() as c:
+        c.execute(text("CREATE TABLE proiect (id TEXT PRIMARY KEY, idea_id TEXT, space_id TEXT, autor_id TEXT, "
+                       "verificator_id TEXT, tip_amenajare TEXT, suprafata_mp INT, stare TEXT, dosar JSON, "
+                       "referinte JSON, cost JSON, created_at DATETIME, updated_at DATETIME)"))
+        c.execute(text("INSERT INTO proiect (id, stare) VALUES ('p1', 'draft')"))
+    monkeypatch.setattr(db, "engine", eng)
+    db.init_db()
+    with eng.connect() as c:
+        assert c.execute(text("SELECT is_demo FROM proiect WHERE id = 'p1'")).scalar() == 0

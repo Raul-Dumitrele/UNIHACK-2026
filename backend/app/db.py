@@ -17,7 +17,7 @@ def init_db() -> None:
 
 
 def _add_missing_columns() -> None:
-    """Additive migration: create_all does not alter existing tables, so add new nullable columns."""
+    """Additive migration: create_all does not alter existing tables, so add new columns (nullable, or NOT NULL with a plain default)."""
     insp = inspect(engine)
     with engine.begin() as conn:
         for table in SQLModel.metadata.sorted_tables:
@@ -25,9 +25,18 @@ def _add_missing_columns() -> None:
                 continue
             have = {c["name"] for c in insp.get_columns(table.name)}
             for col in table.columns:
-                if col.name not in have and col.nullable:
-                    ddl = col.type.compile(dialect=engine.dialect)
-                    conn.execute(text(f'ALTER TABLE "{table.name}" ADD COLUMN "{col.name}" {ddl}'))
+                if col.name in have:
+                    continue
+                ddl = col.type.compile(dialect=engine.dialect)
+                default = getattr(col.default, "arg", None)
+                if col.nullable:
+                    clause = ""
+                elif isinstance(default, (bool, int, float, str)):
+                    # NOT NULL column with a plain default (e.g. is_demo=False): old rows get the default.
+                    clause = f" NOT NULL DEFAULT {int(default) if isinstance(default, bool) else repr(default)}"
+                else:
+                    continue  # cannot add safely; needs a manual reset of the local database
+                conn.execute(text(f'ALTER TABLE "{table.name}" ADD COLUMN "{col.name}" {ddl}{clause}'))
 
 
 def get_session() -> Iterator[Session]:

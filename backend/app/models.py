@@ -89,6 +89,7 @@ class Proiect(SQLModel, table=True):
     verificator_id: str | None = Field(default=None, foreign_key="user.id", index=True)
     tip_amenajare: str
     suprafata_mp: int
+    is_demo: bool = False
     stare: str = "draft"  # ProiectStare
     dosar: dict = Field(default_factory=dict, sa_column=Column(JSON, nullable=False))
     referinte: list = Field(default_factory=list, sa_column=Column(JSON, nullable=False))
