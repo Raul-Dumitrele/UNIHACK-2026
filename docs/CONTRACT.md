@@ -98,6 +98,7 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
    - `trimite`: autor; din `draft` sau `clarificari` -> `trimis`; notificare către toți utilizatorii `primarie`.
    - `inainteaza`: `primarie`; din `trimis` -> `in_verificare`; setează `verificator_id` (utilizator cu rol `verificator`); notificare către verificator.
    - `decizie`: doar verificatorul desemnat; din `in_verificare` -> `acord_de_principiu` | `respins` | `clarificari`; `mesaj` obligatoriu la `respins` și `clarificari` (422); notificare către autor și primarie.
+   - `GET /proiecte/{id}`: vizibil pentru autor, pentru `primarie` (dacă stare != `draft`) și pentru verificatorul desemnat; altfel 403.
 9. **Booking.mesaj** se salvează la `POST /bookings` (preluat din `owner-message` dacă e trimis).
 10. **Text obligatoriu** în dosar și în UI: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”
 

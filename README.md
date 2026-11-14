@@ -21,3 +21,11 @@ Ramuri: `p1-backend`, `p2-front`, `p3-data-ai`; hook-ul pre-commit blochează fi
 Cu `make`: `make setup | dev | test | smoke | openapi`.
 
 Variabile: copiază `.env.example` în `.env` și completează `GEMINI_API_KEY` (`GEMINI_MODEL` are implicit `gemini-flash-latest`).
+
+## Deploy backend (Render sau Railway)
+- Build: `pip install -r backend/requirements.txt`
+- Start: `python -m backend.seed.run && uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
+- Variabile: `PYTHON_VERSION=3.12`, `GEMINI_API_KEY`, `GEMINI_MODEL`, `CORS_ORIGINS` (URL-ul web al lui P2, fără `/` final), `DATABASE_URL` (implicit SQLite).
+- SQLite se resetează la fiecare redeploy; seed-ul rulează la pornire (datele reale se pierd, acceptat pentru demo).
+- Verifică `/health` și `/docs` pe URL-ul public. Pe Render/Railway nu se aplică wheel-ul pur-Python din `setup.ps1` (doar Windows).
+- `python -m backend.seed.run` vine de la P3 (încă pe `origin/p3`, nu pe main).
