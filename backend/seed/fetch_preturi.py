@@ -70,8 +70,14 @@ def _key(header: str) -> str:
 
 
 def rows_csv(path: Path):
+    """Two CSV dialects exist: 2023 T IV uses ',' with '|' quoting, 2023 T III uses '|' with '"' quoting."""
     with open(path, encoding="utf-8-sig", newline="") as f:
-        reader = csv.reader(f, delimiter=",", quotechar="|")
+        first = f.readline()
+        f.seek(0)
+        if f.read(1) != "﻿":
+            f.seek(0)
+        piped = "|,|" not in first  # dialect A quotes every field with |: |a|,|b|
+        reader = csv.reader(f, delimiter="|" if piped else ",", quotechar='"' if piped else "|")
         head = [_key(h) for h in next(reader)]
         for row in reader:
             if len(row) == len(head):
@@ -95,33 +101,42 @@ def rows_xlsx(path: Path):
                 if el.tag == f"{NS}si":
                     shared.append("".join(t.text or "" for t in el.iter(f"{NS}t")))
                     el.clear()
-        sheet = next(n for n in sorted(z.namelist()) if n.startswith("xl/worksheets/sheet"))
-        head = None
-        context = iterparse(z.open(sheet), events=("start", "end"))
-        _, root = next(context)
-        for event, el in context:
-            if event != "end" or el.tag != f"{NS}row":
-                continue
-            values: dict[int, str] = {}
-            for c in el.iter(f"{NS}c"):
-                t, v = c.get("t"), c.find(f"{NS}v")
-                if t == "s" and v is not None:
-                    values[_col(c.get("r"))] = shared[int(v.text)]
-                elif t == "inlineStr":
-                    values[_col(c.get("r"))] = "".join(x.text or "" for x in c.iter(f"{NS}t"))
-                elif v is not None:
-                    values[_col(c.get("r"))] = v.text or ""
-            root.clear()  # keep memory flat on 400 MB sheets
-            if head is None:
-                head = {i: _key(h) for i, h in values.items()}
-                continue
-            yield {name: values.get(i, "") for i, name in head.items()}
+        # Some exports split the rows over several sheets (2024 T IV: 11 sheets), each with its own header.
+        sheets = sorted((n for n in z.namelist() if re.fullmatch(r"xl/worksheets/sheet\d+\.xml", n)),
+                        key=lambda n: int(re.search(r"(\d+)\.xml$", n).group(1)))
+        for sheet in sheets:
+            head = None
+            data = None  # <sheetData>: parsed rows pile up under it unless it is emptied after each row
+            for event, el in iterparse(z.open(sheet), events=("start", "end")):
+                if event == "start":
+                    if el.tag == f"{NS}sheetData":
+                        data = el
+                    continue
+                if el.tag != f"{NS}row":
+                    continue
+                values: dict[int, str] = {}
+                for c in el.iter(f"{NS}c"):
+                    t, v = c.get("t"), c.find(f"{NS}v")
+                    if t == "s" and v is not None:
+                        values[_col(c.get("r"))] = shared[int(v.text)]
+                    elif t == "inlineStr":
+                        values[_col(c.get("r"))] = "".join(x.text or "" for x in c.iter(f"{NS}t"))
+                    elif v is not None:
+                        values[_col(c.get("r"))] = v.text or ""
+                if data is not None:
+                    data.clear()  # keep memory flat on 400 MB sheets
+                if head is None:
+                    head = {i: _key(h) for i, h in values.items()}
+                    continue
+                yield {name: values.get(i, "") for i, name in head.items()}
 
 
 def _day(raw: str) -> str:
     raw = (raw or "").strip()
     if re.fullmatch(r"\d+(\.\d+)?", raw):  # Excel serial
         return (date(1899, 12, 30) + timedelta(days=float(raw))).isoformat()
+    if "/" in raw:  # "7/1/2023 6:41:01 AM", "09/29/2023"
+        raw = raw.split()[0]
     for fmt in ("%m/%d/%Y", "%Y-%m-%d %H:%M:%S.%f", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%d.%m.%Y"):
         try:
             return datetime.strptime(raw[:26], fmt).date().isoformat()
@@ -143,9 +158,11 @@ def _value(raw: str) -> float | None:
 
 
 # Column names differ between yearly exports (2023 CSV vs 2025 XLSX): first present name wins.
-VALUE_COLS = ("VALOARE_ATRIBUITA_RON", "VALOARE_ACHIZITIE_RON")  # 2025+: value of the finalized purchase
+VALUE_COLS = ("VALOARE_ATRIBUITA_RON", "VALOARE_ACHIZITIE_RON", "VALOARE_ACHIZITIE")  # value of the purchase
 DATE_COLS = ("DATA_ATRIBUIRE_ACHIZITIE", "DATA_FINALIZARE", "DATA_PUBLICARE_ACHIZITIE", "DATA_PUBLICARE")
-BUYER_COLS = ("DENUMIRE_AC", "AUTORITATE_CONTRACTANTA")
+BUYER_COLS = ("DENUMIRE_AC", "AUTORITATE_CONTRACTANTA", "NUME_AC")
+NAME_COLS = ("DENUMIRE_ACHIZITIE", "DENUMIRE")
+DA_COLS = ("NUMAR_ACHIZITIE_DIRECTA", "NUMAR_ACHIZITIE")
 
 
 def _first(row: dict, cols: tuple[str, ...]) -> tuple[str, str]:
@@ -162,7 +179,7 @@ def observations(rows, states: Counter, used: Counter | None = None) -> list[dic
         states[state] += 1
         if REJECTED_STATES.search(state):
             continue
-        name = row.get("DENUMIRE_ACHIZITIE", "")
+        name = _first(row, NAME_COLS)[1]
         cpv = row.get("COD_CPV", "")
         col, raw = _first(row, VALUE_COLS)
         value = _value(raw)
@@ -170,11 +187,30 @@ def observations(rows, states: Counter, used: Counter | None = None) -> list[dic
         if hit:
             if used is not None:
                 used[col] += 1
-            out.append({**hit, "numar_da": row.get("NUMAR_ACHIZITIE_DIRECTA", "").strip(),
+            out.append({**hit, "numar_da": _first(row, DA_COLS)[1].strip(),
                         "data": _day(_first(row, DATE_COLS)[1]), "cpv": cpv, "denumire": name.strip(),
                         "valoare_ron": value, "coloana_valoare": col,
                         "autoritate": _first(row, BUYER_COLS)[1].strip()})
     return out
+
+
+def refilter() -> int:
+    """Offline: re-apply the current (stricter) rules to the committed observations. Rules only ever get
+    stricter, so this drops rows and never needs the raw files again."""
+    doc = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    kept, dropped = [], []
+    for o in doc["observatii"]:
+        hit = extract(o["denumire"], o["cpv"], o["valoare_ron"])
+        (kept if hit and hit["articol"] == o["articol"] else dropped).append(o)
+    per = Counter(o["articol"] for o in kept)
+    doc.update(observatii=kept, pe_articol={k: per.get(k, 0) for k in ARTICOLE})
+    DATA_FILE.write_bytes((json.dumps(doc, ensure_ascii=False, indent=1) + "\n").encode("utf-8"))
+    print(f"{len(kept)} păstrate, {len(dropped)} scoase:")
+    for o in dropped:
+        print(f"  - {o['articol']}: {o['denumire'][:90]} ({o['numar_da']})")
+    for k in ARTICOLE:
+        print(f"  {k}: {per.get(k, 0)}" + ("" if per.get(k, 0) >= MIN_OBS else "  (de cotat)"))
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -182,7 +218,10 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--years", nargs="+", type=int, default=[2023, 2024, 2025, 2026])
     p.add_argument("--cache", type=Path, default=Path(tempfile.gettempdir()) / "loc-comun-seap")
+    p.add_argument("--refilter", action="store_true", help="re-apply the rules to the committed file, offline")
     args = p.parse_args(argv)
+    if args.refilter:
+        return refilter()
     args.cache.mkdir(parents=True, exist_ok=True)
 
     files, skipped, found = [], [], {}

@@ -56,26 +56,34 @@ ARTICOLE: dict[str, Articol] = {
                              ("37535",)),
     "rastel_biciclete": Articol("rastel pentru biciclete", "buc",
                                 r"\brastel\w*\b.*\bbici|\bsuport\w* (de |pentru )?bici"),
-    "foisor": Articol("foișor", "buc", r"\bfoisor\w*\b", r"acoperis|proiect|pergol"),
+    "foisor": Articol("foișor", "buc", r"\bfoisor\w*\b", r"acoperis|proiect|pergol|paza|container"),
     "masa_picnic": Articol("masă de picnic cu bănci", "buc",
                            r"\bmas(a|i) (de )?picnic|\bmas(a|i) cu banc", r"pergol|foisor"),
     "compostor": Articol("compostor", "buc", r"\bcompostor\w*\b|\blad(a|e) (de |pentru )?compost"),
     "pardoseala_cauciuc": Articol("pardoseală sintetică (cauciuc / tartan)", "mp",
                                   r"(dale|covor|pardoseal\w*|suprafat\w*|tartan)\b.*\b(cauciuc|tartan|granule)"
                                   r"|\btartan\b",
-                                  r"electroizol|\bauto\b|antiderap|intrare|birou|\busa\b|covoras|\bsala\b|scar"),
+                                  r"electroizol|\bauto\b|antiderap|intrare|birou|\busa\b|covoras|\bsala\b|scar|"
+                                  r"insertie"),  # industrial rubber matting, not a play surface
     "pavaj": Articol("pavaj din pavele (furnizare și/sau montaj)", "mp", r"\bpavele\b|\bpavaj\w*\b",
                      r"decolmat|curatar|bordur"),
     "gazon_rulou": Articol("gazon în rulou", "mp", r"\bgazon\w*\b.*\brulou|\brulou\w*\b.*\bgazon",
                            r"\btuns|cosit|ingras|semint|saman|artificial"),
-    "gard": Articol("împrejmuire (gard)", "ml", r"\bgard\w*\b|\bimprejmuir\w*\b",
-                    r"\bmobil\w*\b|santier|demol|vopsi|\bband(a|e)\b|avertiz|sarma|^(plas(a|e)|panou\w*|stalp\w*)\b"),
+    "gard": Articol("împrejmuire (gard)", "ml", r"\bgard(ul|uri|urile|ului)?\b|\bimprejmuir\w*\b",
+                    r"\bmobil\w*\b|santier|demol|dezafect|vopsi|\bband(a|e)\b|avertiz|sarma|soclu|tehnic|"
+                    r"^(plas(a|e)|panou\w*|stalp\w*)\b",
+                    ("45", "44", "34928")),  # works, construction products or fences (not "Gardlox ... 30ML")
 }
+# Several real names had to be read by hand before these rules were final; see test_preturi.py.
 
 # Anything that hides the real quantity or is not a purchase of the article itself: packs, sets, lots,
 # repairs, services, or a second item/work in the same purchase ("+ remodelare teren").
-GLOBAL_EXCLUDE = re.compile(r"\b(pachet\w*|set|seturi|lot|loturi|kit|reparat\w*|intretinere|piese|inlocuire|"
-                            r"proiectare|servicii|inchiriere|plus)\b|\s\+\s?|\+\s")
+GLOBAL_EXCLUDE = re.compile(r"\b(pachet\w*|set|seturi|lot|loturi|kit|reparat\w*|rep|intretinere|piese|piesa|"
+                            r"schimb|inlocuire|reconditionare|reabilitare|refacere|proiectare|documentati\w*|"
+                            r"servicii|inchiriere|plus)\b|\s\+\s?|\+\s"
+                            r"|\b(rola|rulou) (de )?\d"  # size of one roll, not the quantity bought
+                            r"|\b\w+ de lemn \d+ buc")  # "rigla de lemn 8 bucati": count of parts, not of benches
+MAX_NUMBERS = 6  # more numbers than this = an invoice pasted into the name (several items and prices)
 UNIT = {"buc": "buc", "bucata": "buc", "bucati": "buc", "bc": "buc",
         "mp": "mp", "m2": "mp", "m²": "mp", "ml": "ml"}
 _NUM = r"\d{1,3}(?:\.\d{3})+|\d+(?:,\d{1,2})?"
@@ -107,7 +115,7 @@ def _cpv_digits(cpv: str) -> str:
 def classify(denumire: str, cpv: str = "") -> str | None:
     """The single article a purchase name is about, or None (no article, several, or excluded)."""
     text = normalize(denumire)
-    if GLOBAL_EXCLUDE.search(text):
+    if GLOBAL_EXCLUDE.search(text) or len(re.findall(r"\d+(?:[.,]\d+)?", text)) > MAX_NUMBERS:
         return None
     hits = [k for k, a in ARTICOLE.items() if re.search(a.include, text)]
     if len(hits) != 1:

@@ -1,0 +1,773 @@
+{
+ "sursa": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+ "licenta": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+ "atribuire": "Autoritatea pentru Digitalizarea României, data.gov.ro",
+ "seturi": [
+  "https://data.gov.ro/dataset/achizitii-publice-2023",
+  "https://data.gov.ro/dataset/achizitii-publice-2024",
+  "https://data.gov.ro/dataset/achizitii-publice-2025",
+  "https://data.gov.ro/dataset/achizitii-publice-2026"
+ ],
+ "colectat": "2026-11-15",
+ "tva": "TVA: neprecizat în setul de date",
+ "prag_observatii": 3,
+ "regula": "un singur articol în denumire, o singură cantitate explicită în unitatea articolului; fără pachete, seturi, loturi, reparații; preț unitar = valoarea atribuită / cantitate",
+ "fisiere": [
+  {
+   "an": 2023,
+   "nume": "Achizitii Directe T III 2023",
+   "url": "https://data.gov.ro/dataset/07234a4a-8315-4ad5-b761-813a9671a851/resource/b21a319f-514b-4e15-98a4-5a992caf3813/download/datagov-raport-achizitii-directe-t-iii-2023.csv",
+   "randuri": 529481,
+   "observatii": 6,
+   "stari": {
+    "": 529481
+   }
+  },
+  {
+   "an": 2023,
+   "nume": "Achizitii Directe T IV 2023.csv",
+   "url": "https://data.gov.ro/dataset/07234a4a-8315-4ad5-b761-813a9671a851/resource/5acf3253-4ea9-4d00-a6c3-3d220b9e9145/download/datagov-raport-achizitii-directe-t-iv-2023.csv",
+   "randuri": 609653,
+   "observatii": 8,
+   "stari": {
+    "Oferta acceptata": 609651,
+    "STARE_ACHIZITIE": 2
+   }
+  },
+  {
+   "an": 2024,
+   "nume": "Achiziții directe T IV",
+   "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/dd109516-aaa9-421b-bd4a-7b6ae4f3da43/download/datagov-raport-achizitii-directe-t-iv_2024.xlsx",
+   "randuri": 613409,
+   "observatii": 5,
+   "stari": {
+    "": 613409
+   }
+  },
+  {
+   "an": 2025,
+   "nume": "Achiziții directe T1 2025",
+   "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/4ea2f0d0-ad5d-440f-af9d-7101bc9e4969/download/datagov_raport-achizitii_directe_t1_2025.xlsx",
+   "randuri": 500390,
+   "observatii": 2,
+   "stari": {
+    "": 500390
+   }
+  },
+  {
+   "an": 2025,
+   "nume": "Achiziții directe TII 2025",
+   "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/8e6fa9e7-62e9-4ec2-bef5-495f3d09eef3/download/achizitii-directe-t2-2025.xlsx",
+   "randuri": 616106,
+   "observatii": 3,
+   "stari": {
+    "": 616106
+   }
+  },
+  {
+   "an": 2025,
+   "nume": "Achiziții directe TIII 2025",
+   "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/21cd9887-26ca-418d-ade4-be5d369b4246/download/datagov-achizitii-directe-tiii-2025.xlsx",
+   "randuri": 514263,
+   "observatii": 8,
+   "stari": {
+    "": 514263
+   }
+  },
+  {
+   "an": 2025,
+   "nume": "Achiziții directe T IV 2025",
+   "url": "https://data.gov.ro/dataset/e0cf7ffc-1fa0-4ffb-a82f-c83981d81f21/resource/370af861-b17f-4807-b69c-9cf3b67df997/download/achiziii-directe-t_iv_2025.xlsx",
+   "randuri": 603526,
+   "observatii": 4,
+   "stari": {
+    "": 603526
+   }
+  },
+  {
+   "an": 2026,
+   "nume": "Achizitii directe TI 2026",
+   "url": "https://data.gov.ro/dataset/e8d22de4-f8ce-4b42-8561-98d2481ddef9/resource/5bcff70e-a97d-494d-a028-ac031b431dae/download/raport-achizitii-directe-ti-2026.xlsx",
+   "randuri": 476597,
+   "observatii": 3,
+   "stari": {
+    "": 476597
+   }
+  },
+  {
+   "an": 2026,
+   "nume": "Achizitii directe TIII 2026",
+   "url": "https://data.gov.ro/dataset/e8d22de4-f8ce-4b42-8561-98d2481ddef9/resource/57dc5b3c-137e-4566-ac7f-ab0fa5f38280/download/raport-achizitii-directe-tiii.xlsx",
+   "randuri": 905500,
+   "observatii": 11,
+   "stari": {
+    "": 905500
+   }
+  }
+ ],
+ "fisiere_sarite": [
+  {
+   "an": 2023,
+   "nume": "Achizitii directe T 1 - 2023",
+   "url": "https://data.gov.ro/dataset/07234a4a-8315-4ad5-b761-813a9671a851/resource/28f536d5-fa32-4e9f-80a1-07454a1e488c/download/raport-achizitii-directe-t1-2023.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2023,
+   "nume": "Achizitii directe TII 2023",
+   "url": "https://data.gov.ro/dataset/07234a4a-8315-4ad5-b761-813a9671a851/resource/3a8ab998-2a0e-4e42-81b4-7f089e04dfb8/download/datagov-raport-achizitii-directe-tii-2023.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2023,
+   "nume": "Achizitii Directe T III 2023",
+   "url": "https://data.gov.ro/dataset/07234a4a-8315-4ad5-b761-813a9671a851/resource/fc284fc8-e790-4aa4-9f0e-9aaa57bb0856/download/datagov-raport-achizitii-directe-t-iii-2023.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2023,
+   "nume": "Achizitii Directe T IV 2023.xls",
+   "url": "https://data.gov.ro/dataset/07234a4a-8315-4ad5-b761-813a9671a851/resource/d6154ab9-2959-4517-a07c-66efa7e88d6e/download/datagov-raport-achizitii-directe-t-iv-2023.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2024,
+   "nume": "Achiziții Directe T I 2024",
+   "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/83552692-ac36-45e0-9e5b-5c6bded5f001/download/datagov-raport-achizitii-directe-t-i-2024.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2024,
+   "nume": "Achizitii Directe T I 2024",
+   "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/b3c28fec-da52-4d95-b6c7-0a034315b190/download/datagov-raport-achizitii-directe-t-i-2024.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2024,
+   "nume": "Achiziții Directe T II 2024",
+   "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/90972e66-d526-4c54-94b5-cf33330a8e7c/download/datagov-raport-achizitii-directe-t-ii-2024.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2024,
+   "nume": "Achiziții Directe T II 2024",
+   "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/ddd0d8e3-e80b-43ac-b758-31fc53ab304f/download/datagov-raport-achizitii-directe-t-ii-2024.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2024,
+   "nume": "Achiziții directe T III 2024",
+   "url": "https://data.gov.ro/dataset/ed84773a-06c6-4016-ad59-8f1d06b8ec1d/resource/66232a37-9585-4561-a8f9-a97735b0c1f1/download/datagov-raport-achizitii-directe-tiii.xls",
+   "motiv": "format .xls/.ods"
+  },
+  {
+   "an": 2026,
+   "nume": "Achizitii directe TII 2026",
+   "url": "https://data.gov.ro/dataset/e8d22de4-f8ce-4b42-8561-98d2481ddef9/resource/5ea63810-6fbd-489c-aa41-0b0852a2902e/download/datagov-raport-achizitii-directe_tii.ods",
+   "motiv": "format .xls/.ods"
+  }
+ ],
+ "pe_articol": {
+  "banca": 8,
+  "cos_gunoi_stradal": 3,
+  "leagan": 0,
+  "balansoar": 1,
+  "tobogan": 0,
+  "complex_joaca": 0,
+  "rastel_biciclete": 1,
+  "foisor": 1,
+  "masa_picnic": 0,
+  "compostor": 0,
+  "pardoseala_cauciuc": 7,
+  "pavaj": 2,
+  "gazon_rulou": 9,
+  "gard": 13
+ },
+ "observatii": [
+  {
+   "articol": "balansoar",
+   "cantitate": 2.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 1900.0,
+   "numar_da": "DA38268007",
+   "data": "2025-06-05",
+   "cpv": "37535250-4",
+   "denumire": "Furnizare 2 bucati balansoare pe arc tip ,,Motocicleta''",
+   "valoare_ron": 3800.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Comuna Hopirta (Primaria Hopirta)"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 30.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 800.0,
+   "numar_da": "DA34343528",
+   "data": "2023-10-27",
+   "cpv": "39113600-3",
+   "denumire": "Achizitie 30 buc. Banci pentru parc, din lemn cu 8 rigle, pentru comuna Letcani, judetul Iasi.",
+   "valoare_ron": 24000.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "COMUNA LETCANI"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 8.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 550.0,
+   "numar_da": "DA38230014",
+   "data": "2025-05-29",
+   "cpv": "34928400-2",
+   "denumire": "BANCI STRADALE- 8 BUC",
+   "valoare_ron": 4400.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Comuna Tirnava (Primaria Tirnava)"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 4.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 2979.0,
+   "numar_da": "DA38552619",
+   "data": "2025-07-18",
+   "cpv": "34928400-2",
+   "denumire": "achizitie 4 bucati Banca Somaco",
+   "valoare_ron": 11916.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "COMUNA DUMBRAVITA"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 20.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 1100.0,
+   "numar_da": "DA38648219",
+   "data": "2025-08-05",
+   "cpv": "39113600-3",
+   "denumire": "Banca stradala 20 bucati (dimensiuni L=1,8 m, l=0,45 m, H=90 cm), pentru comuna Oarja, judetul Arges",
+   "valoare_ron": 22000.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Comuna Oarja"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 4.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 2066.0,
+   "numar_da": "DA39513916",
+   "data": "2025-12-11",
+   "cpv": "34928400-2",
+   "denumire": "Achizitie 4 buc banci",
+   "valoare_ron": 8264.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Municipiul Falticeni"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 4.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 2050.0,
+   "numar_da": "DA39650128",
+   "data": "2026-01-15",
+   "cpv": "34928400-2",
+   "denumire": "Achizitie 4 buc banci",
+   "valoare_ron": 8200.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Municipiul Falticeni"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 4.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 2050.0,
+   "numar_da": "DA39836760",
+   "data": "2026-02-17",
+   "cpv": "34928400-2",
+   "denumire": "Achizitie 4 buc banci",
+   "valoare_ron": 8200.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Municipiul Falticeni"
+  },
+  {
+   "articol": "banca",
+   "cantitate": 10.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 866.0,
+   "numar_da": "DA41135418",
+   "data": "2026-09-08",
+   "cpv": "34928400-2",
+   "denumire": "Mobilier stradal, respectiv 10 buc. bănci parc pentru dotarea domeniului public al mun. Rădăuți",
+   "valoare_ron": 8660.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Municipiul Radauti"
+  },
+  {
+   "articol": "cos_gunoi_stradal",
+   "cantitate": 1.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 149.0,
+   "numar_da": "DA34334173",
+   "data": "2023-10-25",
+   "cpv": "39831240-0",
+   "denumire": "COȘ GUNOI METALIC EXTERIOR: 1 buc.",
+   "valoare_ron": 149.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "SC Centrul de Sanatate STB SA"
+  },
+  {
+   "articol": "cos_gunoi_stradal",
+   "cantitate": 10.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 1350.0,
+   "numar_da": "DA40752322",
+   "data": "2026-07-02",
+   "cpv": "39224340-3",
+   "denumire": "Furnizare 10 buc.cos gunoi stradal personalizat ptr.comuna Tilisca, jud.Sibiu",
+   "valoare_ron": 13500.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Comuna Tilișca"
+  },
+  {
+   "articol": "cos_gunoi_stradal",
+   "cantitate": 100.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 290.0,
+   "numar_da": "DA41296145",
+   "data": "2026-09-30",
+   "cpv": "34928400-2",
+   "denumire": "Furnizare  cos  de  gunoi  stradal (100  bucati)",
+   "valoare_ron": 29000.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "ORASUL GAESTI"
+  },
+  {
+   "articol": "foisor",
+   "cantitate": 3.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 6661.0,
+   "numar_da": "DA34148677",
+   "data": "2023-10-03",
+   "cpv": "34928400-2",
+   "denumire": "3 buc foisor cf oferta",
+   "valoare_ron": 19983.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "Comuna Murgesti"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 50.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 259.92,
+   "numar_da": "DA33763859",
+   "data": "2023-08-03",
+   "cpv": "45342000-6",
+   "denumire": "CONSTRUCTIE GARD CAMIN CULTURAL 50 ML",
+   "valoare_ron": 12996.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE",
+   "autoritate": "Comuna Farcasele"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 34.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 704.4,
+   "numar_da": "DA34133351",
+   "data": "2023-09-29",
+   "cpv": "44313100-8",
+   "denumire": "Construcție gard teren sport – 34 ml – inaltime 5m (pana la inaltimea de 1.7 cu panou bordurat zinca",
+   "valoare_ron": 23949.58,
+   "coloana_valoare": "VALOARE_ACHIZITIE",
+   "autoritate": "Comuna Dulcesti"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 215.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 345.67,
+   "numar_da": "DA34764331",
+   "data": "2023-12-21",
+   "cpv": "45000000-7",
+   "denumire": "Imprejmuire canton Gresu – 215 ml - DRDP Buzau",
+   "valoare_ron": 74320.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "COMPANIA NATIONALA DE ADMINISTRARE A INFRASTRUCTURII RUTIERE S.A."
+  },
+  {
+   "articol": "gard",
+   "cantitate": 405.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 320.21,
+   "numar_da": "DA34764616",
+   "data": "2023-12-21",
+   "cpv": "45000000-7",
+   "denumire": "Imprejmuire canton Nanesti – 405 ml - DRDP Buzau",
+   "valoare_ron": 129686.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "COMPANIA NATIONALA DE ADMINISTRARE A INFRASTRUCTURII RUTIERE S.A."
+  },
+  {
+   "articol": "gard",
+   "cantitate": 70.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 1028.0,
+   "numar_da": "DA37145779",
+   "data": "2024-12-10",
+   "cpv": "45342000-6",
+   "denumire": "70 ml imprejmuire",
+   "valoare_ron": 71960.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Comuna Racoviteni"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 380.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 85.71,
+   "numar_da": "DA37435178",
+   "data": "2025-02-05",
+   "cpv": "44313100-8",
+   "denumire": "Lucrări de construire  gard de împrejmuire din plasă bordurată susținut de stâlpi metalici - 380 ml",
+   "valoare_ron": 32569.97,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Orasul Amara"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 26.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 467.84,
+   "numar_da": "DA38608051",
+   "data": "2025-07-29",
+   "cpv": "45340000-2",
+   "denumire": "Gard de protecție pe o lungime de 26 ml",
+   "valoare_ron": 12163.880000000001,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "ORASUL TASNAD"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 68.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 308.82,
+   "numar_da": "DA38646215",
+   "data": "2025-08-05",
+   "cpv": "45453000-7",
+   "denumire": "EXECUTIE IMPREJMUIRE L=68ML",
+   "valoare_ron": 21000.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "SCOALA GIMNAZIALA CISLAU"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 42.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 365.12,
+   "numar_da": "DA38762909",
+   "data": "2025-08-29",
+   "cpv": "45000000-7",
+   "denumire": "UCRARI - GARD METALIC - 42 ML",
+   "valoare_ron": 15335.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "SERVICIUL PUBLIC JUDETEAN SALVAMONT SALVASPEO"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 107.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 280.36,
+   "numar_da": "DA38923533",
+   "data": "2025-09-25",
+   "cpv": "45340000-2",
+   "denumire": "Execuție împrejmuire cu L -= 107 ml.",
+   "valoare_ron": 29998.91,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "SCOALA GIMNAZIALA CISLAU"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 160.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 196.28,
+   "numar_da": "DA39103801",
+   "data": "2025-10-21",
+   "cpv": "44313100-8",
+   "denumire": "Imprejmuire cu plasa bordurata si stalpi metalici 160 ml",
+   "valoare_ron": 31404.96,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Liceul Agricol Poarta Alba"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 80.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 572.17,
+   "numar_da": "DA40985774",
+   "data": "2026-08-13",
+   "cpv": "45342000-6",
+   "denumire": "Executie gard din panouri bordurate, cca 80 ml, cu 2 porti de 4 m cu portita (materiale si manopera)",
+   "valoare_ron": 45774.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "SCOALA GIMNAZIALA VULCAN"
+  },
+  {
+   "articol": "gard",
+   "cantitate": 70.0,
+   "unitate": "ml",
+   "pret_unitar_ron": 920.0,
+   "numar_da": "DA41091856",
+   "data": "2026-09-02",
+   "cpv": "34928200-0",
+   "denumire": "Gard protectie spatii verzi - 70ml",
+   "valoare_ron": 64400.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "COMUNA GARBOVA"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 430.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 38.0,
+   "numar_da": "DA33677928",
+   "data": "2023-07-19",
+   "cpv": "03121000-5",
+   "denumire": "Rulouri de gazon și montarea lor (430 mp)",
+   "valoare_ron": 16340.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE",
+   "autoritate": "COMUNA CRISENI (Primaria CRISENI, JUD. SALAJ)"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 1000.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 25.0,
+   "numar_da": "DA36800373",
+   "data": "2024-10-29",
+   "cpv": "39293400-6",
+   "denumire": "1000 mp rulouri de gazon necesară pentru reamenajarea Parcului Tineretului",
+   "valoare_ron": 25000.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Municipiul Piatra Neamt"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 1040.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 25.0,
+   "numar_da": "DA36847092",
+   "data": "2024-11-05",
+   "cpv": "39293400-6",
+   "denumire": "1040 mp rulouri de gazon necesară pentru reamenajarea Parcului Tineretului",
+   "valoare_ron": 26000.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Municipiul Piatra Neamt"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 80.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 27.52,
+   "numar_da": "DA36875403",
+   "data": "2024-11-07",
+   "cpv": "03441000-3",
+   "denumire": "Rulouri de gazon 80 mp",
+   "valoare_ron": 2201.6,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "COMUNA  COSTINESTI"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 800.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 17.0,
+   "numar_da": "DA37685598",
+   "data": "2025-03-18",
+   "cpv": "03441000-3",
+   "denumire": "Rulou de gazon  – 800 Mp.",
+   "valoare_ron": 13600.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "REGIA AUTONOMA DE ADMINISTRARE A DOMENIULUI PUBLIC SI A FONDULUI LOCATIV R.A. CRAIOVA"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 225.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 26.43,
+   "numar_da": "DA38264037",
+   "data": "2025-06-03",
+   "cpv": "03110000-5",
+   "denumire": "Gazon rulou natural 225mp",
+   "valoare_ron": 5947.5,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "SCOALA GIMNAZIALA STEFAN CEL MARE GALATI"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 7500.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 13.5,
+   "numar_da": "DA39138841",
+   "data": "2025-10-23",
+   "cpv": "03441000-3",
+   "denumire": "Rulou gazon 7500 mp",
+   "valoare_ron": 101250.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "ECO URBIS CRAIOVA SRL"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 1600.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 13.5,
+   "numar_da": "DA39958180",
+   "data": "2026-03-06",
+   "cpv": "03441000-3",
+   "denumire": "Rulouri de gazon 1600  mp",
+   "valoare_ron": 21600.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "ECO URBIS CRAIOVA SRL"
+  },
+  {
+   "articol": "gazon_rulou",
+   "cantitate": 220.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 18.78,
+   "numar_da": "DA41019170",
+   "data": "2026-08-19",
+   "cpv": "77314100-5",
+   "denumire": "Rulou de gazon 220 mp la Gradinita cu program Prelungit Mihai Eminescu Baia Mare",
+   "valoare_ron": 4132.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "SEMINARUL TEOLOGIC LICEAL \"SF.IOSIF MARTURISITORUL\" BAIA MARE"
+  },
+  {
+   "articol": "pardoseala_cauciuc",
+   "cantitate": 80.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 148.29,
+   "numar_da": "DA33672996",
+   "data": "2023-07-18",
+   "cpv": "37400000-2",
+   "denumire": "COVOR CAUCIUC TARTAN 80 mp",
+   "valoare_ron": 11863.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE",
+   "autoritate": "SCOALA GIMNAZIALA NR.181"
+  },
+  {
+   "articol": "pardoseala_cauciuc",
+   "cantitate": 100.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 239.0,
+   "numar_da": "DA33810431",
+   "data": "2023-08-10",
+   "cpv": "19510000-4",
+   "denumire": "COVOR TARTAN 3CM GROSIME-100 MP",
+   "valoare_ron": 23900.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE",
+   "autoritate": "COMUNA IPATELE"
+  },
+  {
+   "articol": "pardoseala_cauciuc",
+   "cantitate": 45.5,
+   "unitate": "mp",
+   "pret_unitar_ron": 111.52,
+   "numar_da": "DA34077150",
+   "data": "2023-09-22",
+   "cpv": "33682000-4",
+   "denumire": "Dale de cauciuc 45,5 mp",
+   "valoare_ron": 5074.37,
+   "coloana_valoare": "VALOARE_ACHIZITIE",
+   "autoritate": "Orasul Murfatlar"
+  },
+  {
+   "articol": "pardoseala_cauciuc",
+   "cantitate": 400.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 237.0,
+   "numar_da": "DA34219712",
+   "data": "2023-10-11",
+   "cpv": "19700000-3",
+   "denumire": "Trunare tartan 400 mp",
+   "valoare_ron": 94800.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "Comuna Prisacani (Consiliul local Prisacani)"
+  },
+  {
+   "articol": "pardoseala_cauciuc",
+   "cantitate": 53.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 318.19,
+   "numar_da": "DA34267928",
+   "data": "2023-10-18",
+   "cpv": "19510000-4",
+   "denumire": "COVOR TARTAN TURNAT CU GROSIME DE 3CM-53 MP",
+   "valoare_ron": 16864.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "COMUNA TOMESTI"
+  },
+  {
+   "articol": "pardoseala_cauciuc",
+   "cantitate": 90.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 101.01,
+   "numar_da": "DA38542015",
+   "data": "2025-07-16",
+   "cpv": "33682000-4",
+   "denumire": "90 mp Dale cauciuc inclusiv adeziv de montaj",
+   "valoare_ron": 9091.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Comuna Gheraseni (Primaria comunei Gheraseni)"
+  },
+  {
+   "articol": "pardoseala_cauciuc",
+   "cantitate": 450.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 110.0,
+   "numar_da": "DA38725863",
+   "data": "2025-08-25",
+   "cpv": "33682000-4",
+   "denumire": "Dale din cauciuc SBR grosime 20 mm pentru 450 mp pardoseala",
+   "valoare_ron": 49500.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "COMUNA DOBRUN"
+  },
+  {
+   "articol": "pavaj",
+   "cantitate": 70.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 107.43,
+   "numar_da": "DA34389700",
+   "data": "2023-10-31",
+   "cpv": "45432112-2",
+   "denumire": "Montaj pavele - 70 mp",
+   "valoare_ron": 7520.0,
+   "coloana_valoare": "VALOARE_ATRIBUITA_RON",
+   "autoritate": "SCOALA GIMNAZIALA CISLAU"
+  },
+  {
+   "articol": "pavaj",
+   "cantitate": 440.0,
+   "unitate": "mp",
+   "pret_unitar_ron": 196.0,
+   "numar_da": "DA37145748",
+   "data": "2024-12-10",
+   "cpv": "45432112-2",
+   "denumire": "440 mp pavaj cf oferta",
+   "valoare_ron": 86240.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Comuna Racoviteni"
+  },
+  {
+   "articol": "rastel_biciclete",
+   "cantitate": 2.0,
+   "unitate": "buc",
+   "pret_unitar_ron": 5663.5,
+   "numar_da": "DA39184241",
+   "data": "2025-10-31",
+   "cpv": "34928400-2",
+   "denumire": "Furnizare 2 buc. rastele de biciclete RICCIO cu 9 locuri,",
+   "valoare_ron": 11327.0,
+   "coloana_valoare": "VALOARE_ACHIZITIE_RON",
+   "autoritate": "Serviciul Public Salubrizare, Protecția Mediului și Administrarea Domeniului  Public"
+  }
+ ]
+}

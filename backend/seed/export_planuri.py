@@ -1,7 +1,10 @@
 """Example schematic plans for web/mobile, one per kind of proposal (offline, deterministic):
     python -m backend.seed.export_planuri
-Output: backend/seed/data/exemple/plan_<tip>_<mp>mp.{json,svg,dxf}. The JSON is the Scene (build_scene).
-Sizes: the demo plot (600 m²) for every kind, plus 276 m² lots 12 m wide like those on the city hall's list.
+Output in backend/seed/data/exemple/:
+- plan_<tip>_<mp>mp.{json,svg,dxf}: the Scene (build_scene) for every kind on the demo plot (600 m²), plus
+  276 m² lots 12 m wide like those on the city hall's list;
+- proiect_demo_*: the demo project's GET /proiecte/{id}/plan and /materiale bodies and its four documents
+  (plan.svg, plan.dxf, dosar.pdf, materiale.csv), for web/mobile mocks of the "Documente" tab.
 """
 import json
 from pathlib import Path
@@ -30,10 +33,26 @@ def build_examples() -> dict[str, bytes]:
     return files
 
 
+def build_project_examples() -> dict[str, bytes]:
+    """The demo project's documents, exactly as GET /proiecte/{id}/... returns them (offline, no AI)."""
+    from backend.ai.proiect.documente import build_documente, materiale_json, plan_json
+    from backend.seed.export_examples import build_examples as contract_examples
+
+    data = contract_examples()
+    proiect = data["proiecte"][0]
+    space = next(s for s in data["teren_liber"] if s["id"] == proiect["space_id"])
+    files = {"proiect_demo_plan.json": plan_json(proiect, space),
+             "proiect_demo_materiale.json": materiale_json(proiect, space)}
+    out = {name: (json.dumps(doc, ensure_ascii=False, indent=1) + "\n").encode("utf-8") for name, doc in files.items()}
+    for name, (content, _media) in build_documente(proiect, space).items():
+        out[f"proiect_demo_{name.replace('.', '_', name.count('.') - 1)}"] = content
+    return out
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
-    files = build_examples()
-    for stale in OUT.glob("plan_*"):
+    files = {**build_examples(), **build_project_examples()}
+    for stale in [*OUT.glob("plan_*"), *OUT.glob("proiect_demo_*")]:
         if stale.name not in files:
             stale.unlink()
     for name, content in files.items():
