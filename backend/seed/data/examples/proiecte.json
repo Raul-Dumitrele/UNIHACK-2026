@@ -9,8 +9,8 @@
   "stare": "in_verificare",
   "dosar": {
    "titlu": "Amenajare: skatepark – Teren liber de lângă blocuri (exemplu)",
-   "descriere": "Locuitorii propun o amenajare de tip „skatepark” la Teren liber de lângă blocuri (exemplu), în cartierul Fabric, pe o suprafață de circa 600 mp. Vrem un skatepark mic pe terenul liber din Fabric, pentru adolescenții din cartier, cu câteva rampe și bănci în aer liber.\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
-   "justificare": "Propunerea pornește de la ideea „Skatepark mic pe terenul liber din Fabric”, susținută de 4 persoane din comunitate. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nCost estimat orientativ: între 175.700 și 1.534.900 lei, cu o valoare mediană de 733.300 lei, calculat din 5 proiecte de referință (skatepark-cluj-napoca-2012, skatepark-alba-iulia-2013, skatepark-satu-mare-2019, skatepark-timisoara-2026, skatepark-brasov-2023).",
+   "descriere": "Locuitorii propun o amenajare de tip „skatepark” la Teren liber de lângă blocuri (exemplu), în cartierul Fabric, pe o suprafață de circa 600 mp. Vrem un skatepark mic pe terenul liber din Fabric, pentru adolescenții din cartier, cu câteva rampe și bănci în aer liber.",
+   "justificare": "Propunerea pornește de la ideea „Skatepark mic pe terenul liber din Fabric”, susținută de 4 persoane din comunitate. Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă.\n\nCost estimat orientativ: între 175.700 și 1.534.900 lei, cu o valoare mediană de 733.300 lei, calculat din 5 proiecte de referință (skatepark-cluj-napoca-2012, skatepark-alba-iulia-2013, skatepark-satu-mare-2019, skatepark-timisoara-2026, skatepark-brasov-2023).\n\nEstimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.",
    "componente": [
     "șase elemente de skate individuale",
     "platformă de skate",
@@ -68,8 +68,8 @@
     "tip_amenajare": "skatepark",
     "oras": "Cluj-Napoca",
     "an": 2012,
-    "suprafata_mp": 1012.0,
-    "cost_total_lei": 804000.0,
+    "suprafata_mp": 1012,
+    "cost_total_lei": 804000,
     "componente": [
      "șase elemente de skate individuale"
     ],
@@ -82,8 +82,8 @@
     "tip_amenajare": "skatepark",
     "oras": "Alba Iulia",
     "an": 2013,
-    "suprafata_mp": 1868.0,
-    "cost_total_lei": 3971000.0,
+    "suprafata_mp": 1868,
+    "cost_total_lei": 3971000,
     "componente": [
      "platformă de skate",
      "rampe, trepte și bare pentru role, biciclete și skateboard"
@@ -97,8 +97,8 @@
     "tip_amenajare": "skatepark",
     "oras": "Satu Mare",
     "an": 2019,
-    "suprafata_mp": 2100.0,
-    "cost_total_lei": 615000.0,
+    "suprafata_mp": 2100,
+    "cost_total_lei": 615000,
     "componente": [
      "zonă de skate",
      "două terenuri de streetball",
@@ -114,8 +114,8 @@
     "tip_amenajare": "skatepark",
     "oras": "Timișoara",
     "an": 2026,
-    "suprafata_mp": 4300.0,
-    "cost_total_lei": 11000000.0,
+    "suprafata_mp": 4300,
+    "cost_total_lei": 11000000,
     "componente": [
      "skatepark cu rampe, trepte și zonă de tip bowl",
      "pumptrack",
@@ -132,8 +132,8 @@
     "tip_amenajare": "skatepark",
     "oras": "Brașov",
     "an": 2023,
-    "suprafata_mp": 9000.0,
-    "cost_total_lei": 11000000.0,
+    "suprafata_mp": 9000,
+    "cost_total_lei": 11000000,
     "componente": [
      "pumptrack",
      "zonă de sărituri",
@@ -149,9 +149,9 @@
   ],
   "cost": {
    "suficient": true,
-   "min_lei": 175700.0,
-   "mediana_lei": 733300.0,
-   "max_lei": 1534900.0,
+   "min_lei": 175700,
+   "mediana_lei": 733300,
+   "max_lei": 1534900,
    "moneda": "RON",
    "ipoteze": [
     "Bazat pe 5 proiecte de referință din anii 2012–2026 (Cluj-Napoca, Alba Iulia, Satu Mare, Timișoara, Brașov).",

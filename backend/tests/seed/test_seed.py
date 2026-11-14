@@ -249,8 +249,11 @@ def test_contract_rows_validate_against_p1_schemas(data):
     from backend.seed.contract import contract_rows
 
     rows = contract_rows(data)
+    from backend.app.schemas import ProiectEvenimentOut, ProiectOut
+
     for name, schema in [("User", UserOut), ("Space", SpaceOut), ("Booking", BookingOut),
-                         ("Notification", NotificationOut)]:
+                         ("Notification", NotificationOut), ("Proiect", ProiectOut),
+                         ("ProiectEveniment", ProiectEvenimentOut)]:
         for row in rows[name]:
             schema.model_validate(row)
     for row in rows["Idea"]:
@@ -264,12 +267,18 @@ def test_contract_rows_are_consistent(data):
     users = {u["id"]: u for u in rows["User"]}
     spaces = {s["id"]: s for s in rows["Space"]}
     ideas = {i["id"]: i for i in rows["Idea"]}
-    assert {u["rol"] for u in users.values()} == {"cetatean", "proprietar"}  # contract roles only
-    assert all(s["owner_id"] in users and users[s["owner_id"]]["rol"] == "proprietar" for s in spaces.values())
+    assert {u["rol"] for u in users.values()} == {"cetatean", "proprietar", "primarie", "verificator"}
+    assert all(s["owner_id"] in users and users[s["owner_id"]]["rol"] ==
+               ("primarie" if s["tip"] == "teren liber" else "proprietar") for s in spaces.values())
     assert all(i["author_id"] in users and len(i["titlu"]) <= 80 for i in ideas.values())
     assert all(it["user_id"] in users and it["idea_id"] in ideas for it in rows["Interest"])
     assert all(n["user_id"] in users and n["idea_id"] in ideas for n in rows["Notification"])
-    assert "demo-space-teren-1" not in spaces  # the proposal extension is not in the contract yet
+    teren = spaces["demo-space-teren-1"]  # the free plot of the city-hall proposal
+    assert teren["suprafata_mp"] == 600 and teren["sloturi"] == []
+    [p] = rows["Proiect"]
+    assert p["verificator_id"] == "demo-user-10" and p["stare"] == "in_verificare" and p["space_id"] in spaces
+    assert all(e["proiect_id"] == p["id"] for e in rows["ProiectEveniment"])
+    assert {n["proiect_id"] for n in rows["Notification"] if n["proiect_id"]} == {p["id"]}
     for b in rows["Booking"]:
         assert b["space_id"] in spaces and b["stare"] in {"cerut", "aprobat", "refuzat"}
         if b["stare"] == "aprobat":  # rule 4: an approved slot leaves the space's availability
@@ -290,12 +299,13 @@ def test_seed_into_p1_models_and_impact(data):
     with Session(engine) as session:
         seed(session, data)
         seed(session, data)
-        for name in ("User", "Space", "Idea", "Interest", "Booking", "Notification"):
+        for name in ("User", "Space", "Idea", "Interest", "Booking", "Notification", "Proiect", "ProiectEveniment"):
             assert _count(session, getattr(models, name)) == len(rows[name]), name
         impact = compute_impact(session)
     approved = [b for b in rows["Booking"] if b["stare"] == "aprobat"]
     assert impact.proiecte_active == len({b["idea_id"] for b in approved}) == 5
     assert impact.ore_recuperate > 0 and impact.oameni_conectati > 0 and impact.km_economisiti > 0
+    assert (impact.proiecte_trimise, impact.proiecte_cu_acord) == (1, 0)  # demo project is in verification
 
 
 # --- "Propunere către Primărie" demo (proiect_demo) ---
@@ -327,7 +337,7 @@ def test_demo_project(data):
     assert p["stare"] == "in_verificare" == data.proiect_evenimente[-1]["stare_noua"]
     assert p["cost"]["suficient"] and p["cost"]["moneda"] == "RON"
     assert set(p["cost"]["referinte_folosite"]) <= {r["id"] for r in p["referinte"]}
-    assert p["dosar"]["descriere"].endswith(DISCLAIMER)
+    assert p["dosar"]["justificare"].endswith(DISCLAIMER)
     assert set(p["dosar"]["referinte_citate"]) <= {r["id"] for r in p["referinte"]}
     text = p["dosar"]["descriere"] + p["dosar"]["justificare"]
     assert sorted(money_mentions(text)) == sorted(money_mentions(cost_sentence(Cost(**p["cost"]))))

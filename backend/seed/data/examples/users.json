@@ -62,5 +62,21 @@
   "cartier": "Șagului",
   "lat": 45.729382,
   "lng": 21.21076
+ },
+ {
+  "id": "demo-user-9",
+  "nume": "Cont demo Primărie",
+  "rol": "primarie",
+  "cartier": "Cetate",
+  "lat": 45.756038,
+  "lng": 21.228846
+ },
+ {
+  "id": "demo-user-10",
+  "nume": "Cont demo verificator",
+  "rol": "verificator",
+  "cartier": "Cetate",
+  "lat": 45.756038,
+  "lng": 21.228846
  }
 ]

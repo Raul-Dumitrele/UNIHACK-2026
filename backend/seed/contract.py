@@ -18,7 +18,7 @@ from backend.ai.geo import city_centre, neighborhood_point
 from backend.ai.schemas import IdeaDossier
 from backend.seed.build import LOCAL_TZ, SeedData
 
-ROLES = {"locuitor": "cetatean", "proprietar": "proprietar"}
+ROLES = {"locuitor": "cetatean", "proprietar": "proprietar", "primarie": "primarie", "verificator": "verificator"}
 BOOKING_STATES = {"ceruta": "cerut", "aprobata": "aprobat", "refuzata": "refuzat"}
 WEEKDAY = ["luni", "marti", "miercuri", "joi", "vineri", "sambata", "duminica"]
 DAY_ORDER = {d: i for i, d in enumerate(WEEKDAY)}
@@ -47,7 +47,7 @@ def _dotari(amenities: list[str]) -> list[str]:
 def contract_rows(data: SeedData) -> dict[str, list[dict]]:
     users = [u for u in data.users if u["role"] in ROLES]
     user_ids = {u["id"] for u in users}
-    spaces = [s for s in data.spaces if s["kind"] != "teren_liber"]
+    spaces = data.spaces
     slot_by_id = {s["id"]: s for s in data.slots}
     booked = {b["id"]: weekly(slot_by_id[b["slot_id"]]) for b in data.bookings}
 
@@ -75,6 +75,7 @@ def contract_rows(data: SeedData) -> dict[str, list[dict]]:
             "id": s["id"], "nume": s["name"], "tip": s["kind_label"], "lat": s["lat"], "lng": s["lon"],
             "capacitate": s["capacity"], "dotari": _dotari(s["amenities"]),
             "sloturi": sorted(sloturi.get(s["id"], []), key=_key), "owner_id": s["owner_id"], "is_demo": True,
+            "suprafata_mp": s.get("suprafata_mp"),  # only the free plot (kind teren_liber) has one
         } for s in spaces],
         "Idea": [{
             "id": i["id"], "author_id": i["author_id"], "titlu": i["title"][:80], "descriere": i["text"],
@@ -91,9 +92,24 @@ def contract_rows(data: SeedData) -> dict[str, list[dict]]:
         } for b in data.bookings],
         "Notification": [{
             "id": n["id"], "user_id": n["user_id"], "idea_id": n["idea_id"], "booking_id": n.get("booking_id"),
-            "mesaj": n["text"], "citita": n["read"], "created_at": n["created_at"],
-        } for n in data.notifications if not n.get("proiect_id") and n["user_id"] in user_ids],
-        # Not in the contract yet (city-hall proposal extension): written only once P1 defines the models.
-        "Proiect": data.proiecte,
-        "ProiectEveniment": data.proiect_evenimente,
+            "proiect_id": n.get("proiect_id"), "mesaj": n["text"], "citita": n["read"], "created_at": n["created_at"],
+        } for n in data.notifications if n["user_id"] in user_ids],
+        "Proiect": [{
+            "id": p["id"], "idea_id": p["idea_id"], "space_id": p["space_id"], "autor_id": p["autor_id"],
+            "verificator_id": _verifier(p["id"], data.proiect_evenimente, users),
+            "tip_amenajare": p["tip_amenajare"], "suprafata_mp": p["suprafata_mp"], "stare": p["stare"],
+            "dosar": p["dosar"], "referinte": p["referinte"], "cost": p["cost"],
+            "created_at": p["created_at"], "updated_at": p["updated_at"],
+        } for p in data.proiecte],
+        "ProiectEveniment": [{
+            "id": e["id"], "proiect_id": e["proiect_id"], "user_id": e["user_id"], "stare_noua": e["stare_noua"],
+            "mesaj": e.get("mesaj"), "created_at": e["created_at"],
+        } for e in data.proiect_evenimente],
     }
+
+
+def _verifier(proiect_id: str, events: list[dict], users: list[dict]) -> str | None:
+    """The verifier assigned at `inainteaza`: the verifier account that moved the project forward."""
+    verifiers = {u["id"] for u in users if u["role"] == "verificator"}
+    return next((e["user_id"] for e in reversed(events)
+                 if e["proiect_id"] == proiect_id and e["user_id"] in verifiers), None)

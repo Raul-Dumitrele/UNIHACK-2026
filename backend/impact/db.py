@@ -6,11 +6,12 @@ Reads P1's tables. Only approved bookings count (Booking.stare == "aprobat"):
   km_economisiti   ESTIMATE, round trip per participant: max(0, home->centre - home->space) × 2 when the
                    user's lat/lng is known, else KM_PER_PARTICIPANT; "centre" = Cetate (see backend.ai.geo)
   proiecte_active  ideas that came to life: an approved booking (state "rezervata")
+  proiecte_trimise / proiecte_cu_acord  city-hall proposals past draft / with an agreement in principle
 """
 from collections import defaultdict
 
 from backend.ai.geo import city_centre, distance_km
-from backend.impact.core import KM_PER_PARTICIPANT
+from backend.impact.core import KM_PER_PARTICIPANT, PROIECT_ACORD, PROIECT_DRAFT
 
 
 def _hours(slot: dict) -> float:
@@ -30,6 +31,7 @@ def _km(home: tuple[float, float] | None, space: tuple[float, float] | None) -> 
 def compute_impact(session):
     from sqlmodel import select
 
+    from backend.app import models
     from backend.app.models import Booking, Idea, Interest, Space, User
     from backend.app.schemas import Impact
 
@@ -54,9 +56,12 @@ def compute_impact(session):
         space = point(spaces.get(b.space_id))
         km += sum(_km(point(users.get(u)), space) for u in participants)
     active = {b.idea_id for b in approved} | {i.id for i in ideas.values() if i.stare == "rezervata"}
+    stari = [p.stare for p in session.exec(select(models.Proiect)).all()] if hasattr(models, "Proiect") else []
     return Impact(
         ore_recuperate=round(sum(_hours(b.slot or {}) for b in approved), 1),
         oameni_conectati=len(people),
         km_economisiti=round(km, 1),
         proiecte_active=len(active),
+        proiecte_trimise=sum(1 for s in stari if s != PROIECT_DRAFT),
+        proiecte_cu_acord=sum(1 for s in stari if s == PROIECT_ACORD),
     )
