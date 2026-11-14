@@ -79,8 +79,8 @@ def test_not_money(text):
 def test_template_without_key(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "")
     d = generate_dosar(IDEA, SPACE, "skatepark", 600, REFS, COST)
-    assert d.descriere.endswith(DISCLAIMER)
-    assert d.justificare.endswith(cost_sentence(COST))
+    assert d.justificare.endswith(DISCLAIMER)
+    assert (cost_sentence(COST) in d.justificare)
     assert "600.000" in d.justificare and "900.000" in d.justificare
     assert "5.000 lei" not in _all_text(d)  # money from the idea text is not copied
     _assert_only_injected_money(d, COST)
@@ -94,7 +94,7 @@ def test_template_with_insufficient_cost(monkeypatch):
     cost = estimate_cost([_r("ref-a", 1000, 1_000_000)], 600)
     d = generate_dosar(IDEA, SPACE, "foișor", 50, [], cost)
     assert "nu poate fi estimat" in d.justificare and money_mentions(_all_text(d)) == []
-    assert d.referinte_citate == [] and d.componente and d.descriere.endswith(DISCLAIMER)
+    assert d.referinte_citate == [] and d.componente and d.justificare.endswith(DISCLAIMER)
     assert "foisor" not in d.titlu and "foișor" in d.titlu
 
 
@@ -104,7 +104,7 @@ def test_gemini_answer_is_used_and_finalized(monkeypatch):
     assert len(prompts) == 1
     assert d.titlu == GOOD["titlu"]
     assert d.referinte_citate == ["ref-a"]  # ids not in the input are dropped
-    assert d.descriere.endswith(DISCLAIMER) and d.justificare.endswith(cost_sentence(COST))
+    assert d.justificare.endswith(DISCLAIMER) and (cost_sentence(COST) in d.justificare)
     assert set(BASE_CHECKS) <= set(d.lista_verificare) and "Cine administrează terenul" in d.lista_verificare
     _assert_only_injected_money(d, COST)
 
@@ -154,7 +154,7 @@ def test_accepts_dicts_and_orm_like_objects(monkeypatch):
 
     d = generate_dosar(Row(), SPACE, "skatepark", 600, [r.model_dump(mode="json") for r in REFS],
                        COST.model_dump(mode="json"))
-    assert "Rezumat" in d.descriere and d.descriere.endswith(DISCLAIMER)
+    assert "Rezumat" in d.descriere and d.justificare.endswith(DISCLAIMER)
 
 
 def test_values_are_clamped(monkeypatch):

@@ -62,7 +62,7 @@ def test_unknown_proposal_still_gets_a_full_dossier(no_key):
     assert p["tip_amenajare"] == "aquapark" and p["referinte"] == []
     assert p["cost"]["suficient"] is False and p["cost"]["motiv"]
     d = p["dosar"]
-    assert "parc acvatic" in d["titlu"] and d["descriere"].endswith(DISCLAIMER)
+    assert "parc acvatic" in d["titlu"] and d["justificare"].endswith(DISCLAIMER)
     assert d["componente"] and d["etape"] and d["riscuri"] and d["lista_verificare"]
     assert money_mentions(json.dumps(d, ensure_ascii=False)) == []
 

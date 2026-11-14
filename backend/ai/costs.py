@@ -18,17 +18,17 @@ ROUND_TO_LEI = 100
 
 class Cost(BaseModel):
     suficient: bool
-    min_lei: float | None = None
-    mediana_lei: float | None = None
-    max_lei: float | None = None
+    min_lei: int | None = None  # integer lei, as in the contract (backend/app/schemas.py)
+    mediana_lei: int | None = None
+    max_lei: int | None = None
     moneda: Literal["RON"] = "RON"
     ipoteze: list[str] = []
     referinte_folosite: list[str] = []
     motiv: str | None = None
 
 
-def _round(value: float) -> float:
-    return float(round(value / ROUND_TO_LEI) * ROUND_TO_LEI)
+def _round(value: float) -> int:
+    return int(round(value / ROUND_TO_LEI) * ROUND_TO_LEI)
 
 
 def _projects(n: int) -> str:

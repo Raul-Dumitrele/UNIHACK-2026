@@ -14,7 +14,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, field_validator
+from pydantic import BaseModel, ConfigDict, field_serializer, field_validator
 
 from backend.ai.fallback import normalize
 
@@ -136,6 +136,11 @@ class Referinta(BaseModel):
         if v not in SOURCE_TYPES:
             raise ValueError(f"sursa_tip necunoscut: {v!r}")
         return v
+
+    @field_serializer("suprafata_mp", "cost_total_lei")
+    def _as_int(self, v: float | None) -> int | None:
+        """The contract (backend/app/schemas.py) has integer lei and m²; the base keeps source decimals."""
+        return None if v is None else int(round(v))
 
     @property
     def usable_for_cost(self) -> bool:

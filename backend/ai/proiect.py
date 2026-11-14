@@ -242,8 +242,9 @@ def finalize(draft: DosarDraft, refs: list[Referinta], cost: Cost) -> Dosar:
         cited = ([i for i in cost.referinte_folosite if i in known] or known)[:MAX_CITED]
     return Dosar(
         titlu=draft.titlu,
-        descriere=f"{draft.descriere.rstrip()}\n\n{DISCLAIMER}",
-        justificare=f"{draft.justificare.rstrip()}\n\n{cost_sentence(cost)}",
+        descriere=draft.descriere.rstrip(),
+        # Cost sentence, then the mandatory text (contract rule 10), close the justification.
+        justificare=f"{draft.justificare.rstrip()}\n\n{cost_sentence(cost)}\n\n{DISCLAIMER}",
         componente=draft.componente or GENERIC_COMPONENTS,
         etape=draft.etape or [Etapa(nume=n, durata_luni=m) for n, m in STANDARD_STAGES],
         riscuri=draft.riscuri or STANDARD_RISKS,
