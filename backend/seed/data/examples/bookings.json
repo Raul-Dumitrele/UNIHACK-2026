@@ -1,0 +1,86 @@
+[
+ {
+  "id": "demo-booking-5",
+  "idea_id": "demo-idea-5",
+  "space_id": "osm-way-463593723",
+  "slot": {
+   "zi": "marti",
+   "de_la": "09:00",
+   "pana_la": "13:00"
+  },
+  "stare": "aprobat",
+  "created_at": "2026-10-14T08:00:00+00:00"
+ },
+ {
+  "id": "demo-booking-6",
+  "idea_id": "demo-idea-6",
+  "space_id": "osm-relation-2602731",
+  "slot": {
+   "zi": "marti",
+   "de_la": "17:00",
+   "pana_la": "19:00"
+  },
+  "stare": "aprobat",
+  "created_at": "2026-10-17T10:00:00+00:00"
+ },
+ {
+  "id": "demo-booking-7",
+  "idea_id": "demo-idea-7",
+  "space_id": "osm-way-463593723",
+  "slot": {
+   "zi": "marti",
+   "de_la": "09:00",
+   "pana_la": "13:00"
+  },
+  "stare": "aprobat",
+  "created_at": "2026-10-22T12:00:00+00:00"
+ },
+ {
+  "id": "demo-booking-1",
+  "idea_id": "demo-idea-1",
+  "space_id": "osm-way-635641257",
+  "slot": {
+   "zi": "marti",
+   "de_la": "17:00",
+   "pana_la": "19:00"
+  },
+  "stare": "aprobat",
+  "created_at": "2026-11-12T08:00:00+00:00"
+ },
+ {
+  "id": "demo-booking-2",
+  "idea_id": "demo-idea-4",
+  "space_id": "osm-way-1219290853",
+  "slot": {
+   "zi": "miercuri",
+   "de_la": "10:00",
+   "pana_la": "12:00"
+  },
+  "stare": "refuzat",
+  "created_at": "2026-11-13T11:00:00+00:00"
+ },
+ {
+  "id": "demo-booking-3",
+  "idea_id": "demo-idea-4",
+  "space_id": "osm-way-1219290854",
+  "slot": {
+   "zi": "marti",
+   "de_la": "18:00",
+   "pana_la": "20:00"
+  },
+  "stare": "aprobat",
+  "created_at": "2026-11-13T13:30:00+00:00"
+ },
+ {
+  "id": "demo-booking-4",
+  "idea_id": "demo-idea-2",
+  "space_id": "osm-way-463593723",
+  "slot": {
+   "zi": "marti",
+   "de_la": "09:00",
+   "pana_la": "13:00"
+  },
+  "stare": "cerut",
+  "created_at": "2026-11-13T17:00:00+00:00"
+ }
+]

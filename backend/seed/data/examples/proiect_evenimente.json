@@ -1,0 +1,29 @@
+[
+ {
+  "id": "demo-proiect-1-ev-1",
+  "proiect_id": "demo-proiect-1",
+  "stare_noua": "draft",
+  "user_id": "demo-user-5",
+  "created_at": "2026-11-06T10:00:00+00:00",
+  "mesaj": null,
+  "is_demo": true
+ },
+ {
+  "id": "demo-proiect-1-ev-2",
+  "proiect_id": "demo-proiect-1",
+  "stare_noua": "trimis",
+  "user_id": "demo-user-5",
+  "created_at": "2026-11-07T12:00:00+00:00",
+  "mesaj": null,
+  "is_demo": true
+ },
+ {
+  "id": "demo-proiect-1-ev-3",
+  "proiect_id": "demo-proiect-1",
+  "stare_noua": "in_verificare",
+  "user_id": "demo-user-10",
+  "created_at": "2026-11-10T09:00:00+00:00",
+  "mesaj": "Dosarul a fost preluat pentru verificare.",
+  "is_demo": true
+ }
+]

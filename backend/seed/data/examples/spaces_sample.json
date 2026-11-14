@@ -1,0 +1,167 @@
+[
+ {
+  "id": "osm-node-10024108156",
+  "nume": "Biblioteca Județeană Timiș - Filiala Fabric-Vii",
+  "tip": "bibliotecă",
+  "lat": 45.772267,
+  "lng": 21.233127,
+  "capacitate": 40,
+  "dotari": [
+   "mese",
+   "scaune",
+   "priza",
+   "wifi"
+  ],
+  "sloturi": [
+   {
+    "zi": "luni",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   },
+   {
+    "zi": "miercuri",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   },
+   {
+    "zi": "sambata",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   }
+  ],
+  "owner_id": "demo-user-7",
+  "is_demo": true,
+  "suprafata_mp": null
+ },
+ {
+  "id": "osm-node-11681144987",
+  "nume": "One Move Șagului",
+  "tip": "bază sportivă",
+  "lat": 45.73769,
+  "lng": 21.210215,
+  "capacitate": 45,
+  "dotari": [
+   "vestiare"
+  ],
+  "sloturi": [
+   {
+    "zi": "luni",
+    "de_la": "10:00",
+    "pana_la": "12:00"
+   },
+   {
+    "zi": "joi",
+    "de_la": "10:00",
+    "pana_la": "12:00"
+   },
+   {
+    "zi": "sambata",
+    "de_la": "10:00",
+    "pana_la": "12:00"
+   }
+  ],
+  "owner_id": "demo-user-8",
+  "is_demo": true,
+  "suprafata_mp": null
+ },
+ {
+  "id": "osm-node-12329181697",
+  "nume": "Club Norișor",
+  "tip": "centru comunitar",
+  "lat": 45.701346,
+  "lng": 21.236954,
+  "capacitate": 45,
+  "dotari": [
+   "mese",
+   "scaune",
+   "priza",
+   "proiector",
+   "wifi"
+  ],
+  "sloturi": [
+   {
+    "zi": "luni",
+    "de_la": "09:00",
+    "pana_la": "13:00"
+   },
+   {
+    "zi": "joi",
+    "de_la": "09:00",
+    "pana_la": "13:00"
+   },
+   {
+    "zi": "sambata",
+    "de_la": "09:00",
+    "pana_la": "13:00"
+   }
+  ],
+  "owner_id": "demo-user-6",
+  "is_demo": true,
+  "suprafata_mp": null
+ },
+ {
+  "id": "osm-node-13252338910",
+  "nume": "Comples Sportiv Bega, Sală de gimnastică",
+  "tip": "sală de sport",
+  "lat": 45.764422,
+  "lng": 21.221119,
+  "capacitate": 70,
+  "dotari": [
+   "vestiare"
+  ],
+  "sloturi": [
+   {
+    "zi": "marti",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   },
+   {
+    "zi": "joi",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   },
+   {
+    "zi": "duminica",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   }
+  ],
+  "owner_id": "demo-user-6",
+  "is_demo": true,
+  "suprafata_mp": null
+ },
+ {
+  "id": "osm-node-13726011332",
+  "nume": "Biblioteca Județeană",
+  "tip": "bibliotecă",
+  "lat": 45.753308,
+  "lng": 21.203859,
+  "capacitate": 25,
+  "dotari": [
+   "mese",
+   "scaune",
+   "priza",
+   "proiector"
+  ],
+  "sloturi": [
+   {
+    "zi": "marti",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   },
+   {
+    "zi": "vineri",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   },
+   {
+    "zi": "duminica",
+    "de_la": "18:00",
+    "pana_la": "20:00"
+   }
+  ],
+  "owner_id": "demo-user-8",
+  "is_demo": true,
+  "suprafata_mp": null
+ }
+]

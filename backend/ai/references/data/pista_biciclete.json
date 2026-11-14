@@ -1,0 +1,66 @@
+{
+  "tip_amenajare": "pista_biciclete",
+  "colectat": "2026-11-14",
+  "referinte": [
+    {
+      "id": "pista_biciclete-podu-iloaiei-2025",
+      "tip_amenajare": "pista_biciclete",
+      "oras": "Podu Iloaiei",
+      "an": 2025,
+      "suprafata_mp": 7681.5,
+      "cost_total_lei": 2100840,
+      "componente": ["pistă de 2,5 m lățime, circa 2,8 km", "borduri prefabricate", "parapet pietonal", "ziduri de sprijin și un podeț", "rastele pentru biciclete"],
+      "sursa_url": "https://www.bzi.ro/primarul-pnl-ioan-alexa-cheltuie-25-milioane-de-lei-pentru-construirea-pistelor-pentru-biciclete-in-podu-iloaiei-5266423",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "pista_biciclete-galda-de-jos-2025",
+      "tip_amenajare": "pista_biciclete",
+      "oras": "Galda de Jos",
+      "an": 2025,
+      "suprafata_mp": 10076,
+      "cost_total_lei": 1240520.4,
+      "componente": ["pistă cu dublu sens de 2 m lățime, circa 2,5 km", "îmbrăcăminte asfaltică pe straturi de piatră spartă și balast", "borduri de separare față de drum", "șanțuri și rigole pentru scurgerea apei"],
+      "sursa_url": "https://alba24.ro/pista-de-biciclete-de-25-km-intre-galda-de-jos-si-benic-licitatia-pentru-lucrari-lansata-in-seap-1082527.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "pista_biciclete-braesti-2024",
+      "tip_amenajare": "pista_biciclete",
+      "oras": "Brăești",
+      "an": 2024,
+      "suprafata_mp": 5208,
+      "cost_total_lei": 1126285.56,
+      "componente": ["pistă de 2 m lățime, circa 2,5 km"],
+      "sursa_url": "https://www.bzi.ro/o-singura-firma-din-iasi-vrea-contractul-de-peste-un-milion-de-lei-din-comuna-braesti-in-localitate-vor-fi-realizate-piste-pentru-biciclete-4929132",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "pista_biciclete-alba-iulia-mamut-2024",
+      "tip_amenajare": "pista_biciclete",
+      "oras": "Alba Iulia",
+      "an": 2024,
+      "suprafata_mp": null,
+      "cost_total_lei": 2639353,
+      "componente": ["două tronsoane cu dublu sens, 2,4 m lățime, circa 2,5 km", "asfalt antiderapant încadrat de borduri", "spații verzi refăcute și scurgerea apei pluviale", "marcaje și indicatoare"],
+      "sursa_url": "https://alba24.ro/o-noua-pista-de-biciclete-la-alba-iulia-in-zona-dealului-mamut-ce-lungime-va-avea-si-ce-strazi-va-lega-licitatie-in-seap-1017978.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "pista_biciclete-calarasi-2025",
+      "tip_amenajare": "pista_biciclete",
+      "oras": "Călărași",
+      "an": 2025,
+      "suprafata_mp": null,
+      "cost_total_lei": 6978834.08,
+      "componente": ["pistă de circa 3,2 km care traversează parcuri ale orașului"],
+      "sursa_url": "https://primariacalarasi.ro/storage/2025/12/127227-Comunicat-presa-final-pista-biciclete.pdf",
+      "sursa_tip": "comunicat_primarie",
+      "data_accesarii": "2026-11-14"
+    }
+  ]
+}

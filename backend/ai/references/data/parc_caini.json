@@ -1,0 +1,42 @@
+{
+  "tip_amenajare": "parc_caini",
+  "colectat": "2026-11-14",
+  "referinte": [
+    {
+      "id": "parc_caini-sibiu-2022",
+      "tip_amenajare": "parc_caini",
+      "oras": "Sibiu",
+      "an": 2022,
+      "suprafata_mp": null,
+      "cost_total_lei": 600000,
+      "componente": ["trei spații împrejmuite de câte 300 mp", "tunel, cerc și obstacole pentru sărituri", "cișmea, bănci, coșuri și dozator de pungi"],
+      "sursa_url": "https://www.g4media.ro/sibiul-va-avea-primele-trei-locuri-de-joaca-pentru-caini-spatii-de-300-de-metri-patrati-imprejmuite-dotate-cu-tunel-cercuri-si-obstacole-pentru-sarituri.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "parc_caini-cluj-napoca-manastur-2017",
+      "tip_amenajare": "parc_caini",
+      "oras": "Cluj-Napoca",
+      "an": 2017,
+      "suprafata_mp": 4000,
+      "cost_total_lei": null,
+      "componente": ["spațiu împrejmuit", "coșuri de gunoi dedicate"],
+      "sursa_url": "https://actualdecluj.ro/primaria-a-facut-parcuri-noi-pentru-catei/",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "parc_caini-cluj-napoca-cetatuie-2017",
+      "tip_amenajare": "parc_caini",
+      "oras": "Cluj-Napoca",
+      "an": 2017,
+      "suprafata_mp": 2400,
+      "cost_total_lei": null,
+      "componente": ["spațiu împrejmuit", "coșuri de gunoi dedicate"],
+      "sursa_url": "https://actualdecluj.ro/primaria-a-facut-parcuri-noi-pentru-catei/",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    }
+  ]
+}
