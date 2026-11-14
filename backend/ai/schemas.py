@@ -25,7 +25,7 @@ def _clip(value: str, limit: int) -> str:
     value = " ".join(str(value).split())
     if len(value) <= limit:
         return value
-    cut = value[:limit].rsplit(" ", 1)[0] or value[:limit]
+    cut = value[: limit - 1].rsplit(" ", 1)[0] or value[: limit - 1]  # room for the ellipsis
     return cut.rstrip(" ,.;:") + "…"
 
 
