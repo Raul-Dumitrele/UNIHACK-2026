@@ -33,7 +33,7 @@ La cartiere, dublurile de nume (de ex. „Braytim - Timișoara Sud” / „Brayt
 
    Poate fi rulat de oricâte ori: rezultatul e același în aceeași zi.
 
-   Înregistrările interne sunt convertite în forma din contract (`backend/seed/contract.py`) și scrise în modelele lui P1 din `backend.app.models`: User, Space, Idea, Interest, Booking, Notification. Modelele care nu există încă (Proiect, ProiectEveniment) sunt sărite, cu un mesaj.
+   Înregistrările interne sunt convertite în forma din contract (`backend/seed/contract.py`) și scrise în modelele lui P1 din `backend.app.models`: User, Space, Idea, Interest, Booking, Proiect, ProiectEveniment, Notification. Un model care lipsește e sărit, cu un mesaj.
 
 ## Legătura cu contractul (docs/CONTRACT.md)
 Funcțiile pe care le apelează P1, prin `backend/app/p3.py`:
@@ -42,12 +42,13 @@ Funcțiile pe care le apelează P1, prin `backend/app/p3.py`:
 |---|---|
 | `backend.ai.structure_idea(text) -> Structurat` | Construiește dosarul intern (Gemini sau fallback), apoi îl traduce în `Structurat`: categoria (atelier → `creativ`, comunitate și mediu → `social`, temele IT → `tehnologie`), `persoane`, `dotari` în vocabularul contractului, `program` din text („sâmbătă 10-13”, „joi seara”, „în weekend”; fără zi în text, `[]`), `zgomot` din cuvinte cheie și `rezumat` de cel mult 80 de caractere, pentru că e titlul implicit. |
 | `backend.ai.owner_message(idea, space, slot) -> str` | Scrie cererea politicoasă către proprietar: ideea, numărul de vecini interesați, spațiul, ziua și ora, dotările necesare. |
-| `backend.impact.compute_impact(session) -> Impact` | Citește tabelele lui P1. Numără doar rezervările `aprobat`. `ore_recuperate` = suma orelor din sloturile aprobate. `oameni_conectati` = autorii și cei interesați de ideile cu rezervare aprobată. `km_economisiti` = ESTIMARE, ca mai jos, din `lat`/`lng` ale utilizatorilor. `proiecte_active` = ideile cu rezervare aprobată. |
+| `backend.impact.compute_impact(session) -> Impact` | Citește tabelele lui P1. Numără doar rezervările `aprobat`. `ore_recuperate` = suma orelor din sloturile aprobate. `oameni_conectati` = autorii și cei interesați de ideile cu rezervare aprobată. `km_economisiti` = ESTIMARE, ca mai jos, din `lat`/`lng` ale utilizatorilor. `proiecte_active` = ideile cu rezervare aprobată. `proiecte_trimise` și `proiecte_cu_acord` vin din tabelul `Proiect`. |
 
 Calculul detaliat (pe cartiere, pe săptămâni, proiecte trimise) rămâne disponibil intern, ca `backend.impact.impact_report`.
 
 Seed-ul în forma contractului:
-- **Roluri:** `locuitor` devine `cetatean`; `proprietar` rămâne la fel. Conturile `primarie` și `verificator` și terenul liber nu sunt încă în contract, deci nu se scriu în baza de date.
+- **Roluri:** `locuitor` devine `cetatean`; `proprietar`, `primarie` și `verificator` rămân la fel.
+- **Teren liber și proiect:** terenul liber e un `Space` cu `tip = teren liber` și `suprafata_mp`. Proiectul demo are `verificator_id` = contul de verificator care l-a preluat. Evenimentele lui și notificările cu `proiect_id` intră și ele în baza de date.
 - **Utilizatori:** `lat`/`lng` sunt centrul cartierului.
 - **Spații:** `tip` = eticheta în română; `dotari` sunt traduse în vocabularul contractului.
 - **Sloturi:** `sloturi` e programul săptămânal, în ora Timișoarei, fără sloturile ocupate de rezervările aprobate.
@@ -279,9 +280,10 @@ Calculul e determinist și nu folosește AI.
 - Răspunsul e validat cu Pydantic. Dacă textul conține o sumă de bani (lei, RON, euro, €, „mii/milioane de lei”), răspunsul e respins. Se încearcă **încă o dată**, apoi se folosește **șablonul de rezervă**, care are aceeași formă și nu folosește Gemini.
 - Codul adaugă apoi:
   - propoziția cu costul, din `estimate_cost`, la finalul `justificare`;
-  - textul obligatoriu, la finalul `descriere`: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”;
+  - textul obligatoriu (regula 10 din contract), la finalul `justificare`, după propoziția cu costul: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”;
   - punctele de bază din `lista_verificare` (cine administrează terenul, planurile urbanistice, eventualele avize, finanțarea, întreținerea), formulate ca întrebări de clarificat, fără afirmații legale ferme.
 - `referinte_citate` păstrează doar id-uri din lista primită.
+- Contractul cere lei și mp ca numere întregi: la ieșire, `cost_total_lei` și `suprafata_mp` sunt rotunjite, iar baza păstrează zecimalele din sursă.
 - Sumele scrise de utilizator în textul ideii nu sunt copiate în dosar.
 
 ### Datele demo
@@ -293,7 +295,7 @@ Fișier: `backend/seed/data/proiect_demo.json`, construit de `backend/seed/proie
 - **Proiect:** `demo-proiect-1`, în starea `in_verificare`, cu evenimentele `draft → trimis → in_verificare`.
   - Dosarul e generat din șablon, iar referințele vin doar din baza locală, deci seed-ul nu folosește rețeaua.
   - Notificări: `proiect_trimis` către autor și primărie, `proiect_in_verificare` către autor.
-- Tabelele `Proiect` și `ProiectEveniment` se scriu automat după ce P1 le definește în `backend.app.models`. Până atunci, datele sunt în `backend/seed/data/examples/proiecte.json`, `proiect_evenimente.json` și `teren_liber.json`.
+- Seed-ul scrie `Proiect` și `ProiectEveniment` în modelele lui P1. Exemple pentru web/mobil: `backend/seed/data/examples/proiecte.json`, `proiect_evenimente.json` și `teren_liber.json`.
 
 ### Comenzi
 ```
