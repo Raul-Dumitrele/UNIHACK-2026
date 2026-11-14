@@ -344,7 +344,17 @@ python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără
   - `neverificat` pentru terenurile marcate de utilizatori prin `POST /spaces` (P1, regula 14).
 
 ## Terenuri libere din OpenStreetMap (lista lui P2)
-- **Fișierul:** `backend/seed/data/terenuri_osm.json`, copia listei lui P2 (`web/src/mocks/data/terenuri_osm.json`). **Lipsește încă din repo**: P2 trebuie să o urce. Până atunci `build_terenuri_osm()` întoarce `[]`, iar seed-ul are 16 terenuri (15 din listă + cel demo).
+- **Fișierul:** `backend/seed/data/terenuri_osm.json`, copia identică a listei lui P2 (`web/src/mocks/data/terenuri_osm.json`, ramura `p2-front`, generată cu `web/scripts/terenuri_osm.py`).
+  - 8 terenuri, câte unul pe cartier: Bucovina, Cartierul Vienez, Complex Studențesc, Dorobanților, Mehala, Steaua, Tipografilor, Torontalului.
+  - Suprafețe între 1.140 și 4.383 mp.
+- **Cum au fost alese (de P2, 2026-11-15):**
+  - poligoane OSM `landuse=brownfield|greenfield|vacant`, fără nume, de 400–5.000 mp;
+  - fiecare privit pe imagini din satelit (Esri World Imagery): au rămas cele care arată libere;
+  - **nu s-au verificat** proprietarul, regimul juridic și zonarea;
+  - suprafața e calculată din poligon.
+- **Atribuire:** © OpenStreetMap contributors, ODbL 1.0.
+- **Seed-ul are acum 24 de terenuri libere:** 15 din lista Primăriei, 8 din OSM și cel demo. Cu ele, un skatepark de peste 500 mp are 9 variante, nu doar terenul demo.
+- Fără fișier, `build_terenuri_osm()` întoarce `[]`.
 - **Format acceptat:** o listă (sau `{"terenuri": [...]}`) de rânduri cu `nume`/`name`, `lat`, `lng`/`lon`, `suprafata_mp` și opțional `id`, `cartier`, `adresa`, `sursa_detalii`.
 - **Ce se sare:** rândurile fără coordonate, fără suprafață sau în afara Timișoarei (lat 45,6–45,9, lng 21,0–21,45).
 - **Fiecare teren devine un `Space`** cu:

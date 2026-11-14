@@ -28,8 +28,18 @@ def test_listed_lots_say_they_must_be_confirmed():
     assert listed.cartier == "Ronaț" and "în cartierul Ronaț" in listed.motiv
 
 
-def test_big_skatepark_only_fits_on_the_demo_plot():
-    assert [c.space_id for c in find_plots("skatepark", 500)] == ["demo-space-teren-1"]
+def test_big_skatepark_fits_on_the_osm_candidates_and_the_demo_plot():
+    found = find_plots("skatepark", 500)
+    ids = [c.space_id for c in found]
+    assert "demo-space-teren-1" in ids and sum(i.startswith("teren-osm-") for i in ids) == 8
+    assert not any(c.din_lista_primarie for c in found)  # the 252/276 m² lots are too small
+    assert all(c.is_demo for c in found)  # OSM candidates are unconfirmed examples
+
+
+def test_default_pool_has_the_osm_candidates():
+    pool = default_spaces()
+    osm = [s for s in pool if s["id"].startswith("teren-osm-")]
+    assert len(osm) == 8 and all(s["status_verificare"] == "neconfirmat" and s["source"] == "osm" for s in osm)
 
 
 def test_plot_where_the_main_element_does_not_fit_ranks_last_and_says_why():
