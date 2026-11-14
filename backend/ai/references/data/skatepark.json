@@ -1,0 +1,78 @@
+{
+  "tip_amenajare": "skatepark",
+  "colectat": "2026-11-14",
+  "referinte": [
+    {
+      "id": "skatepark-satu-mare-2019",
+      "tip_amenajare": "skatepark",
+      "oras": "Satu Mare",
+      "an": 2019,
+      "suprafata_mp": 2100,
+      "cost_total_lei": 615000,
+      "componente": ["zonă de skate", "două terenuri de streetball", "teren de volei și badminton", "suporturi de biciclete, bănci și coșuri de gunoi"],
+      "sursa_url": "https://www.economica.net/skatepark-de-peste-600-000-lei-realizat-prin-parteneriat-public-privat-la-satu-mare_167376.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "skatepark-sibiu-2019",
+      "tip_amenajare": "skatepark",
+      "oras": "Sibiu",
+      "an": 2019,
+      "suprafata_mp": 10000,
+      "cost_total_lei": 4600000,
+      "componente": ["opt module de skate din beton prefabricat", "clădire cu vestiare și toalete", "alei, bănci și spații verzi", "parcare și suporturi de biciclete", "iluminat LED și supraveghere video"],
+      "sursa_url": "https://www.economica.net/cel-mai-mare-skate-park-din-tara-inaugurat-in-urma-unei-investitii-de-1-milion-de-euro-la-sibiu_168910.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "skatepark-timisoara-2026",
+      "tip_amenajare": "skatepark",
+      "oras": "Timișoara",
+      "an": 2026,
+      "suprafata_mp": 4300,
+      "cost_total_lei": 11000000,
+      "componente": ["skatepark cu rampe, trepte și zonă de tip bowl", "pumptrack", "scenă în aer liber", "zonă de cățărare", "proiectare și execuție"],
+      "sursa_url": "https://www.zf.ro/zf-transilvania/primaria-timisoara-investeste-peste-11-mil-lei-pentru-amenajarea-23150901",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "skatepark-alba-iulia-2013",
+      "tip_amenajare": "skatepark",
+      "oras": "Alba Iulia",
+      "an": 2013,
+      "suprafata_mp": 1868,
+      "cost_total_lei": 3971000,
+      "componente": ["platformă de skate", "rampe, trepte și bare pentru role, biciclete și skateboard"],
+      "sursa_url": "https://alba24.ro/aproape-4-milioane-de-lei-pentru-skatepark-ul-din-alba-iulia-de-5-ori-mai-scump-si-cu-elemente-mai-putine-decat-cel-din-cluj-napoca-204305.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "skatepark-cluj-napoca-2012",
+      "tip_amenajare": "skatepark",
+      "oras": "Cluj-Napoca",
+      "an": 2012,
+      "suprafata_mp": 1012,
+      "cost_total_lei": 804000,
+      "componente": ["șase elemente de skate individuale"],
+      "sursa_url": "https://alba24.ro/aproape-4-milioane-de-lei-pentru-skatepark-ul-din-alba-iulia-de-5-ori-mai-scump-si-cu-elemente-mai-putine-decat-cel-din-cluj-napoca-204305.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    },
+    {
+      "id": "skatepark-brasov-2023",
+      "tip_amenajare": "skatepark",
+      "oras": "Brașov",
+      "an": 2023,
+      "suprafata_mp": 9000,
+      "cost_total_lei": 11000000,
+      "componente": ["pumptrack", "zonă de sărituri", "zonă street", "toalete publice și puncte de vânzare", "plase de protecție și iluminat", "proiectare și execuție"],
+      "sursa_url": "https://economedia.ro/brasovul-construieste-un-parc-dedicat-patinatorilor-skaterilor-si-trotinetistilor-sub-podul-fartec.html",
+      "sursa_tip": "presa",
+      "data_accesarii": "2026-11-14"
+    }
+  ]
+}

@@ -14,6 +14,9 @@ class AISettings(BaseSettings):
     gemini_api_key: str = ""
     gemini_model: str = DEFAULT_MODEL
     gemini_timeout_ms: int = MIN_TIMEOUT_MS
+    # Live web search for reference projects and project notes (Gemini + Google Search). Needs the key;
+    # REFERENCES_LIVE_SEARCH=false turns it off (tests, offline demos).
+    references_live_search: bool = True
 
 
 def get_settings() -> AISettings:
