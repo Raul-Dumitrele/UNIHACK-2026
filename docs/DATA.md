@@ -321,7 +321,8 @@ python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără
 
 ### Locația
 - Geocodarea s-a făcut o singură dată, cu Nominatim (OpenStreetMap, ODbL), cu cel mult 1 cerere pe secundă. Rezultatul e în cache, în `backend/seed/data/geocode_cache.json`.
-- Strada nu există ca obiect separat în OSM. Punctul folosit e o adresă de pe aceeași stradă, deci toate parcelele au aceeași locație, marcată `locatie_aproximativa` în `sursa_detalii`.
+- Strada nu există ca obiect separat în OSM. Punctul folosit e o adresă de pe aceeași stradă, marcat `locatie_aproximativa`.
+- **Pe hartă**, parcelele sunt așezate **una lângă alta**: un rând de loturi alăturate de circa 12 m (un lot de 276 mp are aproximativ 12 m × 23 m), în ordinea din listă, centrat pe punctul străzii. Anexa nu publică poziția fiecărei parcele, deci așezarea e **schematică** (`pozitie_schematica` în `sursa_detalii`). Limitele reale sunt în cadastru, după CF și numărul cadastral.
 
 ### Regula din seed (`backend/seed/terenuri.py`)
 - **Filtrul:** suprafață de cel puțin **250 mp** (prag stabilit de echipă; inițial 300 mp, pe care nu-l atingea nicio parcelă) și locație găsită.
@@ -375,7 +376,7 @@ Aplicația trimite doar date demo și textul ideilor. Jurnalele conțin doar fur
   1. `LLM_CHAIN` (dacă e setat);
   2. altfel `chain_order.json` (scris de `bench`), filtrat după `LLM_MIN_PASS_RATE`;
   3. altfel ordinea din registru, fără modelele pe care ultimul `check` le-a găsit căzute.
-- **Cine intră:** doar furnizorii activi, adică cei cu cheie, plus cei fără cheie când `LLM_ALLOW_KEYLESS=true` (implicit).
+- **Cine intră:** doar furnizorii activi, adică cei cu cheie, plus cei fără cheie doar când `LLM_ALLOW_KEYLESS=true` (implicit e oprit).
 - **Cache:** întâi se caută un răspuns salvat (`backend/ai/llm/cache/`, ignorat de git).
 - **Trecerea la modelul următor:**
   - 429: furnizorul e sărit până trece `Retry-After`, altfel 60 s;
@@ -400,7 +401,7 @@ Aplicația trimite doar date demo și textul ideilor. Jurnalele conțin doar fur
 | `LLM_TOTAL_BUDGET_S` | 20 | timp total pe apel, cu toate încercările |
 | `LLM_MAX_ATTEMPTS` | 4 | încercări pe apel |
 | `LLM_MIN_PASS_RATE` | 0.7 | pragul din bench; 0 = toate modelele care răspund |
-| `LLM_ALLOW_KEYLESS` | true | include LLM7, Kilo și OVH fără cheie |
+| `LLM_ALLOW_KEYLESS` | false | `true` adaugă LLM7, Kilo și OVH, care merg fără cheie (implicit oprit: o instalare nouă apelează doar furnizorii cu cheie în `.env`) |
 | `LLM_CACHE` | true | cache pe disc pentru răspunsuri |
 | `LLM_COOLDOWN_S` | 300 | pauza pentru un model căzut |
 
