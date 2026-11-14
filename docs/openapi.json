@@ -493,6 +493,70 @@
       }
     },
     "/bookings": {
+      "get": {
+        "tags": [
+          "bookings"
+        ],
+        "summary": "List Bookings",
+        "description": "Requests I made (author of the idea) plus requests for spaces I own.",
+        "operationId": "list_bookings_bookings_get",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BookingOut"
+                  },
+                  "title": "Response List Bookings Bookings Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "bookings"
@@ -1973,6 +2037,11 @@
             ],
             "title": "Verificator Id"
           },
+          "is_demo": {
+            "type": "boolean",
+            "title": "Is Demo",
+            "default": false
+          },
           "evenimente": {
             "items": {
               "$ref": "#/components/schemas/ProiectEvenimentOut"
@@ -2128,6 +2197,11 @@
               }
             ],
             "title": "Verificator Id"
+          },
+          "is_demo": {
+            "type": "boolean",
+            "title": "Is Demo",
+            "default": false
           }
         },
         "type": "object",

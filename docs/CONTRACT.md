@@ -49,7 +49,7 @@ idee -> dosar structurat de AI -> spații potrivite -> interes din comunitate ->
 | Cost | suficient (bool), min_lei?, mediana_lei?, max_lei?, moneda ("RON"), ipoteze[], referinte_folosite[], motiv? |
 | Etapa | nume, durata_luni |
 | Dosar | titlu, descriere, justificare, componente[], etape[Etapa], riscuri[], lista_verificare[], referinte_citate[] |
-| Proiect | id, idea_id, space_id, autor_id, tip_amenajare, suprafata_mp, stare (ProiectStare), dosar (Dosar), referinte[Referinta], cost (Cost), created_at, updated_at, verificator_id? (**adaugat de P1**, vezi nota) |
+| Proiect | id, idea_id, space_id, autor_id, tip_amenajare, suprafata_mp, stare (ProiectStare), dosar (Dosar), referinte[Referinta], cost (Cost), created_at, updated_at, verificator_id? (**adaugat de P1**, vezi nota), is_demo (bool, implicit false; **adaugat de P1**) |
 | ProiectEveniment | id, proiect_id, user_id, stare_noua, mesaj?, created_at |
 
 Nota: `Proiect.verificator_id` (opțional) nu era în lista inițială; e necesar ca să știm cine e desemnat (`GET /proiecte` pentru verificator, `decizie`). Se setează la `inainteaza`.
@@ -68,6 +68,7 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 | GET | /ideas/{id}/matches | - | Match[] | sortat descrescător după scor |
 | POST | /ideas/{id}/interest | - | Idea (201) | autentificat; 409 la duplicat |
 | POST | /ideas/{id}/owner-message | `{space_id, slot}` | `{mesaj}` | autentificat; text generat de `ai.owner_message` |
+| GET | /bookings | - | Booking[] | autentificat; cererile utilizatorului (ca autor al ideii) plus cele pentru spațiile lui (ca proprietar); cele mai noi primele |
 | POST | /bookings | `{idea_id, space_id, slot, mesaj?}` | Booking (201) | autentificat; regula 3 |
 | PATCH | /bookings/{id} | `{stare: aprobat\|refuzat}` | Booking | autentificat; regula 4 |
 | GET | /notifications | - | Notification[] | autentificat; ale utilizatorului curent |

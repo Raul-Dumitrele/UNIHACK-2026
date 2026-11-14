@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy import or_
 from sqlmodel import Session, select
 
 from backend.app.db import get_session
@@ -9,6 +10,15 @@ from backend.app.services import slots as sl
 from backend.app.services.notify import notify
 
 router = APIRouter(tags=["bookings"])
+
+
+@router.get("/bookings", response_model=list[BookingOut], responses=ERRORS)
+def list_bookings(user: User = Depends(current_user), session: Session = Depends(get_session)):
+    """Requests I made (author of the idea) plus requests for spaces I own."""
+    mine = select(Idea.id).where(Idea.author_id == user.id)
+    owned = select(Space.id).where(Space.owner_id == user.id)
+    q = select(Booking).where(or_(Booking.idea_id.in_(mine), Booking.space_id.in_(owned)))
+    return session.exec(q.order_by(Booking.created_at.desc())).all()
 
 
 @router.post("/bookings", response_model=BookingOut, status_code=201, responses=ERRORS)

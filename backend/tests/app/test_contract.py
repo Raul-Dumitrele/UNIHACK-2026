@@ -109,7 +109,7 @@ def test_openapi_has_all_contract_endpoints(client):
     expected = {
         ("/health", "get"), ("/users", "get"), ("/spaces", "get"), ("/ideas", "post"), ("/ideas", "get"),
         ("/ideas/{idea_id}", "get"), ("/ideas/{idea_id}/matches", "get"), ("/ideas/{idea_id}/interest", "post"),
-        ("/ideas/{idea_id}/owner-message", "post"), ("/bookings", "post"), ("/bookings/{booking_id}", "patch"),
+        ("/ideas/{idea_id}/owner-message", "post"), ("/bookings", "post"), ("/bookings", "get"), ("/bookings/{booking_id}", "patch"),
         ("/notifications", "get"), ("/notifications/{notification_id}/read", "patch"), ("/impact", "get"),
         ("/ideas/{idea_id}/proiect", "post"), ("/proiecte", "get"), ("/proiecte/{proiect_id}", "get"),
         ("/proiecte/{proiect_id}/trimite", "post"), ("/proiecte/{proiect_id}/inainteaza", "post"),
