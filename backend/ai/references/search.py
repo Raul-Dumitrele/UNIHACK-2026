@@ -15,6 +15,7 @@ import json
 import logging
 import re
 import socket
+import time
 from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlsplit
@@ -259,6 +260,7 @@ def search_references(tip_amenajare: str) -> list[Referinta]:
     tip, label = slugify(tip_amenajare), label_for(tip_amenajare)
     if not tip or _recently_searched(tip):
         return []  # cached entries are already loaded by local_references
+    started, budget = time.monotonic(), get_settings().references_search_budget_s
     try:
         text, sources = _search(label)
         candidates = _extract(label, text, sources) if sources else []
@@ -266,7 +268,12 @@ def search_references(tip_amenajare: str) -> list[Referinta]:
         log.warning("live reference search failed for %s (%s: %s)", tip, type(exc).__name__, str(exc)[:200])
         return []
     refs: list[Referinta] = []
+    complete = True
     for cand in candidates:
+        if time.monotonic() - started > budget:
+            log.info("live reference search for %s stopped at the %.0f s budget", tip, budget)
+            complete = False
+            break
         if cand.potrivire < MIN_MATCH or not 0 <= cand.sursa_index < len(sources):
             continue  # weak match, or a source the search did not return
         try:
@@ -279,7 +286,8 @@ def search_references(tip_amenajare: str) -> list[Referinta]:
             continue
         if ref.id not in {r.id for r in refs}:
             refs.append(ref)
-    _write_cache(tip, refs)
+    if complete:
+        _write_cache(tip, refs)
     return refs
 
 
