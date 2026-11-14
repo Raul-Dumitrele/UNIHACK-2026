@@ -33,7 +33,26 @@ La cartiere, dublurile de nume (de ex. „Braytim - Timișoara Sud” / „Brayt
 
    Poate fi rulat de oricâte ori: rezultatul e același în aceeași zi.
 
-   Fiecare listă se scrie în modelul cu același nume din `backend.app.models` (User, Space, Slot, Idea, Interest, Booking, Notification). Se scriu doar câmpurile pe care modelul le are; modelele care lipsesc sunt sărite, cu un mesaj.
+   Înregistrările interne sunt convertite în forma din contract (`backend/seed/contract.py`) și scrise în modelele lui P1 din `backend.app.models`: User, Space, Idea, Interest, Booking, Notification. Modelele care nu există încă (Proiect, ProiectEveniment) sunt sărite, cu un mesaj.
+
+## Legătura cu contractul (docs/CONTRACT.md)
+Funcțiile pe care le apelează P1, prin `backend/app/p3.py`:
+
+| Funcție | Ce face |
+|---|---|
+| `backend.ai.structure_idea(text) -> Structurat` | Construiește dosarul intern (Gemini sau fallback), apoi îl traduce în `Structurat`: categoria (atelier → `creativ`, comunitate și mediu → `social`, temele IT → `tehnologie`), `persoane`, `dotari` în vocabularul contractului, `program` din text („sâmbătă 10-13”, „joi seara”, „în weekend”; fără zi în text, `[]`), `zgomot` din cuvinte cheie și `rezumat` de cel mult 80 de caractere, pentru că e titlul implicit. |
+| `backend.ai.owner_message(idea, space, slot) -> str` | Scrie cererea politicoasă către proprietar: ideea, numărul de vecini interesați, spațiul, ziua și ora, dotările necesare. |
+| `backend.impact.compute_impact(session) -> Impact` | Citește tabelele lui P1. Numără doar rezervările `aprobat`. `ore_recuperate` = suma orelor din sloturile aprobate. `oameni_conectati` = autorii și cei interesați de ideile cu rezervare aprobată. `km_economisiti` = ESTIMARE, ca mai jos, din `lat`/`lng` ale utilizatorilor. `proiecte_active` = ideile cu rezervare aprobată. |
+
+Calculul detaliat (pe cartiere, pe săptămâni, proiecte trimise) rămâne disponibil intern, ca `backend.impact.impact_report`.
+
+Seed-ul în forma contractului:
+- **Roluri:** `locuitor` devine `cetatean`; `proprietar` rămâne la fel. Conturile `primarie` și `verificator` și terenul liber nu sunt încă în contract, deci nu se scriu în baza de date.
+- **Utilizatori:** `lat`/`lng` sunt centrul cartierului.
+- **Spații:** `tip` = eticheta în română; `dotari` sunt traduse în vocabularul contractului.
+- **Sloturi:** `sloturi` e programul săptămânal, în ora Timișoarei, fără sloturile ocupate de rezervările aprobate.
+- **Rezervări:** `slot` e intervalul săptămânal; `stare` e `cerut`, `aprobat` sau `refuzat`.
+- **Exemple pentru web/mobil:** `backend/seed/data/examples/*.json` au forma din contract. `impact.json` e calculat cu `compute_impact` pe o bază temporară.
 
 ## Ce e real și ce e generat
 Toate înregistrările din seed au `is_demo=true` și apar în UI cu insigna „exemplu”.
