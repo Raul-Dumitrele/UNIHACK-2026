@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT))
 _TMP = Path(tempfile.mkdtemp(prefix="loccomun-e2e-"))
 os.environ["DATABASE_URL"] = "sqlite:///" + (_TMP / "e2e.db").as_posix()
 os.environ["GEMINI_API_KEY"] = ""  # always the deterministic fallback; overrides .env
+os.environ["REFERENCES_LIVE_SEARCH"] = "false"  # e2e never reaches the web
 
 import httpx  # noqa: E402
 import pytest  # noqa: E402
