@@ -2,7 +2,7 @@
 from datetime import date, datetime, timezone
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, PlainSerializer, model_validator
+from pydantic import BaseModel, ConfigDict, Field, PlainSerializer, create_model, model_validator
 
 Zi = Literal["luni", "marti", "miercuri", "joi", "vineri", "sambata", "duminica"]
 Categorie = Literal["sport", "cultura", "educatie", "social", "creativ", "tehnologie", "altele"]
@@ -93,6 +93,9 @@ class SpaceOut(ORM):
     owner_id: str
     is_demo: bool
     suprafata_mp: int | None = None
+    cartier: str | None = None
+    sursa: str | None = None
+    sursa_detalii: str | None = None
 
 
 class IdeaCreate(BaseModel):
@@ -204,6 +207,14 @@ class Dosar(BaseModel):
     referinte_citate: list[str] = []
 
 
+class ProiectDirectCreate(BaseModel):
+    """POST /proiecte: a project straight on a free plot, without an idea or an interest threshold."""
+    space_id: str
+    tip_amenajare: TipAmenajare
+    descriere: str = Field(min_length=3)
+    suprafata_mp: int | None = Field(default=None, ge=1)
+
+
 class ProiectCreate(BaseModel):
     space_id: str
     tip_amenajare: TipAmenajare
@@ -257,3 +268,26 @@ class ProiectOut(ORM):
 
 class ProiectDetaliuOut(ProiectOut):
     evenimente: list[ProiectEvenimentOut] = []
+
+
+# --- Terenuri si documente (functii P3 din backend.ai.proiect) ----------------
+from backend.ai.proiect.design import Scene  # noqa: E402
+from backend.ai.proiect.materiale import ListaMateriale  # noqa: E402,F401
+from backend.ai.proiect.plots import PlotCandidate  # noqa: E402
+
+LEGEA_15_AVERTISMENT = (
+    "Teren din lista Primăriei pentru Legea 15/2003 (atribuit pentru locuințe ale tinerilor). "
+    "Folosirea lui pentru o amenajare publică trebuie aprobată de Primărie."
+)
+
+
+class PlotCandidateOut(PlotCandidate):
+    avertisment: str | None = None
+
+
+# Scene's fields plus suprafata_ocupata_mp (a property on Scene, a plain field in the response).
+PlanOut = create_model(
+    "PlanOut",
+    **{name: (f.annotation, f) for name, f in Scene.model_fields.items()},
+    suprafata_ocupata_mp=(float, ...),
+)

@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import Response
 from sqlmodel import Session, select
 
 from backend.app import p3
@@ -6,7 +7,8 @@ from backend.app.db import get_session
 from backend.app.deps import ERRORS, current_user
 from backend.app.models import Idea, Proiect, ProiectEveniment, Space, User, now_utc
 from backend.app.schemas import (
-    DecizieIn, InainteazaIn, ProiectCreate, ProiectDetaliuOut, ProiectOut, TrimiteIn,
+    DecizieIn, InainteazaIn, ListaMateriale, PlanOut, ProiectCreate, ProiectDetaliuOut, ProiectDirectCreate,
+    ProiectOut, TrimiteIn,
 )
 from backend.app.services.notify import notify, users_with_role
 
@@ -57,14 +59,19 @@ def create_proiect(
         raise HTTPException(403, "Doar autorul ideii poate crea un proiect.")
     if idea.stare not in ("prag_atins", "rezervata"):
         raise HTTPException(409, "Ideea trebuie să fi atins pragul de interes sau să fie rezervată.")
-    suprafata = body.suprafata_mp or space.suprafata_mp
+    return _build_proiect(session, user, idea, space, body.tip_amenajare, body.suprafata_mp)
+
+
+def _build_proiect(session: Session, user: User, idea: Idea, space: Space, tip: str, suprafata_ceruta: int | None) -> Proiect:
+    """find_references -> estimate_cost -> generate_dosar, then a draft Proiect with its first event."""
+    suprafata = suprafata_ceruta or space.suprafata_mp
     if not suprafata:
         raise HTTPException(422, "Date invalide - suprafata_mp: lipsește și spațiul nu are suprafață.")
-    referinte = p3.find_references(body.tip_amenajare, suprafata)
+    referinte = p3.find_references(tip, suprafata)
     cost = p3.estimate_cost(referinte, suprafata)
-    dosar = p3.generate_dosar(idea, space, body.tip_amenajare, suprafata, referinte, cost)
+    dosar = p3.generate_dosar(idea, space, tip, suprafata, referinte, cost)
     proiect = Proiect(
-        idea_id=idea.id, space_id=space.id, autor_id=idea.author_id, tip_amenajare=body.tip_amenajare,
+        idea_id=idea.id, space_id=space.id, autor_id=idea.author_id, tip_amenajare=tip,
         suprafata_mp=suprafata, dosar=dosar.model_dump(mode="json"),
         referinte=[r.model_dump(mode="json") for r in referinte], cost=cost.model_dump(mode="json"),
     )
@@ -74,6 +81,24 @@ def create_proiect(
     session.commit()
     session.refresh(proiect)
     return proiect
+
+
+@router.post("/proiecte", response_model=ProiectOut, status_code=201, responses=ERRORS)
+def create_proiect_direct(body: ProiectDirectCreate, user: User = Depends(current_user), session: Session = Depends(get_session)):
+    """A project straight on a free plot: the description becomes a (hidden) idea owned by the author."""
+    space = session.get(Space, body.space_id)
+    if space is None:
+        raise HTTPException(404, "Spațiul nu există.")
+    if not (body.suprafata_mp or space.suprafata_mp):
+        raise HTTPException(422, "Date invalide - suprafata_mp: lipsește și spațiul nu are suprafață.")
+    structurat = p3.structure_idea(body.descriere)
+    idea = Idea(
+        author_id=user.id, titlu=structurat.rezumat[:80], descriere=body.descriere,
+        structurat=structurat.model_dump(), prag=1, interesati=0, stare="prag_atins",
+    )
+    session.add(idea)
+    session.flush()
+    return _build_proiect(session, user, idea, space, body.tip_amenajare, body.suprafata_mp)
 
 
 @router.get("/proiecte", response_model=list[ProiectOut], responses=ERRORS)
@@ -151,3 +176,40 @@ def decizie(proiect_id: str, body: DecizieIn, user: User = Depends(current_user)
     session.commit()
     session.refresh(p)
     return p
+
+
+DOCUMENTE = ("plan.svg", "plan.dxf", "dosar.pdf", "materiale.csv")
+
+
+def _visible_with_space(session: Session, proiect_id: str, user: User) -> tuple[Proiect, Space | None]:
+    p = get_proiect_or_404(session, proiect_id)
+    if not _can_see(user, p):
+        raise HTTPException(403, "Nu ai acces la acest proiect.")
+    return p, session.get(Space, p.space_id)
+
+
+@router.get("/proiecte/{proiect_id}/plan", response_model=PlanOut, responses=ERRORS)
+def proiect_plan(proiect_id: str, user: User = Depends(current_user), session: Session = Depends(get_session)):
+    p, space = _visible_with_space(session, proiect_id, user)
+    return p3.plan_json(p, space)
+
+
+@router.get("/proiecte/{proiect_id}/materiale", response_model=ListaMateriale, responses=ERRORS)
+def proiect_materiale(proiect_id: str, user: User = Depends(current_user), session: Session = Depends(get_session)):
+    p, space = _visible_with_space(session, proiect_id, user)
+    return p3.materiale_json(p, space)
+
+
+@router.get(
+    "/proiecte/{proiect_id}/documente/{nume}",
+    responses={**ERRORS, 200: {"description": "fișierul (SVG, DXF, PDF sau CSV)", "content": {
+        "image/svg+xml": {}, "application/dxf": {}, "application/pdf": {}, "text/csv": {}}}},
+    response_class=Response,
+)
+def proiect_document(proiect_id: str, nume: str, user: User = Depends(current_user), session: Session = Depends(get_session)):
+    if nume not in DOCUMENTE:
+        raise HTTPException(404, "Documentul nu există. Variante: " + ", ".join(DOCUMENTE) + ".")
+    p, space = _visible_with_space(session, proiect_id, user)
+    content, media = p3.build_documente(p, space)[nume]
+    return Response(content, media_type=media,
+                    headers={"Content-Disposition": f'attachment; filename="proiect-{p.id}-{nume}"'})

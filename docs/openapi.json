@@ -106,6 +106,24 @@
               ],
               "title": "Capacitate Min"
             }
+          },
+          {
+            "name": "tip",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "ex. teren_liber",
+              "title": "Tip"
+            },
+            "description": "ex. teren_liber"
           }
         ],
         "responses": {
@@ -944,6 +962,76 @@
       }
     },
     "/proiecte": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Create Proiect Direct",
+        "description": "A project straight on a free plot: the description becomes a (hidden) idea owned by the author.",
+        "operationId": "create_proiect_direct_proiecte_post",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProiectDirectCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProiectOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
           "proiecte"
@@ -1318,6 +1406,319 @@
         }
       }
     },
+    "/proiecte/{proiect_id}/plan": {
+      "get": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Proiect Plan",
+        "operationId": "proiect_plan_proiecte__proiect_id__plan_get",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte/{proiect_id}/materiale": {
+      "get": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Proiect Materiale",
+        "operationId": "proiect_materiale_proiecte__proiect_id__materiale_get",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListaMateriale"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte/{proiect_id}/documente/{nume}": {
+      "get": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Proiect Document",
+        "operationId": "proiect_document_proiecte__proiect_id__documente__nume__get",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "nume",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Nume"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "fișierul (SVG, DXF, PDF sau CSV)",
+            "content": {
+              "image/svg+xml": {},
+              "application/dxf": {},
+              "application/pdf": {},
+              "text/csv": {}
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/terenuri/potrivite": {
+      "get": {
+        "tags": [
+          "terenuri"
+        ],
+        "summary": "Terenuri Potrivite",
+        "description": "Free plots (Space.tip = teren_liber) ranked for a proposal, best first, with a score and a reason.",
+        "operationId": "terenuri_potrivite_terenuri_potrivite_get",
+        "parameters": [
+          {
+            "name": "tip_amenajare",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 2,
+              "description": "tipul amenajării (vocabularul tip_amenajare sau text liber)",
+              "title": "Tip Amenajare"
+            },
+            "description": "tipul amenajării (vocabularul tip_amenajare sau text liber)"
+          },
+          {
+            "name": "suprafata_minima",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Suprafata Minima"
+            }
+          },
+          {
+            "name": "cartier",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cartier"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 10,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlotCandidateOut"
+                  },
+                  "title": "Response Terenuri Potrivite Terenuri Potrivite Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health",
@@ -1617,6 +2018,59 @@
         ],
         "title": "Dosar"
       },
+      "Element": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "tip": {
+            "type": "string",
+            "title": "Tip"
+          },
+          "x": {
+            "type": "number",
+            "title": "X"
+          },
+          "y": {
+            "type": "number",
+            "title": "Y"
+          },
+          "latime_m": {
+            "type": "number",
+            "title": "Latime M"
+          },
+          "lungime_m": {
+            "type": "number",
+            "title": "Lungime M"
+          },
+          "zona_libera_m": {
+            "type": "number",
+            "title": "Zona Libera M",
+            "default": 0.0
+          },
+          "obligatoriu": {
+            "type": "boolean",
+            "title": "Obligatoriu",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "nume",
+          "tip",
+          "x",
+          "y",
+          "latime_m",
+          "lungime_m"
+        ],
+        "title": "Element"
+      },
       "Etapa": {
         "properties": {
           "nume": {
@@ -1798,6 +2252,131 @@
         ],
         "title": "InainteazaIn"
       },
+      "LinieMaterial": {
+        "properties": {
+          "articol": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Articol"
+          },
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "unitate": {
+            "type": "string",
+            "title": "Unitate"
+          },
+          "cantitate": {
+            "type": "number",
+            "title": "Cantitate"
+          },
+          "ipoteza": {
+            "type": "string",
+            "title": "Ipoteza"
+          },
+          "pret_unitar": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PretUnitar"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "valoare_lei": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valoare Lei"
+          },
+          "stare": {
+            "type": "string",
+            "title": "Stare"
+          },
+          "motiv": {
+            "type": "string",
+            "title": "Motiv",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "articol",
+          "nume",
+          "unitate",
+          "cantitate",
+          "ipoteza",
+          "stare"
+        ],
+        "title": "LinieMaterial"
+      },
+      "ListaMateriale": {
+        "properties": {
+          "linii": {
+            "items": {
+              "$ref": "#/components/schemas/LinieMaterial"
+            },
+            "type": "array",
+            "title": "Linii"
+          },
+          "subtotal_cotat_lei": {
+            "type": "integer",
+            "title": "Subtotal Cotat Lei"
+          },
+          "linii_de_cotat": {
+            "type": "integer",
+            "title": "Linii De Cotat"
+          },
+          "eticheta_subtotal": {
+            "type": "string",
+            "title": "Eticheta Subtotal"
+          },
+          "sursa_preturi": {
+            "type": "string",
+            "title": "Sursa Preturi",
+            "default": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)"
+          },
+          "tva": {
+            "type": "string",
+            "title": "Tva",
+            "default": "TVA: neprecizat în setul de date"
+          },
+          "ipoteze": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Ipoteze"
+          },
+          "disclaimer": {
+            "type": "string",
+            "title": "Disclaimer",
+            "default": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+          }
+        },
+        "type": "object",
+        "required": [
+          "linii",
+          "subtotal_cotat_lei",
+          "linii_de_cotat",
+          "eticheta_subtotal",
+          "ipoteze"
+        ],
+        "title": "ListaMateriale"
+      },
       "MatchOut": {
         "properties": {
           "space": {
@@ -1891,6 +2470,34 @@
         ],
         "title": "NotificationOut"
       },
+      "Omis": {
+        "properties": {
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "bucati": {
+            "type": "integer",
+            "title": "Bucati",
+            "default": 1
+          },
+          "obligatoriu": {
+            "type": "boolean",
+            "title": "Obligatoriu",
+            "default": false
+          },
+          "motiv": {
+            "type": "string",
+            "title": "Motiv"
+          }
+        },
+        "type": "object",
+        "required": [
+          "nume",
+          "motiv"
+        ],
+        "title": "Omis"
+      },
       "OwnerMessageIn": {
         "properties": {
           "space_id": {
@@ -1920,6 +2527,216 @@
           "mesaj"
         ],
         "title": "OwnerMessageOut"
+      },
+      "PlanOut": {
+        "properties": {
+          "tip_amenajare": {
+            "type": "string",
+            "title": "Tip Amenajare"
+          },
+          "eticheta": {
+            "type": "string",
+            "title": "Eticheta"
+          },
+          "suprafata_mp": {
+            "type": "number",
+            "title": "Suprafata Mp"
+          },
+          "latime_m": {
+            "type": "number",
+            "title": "Latime M"
+          },
+          "lungime_m": {
+            "type": "number",
+            "title": "Lungime M"
+          },
+          "elemente": {
+            "items": {
+              "$ref": "#/components/schemas/Element"
+            },
+            "type": "array",
+            "title": "Elemente"
+          },
+          "omise": {
+            "items": {
+              "$ref": "#/components/schemas/Omis"
+            },
+            "type": "array",
+            "title": "Omise"
+          },
+          "complet": {
+            "type": "boolean",
+            "title": "Complet"
+          },
+          "ipoteze": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Ipoteze"
+          },
+          "disclaimer": {
+            "type": "string",
+            "title": "Disclaimer",
+            "default": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren."
+          },
+          "suprafata_ocupata_mp": {
+            "type": "number",
+            "title": "Suprafata Ocupata Mp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tip_amenajare",
+          "eticheta",
+          "suprafata_mp",
+          "latime_m",
+          "lungime_m",
+          "elemente",
+          "omise",
+          "complet",
+          "ipoteze",
+          "suprafata_ocupata_mp"
+        ],
+        "title": "PlanOut"
+      },
+      "PlotCandidateOut": {
+        "properties": {
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "cartier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cartier"
+          },
+          "suprafata_mp": {
+            "type": "number",
+            "title": "Suprafata Mp"
+          },
+          "scor": {
+            "type": "integer",
+            "title": "Scor"
+          },
+          "motiv": {
+            "type": "string",
+            "title": "Motiv"
+          },
+          "complet": {
+            "type": "boolean",
+            "title": "Complet"
+          },
+          "din_lista_primarie": {
+            "type": "boolean",
+            "title": "Din Lista Primarie"
+          },
+          "is_demo": {
+            "type": "boolean",
+            "title": "Is Demo"
+          },
+          "distanta_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distanta Km"
+          },
+          "avertisment": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avertisment"
+          }
+        },
+        "type": "object",
+        "required": [
+          "space_id",
+          "nume",
+          "cartier",
+          "suprafata_mp",
+          "scor",
+          "motiv",
+          "complet",
+          "din_lista_primarie",
+          "is_demo"
+        ],
+        "title": "PlotCandidateOut"
+      },
+      "PretUnitar": {
+        "properties": {
+          "articol": {
+            "type": "string",
+            "title": "Articol"
+          },
+          "nume": {
+            "type": "string",
+            "title": "Nume"
+          },
+          "unitate": {
+            "type": "string",
+            "title": "Unitate"
+          },
+          "mediana_lei": {
+            "type": "number",
+            "title": "Mediana Lei"
+          },
+          "min_lei": {
+            "type": "number",
+            "title": "Min Lei"
+          },
+          "max_lei": {
+            "type": "number",
+            "title": "Max Lei"
+          },
+          "observatii": {
+            "type": "integer",
+            "title": "Observatii"
+          },
+          "surse": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Surse"
+          },
+          "perioada": {
+            "type": "string",
+            "title": "Perioada"
+          }
+        },
+        "type": "object",
+        "required": [
+          "articol",
+          "nume",
+          "unitate",
+          "mediana_lei",
+          "min_lei",
+          "max_lei",
+          "observatii",
+          "surse",
+          "perioada"
+        ],
+        "title": "PretUnitar"
       },
       "ProiectCreate": {
         "properties": {
@@ -2067,6 +2884,51 @@
           "updated_at"
         ],
         "title": "ProiectDetaliuOut"
+      },
+      "ProiectDirectCreate": {
+        "properties": {
+          "space_id": {
+            "type": "string",
+            "title": "Space Id"
+          },
+          "tip_amenajare": {
+            "type": "string",
+            "enum": [
+              "skatepark",
+              "loc_de_joaca",
+              "parc_caini",
+              "pista_biciclete",
+              "gradina_comunitara",
+              "teren_sport"
+            ],
+            "title": "Tip Amenajare"
+          },
+          "descriere": {
+            "type": "string",
+            "minLength": 3,
+            "title": "Descriere"
+          },
+          "suprafata_mp": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suprafata Mp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "space_id",
+          "tip_amenajare",
+          "descriere"
+        ],
+        "title": "ProiectDirectCreate",
+        "description": "POST /proiecte: a project straight on a free plot, without an idea or an interest threshold."
       },
       "ProiectEvenimentOut": {
         "properties": {
@@ -2409,6 +3271,39 @@
               }
             ],
             "title": "Suprafata Mp"
+          },
+          "cartier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cartier"
+          },
+          "sursa": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sursa"
+          },
+          "sursa_detalii": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sursa Detalii"
           }
         },
         "type": "object",

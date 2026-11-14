@@ -36,6 +36,9 @@ class Space(SQLModel, table=True):
     owner_id: str = Field(foreign_key="user.id", index=True)
     is_demo: bool = False
     suprafata_mp: int | None = None
+    cartier: str | None = None
+    sursa: str | None = None
+    sursa_detalii: str | None = None
 
 
 class Idea(SQLModel, table=True):

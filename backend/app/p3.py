@@ -35,6 +35,9 @@ try:
 except ImportError:
     from backend.app.stubs.ai import generate_dosar
 
+from backend.ai.proiect import find_plots  # noqa: E402
+from backend.ai.proiect.documente import build_documente, materiale_json, plan_json  # noqa: E402
+
 _CATEGORY_MAP = {"atelier": "creativ", "comunitate": "social", "mediu": "altele"}
 _DOTARI = ("scaune", "mese", "proiector", "wifi", "scena", "oglinzi", "vestiare", "bucatarie", "curte", "priza", "tabla")
 
@@ -77,4 +80,4 @@ def compute_impact(session) -> Impact:
     return compute_local(session)
 
 
-__all__ = ["structure_idea", "owner_message", "compute_impact", "find_references", "estimate_cost", "generate_dosar"]
+__all__ = ["structure_idea", "owner_message", "compute_impact", "find_references", "estimate_cost", "generate_dosar", "find_plots", "plan_json", "materiale_json", "build_documente"]

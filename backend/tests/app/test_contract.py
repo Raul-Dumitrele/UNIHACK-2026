@@ -31,7 +31,7 @@ def test_list_endpoints_shapes(client, world):
     spaces = client.get("/spaces", params={"capacitate_min": 50}).json()
     assert spaces == []
     spaces = client.get("/spaces", params={"dotari": "mese"}).json()
-    assert set(spaces[0]) == {"id", "nume", "tip", "lat", "lng", "capacitate", "dotari", "sloturi", "owner_id", "is_demo", "suprafata_mp"}
+    assert set(spaces[0]) == {"id", "nume", "tip", "lat", "lng", "capacitate", "dotari", "sloturi", "owner_id", "is_demo", "suprafata_mp", "cartier", "sursa", "sursa_detalii"}
     idea = client.get("/ideas/i1").json()
     assert set(idea) == IDEA_KEYS and idea["created_at"].endswith("Z")
     assert client.get("/ideas").json()[0]["id"] == "i1"
@@ -114,5 +114,7 @@ def test_openapi_has_all_contract_endpoints(client):
         ("/ideas/{idea_id}/proiect", "post"), ("/proiecte", "get"), ("/proiecte/{proiect_id}", "get"),
         ("/proiecte/{proiect_id}/trimite", "post"), ("/proiecte/{proiect_id}/inainteaza", "post"),
         ("/proiecte/{proiect_id}/decizie", "post"),
+        ("/proiecte", "post"), ("/terenuri/potrivite", "get"), ("/proiecte/{proiect_id}/plan", "get"),
+        ("/proiecte/{proiect_id}/materiale", "get"), ("/proiecte/{proiect_id}/documente/{nume}", "get"),
     }
     assert {(p, m) for p, ops in paths.items() for m in ops} == expected

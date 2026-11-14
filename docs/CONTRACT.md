@@ -37,7 +37,7 @@ idee -> dosar structurat de AI -> spații potrivite -> interes din comunitate ->
 | Entitate | Câmpuri |
 |---|---|
 | User | id, nume, rol (UserRole), cartier, lat, lng |
-| Space | id, nume, tip (text liber; include `teren_liber`), lat, lng, capacitate, dotari[], sloturi[Slot], owner_id, is_demo, suprafata_mp? (int) |
+| Space | id, nume, tip (text liber; include `teren_liber`), lat, lng, capacitate, dotari[], sloturi[Slot], owner_id, is_demo, suprafata_mp? (int), cartier? (text), sursa? (text, ex. `primarie_lista`), sursa_detalii? (text) |
 | Idea | id, author_id, titlu, descriere, structurat (Structurat), prag (implicit 5), interesati, stare (IdeaStatus), is_demo, created_at |
 | Structurat | categorie, persoane, dotari[], program[Slot], zgomot, rezumat |
 | Interest | id, user_id, idea_id, created_at; unic pe (user_id, idea_id) |
@@ -61,7 +61,7 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 |---|---|---|---|---|
 | GET | /health | - | `{status}` | |
 | GET | /users | - | User[] | pentru selectorul demo |
-| GET | /spaces | filtre: `categorie`, `dotari` (repetat), `capacitate_min` | Space[] | |
+| GET | /spaces | filtre: `tip` (ex. `teren_liber`), `categorie`, `dotari` (repetat), `capacitate_min` | Space[] | |
 | POST | /ideas | `{descriere, titlu?, prag?}` | Idea (201) | autentificat; vezi regula 1 |
 | GET | /ideas | - | Idea[] | |
 | GET | /ideas/{id} | - | Idea | 404 dacă nu există |
@@ -80,6 +80,11 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 | POST | /proiecte/{id}/trimite | `{mesaj?}` | Proiect | autentificat; autor; regula 8 |
 | POST | /proiecte/{id}/inainteaza | `{verificator_id}` | Proiect | autentificat; primarie; regula 8 |
 | POST | /proiecte/{id}/decizie | `{stare: acord_de_principiu\|respins\|clarificari, mesaj}` | Proiect | autentificat; verificator desemnat; regula 8 |
+| GET | /terenuri/potrivite | `tip_amenajare` (obligatoriu), `suprafata_minima?`, `cartier?`, `limit?` (implicit 10) | PlotCandidate[] | terenuri libere potrivite, cel mai bun primul; regula 11 |
+| POST | /proiecte | `{space_id, tip_amenajare, descriere, suprafata_mp?}` | Proiect draft (201) | autentificat; proiect direct pe teren, fără idee și fără prag; regula 12 |
+| GET | /proiecte/{id}/plan | - | Plan | autentificat; vizibilitate ca la GET /proiecte/{id} |
+| GET | /proiecte/{id}/materiale | - | ListaMateriale | autentificat; vizibilitate ca la GET /proiecte/{id} |
+| GET | /proiecte/{id}/documente/{nume} | `nume` ∈ plan.svg, plan.dxf, dosar.pdf, materiale.csv | fișier | autentificat; `Content-Disposition: attachment; filename="proiect-<id>-<nume>"`; alt nume -> 404; vizibilitate ca la GET /proiecte/{id} |
 
 ## Reguli
 1. **Idee.** `POST /ideas` apelează `ai.structure_idea(descriere)`; `titlu` implicit = `structurat.rezumat` (max 80 caractere); `stare = deschisa`; `prag` implicit 5.
@@ -102,6 +107,9 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
    - `GET /proiecte/{id}`: vizibil pentru autor, pentru `primarie` (dacă stare != `draft`) și pentru verificatorul desemnat; altfel 403.
 9. **Booking.mesaj** se salvează la `POST /bookings` (preluat din `owner-message` dacă e trimis).
 10. **Text obligatoriu** în dosar și în UI: „Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; acordul din aplicație este un acord de principiu simulat.”
+11. **Terenuri potrivite.** `GET /terenuri/potrivite` apelează `find_plots` (P3) peste spațiile cu `tip = teren_liber`. PlotCandidate: `{space_id, nume, cartier?, suprafata_mp, scor (0-100), motiv, complet, din_lista_primarie, is_demo, distanta_km?, avertisment?}`. Terenurile mai mici decât `suprafata_minima` sunt excluse. Pentru terenurile din lista Primăriei (Legea 15/2003, destinate locuințelor pentru tineri) `avertisment` spune că folosirea pentru o amenajare publică trebuie aprobată de Primărie.
+12. **Proiect direct pe teren.** `POST /proiecte` structurează `descriere` (`structure_idea`), creează o idee internă a autorului (stare `prag_atins`, prag 1) și apoi același lanț ca la regula 6. 404 spațiu inexistent, 422 fără suprafață sau `tip_amenajare` necunoscut.
+13. **Plan, materiale, documente** (P3, deterministe, fără AI): Plan = `{tip_amenajare, eticheta, suprafata_mp, latime_m, lungime_m, elemente[], omise[], complet, ..., suprafata_ocupata_mp}`; ListaMateriale = `{linii[{articol, nume, unitate, cantitate, ipoteza, pret_unitar{mediana_lei, min_lei, max_lei, observatii, surse[], perioada}?, valoare_lei?, stare: cotat|de_cotat, motiv}], subtotal_cotat_lei, linii_de_cotat, eticheta_subtotal, sursa_preturi, tva, ipoteze[], disclaimer}`. Forma exactă: `docs/openapi.json`. Planul e o schiță orientativă, nu un proiect tehnic.
 
 ## Funcții între module (P3 -> P1)
 - `backend.ai.structure_idea(text: str) -> Structurat` (validare Pydantic, fallback determinist fără Gemini)
@@ -116,6 +124,9 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 - Seed: utilizatori demo `primarie` și `verificator` și un Space `teren_liber` cu `suprafata_mp`, toate `is_demo=true`.
 
 `Structurat` și `Impact` sunt definite în `backend/app/schemas.py` (P1). Până apar modulele reale, P1 oferă stub-uri în `backend/app/stubs/`, înlocuite automat la import.
+
+- `backend.ai.proiect.find_plots(tip_amenajare, suprafata_minima, cartier=None, spaces=None, limit=10) -> list[PlotCandidate]`
+- `backend.ai.proiect.documente.plan_json(proiect, space) -> dict`, `materiale_json(proiect, space) -> dict`, `build_documente(proiect, space) -> dict[nume, (bytes, media_type)]`
 
 ## Variabile de mediu
 `DATABASE_URL`, `GEMINI_API_KEY`, `GEMINI_MODEL` (implicit `gemini-3.5-flash-lite`), `CORS_ORIGINS`, `VITE_API_URL`, `EXPO_PUBLIC_API_URL` (vezi `.env.example`).
