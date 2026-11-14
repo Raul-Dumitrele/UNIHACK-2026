@@ -57,8 +57,8 @@ export function Header() {
               }`}
             >
               <Text className={`text-sm ${active ? 'font-medium text-primary-foreground' : 'text-foreground'}`}>
-                {u.name.split(' ')[0]}
-                {u.role === 'proprietar' ? ' · proprietar' : ''}
+                {u.rol === 'primarie' || u.rol === 'verificator' ? '' : u.nume.split(' ')[0]}
+                {u.rol === 'proprietar' ? ' · proprietar' : u.rol === 'primarie' ? 'Primărie' : u.rol === 'verificator' ? 'Verificator' : ''}
               </Text>
             </Pressable>
           )

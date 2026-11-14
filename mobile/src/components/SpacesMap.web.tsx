@@ -1,6 +1,6 @@
 // Web fallback: react-native-maps does not run in the browser. The real map lives in web/ (Leaflet).
 import { Text, View } from 'react-native'
-import type { Space } from '../api/types'
+import type { Space } from '../api/models'
 
 export function SpacesMap({ spaces }: { spaces: Space[] }) {
   return (

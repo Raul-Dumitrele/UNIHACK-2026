@@ -36,7 +36,7 @@
     "web": "expo start --web",
     "gen:types": "npx --yes -p typescript@5 -p openapi-typescript@7 openapi-typescript ../docs/openapi.json -o src/api/schema.d.ts",
     "typecheck": "tsc --noEmit",
-    "sync:mocks": "rm -rf src/mocks && cp -R ../web/src/mocks src/mocks && rm src/mocks/browser.ts && cp ../web/src/api/types.ts src/api/types.ts"
+    "sync:mocks": "rm -rf src/mocks && cp -R ../web/src/mocks src/mocks && rm src/mocks/browser.ts && cp ../web/src/api/models.ts ../web/src/api/schema.d.ts src/api/"
   },
   "private": true
 }

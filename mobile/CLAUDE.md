@@ -20,9 +20,8 @@ Expo SDK 58 (React Native 0.88, React 19.3), expo-router (tabs in `app/(tabs)/`)
 - Platform-specific files: `X.web.tsx` for the web build (react-native-maps has no web support).
 
 ## Types and mocks
-- `src/api/types.ts` and `src/mocks/` are COPIES from web/ (`npm run sync:mocks`). Edit them in web/, then sync.
+- `src/api/models.ts`, `src/api/schema.d.ts` and `src/mocks/` are COPIES from web/ (`npm run sync:mocks`). Edit them in web/, then sync.
 - `EXPO_PUBLIC_USE_MOCKS=true` makes `api()` answer from `src/mocks/mockApi.ts` (P3 example data).
-- When P1 publishes `docs/openapi.json`: `npm run gen:types` -> `src/api/schema.d.ts`.
 
 ## Commands
 npx expo start | npx expo start --clear | npm run typecheck | npx expo-doctor | npm run sync:mocks | npm run gen:types

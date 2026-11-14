@@ -1,58 +1,82 @@
 [
  {
   "id": "demo-user-1",
-  "name": "Ana Popescu",
-  "role": "locuitor",
-  "neighborhood": "Fabric",
-  "is_demo": true
+  "nume": "Ana Popescu",
+  "rol": "cetatean",
+  "cartier": "Fabric",
+  "lat": 45.756989,
+  "lng": 21.249889
  },
  {
   "id": "demo-user-2",
-  "name": "Mihai Ionescu",
-  "role": "locuitor",
-  "neighborhood": "Iosefin",
-  "is_demo": true
+  "nume": "Mihai Ionescu",
+  "rol": "cetatean",
+  "cartier": "Iosefin",
+  "lat": 45.74424,
+  "lng": 21.209053
  },
  {
   "id": "demo-user-3",
-  "name": "Ioana Radu",
-  "role": "locuitor",
-  "neighborhood": "Elisabetin",
-  "is_demo": true
+  "nume": "Ioana Radu",
+  "rol": "cetatean",
+  "cartier": "Elisabetin",
+  "lat": 45.74162,
+  "lng": 21.225628
  },
  {
   "id": "demo-user-4",
-  "name": "Andrei Stan",
-  "role": "locuitor",
-  "neighborhood": "Circumvalațiunii",
-  "is_demo": true
+  "nume": "Andrei Stan",
+  "rol": "cetatean",
+  "cartier": "Circumvalațiunii",
+  "lat": 45.759345,
+  "lng": 21.214032
  },
  {
   "id": "demo-user-5",
-  "name": "Elena Mureșan",
-  "role": "locuitor",
-  "neighborhood": "Fabric",
-  "is_demo": true
+  "nume": "Elena Mureșan",
+  "rol": "cetatean",
+  "cartier": "Fabric",
+  "lat": 45.756989,
+  "lng": 21.249889
  },
  {
   "id": "demo-user-6",
-  "name": "Radu Lungu",
-  "role": "proprietar",
-  "neighborhood": "Cetate",
-  "is_demo": true
+  "nume": "Radu Lungu",
+  "rol": "proprietar",
+  "cartier": "Cetate",
+  "lat": 45.756038,
+  "lng": 21.228846
  },
  {
   "id": "demo-user-7",
-  "name": "Maria Dobre",
-  "role": "proprietar",
-  "neighborhood": "Lipovei",
-  "is_demo": true
+  "nume": "Maria Dobre",
+  "rol": "proprietar",
+  "cartier": "Lipovei",
+  "lat": 45.775082,
+  "lng": 21.239442
  },
  {
   "id": "demo-user-8",
-  "name": "Cristian Pop",
-  "role": "proprietar",
-  "neighborhood": "Șagului",
-  "is_demo": true
+  "nume": "Cristian Pop",
+  "rol": "proprietar",
+  "cartier": "Șagului",
+  "lat": 45.729382,
+  "lng": 21.21076
+ },
+ {
+  "id": "demo-user-9",
+  "nume": "Cont demo Primărie",
+  "rol": "primarie",
+  "cartier": "Cetate",
+  "lat": 45.756038,
+  "lng": 21.228846
+ },
+ {
+  "id": "demo-user-10",
+  "nume": "Cont demo verificator",
+  "rol": "verificator",
+  "cartier": "Cetate",
+  "lat": 45.756038,
+  "lng": 21.228846
  }
 ]

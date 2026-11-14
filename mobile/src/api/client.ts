@@ -3,7 +3,7 @@
 // Body types: ./types.ts for now (provisional), later ./schema.d.ts (`npm run gen:types`).
 import { API_URL, USE_MOCKS } from '../config'
 import { handleMock } from '../mocks/mockApi'
-import type { User } from './types'
+import type { User } from './models'
 import usersData from '../mocks/data/users.json'
 
 // PROVISIONAL demo users (P3's demo data) until the contract defines users.

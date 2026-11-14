@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
 import { api } from '../../src/api/client'
-import type { Space } from '../../src/api/types'
+import type { Space } from '../../src/api/models'
 import { SpacesMap } from '../../src/components/SpacesMap'
 
 export default function MapScreen() {
