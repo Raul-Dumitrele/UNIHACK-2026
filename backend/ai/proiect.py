@@ -143,19 +143,6 @@ def _get(obj: Any, *names: str, default: Any = None) -> Any:
     return default
 
 
-def _lei(value: float) -> str:
-    return f"{int(round(value)):,}".replace(",", ".")
-
-
-def cost_sentence(cost: Cost) -> str:
-    if cost.suficient and cost.min_lei is not None and cost.max_lei is not None:
-        n = len(cost.referinte_folosite)
-        return (f"Cost estimat orientativ: între {_lei(cost.min_lei)} și {_lei(cost.max_lei)} lei, cu o valoare "
-                f"mediană de {_lei(cost.mediana_lei or cost.min_lei)} lei, calculat din {n} proiecte de referință "
-                f"({', '.join(cost.referinte_folosite)}).")
-    return f"Costul nu poate fi estimat deocamdată: {cost.motiv or 'date insuficiente.'}"
-
-
 def _context(idea: Any, space: Any, tip: str, suprafata_mp: float | None, refs: list[Referinta],
              cost: Cost, label: str | None = None, notes: list[str] | None = None) -> dict:
     dossier = _get(idea, "structurat", "dossier", default={}) or {}
@@ -223,8 +210,9 @@ def template_draft(context: dict, refs: list[Referinta]) -> DosarDraft:
     components = [c for r in refs for c in r.componente]
     return DosarDraft(
         titlu=f"Amenajare: {label} – {place}",
+        # The idea itself is cited in the justification; the description stays about the proposed works.
         descriere=(f"Locuitorii propun o amenajare de tip „{label}” la {place}{hood}{area}. "
-                   + without_money(idea.get("rezumat") or idea.get("text") or "")).strip(),
+                   "Detaliile tehnice și amplasarea exactă se stabilesc împreună cu Primăria."),
         justificare=(f"Propunerea pornește de la ideea „{idea.get('titlu') or label}”{support}. "
                      "Proiectul răspunde unei nevoi exprimate direct de locuitorii din zonă."),
         componente=components[:6] or GENERIC_COMPONENTS,
@@ -243,8 +231,9 @@ def finalize(draft: DosarDraft, refs: list[Referinta], cost: Cost) -> Dosar:
     return Dosar(
         titlu=draft.titlu,
         descriere=draft.descriere.rstrip(),
-        # Cost sentence, then the mandatory text (contract rule 10), close the justification.
-        justificare=f"{draft.justificare.rstrip()}\n\n{cost_sentence(cost)}\n\n{DISCLAIMER}",
+        # Figures live only in the Cost object (the UI shows it); the text ends with the mandatory notice
+        # (contract rule 10). No amount of money appears anywhere in the dossier text.
+        justificare=f"{draft.justificare.rstrip()}\n\n{DISCLAIMER}",
         componente=draft.componente or GENERIC_COMPONENTS,
         etape=draft.etape or [Etapa(nume=n, durata_luni=m) for n, m in STANDARD_STAGES],
         riscuri=draft.riscuri or STANDARD_RISKS,
