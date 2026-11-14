@@ -37,7 +37,7 @@ idee -> dosar structurat de AI -> spații potrivite -> interes din comunitate ->
 | Entitate | Câmpuri |
 |---|---|
 | User | id, nume, rol (UserRole), cartier, lat, lng |
-| Space | id, nume, tip (text liber; include `teren_liber`), lat, lng, capacitate, dotari[], sloturi[Slot], owner_id, is_demo, suprafata_mp? (int), cartier? (text), sursa? (text, ex. `primarie_lista`), sursa_detalii? (text) |
+| Space | id, nume, tip (text liber; include `teren_liber`), lat, lng, capacitate, dotari[], sloturi[Slot], owner_id, is_demo, suprafata_mp? (int), cartier? (text), sursa? (text, ex. `lista_primarie`), sursa_detalii? (text) |
 | Idea | id, author_id, titlu, descriere, structurat (Structurat), prag (implicit 5), interesati, stare (IdeaStatus), is_demo, created_at |
 | Structurat | categorie, persoane, dotari[], program[Slot], zgomot, rezumat |
 | Interest | id, user_id, idea_id, created_at; unic pe (user_id, idea_id) |

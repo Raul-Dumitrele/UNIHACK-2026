@@ -14,7 +14,7 @@ def plots(session, world):
               owner_id="u-prim", suprafata_mp=1200, cartier="Fabric", is_demo=True),
         Space(id="lista-2019-1", nume="Teren din lista Primăriei", tip="teren_liber", lat=45.76, lng=21.23, capacitate=0,
               dotari=[], sloturi=[], owner_id="u-prim", suprafata_mp=276, cartier="Fabric",
-              sursa="primarie_lista", sursa_detalii="HCL 20/2019, anexa nr. 1"),
+              sursa="lista_primarie", sursa_detalii="HCL 20/2019, anexa nr. 1"),
     ])
     session.commit()
     return world
