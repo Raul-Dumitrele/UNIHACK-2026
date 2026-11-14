@@ -72,7 +72,9 @@ def contract_rows(data: SeedData) -> dict[str, list[dict]]:
             "lat": point(u["neighborhood"])[0], "lng": point(u["neighborhood"])[1],
         } for u in users],
         "Space": [{
-            "id": s["id"], "nume": s["name"], "tip": s["kind_label"], "lat": s["lat"], "lng": s["lon"],
+            "id": s["id"], "nume": s["name"],
+            "tip": "teren_liber" if s["kind"] == "teren_liber" else s["kind_label"],  # contract value
+            "lat": s["lat"], "lng": s["lon"],
             "capacitate": s["capacity"], "dotari": _dotari(s["amenities"]),
             "sloturi": sorted(sloturi.get(s["id"], []), key=_key), "owner_id": s["owner_id"], "is_demo": True,
             "suprafata_mp": s.get("suprafata_mp"),  # only the free plot (kind teren_liber) has one

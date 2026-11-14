@@ -269,7 +269,7 @@ def test_contract_rows_are_consistent(data):
     ideas = {i["id"]: i for i in rows["Idea"]}
     assert {u["rol"] for u in users.values()} == {"cetatean", "proprietar", "primarie", "verificator"}
     assert all(s["owner_id"] in users and users[s["owner_id"]]["rol"] ==
-               ("primarie" if s["tip"] == "teren liber" else "proprietar") for s in spaces.values())
+               ("primarie" if s["tip"] == "teren_liber" else "proprietar") for s in spaces.values())
     assert all(i["author_id"] in users and len(i["titlu"]) <= 80 for i in ideas.values())
     assert all(it["user_id"] in users and it["idea_id"] in ideas for it in rows["Interest"])
     assert all(n["user_id"] in users and n["idea_id"] in ideas for n in rows["Notification"])
@@ -327,8 +327,7 @@ def test_free_plot_is_never_matched_or_bookable(data):
 
 
 def test_demo_project(data):
-    from backend.ai.proiect import DISCLAIMER, cost_sentence, money_mentions
-    from backend.ai.costs import Cost
+    from backend.ai.proiect import DISCLAIMER, money_mentions
 
     [p] = data.proiecte
     ideas = {i["id"]: i for i in data.ideas}
@@ -340,7 +339,7 @@ def test_demo_project(data):
     assert p["dosar"]["justificare"].endswith(DISCLAIMER)
     assert set(p["dosar"]["referinte_citate"]) <= {r["id"] for r in p["referinte"]}
     text = p["dosar"]["descriere"] + p["dosar"]["justificare"]
-    assert sorted(money_mentions(text)) == sorted(money_mentions(cost_sentence(Cost(**p["cost"]))))
+    assert money_mentions(text) == []  # figures only in p["cost"]
 
 
 def test_demo_project_events_and_notifications(data):
