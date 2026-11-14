@@ -1,0 +1,138 @@
+{
+ "generated_at": "2026-11-14T17:35:54+00:00",
+ "threshold": 0.7,
+ "models": [
+  {
+   "provider": "gemini",
+   "model": "gemini-flash-lite-latest",
+   "score": 95.0,
+   "pass_rate": 1.0,
+   "accuracy": 0.9,
+   "romanian": 1.0,
+   "latency_s": 1.02,
+   "responded": true,
+   "excluded": null
+  },
+  {
+   "provider": "gemini",
+   "model": "gemini-3.5-flash-lite",
+   "score": 87.3,
+   "pass_rate": 0.923,
+   "accuracy": 0.8,
+   "romanian": 0.923,
+   "latency_s": 1.25,
+   "responded": true,
+   "excluded": null
+  },
+  {
+   "provider": "ovh",
+   "model": "gpt-oss-120b",
+   "score": 22.0,
+   "pass_rate": 0.154,
+   "accuracy": 0.1,
+   "romanian": 0.308,
+   "latency_s": 4.32,
+   "responded": true,
+   "excluded": "sub prag (15% < 70%)"
+  },
+  {
+   "provider": "gemini",
+   "model": "gemini-3.1-flash-lite",
+   "score": 19.3,
+   "pass_rate": 0.077,
+   "accuracy": 0.0,
+   "romanian": 0.231,
+   "latency_s": 1.26,
+   "responded": true,
+   "excluded": "sub prag (8% < 70%)"
+  },
+  {
+   "provider": "kilo",
+   "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "score": 18.9,
+   "pass_rate": 0.308,
+   "accuracy": 0.1,
+   "romanian": 0.308,
+   "latency_s": 13.41,
+   "responded": true,
+   "excluded": "sub prag (31% < 70%)"
+  },
+  {
+   "provider": "llm7",
+   "model": "codestral-latest",
+   "score": 14.7,
+   "pass_rate": 0.0,
+   "accuracy": 0.0,
+   "romanian": 0.0,
+   "latency_s": 0.21,
+   "responded": false,
+   "excluded": "nu răspunde"
+  },
+  {
+   "provider": "llm7",
+   "model": "gpt-oss:20b",
+   "score": 14.7,
+   "pass_rate": 0.0,
+   "accuracy": 0.0,
+   "romanian": 0.0,
+   "latency_s": 0.23,
+   "responded": true,
+   "excluded": "sub prag (0% < 70%)"
+  },
+  {
+   "provider": "llm7",
+   "model": "mistral-Nemo-Instruct-2407",
+   "score": 14.7,
+   "pass_rate": 0.0,
+   "accuracy": 0.0,
+   "romanian": 0.0,
+   "latency_s": 0.2,
+   "responded": false,
+   "excluded": "nu răspunde"
+  },
+  {
+   "provider": "kilo",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "score": 11.5,
+   "pass_rate": 0.231,
+   "accuracy": 0.0,
+   "romanian": 0.231,
+   "latency_s": 11.12,
+   "responded": true,
+   "excluded": "sub prag (23% < 70%)"
+  },
+  {
+   "provider": "kilo",
+   "model": "nvidia/nemotron-3.5-lightning:free",
+   "score": 0.0,
+   "pass_rate": 0.0,
+   "accuracy": 0.0,
+   "romanian": 0.0,
+   "latency_s": 15.32,
+   "responded": true,
+   "excluded": "sub prag (0% < 70%)"
+  },
+  {
+   "provider": "ovh",
+   "model": "Meta-Llama-3_3-70B-Instruct",
+   "score": 0.0,
+   "pass_rate": 0.0,
+   "accuracy": 0.0,
+   "romanian": 0.0,
+   "latency_s": 15.18,
+   "responded": true,
+   "excluded": "sub prag (0% < 70%)"
+  },
+  {
+   "provider": "ovh",
+   "model": "Qwen3.6-27B",
+   "score": 0.0,
+   "pass_rate": 0.0,
+   "accuracy": 0.0,
+   "romanian": 0.0,
+   "latency_s": 15.36,
+   "responded": false,
+   "excluded": "nu răspunde"
+  }
+ ]
+}

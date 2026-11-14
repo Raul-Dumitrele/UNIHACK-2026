@@ -1,8 +1,8 @@
 """backend.ai.proiect.generate_dosar(...) -> Dosar: the proposal file sent to the city hall.
 
-Gemini writes the prose from the idea, the space and the reference projects, but never sees cost
-figures and may not write any: an answer that mentions an amount of money is rejected (one retry,
-then the template). The cost sentence and the mandatory disclaimer are inserted by code afterwards,
+The LLM chain (backend.ai.llm: Gemini and every other configured free model) writes the prose from
+the idea, the space and the reference projects, but never sees cost figures and may not write any: an
+answer that mentions an amount of money is rejected (one retry, next model, then the template). The cost sentence and the mandatory disclaimer are inserted by code afterwards,
 so every figure in the dossier comes from estimate_cost.
 """
 import json
@@ -10,12 +10,10 @@ import logging
 from collections.abc import Iterable
 from typing import Any
 
-from google.genai import types
 from pydantic import BaseModel, field_validator
 
-from backend.ai.config import AISettings, get_settings
 from backend.ai.costs import Cost
-from backend.ai.gemini import _client
+from backend.ai.llm import generate_json
 from backend.ai.money import money_mentions, without_money  # noqa: F401  (re-exported for callers/tests)
 from backend.ai.references import Referinta, live_search_enabled, slugify, type_label
 from backend.ai.references.core import label_for
@@ -25,7 +23,6 @@ log = logging.getLogger(__name__)
 
 DISCLAIMER = ("Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; "
               "acordul din aplicație este un acord de principiu simulat.")
-ATTEMPTS = 2  # first try + one retry
 MAX_CITED = 5
 
 BASE_CHECKS = [
@@ -168,34 +165,29 @@ def _context(idea: Any, space: Any, tip: str, suprafata_mp: float | None, refs: 
     }
 
 
-def _generate(settings: AISettings, prompt: str) -> str:
-    response = _client(settings.gemini_api_key, settings.gemini_timeout_ms).models.generate_content(
-        model=settings.gemini_model,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json", response_schema=DosarDraft, temperature=0.3,
-        ),
-    )
-    return response.text or ""
+JSON_KEYS = ("\nRăspunde cu un singur obiect JSON cu exact aceste chei: titlu, descriere, justificare, "
+             "componente (listă), etape (listă de obiecte {nume, durata_luni}), riscuri (listă), "
+             "lista_verificare (listă), referinte_citate (listă de id-uri).")
 
 
-def ask_gemini(context: dict) -> DosarDraft | None:
-    settings = get_settings()
-    if not settings.gemini_api_key:
+def no_money(draft: DosarDraft) -> None:
+    """Chain validator: a draft that mentions an amount of money is rejected like invalid JSON
+    (one retry on the same model, then the next model, then the template)."""
+    found = money_mentions(_draft_text(draft))
+    if found:
+        raise ValueError(f"amounts of money in the draft: {found[:3]}")
+
+
+def ask_llm(context: dict) -> DosarDraft | None:
+    prompt = PROMPT.replace("{data}", json.dumps(context, ensure_ascii=False, indent=1)) + JSON_KEYS
+    try:
+        return generate_json(prompt, DosarDraft, task="generate_dosar", validator=no_money)
+    except Exception as exc:  # LLMUnavailable (every model failed or wrote money) -> template
+        log.warning("dosar: LLM chain unavailable, using the template (%s: %s)", type(exc).__name__, str(exc)[:200])
         return None
-    prompt = PROMPT.replace("{data}", json.dumps(context, ensure_ascii=False, indent=1))
-    for attempt in range(1, ATTEMPTS + 1):
-        try:
-            draft = DosarDraft.model_validate_json(_generate(settings, prompt))
-        except Exception as exc:  # network, quota, timeout, bad JSON: retry once, then the template
-            log.warning("dosar: Gemini attempt %d failed (%s: %s)", attempt, type(exc).__name__, str(exc)[:200])
-            continue
-        found = money_mentions(_draft_text(draft))
-        if found:
-            log.warning("dosar: Gemini attempt %d wrote amounts of money %s; rejected", attempt, found[:3])
-            continue
-        return draft
-    return None
+
+
+ask_gemini = ask_llm  # previous name
 
 
 def template_draft(context: dict, refs: list[Referinta]) -> DosarDraft:
@@ -281,7 +273,7 @@ def generate_dosar(idea: Any, space: Any, tip_amenajare: str, suprafata_mp: floa
     web notes when live search is on, then Gemini (one retry), deterministic template otherwise."""
     context, refs, cost = _inputs(idea, space, tip_amenajare, suprafata_mp, referinte, cost,
                                   _research(tip_amenajare))
-    return _list_check(finalize(ask_gemini(context) or template_draft(context, refs), refs, cost), space)
+    return _list_check(finalize(ask_llm(context) or template_draft(context, refs), refs, cost), space)
 
 
 def template_dosar(idea: Any, space: Any, tip_amenajare: str, suprafata_mp: float | None,

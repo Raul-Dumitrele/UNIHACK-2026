@@ -39,19 +39,10 @@ GOOD = {
 
 
 def _gemini(monkeypatch, *answers):
-    """Fake key and a scripted Gemini: each call returns the next answer (dict, str or exception)."""
-    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
-    prompts = []
+    """Scripted LLM chain for generate_dosar (one model: an invalid or money answer is retried once)."""
+    from backend.tests.ai.conftest import fake_chain
 
-    def fake(settings, prompt):
-        prompts.append(prompt)
-        answer = answers[min(len(prompts), len(answers)) - 1]
-        if isinstance(answer, Exception):
-            raise answer
-        return answer if isinstance(answer, str) else json.dumps(answer, ensure_ascii=False)
-
-    monkeypatch.setattr(proiect, "_generate", fake)
-    return prompts
+    return fake_chain(monkeypatch, "backend.ai.proiect", *answers)
 
 
 def _all_text(d) -> str:
@@ -165,6 +156,7 @@ def test_values_are_clamped(monkeypatch):
 
 def test_web_notes_reach_gemini_when_live_search_is_on(monkeypatch):
     prompts = _gemini(monkeypatch, GOOD)
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")  # web notes use Google Search grounding (Gemini only)
     monkeypatch.setenv("REFERENCES_LIVE_SEARCH", "true")
     monkeypatch.setattr("backend.ai.references.search.research_notes",
                         lambda tip: ["Bazine separate pentru copii", "Necesită sistem de filtrare a apei"])

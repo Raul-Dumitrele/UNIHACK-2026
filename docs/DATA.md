@@ -334,3 +334,92 @@ python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără
 - **Câmpurile `sursa` și `sursa_detalii`** nu sunt încă în contract. Seed-ul le trimite, iar ele se salvează imediat ce P1 le adaugă în modelul `Space`.
 - **Dosarul:** pentru aceste terenuri, `generate_dosar` pune primul în `lista_verificare` punctul: „Confirmarea faptului că terenul nu a fost atribuit între timp (Legea 15/2003) și a disponibilității lui pentru uz comunitar”.
 
+## Stratul LLM: lanț de rezervă peste furnizori gratuiți
+Funcțiile `structure_idea`, `owner_message`, `classify_proposal` și `generate_dosar` nu mai depind doar de Gemini. Toate trec prin `backend.ai.llm.generate_json(prompt, schema, system=None, task=..., validator=None)`, care încearcă, în ordine, toate modelele gratuite configurate. Dacă niciunul nu răspunde valid, funcția apelantă folosește fallback-ul determinist de până acum. Semnăturile din contract nu se schimbă.
+
+Căutarea pe web pentru referințe (`references/search.py`, Google Search grounding) rămâne doar pe Gemini, pentru că ceilalți furnizori nu au căutare.
+
+### Registrul (`backend/ai/llm/registry.json`)
+- **Sursa:** construit o singură dată, pe 2026-11-14, din [mnfst/awesome-free-llm-apis](https://github.com/mnfst/awesome-free-llm-apis). Lista cerută inițial, `cheahjs/free-llm-api-resources`, nu mai există (404).
+- **Aplicația nu descarcă lista;** citește doar registrul comis în repo.
+- **Ce conține:** 14 furnizori și toate modelele lor care pot genera text. Lipsesc doar modelele de embeddings, care nu pot răspunde la un prompt.
+
+| Furnizor | Cheie în `.env` | Modele | Limite gratuite | Stare |
+|---|---|---|---|---|
+| Google Gemini | `GEMINI_API_KEY` | 8 | Google no longer publishes per-model free-tier limits; check quotas in AI Studio. de_verificat | ok |
+| Groq | `GROQ_API_KEY` | 3 | 8,000 TPM, 200,000 TPD per model on the Free Plan | ok |
+| OpenRouter | `OPENROUTER_API_KEY` | 11 | Counted across ALL free models together; 1,000 RPD after buying 10 credits | ok |
+| Cohere | `COHERE_API_KEY` | 11 | Trial key: 1,000 API calls per MONTH; non-commercial use only | ok |
+| NVIDIA NIM | `NVIDIA_API_KEY` | 2 | No public table; varies per model and load. de_verificat | ok |
+| Cloudflare Workers AI | `CLOUDFLARE_API_KEY + CLOUDFLARE_ACCOUNT_ID` | 7 | 10,000 Neurons/day shared across all models, reset 00:00 UTC; over the limit the request fails (no billing) | ok |
+| Z AI (Zhipu) | `ZAI_API_KEY` | 3 | 1 concurrent request per model | de verificat |
+| Aion Labs | `AIONLABS_API_KEY` | 4 | 20K tokens/day | de verificat |
+| Gonka Broker | `GONKA_API_KEY` | 3 | ~1M tokens/MONTH shared; lower rate on free funds (maxRpm from /test-auth) | ok |
+| LLM7.io | `LLM7_API_KEY (opțional; merge și fără)` | 3 | Free token: 1 RPS, 60 RPM, 250 req/hour, 100K tokens/24h; may be reduced without notice | ok |
+| Kilo Code gateway | `KILO_API_KEY (opțional; merge și fără)` | 9 | 200 requests/hour per IP for free models | ok |
+| OVHcloud AI Endpoints | `niciuna (cu cheie devine plătit; lanțul nu trimite cheie)` | 9 | Anonymous: 2 RPM per IP per model. With a key: 400 RPM but billed pay-as-you-go | ok |
+| ModelScope | `MODELSCOPE_API_KEY` | 2 | 2,000 RPD total, <=500 RPD per model (dynamic) | de verificat |
+| SiliconFlow | `SILICONFLOW_API_KEY` | 2 | not published | de verificat |
+
+„De verificat” înseamnă că sursa nu confirmă tot: compatibilitatea OpenAI la Z AI și Aion Labs, iar ModelScope și SiliconFlow se pot testa doar din China. Toți intră în lanț când au cheie, iar `check` arată dacă răspund.
+
+**Confidențialitate:**
+- Modelele gratuite de la OpenRouter și Kilo, precum și NVIDIA, pot păstra cererile.
+- Gemini gratuit le poate folosi pentru antrenare (în afara SEE).
+- Termenii Google cer servicii plătite pentru o aplicație folosită de oameni din SEE.
+
+Aplicația trimite doar date demo și textul ideilor. Jurnalele conțin doar furnizorul, modelul, rezultatul și durata, niciodată conținutul sau cheile.
+
+### Cum funcționează lanțul (`chain.py`)
+- **Ordinea:**
+  1. `LLM_CHAIN` (dacă e setat);
+  2. altfel `chain_order.json` (scris de `bench`), filtrat după `LLM_MIN_PASS_RATE`;
+  3. altfel ordinea din registru, fără modelele pe care ultimul `check` le-a găsit căzute.
+- **Cine intră:** doar furnizorii activi, adică cei cu cheie, plus cei fără cheie când `LLM_ALLOW_KEYLESS=true` (implicit).
+- **Cache:** întâi se caută un răspuns salvat (`backend/ai/llm/cache/`, ignorat de git).
+- **Trecerea la modelul următor:**
+  - 429: furnizorul e sărit până trece `Retry-After`, altfel 60 s;
+  - 5xx, timeout, eroare de rețea;
+  - JSON invalid sau respins de validator după o reîncercare pe același model (de exemplu, un dosar care conține sume de bani).
+- **401/403:** furnizorul e dezactivat până la repornire, cu un mesaj clar în jurnal.
+- **Limite:**
+  - `LLM_TOTAL_BUDGET_S` de timp total pe cerere și `LLM_MAX_ATTEMPTS` încercări;
+  - un model căzut e sărit `LLM_COOLDOWN_S` (5 minute);
+  - limita pe minut (RPM) a fiecărui furnizor, din registru.
+
+  Când nimic nu merge, se ridică `LLMUnavailable`, iar apelantul folosește fallback-ul.
+- **În teste** lanțul e oprit (sub pytest, sau cu `LLM_ENABLED=false`), deci nicio suită nu apelează furnizori reali.
+
+### Variabile de mediu (de adăugat de P1 în `.env.example`)
+| Variabilă | Implicit | Rol |
+|---|---|---|
+| `GROQ_API_KEY`, `OPENROUTER_API_KEY`, `COHERE_API_KEY`, `NVIDIA_API_KEY`, `CLOUDFLARE_API_KEY`, `CLOUDFLARE_ACCOUNT_ID`, `ZAI_API_KEY`, `AIONLABS_API_KEY`, `GONKA_API_KEY`, `LLM7_API_KEY`, `KILO_API_KEY`, `MODELSCOPE_API_KEY`, `SILICONFLOW_API_KEY` | gol | cheile furnizorilor (`GEMINI_API_KEY` există deja) |
+| `LLM_ENABLED` | activ, în afara testelor | `false` oprește lanțul și folosește doar fallback-ul |
+| `LLM_CHAIN` | gol | ordine forțată, ex. `groq:openai/gpt-oss-120b,gemini:gemini-3.5-flash-lite` |
+| `LLM_TIMEOUT_S` | 15 | timp maxim pe cerere |
+| `LLM_TOTAL_BUDGET_S` | 20 | timp total pe apel, cu toate încercările |
+| `LLM_MAX_ATTEMPTS` | 4 | încercări pe apel |
+| `LLM_MIN_PASS_RATE` | 0.7 | pragul din bench; 0 = toate modelele care răspund |
+| `LLM_ALLOW_KEYLESS` | true | include LLM7, Kilo și OVH fără cheie |
+| `LLM_CACHE` | true | cache pe disc pentru răspunsuri |
+| `LLM_COOLDOWN_S` | 300 | pauza pentru un model căzut |
+
+### Comenzi
+```
+python -m backend.ai.llm.check                 # cine răspunde acum -> models_live.json (ignorat de git)
+python -m backend.ai.llm.bench --max-models 3  # scor pe modele -> chain_order.json (comis); --write-docs actualizează tabelul de mai jos
+python -m backend.ai.llm.pregenerate           # umple cache-ul pentru demo (ideile, mesajele și dosarul demo)
+python -m backend.ai.llm.sync_registry         # doar pentru dezvoltare: diferențele față de lista online, nu modifică nimic
+```
+
+### Bench
+- **Ce testează:** 10 idei etichetate din `eval_ideas.json` (promptul lui `structure_idea`) și 3 cazuri `owner_message`.
+- **Ce măsoară:**
+  - JSON valid (`pass_rate`);
+  - acuratețea față de etichete (categorie, participanți, interior/exterior);
+  - limba română: diacritice, fără cuvinte englezești, lungime rezonabilă;
+  - latența mediană.
+- **Scorul:** `100 × (0.35 JSON + 0.35 acuratețe + 0.15 română + 0.15 viteză)`.
+- **Ritmul:** respectă RPM-ul și nu planifică mai mult de 80% din cota zilnică (RPD). La OVH lasă 31 s între cererile către același model.
+- **Ordinea și pragul** se schimbă fără un bench nou: `LLM_MIN_PASS_RATE` se aplică la încărcare, iar `LLM_CHAIN` are prioritate.
+

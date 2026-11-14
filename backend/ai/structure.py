@@ -1,15 +1,14 @@
-from backend.ai.config import get_settings
 from backend.ai.fallback import build_fallback
-from backend.ai.gemini import ask_gemini
+from backend.ai.gemini import ask_llm
 from backend.ai.schemas import IdeaDossier
 
 
 def structure_dossier(text: str) -> IdeaDossier:
-    """Idea text -> P3's detailed dossier. Never raises: Gemini first, deterministic fallback otherwise."""
+    """Idea text -> P3's detailed dossier. Never raises: the LLM chain first, deterministic fallback otherwise."""
     text = (text or "").strip()
-    draft = ask_gemini(text, get_settings()) if text else None
+    draft = ask_llm(text) if text else None
     if draft is not None:
-        return IdeaDossier(**draft.model_dump(), source="gemini")
+        return IdeaDossier(**draft.model_dump(), source="llm")
     return IdeaDossier(**build_fallback(text).model_dump(), source="fallback")
 
 

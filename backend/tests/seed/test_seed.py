@@ -278,6 +278,7 @@ def test_contract_rows_are_consistent(data):
     assert teren["suprafata_mp"] == 600 and teren["sloturi"] == []
     [p] = rows["Proiect"]
     assert p["verificator_id"] == "demo-user-10" and p["stare"] == "in_verificare" and p["space_id"] in spaces
+    assert p["is_demo"] is True  # badge "exemplu" (Proiect.is_demo in the contract)
     assert all(e["proiect_id"] == p["id"] for e in rows["ProiectEveniment"])
     assert {n["proiect_id"] for n in rows["Notification"] if n["proiect_id"]} == {p["id"]}
     for b in rows["Booking"]:
@@ -356,7 +357,8 @@ def test_demo_project_events_and_notifications(data):
 def test_project_is_offline_and_deterministic(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "would-be-used-if-called")
     monkeypatch.setenv("REFERENCES_LIVE_SEARCH", "true")
-    monkeypatch.setattr("backend.ai.proiect._generate", lambda *a: pytest.fail("seed must not call Gemini"))
+    monkeypatch.setenv("LLM_ENABLED", "true")
+    monkeypatch.setattr("backend.ai.llm.chain.complete", lambda *a, **k: pytest.fail("seed must not call an LLM"))
     monkeypatch.setattr("backend.ai.references.search.search_references",
                         lambda *a: pytest.fail("seed must not search the web"))
     assert build_seed(START).proiecte == build_seed(START).proiecte

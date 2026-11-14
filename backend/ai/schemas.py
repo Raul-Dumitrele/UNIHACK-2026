@@ -85,4 +85,4 @@ class DossierBase(BaseModel):
 class IdeaDossier(DossierBase):
     """Return type of backend.ai.structure_idea."""
 
-    source: Literal["gemini", "fallback"]
+    source: Literal["llm", "gemini", "fallback"]  # "gemini": dossiers stored before the LLM chain
