@@ -92,7 +92,7 @@ def _by_week(bookings: list[ApprovedBooking]) -> list[WeekStats]:
     ]
 
 
-def compute_impact(bookings: Iterable[ApprovedBooking], proiecte: Iterable[Any] = ()) -> ImpactReport:
+def impact_report(bookings: Iterable[ApprovedBooking], proiecte: Iterable[Any] = ()) -> ImpactReport:
     """`proiecte`: Proiect rows/dicts (or their `stare` strings), in any state; optional."""
     bookings = list(bookings)
     stari = [_stare(p) for p in proiecte]
