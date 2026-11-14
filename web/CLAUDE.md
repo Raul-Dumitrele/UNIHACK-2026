@@ -1,7 +1,18 @@
 # web/ (P2) - Loc Comun
 
 Only P2 edits this folder. Never touch backend/, docs/, scripts/ or mobile/ from here; if the API or the
-contract needs a change, stop and say what to ask P1 (contract) or P3 (AI, seed, impact).
+contract needs a change, stop and say what to ask P1 (contract, backend, AI, seed, impact; P3's zone is now P1's).
+
+## Product (since the restructuring)
+Free plot -> project. Flow: map of free plots (`/`) -> plot (`/teren/:id`) -> propose project (`/proiect/nou?teren=`) ->
+full project (`/proiecte/:id`) -> send to Primărie -> verifier -> decision. No bookings, no ideas, no interest threshold,
+no "proprietar" in the user switcher; the old endpoints stay in the backend but the UI never calls them.
+Project page has tabs Dosar / Documente (plan SVG, PDF/DXF/CSV downloads, materials with SEAP prices); the wizard has 3 steps
+(what, choose the plot via GET /terenuri/potrivite, generate with POST /proiecte). Files are fetched with `apiBlob()` because a link
+cannot send X-User-Id. All of this is on main; types are generated from `docs/openapi.json`.
+Not on the backend: `POST /spaces` (so "Marchează un teren" is hidden unless `VITE_ENABLE_MARK_PLOT=true`), budget per component and
+the company profile (not shown, not simulated). `tip_amenajare` is an enum on the server; the wizard also accepts free text and shows
+the server's `detail` on 422. Mobile is paused.
 
 ## Stack
 React 19 + Vite 8 + TypeScript 7, react-router 7, Tailwind CSS 4 + shadcn/ui (`src/components/ui/`, preset radix-nova),
@@ -21,9 +32,11 @@ lucide-react icons, Geist font, Leaflet (react-leaflet), MSW 3 for mocks.
 - Types come from `docs/openapi.json`: `npm run gen:types` -> `src/api/schema.d.ts` (never edit by hand);
   `src/api/models.ts` gives them short names. Fields marked PROVISIONAL there are not in openapi yet.
   After regenerating, report any tsc diff instead of working around it.
-- `src/mocks/mockApi.ts` is an in-memory fake of P1's backend that follows the contract rules, over
-  `src/mocks/data/*.json` (P3's demo seed converted to contract shape by `scripts/seed_to_mocks.py`).
-  `VITE_USE_MOCKS=true` turns it on (MSW, `src/mocks/browser.ts`). Endpoints marked PROVISIONAL are not in the contract.
+- `src/mocks/mockApi.ts` is an in-memory fake of P1's backend over `src/mocks/data/*.json`, which is a SNAPSHOT of the real API:
+  `scripts/dump_api_mocks.py` (throwaway DB + seed + `--create-projects`; it also adds the candidate plots of `terenuri_osm.json`, made by
+  `scripts/terenuri_osm.py`). Plans, materials, documents and plot scores are what the API answered. If a mock differs from the real
+  API, the real API is right: re-run the dump. `VITE_USE_MOCKS=true` turns it on (MSW, `src/mocks/browser.ts`).
+  A project created in the mock is cloned from a snapshot project of the same kind (the mock never writes costs or prices).
 - Never compute business values (costs, scores, statuses) in the UI: they come from the API (or the mock standing in for it).
 - mobile/ keeps a copy of `src/mocks` and `src/api/{models,schema.d}.ts`: after editing them run `npm run sync:mocks` in mobile/.
 
