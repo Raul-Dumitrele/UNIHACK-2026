@@ -20,7 +20,7 @@ powershell -ExecutionPolicy Bypass -File scripts/smoke.ps1   # /health, apoi e2e
 Ramuri: `p1-backend`, `p2-front`, `p3-data-ai`; hook-ul pre-commit blochează fișierele din afara zonei ramurii.
 Cu `make`: `make setup | dev | test | smoke | openapi`.
 
-Variabile: copiază `.env.example` în `.env` și completează `GEMINI_API_KEY` (`GEMINI_MODEL` are implicit `gemini-flash-latest`).
+Variabile: copiază `.env.example` în `.env` și completează `GEMINI_API_KEY` (`GEMINI_MODEL` are implicit `gemini-3.5-flash-lite`).
 
 ## Deploy backend (Render sau Railway)
 - Build: `pip install -r backend/requirements.txt`
