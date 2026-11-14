@@ -149,3 +149,17 @@ def test_impact_counts_approved_booking(client, session, world):
     imp = client.get("/impact").json()
     assert imp["ore_recuperate"] == 2.0 and imp["oameni_conectati"] == 2
     assert imp["km_economisiti"] == 12.0 and imp["proiecte_active"] == 1
+
+
+# ---- GET /bookings ---------------------------------------------------------
+def test_list_bookings_for_author_and_owner_only(client, session, world):
+    session.add(User(id="u3", nume="Dan", rol="cetatean", cartier="x", lat=44.43, lng=26.10))
+    session.commit()
+    b = client.post("/bookings", json={"idea_id": "i1", "space_id": "s1", "slot": SAT("10:00", "12:00")}, headers=h(world["author"])).json()
+    for uid in (world["author"], world["owner"]):
+        got = client.get("/bookings", headers=h(uid)).json()
+        assert [x["id"] for x in got] == [b["id"]]
+        assert set(got[0]) == {"id", "idea_id", "space_id", "slot", "stare", "created_at", "mesaj"}
+    assert client.get("/bookings", headers=h(world["other"])).json() == []
+    assert client.get("/bookings", headers=h("u3")).json() == []
+    assert client.get("/bookings").status_code == 401

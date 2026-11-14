@@ -252,6 +252,7 @@ class ProiectOut(ORM):
     created_at: UtcDatetime
     updated_at: UtcDatetime
     verificator_id: str | None = None
+    is_demo: bool = False
 
 
 class ProiectDetaliuOut(ProiectOut):
