@@ -31,6 +31,8 @@ class Fezabilitate(BaseModel):
     suprafata_minima_mp: float
     suprafata_recomandata_mp: float | None
     teren: dict
+    interpretare: str = ""  # "Am interpretat propunerea ca: <eticheta>"
+    interpretare_diferita: bool = False  # the label is not what the user typed: the UI asks to confirm or correct
     disclaimer: str = ("Analiză orientativă, din reguli simple ale aplicației. Nu înlocuiește studiul de fezabilitate, "
                        "certificatul de urbanism sau avizele operatorilor de utilități.")
 
@@ -51,7 +53,19 @@ def _teren(space: Any) -> dict:
             "status_verificare": _get(space, "status_verificare")}
 
 
-def analizeaza(spec: Specificatie, suprafata_mp: float | None, space: Any = None, scene: Any = None) -> Fezabilitate:
+GENERIC_MOTIV = ("Propunerea e prea generală: alege un tip de amenajare din listă sau descrie ce vrei să construiești")
+PREA_MIC = 0.5  # below this share of the recommended area the proposal is unrealistic on the plot
+
+
+def _same(a: str, b: str) -> bool:
+    import unicodedata
+    norm = lambda t: "".join(ch for ch in unicodedata.normalize("NFKD", (t or "").lower()) if ch.isalnum())  # noqa: E731
+    return norm(a) == norm(b)
+
+
+def analizeaza(spec: Specificatie, suprafata_mp: float | None, space: Any = None, scene: Any = None,
+               cerut: str | None = None) -> Fezabilitate:
+    """cerut: the kind of project exactly as the user typed it (to say how it was interpreted)."""
     motive: list[str] = []
     reco: list[str] = []
     score = 100
@@ -68,6 +82,12 @@ def analizeaza(spec: Specificatie, suprafata_mp: float | None, space: Any = None
                       f"pentru „{spec.eticheta}”.")
         reco.append(f"Caută un teren de cel puțin {minim:g} mp" + (f" (recomandat {rec:g} mp)" if rec else "") +
                     " sau propune o variantă mai mică a obiectivului.")
+    elif rec and area < rec * PREA_MIC:
+        score -= 60
+        motive.append(f"Terenul are {area:g} mp, sub jumătate din suprafața recomandată de {rec:g} mp pentru "
+                      f"„{spec.eticheta}”: amenajarea nu poate fi realizată aici la o scară utilă.")
+        reco.append(f"Caută un teren de cel puțin {rec * PREA_MIC:g} mp (recomandat {rec:g} mp) sau propune o variantă "
+                    "mai mică a obiectivului.")
     elif rec and area < rec:
         score -= 15
         motive.append(f"Terenul ({area:g} mp) e sub suprafața recomandată de {rec:g} mp: amenajarea va fi redusă.")
@@ -105,21 +125,29 @@ def analizeaza(spec: Specificatie, suprafata_mp: float | None, space: Any = None
         motive.append("Teren demonstrativ (exemplu).")
 
     if spec.sursa_specificatie == "generic":
-        score -= 20
-        motive.append("Aplicația nu are un model tehnic pentru acest tip de obiectiv: specificația e generică.")
-        reco.append("Descrie mai precis ce vrei (componente, pentru cine) sau alege un tip apropiat din listă.")
+        score = min(score - 20, 70)  # never "ok": the app does not know what would be built
+        motive.insert(0, GENERIC_MOTIV)
+        reco.insert(0, "Descrie mai precis ce vrei (componente, pentru cine) sau alege un tip apropiat din listă.")
     elif spec.sursa_specificatie == "llm":
         score -= 10
         motive.append("Specificația a fost propusă automat și nu a fost verificată de un proiectant.")
 
     score = max(0, min(100, score))
-    nivel: Nivel = "nerealist" if (area is not None and area < minim) else "atentie" if score < 75 else "ok"
+    sub_minim = area is not None and area < minim
+    sub_jumatate = area is not None and bool(rec) and area < rec * PREA_MIC
+    nivel: Nivel = "nerealist" if (sub_minim or sub_jumatate) else "atentie" if score < 75 else "ok"
     if nivel == "nerealist":
-        rezumat = f"Propunerea nu este realistă pe acest teren: „{spec.eticheta}” are nevoie de cel puțin {minim:g} mp."
+        score = min(score, 35)
+        nevoie = minim if sub_minim else rec * PREA_MIC
+        rezumat = (f"Propunerea nu este realistă pe acest teren: „{spec.eticheta}” are nevoie de cel puțin "
+                   f"{nevoie:g} mp" + (f" (recomandat {rec:g} mp)." if rec else "."))
     elif nivel == "atentie":
         rezumat = "Propunerea este posibilă, dar sunt aspecte de clarificat înainte de proiectare."
     else:
         rezumat = "Propunerea pare realistă pe acest teren, în limitele unei analize orientative."
     return Fezabilitate(nivel=nivel, scor=score, rezumat=rezumat, motive=motive, recomandari=reco,
                         beneficii=list(spec.beneficii), utilitati=utils, suprafata_mp=area, suprafata_minima_mp=minim,
-                        suprafata_recomandata_mp=rec, teren=_teren(space))
+                        suprafata_recomandata_mp=rec, teren=_teren(space),
+                        interpretare=f"Am interpretat propunerea ca: {spec.eticheta}",
+                        interpretare_diferita=bool(cerut) and not (_same(cerut, spec.eticheta) or
+                                                                   _same(cerut, spec.tip_amenajare)))
