@@ -347,7 +347,7 @@ def test_demo_project(data):
 
 def test_demo_project_events_and_notifications(data):
     events = data.proiect_evenimente
-    assert [e["stare_noua"] for e in events] == ["draft", "trimis", "in_verificare"]
+    assert [e["stare_noua"] for e in events] == ["draft", "publicat", "trimis", "in_verificare"]
     assert [e["created_at"] for e in events] == sorted(e["created_at"] for e in events)
     notes = [n for n in data.notifications if n.get("proiect_id")]
     assert {(n["kind"], n["user_id"]) for n in notes} == {

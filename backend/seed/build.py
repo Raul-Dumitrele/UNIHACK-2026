@@ -57,6 +57,7 @@ class SeedData:
     notifications: list[dict] = field(default_factory=list)
     proiecte: list[dict] = field(default_factory=list)
     proiect_evenimente: list[dict] = field(default_factory=list)
+    voturi: list[dict] = field(default_factory=list)
 
 
 def load_json(name: str) -> dict:
@@ -166,4 +167,5 @@ def build_seed(start: date | None = None) -> SeedData:
         notifications=sorted(notifications, key=lambda n: (n["created_at"], n["id"])),
         proiecte=[proiect],
         proiect_evenimente=events,
+        voturi=proiect_demo.build_votes(extra),
     )

@@ -64,7 +64,7 @@ async def test_project_on_a_listed_lot_has_plan_materials_and_documents(client):
     assert "CC BY 4.0" in mat["sursa_preturi"] and mat["tva"]
 
     docs = {}
-    for name in ("plan.svg", "plan.dxf", "dosar.pdf", "materiale.csv"):
+    for name in ("plan.svg", "plan.dxf", "plansa.pdf", "dosar.pdf", "materiale.xlsx", "materiale.csv"):
         r = await client.get(f"/proiecte/{p['id']}/documente/{name}", headers=as_user(AUTHOR))
         assert r.status_code == 200, (name, r.text)
         assert f'filename="proiect-{p["id"]}-{name}"' in r.headers["content-disposition"]
@@ -73,7 +73,8 @@ async def test_project_on_a_listed_lot_has_plan_materials_and_documents(client):
     assert docs["dosar.pdf"].content.startswith(b"%PDF-1.4") and docs["dosar.pdf"].content.rstrip().endswith(b"%%EOF")
     assert ET.fromstring(docs["plan.svg"].content).tag == "{http://www.w3.org/2000/svg}svg"
     assert docs["plan.dxf"].content.decode("ascii").rstrip().endswith("EOF")
-    assert docs["materiale.csv"].content.decode("utf-8-sig").startswith("articol;denumire;cantitate")
+    assert docs["materiale.csv"].content.decode("utf-8-sig").startswith("capitol;articol;denumire;cantitate")
+    assert docs["materiale.xlsx"].content.startswith(b"PK") and docs["plansa.pdf"].content.startswith(b"%PDF")
 
 
 async def test_documents_are_private_until_sent(client):

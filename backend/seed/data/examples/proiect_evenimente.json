@@ -11,14 +11,23 @@
  {
   "id": "demo-proiect-1-ev-2",
   "proiect_id": "demo-proiect-1",
-  "stare_noua": "trimis",
+  "stare_noua": "publicat",
   "user_id": "demo-user-5",
-  "created_at": "2026-11-07T12:00:00+00:00",
+  "created_at": "2026-11-06T12:00:00+00:00",
   "mesaj": null,
   "is_demo": true
  },
  {
   "id": "demo-proiect-1-ev-3",
+  "proiect_id": "demo-proiect-1",
+  "stare_noua": "trimis",
+  "user_id": "demo-user-3",
+  "created_at": "2026-11-07T12:00:00+00:00",
+  "mesaj": "Pragul de 3 susținători a fost atins.",
+  "is_demo": true
+ },
+ {
+  "id": "demo-proiect-1-ev-4",
   "proiect_id": "demo-proiect-1",
   "stare_noua": "in_verificare",
   "user_id": "demo-user-10",

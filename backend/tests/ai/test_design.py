@@ -52,21 +52,39 @@ def test_deterministic():
 def test_what_does_not_fit_is_listed_with_a_reason():
     s = build_scene("teren_sport", 276, 12.0)  # a 12 m lot is narrower than the smallest court
     assert not s.complet
-    assert s.omise[0].nume == "teren multisport" and "nu mai încape" in s.omise[0].motiv
+    assert s.omise[0].nume.startswith("teren multisport") and "nu mai încape" in s.omise[0].motiv
     tiny = build_scene("foisor", 3)
     assert tiny.elemente == [] and not tiny.complet
 
 
 def test_main_element_fits_on_the_demo_plot_for_every_kind():
+    from backend.ai.proiect.spec import get_specificatie
+
     for tip in KINDS:
-        assert build_scene(tip, 600).complet, tip
+        spec = get_specificatie(tip, 600)
+        if spec.suprafata_minima_mp > 600:  # e.g. parc acvatic: honestly incomplete on 600 mp
+            assert not build_scene(tip, 600).complet, tip
+        else:
+            assert build_scene(tip, 600).complet, tip
 
 
 def test_free_text_kind_gets_a_generic_plan():
-    s = build_scene("Fântână arteziană", 300)
-    assert s.tip_amenajare == "fantana_arteziana"
-    assert s.elemente[1].nume == "zona propusă: fântână arteziană"
+    s = build_scene("Observator astronomic", 300)
+    assert s.tip_amenajare == "observator_astronomic"
+    assert any(e.nume == "zona propusă: observator astronomic" for e in s.elemente)
     assert any("nu are un model" in i for i in s.ipoteze)
+
+
+def test_known_free_text_kinds_get_their_model():
+    from backend.ai.proiect.spec import get_specificatie
+
+    ev = build_scene("stație de încărcare pentru mașini electrice", 80)
+    assert ev.tip_amenajare == "statie_incarcare"
+    names = " ".join(e.nume for e in ev.elemente)
+    assert "încărcare" in names and "tablou" in names and "parcare" in names
+    assert not any("gazon" in e.nume or "cauciuc" in e.nume for e in ev.elemente)
+    assert get_specificatie("fântână arteziană", 20).tip_amenajare == "fantana_publica"
+    assert build_scene("fântână publică", 20).complet
 
 
 def test_synonyms_reach_the_catalog():

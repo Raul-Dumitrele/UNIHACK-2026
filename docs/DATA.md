@@ -550,3 +550,24 @@ python -m backend.ai.llm.sync_registry         # doar pentru dezvoltare: diferen
 - **Ritmul:** respectă RPM-ul și nu planifică mai mult de 80% din cota zilnică (RPD). La OVH lasă 31 s între cererile către același model.
 - **Ordinea și pragul** se schimbă fără un bench nou: `LLM_MIN_PASS_RATE` se aplică la încărcare, iar `LLM_CHAIN` are prioritate.
 
+
+## Specificație, fezabilitate, prețuri cu sursă, documente (15.11, mod solo)
+- `backend/ai/proiect/spec/`: `Specificatie` (Pydantic, strict) e sursa unică pentru plan, materiale, dosar, planșe și 3D.
+  Modele scrise de mână (`modele.py`) pentru 10 tipuri: skatepark, loc de joacă, parc câini, pistă biciclete, grădină comunitară,
+  teren sport, foișor, **stație de încărcare EV**, **fântână publică**, **parc acvatic**. Orice alt tip: LLM cu schemă strictă
+  (fără prețuri, mărimi plafonate, validare), altfel specificație generică marcată ca atare. Toate dimensiunile sunt ipoteze
+  schematice declarate, nu standarde.
+- `fezabilitate.py`: reguli deterministe (suprafață minimă/recomandată, componente obligatorii care nu încap, utilități
+  necunoscute → „de verificat”, sursa terenului). Nivel `nerealist` explică și recomandă; nimic nu e respins tăcut.
+- `acte.py`: documentele publice uzuale pe tip de lucrare (Legea 50/1991 art. 3, 6, 7, 11; avize operatori, DSP, APM, ISU,
+  circulație, cultură), cu emitent și temei; toate „de confirmat” prin certificatul de urbanism; două cereri-tip precompletate.
+  Lista are nevoie de verificare umană înainte de o utilizare reală.
+- `preturi_surse.py`: ordinea surselor de preț: SEAP (≥ 3 observații) → `data/plafoane.json` (plafoane de program oficiale,
+  afișate ca plafon; acum: ghidul AFM stații de reîncărcare, Ordin 1962/2021, plafon per beneficiar) → `data/preturi_catalog.json`
+  (prețuri de catalog verificate în pagină de un script offline; gol la 15.11: magazinele au refuzat accesul automat). Fără
+  sursă → „de cotat” cu motiv. Nicio cifră inventată.
+- `costs.py`: costul e mereu prezent: intervalul din referințe (când există ≥ 2) + suma articolelor cotate + lista celor necotate.
+- `memoriu.py`: memoriu descriptiv pe 9 capitole (LLM în schemă strictă fără sume, șablon determinist altfel).
+- `documente/plansa.py`: planșe A3 (plan de situație + detaliu cu elevație): cartuș fără semnătură/ștampilă, nord, scară numerică
+  și grafică, axe, hașuri, legendă, bilanț teritorial, POT/CUT propuse (orientative). `documente/xlsx.py`: OOXML scris direct.
+- Comunitate: `Vot` (unic per utilizator și proiect), `prag_voturi` implicit 3, trimitere automată la Primărie la prag.

@@ -30,7 +30,7 @@ async def test_free_text_proposal_gets_a_dossier_and_a_plan(client, tip):
     assert p["stare"] == "draft" and p["dosar"]["titlu"]
     assert "Nu reprezintă o autorizație" in p["dosar"]["justificare"]
     plan = (await client.get(f"/proiecte/{p['id']}/plan", headers=as_user(AUTHOR))).json()
-    assert plan["elemente"] and plan["complet"]
+    assert plan["elemente"] and (plan["complet"] or plan["omise"])  # parc acvatic does not fit a small plot
     pdf = await client.get(f"/proiecte/{p['id']}/documente/dosar.pdf", headers=as_user(AUTHOR))
     assert pdf.status_code == 200 and pdf.content.startswith(b"%PDF")
 

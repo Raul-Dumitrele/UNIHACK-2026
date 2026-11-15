@@ -128,7 +128,7 @@ def test_dossier_pdf_text_roundtrip(prices, tmp_path):
 # --- bundle --------------------------------------------------------------------------------------------------
 def test_build_documente_bundle(prices):
     docs = build_documente(PROIECT, SPACE)
-    assert set(docs) == set(MEDIA) == {"plan.svg", "plan.dxf", "dosar.pdf", "materiale.csv"}
+    assert set(docs) == set(MEDIA) == {"plan.svg", "plan.dxf", "plansa.pdf", "dosar.pdf", "materiale.xlsx", "materiale.csv"}
     for name, (content, media) in docs.items():
         assert content and media == MEDIA[name]
     ET.fromstring(docs["plan.svg"][0])
@@ -140,9 +140,9 @@ def test_csv_opens_in_romanian_excel(prices):
     raw = materiale_csv(lista_materiale(build_scene("loc_de_joaca", 600)))
     assert raw.startswith("﻿".encode())
     rows = list(csv.reader(io.StringIO(raw.decode("utf-8-sig")), delimiter=";"))
-    assert rows[0][:4] == ["articol", "denumire", "cantitate", "unitate"]
-    bench = next(r for r in rows if r and r[0] == "banca")
-    assert bench[4] == "1000" and bench[9] == "cotat"
+    assert rows[0][:5] == ["capitol", "articol", "denumire", "cantitate", "unitate"]
+    bench = next(r for r in rows if len(r) > 1 and r[1] == "banca")
+    assert bench[5] == "1000" and bench[11] == "cotat"
     assert any(r and r[0].startswith("Subtotal articole cotate") for r in rows)
 
 

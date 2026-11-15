@@ -1,18 +1,17 @@
-"""build_scene(tip_amenajare, suprafata_mp) -> Scene: a schematic site plan on a rectangular plot.
+"""build_scene(tip_amenajare, suprafata_mp, latime_m=None, spec=None) -> Scene: a schematic site plan.
 
 Deterministic, no AI. Coordinates in metres, origin at the bottom-left corner of the plot, y up (as in CAD).
-Elements are placed row by row (first fit), in catalog order, so the main element comes first. Each
-element keeps its free zone (zona_libera_m) clear of every other element. Whatever does not fit is left
-out and listed in Scene.omise with the reason; nothing is ever drawn overlapping.
+Elements come from the technical specification (backend.ai.proiect.spec): mandatory ones first, then the rest,
+placed row by row (first fit). Each element keeps its free zone clear of every other element. Whatever does
+not fit is listed in Scene.omise with the reason; nothing is ever drawn overlapping.
 """
 import math
 
 from pydantic import BaseModel
 
-from backend.ai.proiect.design.catalog import (
-    ALEE_LATIME_M, CATALOG, MARGINE_M, PISTA_LATIME_M, Spec, generic,
-)
-from backend.ai.references.core import canonical_type, label_for
+from backend.ai.proiect.design.catalog import ALEE_LATIME_M, MARGINE_M, PISTA_LATIME_M, Spec, generic, specs_for
+from backend.ai.proiect.spec import Specificatie, get_specificatie, resolve_type
+from backend.ai.references.core import label_for
 
 PLAN_DISCLAIMER = ("Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile "
                    "sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, "
@@ -31,6 +30,9 @@ class Element(BaseModel):
     lungime_m: float
     zona_libera_m: float = 0.0
     obligatoriu: bool = False
+    categorie: str = "echipament"
+    inaltime_m: float = 0.0  # schematic height, for the 3D view and the elevation sheet
+    componenta: str | None = None  # specification component drawn by this element
 
     @property
     def suprafata_mp(self) -> float:
@@ -54,11 +56,15 @@ class Scene(BaseModel):
     omise: list[Omis]
     complet: bool  # every mandatory element is on the plan
     ipoteze: list[str]
+    sursa_specificatie: str = "model_verificat"
     disclaimer: str = PLAN_DISCLAIMER
 
     @property
     def suprafata_ocupata_mp(self) -> float:
         return round(sum(e.suprafata_mp for e in self.elemente), 2)
+
+    def by_componenta(self, nume: str) -> list[Element]:
+        return [e for e in self.elemente if e.componenta == nume]
 
 
 def fmt(value: float) -> str:
@@ -107,29 +113,33 @@ def _loop_track(x0: float, y0: float, x1: float, y1: float, add) -> tuple[float,
     p = PISTA_LATIME_M
     if x1 - x0 < 2 * p + 2 or y1 - y0 < 2 * p + 2:
         return None
-    add("pistă de biciclete (latura de jos)", "pista", x0, y0, x1 - x0, p, True)
-    add("pistă de biciclete (latura de sus)", "pista", x0, y1 - p, x1 - x0, p, True)
-    add("pistă de biciclete (latura stângă)", "pista", x0, y0 + p, p, y1 - y0 - 2 * p, True)
-    add("pistă de biciclete (latura dreaptă)", "pista", x1 - p, y0 + p, p, y1 - y0 - 2 * p, True)
+    loop = "pistă de biciclete în buclă"
+    add("pistă de biciclete (latura de jos)", "pista", x0, y0, x1 - x0, p, True, 0.0, "finisaj", 0.05, loop)
+    add("pistă de biciclete (latura de sus)", "pista", x0, y1 - p, x1 - x0, p, True, 0.0, "finisaj", 0.05, loop)
+    add("pistă de biciclete (latura stângă)", "pista", x0, y0 + p, p, y1 - y0 - 2 * p, True, 0.0, "finisaj", 0.05, loop)
+    add("pistă de biciclete (latura dreaptă)", "pista", x1 - p, y0 + p, p, y1 - y0 - 2 * p, True, 0.0, "finisaj", 0.05, loop)
     return x0 + p, y0 + p, x1 - p, y1 - p
 
 
-def build_scene(tip_amenajare: str, suprafata_mp: float, latime_m: float | None = None) -> Scene:
-    """Any proposal: known kinds use the catalog, anything else gets one main zone plus furniture.
+def build_scene(tip_amenajare: str, suprafata_mp: float, latime_m: float | None = None,
+                spec: Specificatie | None = None) -> Scene:
+    """Any proposal: the specification decides what is drawn (hand-written model, LLM, or generic).
     latime_m: plot width when known (e.g. a 12 m lot); otherwise a 2:3 rectangle of the given area."""
     if not suprafata_mp or suprafata_mp <= 0:
         raise ValueError("suprafata_mp trebuie să fie pozitivă")
-    tip = canonical_type(tip_amenajare) or "amenajare"
-    eticheta = label_for(tip_amenajare)
+    spec = spec or get_specificatie(tip_amenajare, suprafata_mp)
+    tip = spec.tip_amenajare or resolve_type(tip_amenajare) or "amenajare"
+    eticheta = spec.eticheta or label_for(tip_amenajare)
     w, h = _plot_size(float(suprafata_mp), latime_m)
-    x0, y0, x1, y1 = MARGINE_M, MARGINE_M, w - MARGINE_M, h - MARGINE_M
+    margin = min(MARGINE_M, round(min(w, h) / 8, 2))
+    x0, y0, x1, y1 = margin, margin, w - margin, h - margin
     elements: list[Element] = []
     omitted: list[Omis] = []
 
-    def add(nume, kind, x, y, ew, eh, mandatory=False, pad=0.0):
+    def add(nume, kind, x, y, ew, eh, mandatory=False, pad=0.0, categorie="echipament", height=0.0, comp=None):
         elements.append(Element(id=f"e{len(elements) + 1}", nume=nume, tip=kind, x=round(x, 2), y=round(y, 2),
                                 latime_m=round(ew, 2), lungime_m=round(eh, 2), zona_libera_m=pad,
-                                obligatoriu=mandatory))
+                                obligatoriu=mandatory, categorie=categorie, inaltime_m=height, componenta=comp))
 
     ipoteze = [
         (f"Lățimea terenului: {fmt(w)} m (dată); lungimea rezultă din suprafață: {fmt(h)} m."
@@ -138,13 +148,17 @@ def build_scene(tip_amenajare: str, suprafata_mp: float, latime_m: float | None 
          f"cu aceeași suprafață."),
         "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, "
         "nu valori din standarde sau din fișe de produs.",
-        f"Pe contur rămâne o margine liberă de {fmt(MARGINE_M)} m (împrejmuire, vegetație).",
+        f"Pe contur rămâne o margine liberă de {fmt(margin)} m (împrejmuire, vegetație).",
     ]
-    specs = CATALOG.get(tip)
-    if specs is None:
+    specs = specs_for(spec)
+    if not specs:
         specs = generic(eticheta, max(x1 - x0, 0.1), max(y1 - y0 - ALEE_LATIME_M, 0.1))
-        ipoteze.append(f"Pentru „{eticheta}” aplicația nu are un model de amenajare: planul arată doar zona "
+    if spec.sursa_specificatie == "generic":
+        ipoteze.append(f"Pentru „{eticheta}” aplicația nu are un model de amenajare verificat: planul arată doar zona "
                        "propusă și mobilierul de bază.")
+    elif spec.sursa_specificatie == "llm":
+        ipoteze.append("Componentele au fost propuse automat (model de limbaj) și validate doar ca formă.")
+    wants_alee = any(c.derivat_din == "plan_alee" for c in spec.componente)
 
     if x1 - x0 <= 0 or y1 - y0 <= 0:
         area = None
@@ -156,35 +170,37 @@ def build_scene(tip_amenajare: str, suprafata_mp: float, latime_m: float | None 
                                       f"{fmt(PISTA_LATIME_M)} m lățime"))
             area = (x0, y0, x1, y1)
         ipoteze.append(f"Pista e o buclă de {fmt(PISTA_LATIME_M)} m lățime pe conturul terenului.")
-    elif y1 - y0 > ALEE_LATIME_M + 1:
-        add("alee de acces", "alee", x0, y0, x1 - x0, ALEE_LATIME_M)
+    elif wants_alee and y1 - y0 > ALEE_LATIME_M + 1:
+        add("alee de acces", "alee", x0, y0, x1 - x0, ALEE_LATIME_M, False, 0.0, "finisaj", 0.0, "alee de acces pavată")
         ipoteze.append(f"Intrarea e pe latura de jos, cu o alee de {fmt(ALEE_LATIME_M)} m.")
         area = (x0, y0 + ALEE_LATIME_M, x1, y1)
     else:
         area = (x0, y0, x1, y1)
 
     packer = _Packer(*area) if area else None
-    for spec in specs:
+    for s in specs:
         placed = 0
-        for i in range(spec.bucati):
+        for i in range(s.bucati):
             spot = None
-            for ew, eh in _sizes(spec):
-                spot = packer.place(ew, eh, spec.zona_libera_m) if packer else None
+            for ew, eh in _sizes(s):
+                spot = packer.place(ew, eh, s.zona_libera_m) if packer else None
                 if spot:
                     break
             if not spot:
                 break
-            nume = f"{spec.nume} {i + 1}" if spec.bucati > 1 else spec.nume
-            add(nume, spec.tip, spot[0], spot[1], ew, eh, spec.obligatoriu, spec.zona_libera_m)
+            nume = f"{s.nume} {i + 1}" if s.bucati > 1 else s.nume
+            add(nume, s.tip, spot[0], spot[1], ew, eh, s.obligatoriu, s.zona_libera_m, s.categorie, s.inaltime_m,
+                s.componenta)
             placed += 1
-        if placed < spec.bucati:
-            missing = spec.bucati - placed
-            smallest = _sizes(spec)[-1]
-            need = f"{fmt(smallest[0] + 2 * spec.zona_libera_m)} × {fmt(smallest[1] + 2 * spec.zona_libera_m)} m"
-            omitted.append(Omis(nume=spec.nume, bucati=missing, obligatoriu=spec.obligatoriu,
+        if placed < s.bucati:
+            missing = s.bucati - placed
+            smallest = _sizes(s)[-1]
+            need = f"{fmt(smallest[0] + 2 * s.zona_libera_m)} × {fmt(smallest[1] + 2 * s.zona_libera_m)} m"
+            omitted.append(Omis(nume=s.nume, bucati=missing, obligatoriu=s.obligatoriu,
                                 motiv=f"nu mai încape pe teren (are nevoie de cel puțin {need}, "
                                       "cu zona liberă din jur)"))
 
     complet = not any(o.obligatoriu for o in omitted)
     return Scene(tip_amenajare=tip, eticheta=eticheta, suprafata_mp=float(suprafata_mp), latime_m=w,
-                 lungime_m=h, elemente=elements, omise=omitted, complet=complet, ipoteze=ipoteze)
+                 lungime_m=h, elemente=elements, omise=omitted, complet=complet, ipoteze=ipoteze,
+                 sursa_specificatie=spec.sursa_specificatie)

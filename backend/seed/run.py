@@ -14,7 +14,7 @@ from backend.seed.build import SeedData, build_seed
 from backend.seed.contract import contract_rows
 
 # Insert order respects foreign keys: users -> spaces -> ideas -> interests/bookings -> proiecte -> notifications.
-TABLES = ["User", "Space", "Idea", "Interest", "Booking", "Proiect", "ProiectEveniment", "Notification"]
+TABLES = ["User", "Space", "Idea", "Interest", "Booking", "Proiect", "ProiectEveniment", "Vot", "Notification"]
 
 
 def upsert(session: Session, model: type[SQLModel], rows: list[dict]) -> int:

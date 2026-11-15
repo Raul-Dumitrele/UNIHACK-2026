@@ -100,17 +100,17 @@
   "created_at": "2026-11-04T17:10:00+00:00"
  },
  {
-  "id": "demo-proiect-1-ev-2-notif-demo-user-5",
+  "id": "demo-proiect-1-ev-3-notif-demo-user-5",
   "user_id": "demo-user-5",
   "idea_id": "demo-idea-8",
   "booking_id": null,
   "proiect_id": "demo-proiect-1",
-  "mesaj": "Propunerea „Skatepark mic pe terenul liber din Fabric” a fost trimisă către Primărie.",
+  "mesaj": "Propunerea „Skatepark mic pe terenul liber din Fabric” a fost trimisă către Primărie. Mesaj: Pragul de 3 susținători a fost atins.",
   "citita": false,
   "created_at": "2026-11-07T12:00:00+00:00"
  },
  {
-  "id": "demo-proiect-1-ev-2-notif-demo-user-9",
+  "id": "demo-proiect-1-ev-3-notif-demo-user-9",
   "user_id": "demo-user-9",
   "idea_id": "demo-idea-8",
   "booking_id": null,
@@ -120,7 +120,7 @@
   "created_at": "2026-11-07T12:00:00+00:00"
  },
  {
-  "id": "demo-proiect-1-ev-3-notif-demo-user-5",
+  "id": "demo-proiect-1-ev-4-notif-demo-user-5",
   "user_id": "demo-user-5",
   "idea_id": "demo-idea-8",
   "booking_id": null,

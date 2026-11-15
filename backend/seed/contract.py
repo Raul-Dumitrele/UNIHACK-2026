@@ -105,8 +105,12 @@ def contract_rows(data: SeedData) -> dict[str, list[dict]]:
             "verificator_id": _verifier(p["id"], data.proiect_evenimente, users),
             "tip_amenajare": p["tip_amenajare"], "suprafata_mp": p["suprafata_mp"], "stare": p["stare"],
             "dosar": p["dosar"], "referinte": p["referinte"], "cost": p["cost"],
+            "specificatie": p.get("specificatie"), "fezabilitate": p.get("fezabilitate"),
+            "voturi": p.get("voturi", 0), "prag_voturi": p.get("prag_voturi", 3),
             "created_at": p["created_at"], "updated_at": p["updated_at"], "is_demo": True,
         } for p in data.proiecte],
+        "Vot": [{"id": v["id"], "proiect_id": v["proiect_id"], "user_id": v["user_id"], "created_at": v["created_at"]}
+                for v in data.voturi],
         "ProiectEveniment": [{
             "id": e["id"], "proiect_id": e["proiect_id"], "user_id": e["user_id"], "stare_noua": e["stare_noua"],
             "mesaj": e.get("mesaj"), "created_at": e["created_at"],

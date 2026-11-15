@@ -4,5 +4,11 @@
  "km_economisiti": 7.6,
  "proiecte_active": 7,
  "proiecte_trimise": 1,
- "proiecte_cu_acord": 0
+ "proiecte_cu_acord": 0,
+ "proiecte_propuse": 1,
+ "proiecte_publicate": 0,
+ "proiecte_peste_prag": 1,
+ "voturi_total": 3,
+ "oameni_implicati": 4,
+ "terenuri_libere": 24
 }

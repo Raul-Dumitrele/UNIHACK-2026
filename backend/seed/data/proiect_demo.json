@@ -26,11 +26,19 @@
   "proiect": {
     "id": "demo-proiect-1",
     "tip_amenajare": "skatepark",
+    "prag_voturi": 3,
     "created_at": "2026-11-06T10:00:00+00:00"
   },
+  "voturi": [
+    {"user_id": "demo-user-1", "created_at": "2026-11-06T18:00:00+00:00"},
+    {"user_id": "demo-user-2", "created_at": "2026-11-07T08:30:00+00:00"},
+    {"user_id": "demo-user-3", "created_at": "2026-11-07T11:45:00+00:00"}
+  ],
   "evenimente": [
     {"stare_noua": "draft", "user_id": "demo-user-5", "created_at": "2026-11-06T10:00:00+00:00", "mesaj": null},
-    {"stare_noua": "trimis", "user_id": "demo-user-5", "created_at": "2026-11-07T12:00:00+00:00", "mesaj": null},
+    {"stare_noua": "publicat", "user_id": "demo-user-5", "created_at": "2026-11-06T12:00:00+00:00", "mesaj": null},
+    {"stare_noua": "trimis", "user_id": "demo-user-3", "created_at": "2026-11-07T12:00:00+00:00",
+     "mesaj": "Pragul de 3 susținători a fost atins."},
     {"stare_noua": "in_verificare", "user_id": "demo-user-10", "created_at": "2026-11-10T09:00:00+00:00",
      "mesaj": "Dosarul a fost preluat pentru verificare."}
   ]

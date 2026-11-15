@@ -117,8 +117,13 @@ def score_plot(space: Any, tip_amenajare: str, suprafata_minima: float | None,
         parts.append("mult mai mare decât e nevoie")
     if listed:
         parts.append("din lista Primăriei (Legea 15/2003), de confirmat: poate fi atribuit între timp")
-    if demo:
-        parts.append("teren fictiv (exemplu)")
+    sursa = _get(space, "sursa", "source")
+    if sursa == "osm":
+        parts.append("candidat din OpenStreetMap, neconfirmat (proprietar și regim juridic necunoscute)")
+    elif sursa == "marcat_de_utilizator":
+        parts.append("marcat pe hartă de un locuitor, neverificat")
+    elif demo and not listed:
+        parts.append("teren demonstrativ (exemplu)")
     motiv = "; ".join(parts) + "."
     return PlotCandidate(
         space_id=str(_get(space, "id")), nume=str(_get(space, "name", "nume", default="")),

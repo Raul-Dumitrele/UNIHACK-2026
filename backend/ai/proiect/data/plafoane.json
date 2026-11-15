@@ -1,0 +1,17 @@
+{
+  "nota": "Plafoane de finanțare din programe publice oficiale. Nivel 'program' = plafon per beneficiar (nu preț per articol); nivel 'articol' = plafon exprimat per unitate, legat de un articol din listele de materiale. Fiecare rând are sursa și data accesării. Nu sunt prețuri de piață.",
+  "plafoane": [
+    {
+      "nivel": "program",
+      "program": "AFM – Programul privind reducerea emisiilor de gaze cu efect de seră în transporturi, prin promovarea infrastructurii pentru vehiculele de transport rutier nepoluant din punct de vedere energetic: stații de reîncărcare pentru vehicule electrice în localități (Ordinul nr. 1962/2021, ghid de finanțare)",
+      "tipuri": ["statie_incarcare"],
+      "descriere": "Finanțare nerambursabilă de până la 100% din cheltuielile eligibile; suma maximă pe beneficiar depinde de rangul localității (municipiu de rang I, cum este Timișoara: maximum 4.000.000 lei; municipiu de rang II: 3.000.000 lei; oraș: 2.000.000 lei; comună: 1.000.000 lei).",
+      "valoare_lei": 4000000,
+      "unitate": "per beneficiar (municipiu de rang I)",
+      "sursa_url": "https://www.afm.ro/main/programe/statii_reincarcare/2021/ordin_1962-21_12_2021-aprobare_ghid_finantare_statii_reincarcare.pdf",
+      "sursa_pagina": "https://www.afm.ro/statii_reincarcare_ghid_finantare.php",
+      "data_accesarii": "2026-11-15",
+      "nota": "Sesiunea 2021–2022 s-a închis la 12 august 2022 sau la epuizarea bugetului; plafonul e util ca ordin de mărime al sprijinului public, nu ca sursă de finanțare garantată. Ghidul nu precizează un plafon per punct de încărcare."
+    }
+  ]
+}

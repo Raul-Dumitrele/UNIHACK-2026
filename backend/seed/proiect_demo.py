@@ -5,11 +5,8 @@ Offline and deterministic: references come from the local base only (no live sea
 from the template (no Gemini). Proiect/ProiectEveniment are written by run.py once P1 defines the
 models; until then they are skipped and exported as JSON by export_examples.
 """
-from backend.ai.costs import estimate_cost
 from backend.ai.geo import neighborhood_point
-from backend.ai.proiect import template_dosar
-from backend.ai.references import local_references, type_label
-from backend.ai.references.core import rank
+from backend.ai.references import type_label
 
 FILE = "proiect_demo.json"
 STATE_TEXT = {
@@ -43,22 +40,30 @@ def build_teren(extra: dict) -> dict:
 
 
 def build_proiect(extra: dict, idea: dict, teren: dict) -> tuple[dict, list[dict]]:
+    from backend.ai.proiect.pipeline import build_proiect as pipeline  # offline: use_llm=False, local references
+
     spec, events = extra["proiect"], extra["evenimente"]
     tip, area = spec["tip_amenajare"], teren["suprafata_mp"]
-    refs = rank(local_references(tip, include_cache=False), area)
-    cost = estimate_cost(refs, area)
-    dosar = template_dosar(idea, teren, tip, area, refs, cost)  # no Gemini: the seed stays offline
+    space = {**teren, "nume": teren["name"], "cartier": teren["neighborhood"], "sursa": teren["source"]}
+    r = pipeline(idea, space, tip, area, idea.get("text"), use_llm=False)
+    votes = extra.get("voturi", [])
     proiect = {
         "id": spec["id"], "idea_id": idea["id"], "space_id": teren["id"], "autor_id": idea["author_id"],
-        "tip_amenajare": tip, "suprafata_mp": area, "stare": events[-1]["stare_noua"],
-        "dosar": dosar.model_dump(mode="json"),
-        "referinte": [r.model_dump(mode="json") for r in refs],
-        "cost": cost.model_dump(mode="json"),
+        "tip_amenajare": r["tip_amenajare"], "suprafata_mp": area, "stare": events[-1]["stare_noua"],
+        "dosar": r["dosar"], "referinte": r["referinte"], "cost": r["cost"],
+        "specificatie": r["specificatie"], "fezabilitate": r["fezabilitate"],
+        "voturi": len(votes), "prag_voturi": spec.get("prag_voturi", 3),
         "created_at": spec["created_at"], "updated_at": events[-1]["created_at"], "is_demo": True,
     }
     rows = [{"id": f"{spec['id']}-ev-{n}", "proiect_id": spec["id"], **e, "is_demo": True}
             for n, e in enumerate(events, 1)]
     return proiect, rows
+
+
+def build_votes(extra: dict) -> list[dict]:
+    pid = extra["proiect"]["id"]
+    return [{"id": f"{pid}-vot-{v['user_id']}", "proiect_id": pid, "user_id": v["user_id"],
+             "created_at": v["created_at"], "is_demo": True} for v in extra.get("voturi", [])]
 
 
 def build_notifications(proiect: dict, events: list[dict], idea: dict, users: list[dict]) -> list[dict]:

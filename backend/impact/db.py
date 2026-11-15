@@ -61,12 +61,21 @@ def compute_impact(session):
         km += max(count - len(homes), 0) * KM_PER_PARTICIPANT
     alive = {b.idea_id for b in approved} | {i.id for i in ideas.values() if i.stare == "rezervata"}
     people = set().union(*(interested[i] for i in alive)) if alive else set()
-    stari = [p.stare for p in session.exec(select(models.Proiect)).all()] if hasattr(models, "Proiect") else []
+    proiecte = list(session.exec(select(models.Proiect)).all()) if hasattr(models, "Proiect") else []
+    stari = [p.stare for p in proiecte]
+    voturi = list(session.exec(select(models.Vot)).all()) if hasattr(models, "Vot") else []
+    terenuri = session.exec(select(Space).where(Space.tip == "teren_liber")).all()
     return Impact(
+        proiecte_propuse=len(proiecte),
+        proiecte_publicate=sum(1 for s in stari if s == "publicat"),
+        proiecte_peste_prag=sum(1 for p in proiecte if getattr(p, "voturi", 0) >= getattr(p, "prag_voturi", 3)),
+        voturi_total=len(voturi),
+        oameni_implicati=len({v.user_id for v in voturi} | {p.autor_id for p in proiecte}),
+        terenuri_libere=len(terenuri),
         ore_recuperate=round(sum(_hours(b.slot or {}) for b in approved), 1),
         oameni_conectati=len(people),
         km_economisiti=round(km, 1),
         proiecte_active=sum(1 for i in ideas.values() if i.stare in ("prag_atins", "rezervata")),
-        proiecte_trimise=sum(1 for s in stari if s != PROIECT_DRAFT),
+        proiecte_trimise=sum(1 for s in stari if s not in (PROIECT_DRAFT, "publicat")),
         proiecte_cu_acord=sum(1 for s in stari if s == PROIECT_ACORD),
     )

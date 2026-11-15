@@ -155,8 +155,12 @@ class PretUnitar(BaseModel):
     min_lei: float
     max_lei: float
     observatii: int
-    surse: list[str]  # DA numbers closest to the median
+    surse: list[str]  # DA numbers closest to the median (SEAP) or page URLs (catalog)
     perioada: str  # "2023-10-02 – 2026-09-30"
+    tip_sursa: str = "seap"  # seap | plafon | catalog
+    sursa_url: str | None = None
+    data_accesarii: str | None = None
+    nota: str | None = None
 
 
 @lru_cache(maxsize=1)

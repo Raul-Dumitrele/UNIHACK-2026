@@ -1,0 +1,4 @@
+{
+  "nota": "Prețuri de catalog de pe pagini comerciale publice (nu standarde; pot varia). Se completează DOAR cu scriptul offline backend/seed/fetch_preturi_catalog.py, care deschide pagina, verifică faptul că cifra apare în textul ei și scrie 'verificat': true. Rândurile neverificate sunt ignorate de aplicație. La 2026-11-15 magazinele încercate (dedeman.ro, leroymerlin.ro, e-charge.ro) au refuzat accesul automat, deci lista este goală: articolele fără SEAP rămân 'de cotat'.",
+  "preturi": []
+}

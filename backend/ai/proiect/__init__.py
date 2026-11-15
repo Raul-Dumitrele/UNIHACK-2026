@@ -115,7 +115,8 @@ class DosarDraft(BaseModel):
 
 
 class Dosar(BaseModel):
-    """Contract shape. Built only by finalize(), after the cost sentence and disclaimer are added."""
+    """Contract shape. Built only by finalize(), after the cost sentence and disclaimer are added.
+    memoriu / acte / cereri_tip are filled by backend.ai.proiect.pipeline (additive, may be empty)."""
 
     titlu: str
     descriere: str
@@ -125,6 +126,10 @@ class Dosar(BaseModel):
     riscuri: list[str]
     lista_verificare: list[str]
     referinte_citate: list[str]
+    memoriu: dict[str, str] = {}
+    acte: list[dict] = []
+    acte_disclaimer: str = ""
+    cereri_tip: list[dict] = []
 
 
 def _draft_text(d: DosarDraft) -> str:
