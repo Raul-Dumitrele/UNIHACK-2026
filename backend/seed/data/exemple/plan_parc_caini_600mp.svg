@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1044" viewBox="0 0 720 1044" font-family="Arial, Helvetica, sans-serif" font-size="12">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1060" viewBox="0 0 720 1060" font-family="Arial, Helvetica, sans-serif" font-size="12">
 <title>Plan schematic: parc pentru câini, 600 mp</title>
-<rect width="720" height="1044" fill="#ffffff"/>
+<rect width="720" height="1060" fill="#ffffff"/>
 <text x="64" y="28" font-size="18" font-weight="bold">Plan schematic: parc pentru câini, 600 mp</text>
 <text x="64" y="48" fill="#555">parc pentru câini · teren de 600 mp (20 × 30 m) · plan schematic</text>
 <g id="TEREN">
@@ -28,19 +28,18 @@
 <rect id="e10" x="88.27" y="273.87" width="11.20" height="11.20" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 1</title></rect>
 <rect x="105.07" y="268.27" width="22.40" height="22.40" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
 <rect id="e11" x="110.67" y="273.87" width="11.20" height="11.20" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 2</title></rect>
+<rect x="127.47" y="277.6" width="26.13" height="13.07" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e12" x="133.07" y="283.2" width="14.93" height="1.87" fill="#cccccc" stroke="#333" stroke-width="1"><title>panou cu regulamentul de folosire</title></rect>
 </g>
 <g id="TEXT">
 <text x="250.67" y="607.33" text-anchor="middle" font-size="11">1</text>
-<text x="204.00" y="509.34" text-anchor="middle" font-size="11">2</text>
+<text x="204.0" y="509.33" text-anchor="middle" font-size="11">2</text>
 <text x="166.67" y="360.00" text-anchor="middle" font-size="11">3</text>
-<text x="344.00" y="574.66" text-anchor="middle" font-size="11">4</text>
-<text x="372.94" y="583.07" text-anchor="middle" font-size="8">5</text>
-<text x="393.47" y="583.07" text-anchor="middle" font-size="8">6</text>
-<text x="276.80" y="410.40" text-anchor="middle" font-size="8">7</text>
-<text x="329.07" y="410.40" text-anchor="middle" font-size="8">8</text>
-<text x="381.33" y="410.40" text-anchor="middle" font-size="8">9</text>
-<text x="93.87" y="283.47" text-anchor="middle" font-size="8">10</text>
-<text x="116.27" y="283.47" text-anchor="middle" font-size="8">11</text>
+<text x="344.0" y="574.67" text-anchor="middle" font-size="11">4</text>
+<text x="383.2" y="571.40" text-anchor="middle" font-size="8">5–6</text>
+<text x="329.07" y="397.80" text-anchor="middle" font-size="8">7–9</text>
+<text x="105.07" y="270.87" text-anchor="middle" font-size="8">10–11</text>
+<text x="140.53" y="280.20" text-anchor="middle" font-size="8">12</text>
 </g>
 <g id="COTE" stroke="#000" stroke-width="1">
 <line x1="64.0" y1="658.0" x2="437.33" y2="658.0"/>
@@ -64,12 +63,13 @@
 <text x="64" y="836.0">9. bancă 3 (1,8 × 0,6 m)</text>
 <text x="64" y="852.0">10. coș de gunoi 1 (0,6 × 0,6 m)</text>
 <text x="64" y="868.0">11. coș de gunoi 2 (0,6 × 0,6 m)</text>
-<text x="64" y="900.0" font-size="11" fill="#555">Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași</text>
-<text x="64" y="916.0" font-size="11" fill="#555">suprafață.</text>
-<text x="64" y="932.0" font-size="11" fill="#555">Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu</text>
-<text x="64" y="948.0" font-size="11" fill="#555">valori din standarde sau din fișe de produs.</text>
-<text x="64" y="964.0" font-size="11" fill="#555">Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).</text>
-<text x="64" y="980.0" font-size="11" fill="#555">Intrarea e pe latura de jos, cu o alee de 1,5 m.</text>
-<text x="64" y="996.0" font-size="11" fill="#555">Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de</text>
-<text x="64" y="1012.0" font-size="11" fill="#555">lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.</text>
+<text x="64" y="884.0">12. panou cu regulamentul de folosire (0,8 × 0,1 m)</text>
+<text x="64" y="916.0" font-size="11" fill="#555">Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași</text>
+<text x="64" y="932.0" font-size="11" fill="#555">suprafață.</text>
+<text x="64" y="948.0" font-size="11" fill="#555">Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu</text>
+<text x="64" y="964.0" font-size="11" fill="#555">valori din standarde sau din fișe de produs.</text>
+<text x="64" y="980.0" font-size="11" fill="#555">Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).</text>
+<text x="64" y="996.0" font-size="11" fill="#555">Intrarea e pe latura de jos, cu o alee de 1,5 m.</text>
+<text x="64" y="1012.0" font-size="11" fill="#555">Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de</text>
+<text x="64" y="1028.0" font-size="11" fill="#555">lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.</text>
 </svg>

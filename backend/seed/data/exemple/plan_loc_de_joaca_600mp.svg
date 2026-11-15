@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1028" viewBox="0 0 720 1028" font-family="Arial, Helvetica, sans-serif" font-size="12">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1076" viewBox="0 0 720 1076" font-family="Arial, Helvetica, sans-serif" font-size="12">
 <title>Plan schematic: loc de joacă, 600 mp</title>
-<rect width="720" height="1028" fill="#ffffff"/>
+<rect width="720" height="1076" fill="#ffffff"/>
 <text x="64" y="28" font-size="18" font-weight="bold">Plan schematic: loc de joacă, 600 mp</text>
 <text x="64" y="48" fill="#555">loc de joacă · teren de 600 mp (20 × 30 m) · plan schematic</text>
 <g id="TEREN">
@@ -16,28 +16,34 @@
 <rect id="e4" x="92.0" y="393.33" width="56.00" height="56.00" fill="#f2c48d" stroke="#333" stroke-width="1"><title>nisipar</title></rect>
 <rect x="157.33" y="391.47" width="112.00" height="67.20" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
 <rect id="e5" x="185.33" y="419.47" width="56.00" height="11.20" fill="#f2c48d" stroke="#333" stroke-width="1"><title>balansoar</title></rect>
+<rect x="381.33" y="572.53" width="16.80" height="16.80" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e6" x="386.93" y="578.13" width="5.60" height="5.60" fill="#cccccc" stroke="#333" stroke-width="1"><title>stâlp de iluminat LED 1</title></rect>
+<rect x="398.13" y="572.53" width="16.80" height="16.80" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e7" x="403.73" y="578.13" width="5.60" height="5.60" fill="#cccccc" stroke="#333" stroke-width="1"><title>stâlp de iluminat LED 2</title></rect>
 <rect x="269.33" y="428.8" width="52.27" height="29.87" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
-<rect id="e6" x="278.67" y="438.13" width="33.60" height="11.20" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 1</title></rect>
+<rect id="e8" x="278.67" y="438.13" width="33.60" height="11.20" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 1</title></rect>
 <rect x="321.6" y="428.8" width="52.27" height="29.87" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
-<rect id="e7" x="330.93" y="438.13" width="33.60" height="11.20" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 2</title></rect>
+<rect id="e9" x="330.93" y="438.13" width="33.60" height="11.20" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 2</title></rect>
 <rect x="82.67" y="354.13" width="52.27" height="29.87" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
-<rect id="e8" x="92.0" y="363.47" width="33.60" height="11.20" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 3</title></rect>
-<rect x="381.33" y="566.93" width="22.40" height="22.40" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
-<rect id="e9" x="386.93" y="572.53" width="11.20" height="11.20" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 1</title></rect>
+<rect id="e10" x="92.0" y="363.47" width="33.60" height="11.20" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 3</title></rect>
 <rect x="373.87" y="436.27" width="22.40" height="22.40" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
-<rect id="e10" x="379.47" y="441.87" width="11.20" height="11.20" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 2</title></rect>
+<rect id="e11" x="379.47" y="441.87" width="11.20" height="11.20" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 1</title></rect>
+<rect x="396.27" y="436.27" width="22.40" height="22.40" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e12" x="401.87" y="441.87" width="11.20" height="11.20" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 2</title></rect>
+<rect x="134.93" y="370.93" width="26.13" height="13.07" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e13" x="140.53" y="376.53" width="14.93" height="1.87" fill="#cccccc" stroke="#333" stroke-width="1"><title>panou cu regulamentul de folosire</title></rect>
 </g>
 <g id="TEXT">
 <text x="250.67" y="607.33" text-anchor="middle" font-size="11">1</text>
 <text x="166.67" y="528.00" text-anchor="middle" font-size="11">2</text>
-<text x="316.00" y="542.00" text-anchor="middle" font-size="11">3</text>
-<text x="120.00" y="425.33" text-anchor="middle" font-size="11">4</text>
-<text x="213.33" y="429.07" text-anchor="middle" font-size="8">5</text>
-<text x="295.47" y="447.73" text-anchor="middle" font-size="8">6</text>
-<text x="347.73" y="447.73" text-anchor="middle" font-size="8">7</text>
-<text x="108.80" y="373.07" text-anchor="middle" font-size="8">8</text>
-<text x="392.53" y="582.13" text-anchor="middle" font-size="8">9</text>
-<text x="385.07" y="451.47" text-anchor="middle" font-size="8">10</text>
+<text x="316.0" y="542.00" text-anchor="middle" font-size="11">3</text>
+<text x="120.0" y="425.33" text-anchor="middle" font-size="11">4</text>
+<text x="213.33" y="416.47" text-anchor="middle" font-size="8">5</text>
+<text x="398.13" y="575.13" text-anchor="middle" font-size="8">6–7</text>
+<text x="321.6" y="435.13" text-anchor="middle" font-size="8">8–9</text>
+<text x="108.8" y="360.47" text-anchor="middle" font-size="8">10</text>
+<text x="396.27" y="438.87" text-anchor="middle" font-size="8">11–12</text>
+<text x="148.0" y="373.53" text-anchor="middle" font-size="8">13</text>
 </g>
 <g id="COTE" stroke="#000" stroke-width="1">
 <line x1="64.0" y1="658.0" x2="437.33" y2="658.0"/>
@@ -55,17 +61,20 @@
 <text x="64" y="740.0">3. leagăne (4 × 2,5 m)</text>
 <text x="64" y="756.0">4. nisipar (3 × 3 m)</text>
 <text x="64" y="772.0">5. balansoar (3 × 0,6 m)</text>
-<text x="64" y="788.0">6. bancă 1 (1,8 × 0,6 m)</text>
-<text x="64" y="804.0">7. bancă 2 (1,8 × 0,6 m)</text>
-<text x="64" y="820.0">8. bancă 3 (1,8 × 0,6 m)</text>
-<text x="64" y="836.0">9. coș de gunoi 1 (0,6 × 0,6 m)</text>
-<text x="64" y="852.0">10. coș de gunoi 2 (0,6 × 0,6 m)</text>
-<text x="64" y="884.0" font-size="11" fill="#555">Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași</text>
-<text x="64" y="900.0" font-size="11" fill="#555">suprafață.</text>
-<text x="64" y="916.0" font-size="11" fill="#555">Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu</text>
-<text x="64" y="932.0" font-size="11" fill="#555">valori din standarde sau din fișe de produs.</text>
-<text x="64" y="948.0" font-size="11" fill="#555">Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).</text>
-<text x="64" y="964.0" font-size="11" fill="#555">Intrarea e pe latura de jos, cu o alee de 1,5 m.</text>
-<text x="64" y="980.0" font-size="11" fill="#555">Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de</text>
-<text x="64" y="996.0" font-size="11" fill="#555">lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.</text>
+<text x="64" y="788.0">6. stâlp de iluminat LED 1 (0,3 × 0,3 m)</text>
+<text x="64" y="804.0">7. stâlp de iluminat LED 2 (0,3 × 0,3 m)</text>
+<text x="64" y="820.0">8. bancă 1 (1,8 × 0,6 m)</text>
+<text x="64" y="836.0">9. bancă 2 (1,8 × 0,6 m)</text>
+<text x="64" y="852.0">10. bancă 3 (1,8 × 0,6 m)</text>
+<text x="64" y="868.0">11. coș de gunoi 1 (0,6 × 0,6 m)</text>
+<text x="64" y="884.0">12. coș de gunoi 2 (0,6 × 0,6 m)</text>
+<text x="64" y="900.0">13. panou cu regulamentul de folosire (0,8 × 0,1 m)</text>
+<text x="64" y="932.0" font-size="11" fill="#555">Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași</text>
+<text x="64" y="948.0" font-size="11" fill="#555">suprafață.</text>
+<text x="64" y="964.0" font-size="11" fill="#555">Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu</text>
+<text x="64" y="980.0" font-size="11" fill="#555">valori din standarde sau din fișe de produs.</text>
+<text x="64" y="996.0" font-size="11" fill="#555">Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).</text>
+<text x="64" y="1012.0" font-size="11" fill="#555">Intrarea e pe latura de jos, cu o alee de 1,5 m.</text>
+<text x="64" y="1028.0" font-size="11" fill="#555">Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de</text>
+<text x="64" y="1044.0" font-size="11" fill="#555">lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.</text>
 </svg>

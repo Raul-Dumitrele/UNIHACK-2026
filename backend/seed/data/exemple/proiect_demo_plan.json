@@ -14,7 +14,10 @@
    "latime_m": 18.0,
    "lungime_m": 1.5,
    "zona_libera_m": 0.0,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "finisaj",
+   "inaltime_m": 0.0,
+   "componenta": "alee de acces pavată"
   },
   {
    "id": "e2",
@@ -25,62 +28,122 @@
    "latime_m": 15.0,
    "lungime_m": 20.0,
    "zona_libera_m": 1.0,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "echipament",
+   "inaltime_m": 1.5,
+   "componenta": "zonă de skate (rampe și obstacole)"
   },
   {
    "id": "e3",
-   "nume": "bancă 1",
-   "tip": "banca",
-   "x": 1.5,
-   "y": 25.0,
-   "latime_m": 1.8,
-   "lungime_m": 0.6,
-   "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "nume": "stâlp de iluminat LED 1",
+   "tip": "iluminat",
+   "x": 18.3,
+   "y": 2.8,
+   "latime_m": 0.3,
+   "lungime_m": 0.3,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false,
+   "categorie": "instalatie",
+   "inaltime_m": 4.0,
+   "componenta": "stâlp de iluminat LED"
   },
   {
    "id": "e4",
-   "nume": "bancă 2",
-   "tip": "banca",
-   "x": 4.3,
-   "y": 25.0,
-   "latime_m": 1.8,
-   "lungime_m": 0.6,
-   "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "nume": "stâlp de iluminat LED 2",
+   "tip": "iluminat",
+   "x": 1.3,
+   "y": 24.8,
+   "latime_m": 0.3,
+   "lungime_m": 0.3,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false,
+   "categorie": "instalatie",
+   "inaltime_m": 4.0,
+   "componenta": "stâlp de iluminat LED"
   },
   {
    "id": "e5",
-   "nume": "bancă 3",
+   "nume": "bancă 1",
    "tip": "banca",
-   "x": 7.1,
-   "y": 25.0,
+   "x": 1.5,
+   "y": 25.9,
    "latime_m": 1.8,
    "lungime_m": 0.6,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e6",
-   "nume": "coș de gunoi 1",
-   "tip": "cos",
-   "x": 9.7,
-   "y": 24.8,
-   "latime_m": 0.6,
+   "nume": "bancă 2",
+   "tip": "banca",
+   "x": 4.3,
+   "y": 25.9,
+   "latime_m": 1.8,
    "lungime_m": 0.6,
-   "zona_libera_m": 0.3,
-   "obligatoriu": false
+   "zona_libera_m": 0.5,
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e7",
-   "nume": "coș de gunoi 2",
+   "nume": "bancă 3",
+   "tip": "banca",
+   "x": 7.1,
+   "y": 25.9,
+   "latime_m": 1.8,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.5,
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
+  },
+  {
+   "id": "e8",
+   "nume": "coș de gunoi 1",
    "tip": "cos",
-   "x": 10.9,
-   "y": 24.8,
+   "x": 9.7,
+   "y": 25.7,
    "latime_m": 0.6,
    "lungime_m": 0.6,
    "zona_libera_m": 0.3,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 1.0,
+   "componenta": "coș de gunoi"
+  },
+  {
+   "id": "e9",
+   "nume": "coș de gunoi 2",
+   "tip": "cos",
+   "x": 10.9,
+   "y": 25.7,
+   "latime_m": 0.6,
+   "lungime_m": 0.6,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 1.0,
+   "componenta": "coș de gunoi"
+  },
+  {
+   "id": "e10",
+   "nume": "panou cu regulamentul de folosire",
+   "tip": "semnalizare",
+   "x": 2.2,
+   "y": 24.8,
+   "latime_m": 0.8,
+   "lungime_m": 0.1,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false,
+   "categorie": "semnalizare",
+   "inaltime_m": 2.0,
+   "componenta": "panou cu regulamentul de folosire"
   }
  ],
  "omise": [
@@ -98,6 +161,31 @@
   "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
   "Intrarea e pe latura de jos, cu o alee de 1,5 m."
  ],
+ "sursa_specificatie": "model_verificat",
  "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
- "suprafata_ocupata_mp": 330.96
+ "suprafata_ocupata_mp": 331.22,
+ "bilant": [
+  {
+   "zona": "Construcții și echipamente",
+   "mp": 304.2,
+   "procent": 50.7
+  },
+  {
+   "zona": "Platforme, alei și circulații",
+   "mp": 27.0,
+   "procent": 4.5
+  },
+  {
+   "zona": "Spații verzi și suprafețe libere",
+   "mp": 268.8,
+   "procent": 44.8
+  },
+  {
+   "zona": "Total teren",
+   "mp": 600.0,
+   "procent": 100.0
+  }
+ ],
+ "pot_procent": 50.0,
+ "cut": 0.5
 }

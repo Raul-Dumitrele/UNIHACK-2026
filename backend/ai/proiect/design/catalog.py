@@ -24,6 +24,8 @@ class Spec:
     categorie: str = "echipament"
     inaltime_m: float = 0.0
     componenta: str | None = None  # name of the specification component this spec draws
+    rand_nou: bool = False
+    langa: str | None = None
 
 
 ALEE_LATIME_M = 1.5  # access path along the entrance side
@@ -38,13 +40,17 @@ def spec_from(c: Componenta) -> Spec | None:
         return None
     count = int(round(c.cantitate)) if c.unitate in ("buc", "set") else c.bucati_plan
     return Spec(c.nume, c.tip_desen, float(c.latime_m), float(c.lungime_m), c.min_latime_m, c.min_lungime_m,
-                c.zona_libera_m, max(count, 1), c.obligatoriu, c.categorie, float(c.inaltime_m or 0.0), c.nume)
+                c.zona_libera_m, max(count, 1), c.obligatoriu, c.categorie, float(c.inaltime_m or 0.0), c.nume,
+                c.rand_nou, c.langa)
 
 
 def specs_for(spec: Specificatie) -> list[Spec]:
-    """Mandatory components first (they must get room), then the rest in specification order."""
-    drawn = [s for s in (spec_from(c) for c in spec.componente) if s is not None]
-    return [s for s in drawn if s.obligatoriu] + [s for s in drawn if not s.obligatoriu]
+    """Mandatory components first (they must get room), then the rest in specification order. A model may fix the
+    placement order instead (Componenta.ordine_plan: 1 is placed first, next to the access); the rest follow."""
+    pairs = [(c, s) for c in spec.componente if (s := spec_from(c)) is not None]
+    ordered = sorted((p for p in pairs if p[0].ordine_plan), key=lambda p: p[0].ordine_plan)
+    rest = [s for c, s in pairs if not c.ordine_plan]
+    return [s for _c, s in ordered] + [s for s in rest if s.obligatoriu] + [s for s in rest if not s.obligatoriu]
 
 
 CATALOG: dict[str, list[Spec]] = {kind: specs_for(MODELE[kind]) for kind in ORIGINAL_KINDS}

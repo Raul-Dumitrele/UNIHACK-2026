@@ -67,6 +67,35 @@ class Scene(BaseModel):
         return [e for e in self.elemente if e.componenta == nume]
 
 
+def numere(scene: "Scene", mic) -> list[tuple[str, float, float, bool]]:
+    """Labels for the drawings: (text, x, y, outside), in metres. A big element carries its number in the middle.
+    Elements too small for a number (mic(e) is True) are labelled once per run of the same component, above the
+    run ("11–13"), so numbers never pile up on top of each other. The legend still lists every element."""
+    out: list[tuple[str, float, float, bool]] = []
+    run: list[tuple[int, Element]] = []
+
+    def flush() -> None:
+        if not run:
+            return
+        first, last = run[0][0], run[-1][0]
+        xs0 = min(e.x for _i, e in run)
+        xs1 = max(e.x + e.latime_m for _i, e in run)
+        top = max(e.y + e.lungime_m for _i, e in run)
+        out.append((str(first) if first == last else f"{first}–{last}", (xs0 + xs1) / 2, top, True))
+        run.clear()
+
+    for i, e in enumerate(scene.elemente, 1):
+        if not mic(e):
+            flush()
+            out.append((str(i), e.x + e.latime_m / 2, e.y + e.lungime_m / 2, False))
+            continue
+        if run and (run[-1][1].componenta != e.componenta or abs(run[-1][1].y - e.y) > 0.01):
+            flush()
+        run.append((i, e))
+    flush()
+    return out
+
+
 def fmt(value: float) -> str:
     """12.5 -> '12,5'; 12.0 -> '12'."""
     return f"{value:.2f}".rstrip("0").rstrip(".").replace(".", ",")
@@ -78,17 +107,27 @@ class _Packer:
     def __init__(self, x0: float, y0: float, x1: float, y1: float):
         self.x0, self.y0, self.x1, self.y1 = x0, y0, x1, y1
         self.shelves: list[list[float]] = []  # [y, height, x cursor]
+        self.last = 0
 
-    def place(self, w: float, h: float, pad: float) -> tuple[float, float] | None:
+    def place(self, w: float, h: float, pad: float, new_shelf: bool = False,
+              prefer: int | None = None) -> tuple[float, float] | None:
+        """new_shelf: open a new row instead of filling an existing one. prefer: try this row first.
+        self.last is the index of the row the element went to."""
         fw, fh = w + 2 * pad, h + 2 * pad
-        for shelf in self.shelves:
-            y, height, cursor = shelf
+        order = [] if new_shelf else list(range(len(self.shelves)))
+        if prefer is not None and prefer in order:
+            order.remove(prefer)
+            order.insert(0, prefer)
+        for index in order:
+            y, height, cursor = self.shelves[index]
             if cursor + fw <= self.x1 + EPS and fh <= height + EPS:
-                shelf[2] = cursor + fw
+                self.shelves[index][2] = cursor + fw
+                self.last = index
                 return cursor + pad, y + pad
         top = self.shelves[-1][0] + self.shelves[-1][1] if self.shelves else self.y0
         if self.x0 + fw <= self.x1 + EPS and top + fh <= self.y1 + EPS:
             self.shelves.append([top, fh, self.x0 + fw])
+            self.last = len(self.shelves) - 1
             return self.x0 + pad, top + pad
         return None
 
@@ -178,13 +217,16 @@ def build_scene(tip_amenajare: str, suprafata_mp: float, latime_m: float | None 
         area = (x0, y0, x1, y1)
 
     packer = _Packer(*area) if area else None
+    rows: dict[str, int] = {}  # component name -> row it was placed in (for Spec.langa)
     for s in specs:
         placed = 0
         for i in range(s.bucati):
             spot = None
             for ew, eh in _sizes(s):
-                spot = packer.place(ew, eh, s.zona_libera_m) if packer else None
+                spot = packer.place(ew, eh, s.zona_libera_m, s.rand_nou and i == 0,
+                                    rows.get(s.langa) if s.langa else None) if packer else None
                 if spot:
+                    rows.setdefault(s.nume, packer.last)
                     break
             if not spot:
                 break

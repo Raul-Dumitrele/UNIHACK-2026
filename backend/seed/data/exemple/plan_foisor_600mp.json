@@ -14,7 +14,10 @@
    "latime_m": 18.0,
    "lungime_m": 1.5,
    "zona_libera_m": 0.0,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "finisaj",
+   "inaltime_m": 0.0,
+   "componenta": "alee de acces pavată"
   },
   {
    "id": "e2",
@@ -25,7 +28,10 @@
    "latime_m": 5.0,
    "lungime_m": 5.0,
    "zona_libera_m": 1.0,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 3.2,
+   "componenta": "foișor"
   },
   {
    "id": "e3",
@@ -36,7 +42,10 @@
    "latime_m": 2.0,
    "lungime_m": 1.8,
    "zona_libera_m": 0.6,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.8,
+   "componenta": "masă cu bănci"
   },
   {
    "id": "e4",
@@ -47,7 +56,10 @@
    "latime_m": 2.0,
    "lungime_m": 1.8,
    "zona_libera_m": 0.6,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.8,
+   "componenta": "masă cu bănci"
   },
   {
    "id": "e5",
@@ -58,7 +70,10 @@
    "latime_m": 1.8,
    "lungime_m": 0.6,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e6",
@@ -69,7 +84,10 @@
    "latime_m": 1.8,
    "lungime_m": 0.6,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e7",
@@ -80,7 +98,10 @@
    "latime_m": 1.8,
    "lungime_m": 0.6,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e8",
@@ -91,7 +112,10 @@
    "latime_m": 0.6,
    "lungime_m": 0.6,
    "zona_libera_m": 0.3,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 1.0,
+   "componenta": "coș de gunoi"
   },
   {
    "id": "e9",
@@ -102,7 +126,10 @@
    "latime_m": 0.6,
    "lungime_m": 0.6,
    "zona_libera_m": 0.3,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 1.0,
+   "componenta": "coș de gunoi"
   }
  ],
  "omise": [],
@@ -113,6 +140,7 @@
   "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
   "Intrarea e pe latura de jos, cu o alee de 1,5 m."
  ],
+ "sursa_specificatie": "model_verificat",
  "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
  "suprafata_ocupata_mp": 63.16,
  "is_demo": true

@@ -14,7 +14,10 @@
    "latime_m": 18.0,
    "lungime_m": 1.5,
    "zona_libera_m": 0.0,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "finisaj",
+   "inaltime_m": 0.0,
+   "componenta": "alee de acces pavată"
   },
   {
    "id": "e2",
@@ -25,7 +28,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e3",
@@ -36,7 +42,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e4",
@@ -47,7 +56,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e5",
@@ -58,7 +70,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e6",
@@ -69,7 +84,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e7",
@@ -80,7 +98,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e8",
@@ -91,7 +112,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e9",
@@ -102,7 +126,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e10",
@@ -113,7 +140,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e11",
@@ -124,7 +154,10 @@
    "latime_m": 3.0,
    "lungime_m": 1.2,
    "zona_libera_m": 0.6,
-   "obligatoriu": true
+   "obligatoriu": true,
+   "categorie": "constructie",
+   "inaltime_m": 0.6,
+   "componenta": "strat înălțat"
   },
   {
    "id": "e12",
@@ -135,7 +168,10 @@
    "latime_m": 2.5,
    "lungime_m": 2.0,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "constructie",
+   "inaltime_m": 2.2,
+   "componenta": "magazie de unelte"
   },
   {
    "id": "e13",
@@ -146,18 +182,24 @@
    "latime_m": 2.0,
    "lungime_m": 1.5,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "echipament",
+   "inaltime_m": 1.0,
+   "componenta": "zonă de compost"
   },
   {
    "id": "e14",
-   "nume": "rezervor de apă",
+   "nume": "rezervor de apă și punct de udare",
    "tip": "apa",
    "x": 9.7,
    "y": 7.6,
    "latime_m": 1.0,
    "lungime_m": 1.0,
    "zona_libera_m": 0.3,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "instalatie",
+   "inaltime_m": 1.5,
+   "componenta": "rezervor de apă și punct de udare"
   },
   {
    "id": "e15",
@@ -168,7 +210,10 @@
    "latime_m": 1.8,
    "lungime_m": 0.6,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e16",
@@ -179,7 +224,10 @@
    "latime_m": 1.8,
    "lungime_m": 0.6,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e17",
@@ -190,7 +238,10 @@
    "latime_m": 1.8,
    "lungime_m": 0.6,
    "zona_libera_m": 0.5,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 0.9,
+   "componenta": "bancă"
   },
   {
    "id": "e18",
@@ -201,7 +252,10 @@
    "latime_m": 0.6,
    "lungime_m": 0.6,
    "zona_libera_m": 0.3,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 1.0,
+   "componenta": "coș de gunoi"
   },
   {
    "id": "e19",
@@ -212,7 +266,24 @@
    "latime_m": 0.6,
    "lungime_m": 0.6,
    "zona_libera_m": 0.3,
-   "obligatoriu": false
+   "obligatoriu": false,
+   "categorie": "mobilier",
+   "inaltime_m": 1.0,
+   "componenta": "coș de gunoi"
+  },
+  {
+   "id": "e20",
+   "nume": "panou cu regulamentul de folosire",
+   "tip": "semnalizare",
+   "x": 16.9,
+   "y": 7.6,
+   "latime_m": 0.8,
+   "lungime_m": 0.1,
+   "zona_libera_m": 0.3,
+   "obligatoriu": false,
+   "categorie": "semnalizare",
+   "inaltime_m": 2.0,
+   "componenta": "panou cu regulamentul de folosire"
   }
  ],
  "omise": [],
@@ -223,7 +294,8 @@
   "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
   "Intrarea e pe latura de jos, cu o alee de 1,5 m."
  ],
+ "sursa_specificatie": "model_verificat",
  "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
- "suprafata_ocupata_mp": 75.96,
+ "suprafata_ocupata_mp": 76.04,
  "is_demo": true
 }

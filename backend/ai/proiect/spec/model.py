@@ -35,6 +35,9 @@ class Componenta(BaseModel):
     articol: str | None = None  # key of a priced article (SEAP / plafon / catalog); None = no price source
     derivat_din: Derivare = "fix"  # how the quantity is obtained: fixed, or measured on the plan
     bucati_plan: int = Field(default=1, ge=1, le=200)  # footprints drawn when the unit is not buc/set
+    ordine_plan: int | None = Field(default=None, ge=1, le=99)  # placement order on the plan (1 = next to the access)
+    rand_nou: bool = False  # starts a new row on the plan (keeps room beside it for what must stand next to it)
+    langa: str | None = None  # name of the component this one should stand next to, when there is room
 
     @field_validator("nume", "rol")
     @classmethod

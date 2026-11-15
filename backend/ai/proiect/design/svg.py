@@ -6,7 +6,7 @@ Dashed outlines are the free zones; the plot dimensions are drawn as dimension l
 import textwrap
 from xml.sax.saxutils import escape
 
-from backend.ai.proiect.design.scene import Scene, fmt
+from backend.ai.proiect.design.scene import Scene, fmt, numere
 
 COLORS = {
     "alee": "#d9d4c7", "skate": "#9fb7d6", "joaca": "#f2c48d", "caini": "#b9d99b", "apa": "#8cc8e8",
@@ -63,8 +63,11 @@ def build_plan_svg(scene: Scene, titlu: str) -> str:
         out.append(f'<rect id="{e.id}" x="{x}" y="{y}" width="{w:.2f}" height="{h:.2f}" '
                    f'fill="{COLORS.get(e.tip, "#cccccc")}" stroke="#333" stroke-width="1">'
                    f"<title>{escape(e.nume)}</title></rect>")
-        labels.append(f'<text x="{x + w / 2:.2f}" y="{y + h / 2 + 4:.2f}" text-anchor="middle" '
-                      f'font-size="{11 if min(w, h) >= 14 else 8}">{i}</text>')
+    for text, mx, my, outside in numere(scene, lambda e: min(e.latime_m, e.lungime_m) * s < 14):
+        if outside:
+            labels.append(f'<text x="{X(mx)}" y="{Y(my) - 3:.2f}" text-anchor="middle" font-size="8">{text}</text>')
+        else:
+            labels.append(f'<text x="{X(mx)}" y="{Y(my) + 4:.2f}" text-anchor="middle" font-size="11">{text}</text>')
     out += ["</g>", '<g id="TEXT">', *labels, "</g>"]
 
     # Dimension lines: width below the plot, length left of it.

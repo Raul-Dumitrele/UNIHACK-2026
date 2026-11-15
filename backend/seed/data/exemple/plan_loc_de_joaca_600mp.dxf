@@ -11,7 +11,7 @@ $EXTMIN
  10
 -3.4200
  20
--12.0080
+-13.8320
  30
 0.0000
   9
@@ -783,6 +783,270 @@ VERTEX
   8
 ELEMENTE
  10
+17.0000
+ 20
+2.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.9000
+ 20
+2.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.9000
+ 20
+3.4000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.0000
+ 20
+3.4000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.3000
+ 20
+2.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.6000
+ 20
+2.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.6000
+ 20
+3.1000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.3000
+ 20
+3.1000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+17.2600
+ 20
+2.7600
+ 30
+0.0000
+ 40
+0.3800
+  1
+6
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.9000
+ 20
+2.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.8000
+ 20
+2.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.8000
+ 20
+3.4000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.9000
+ 20
+3.4000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.2000
+ 20
+2.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.5000
+ 20
+2.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.5000
+ 20
+3.1000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.2000
+ 20
+3.1000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+18.1600
+ 20
+2.7600
+ 30
+0.0000
+ 40
+0.3800
+  1
+7
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
 11.0000
  20
 9.5000
@@ -893,7 +1157,7 @@ TEXT
  40
 0.3800
   1
-6
+8
   0
 POLYLINE
   8
@@ -1025,7 +1289,7 @@ TEXT
  40
 0.3800
   1
-7
+9
   0
 POLYLINE
   8
@@ -1157,139 +1421,7 @@ TEXT
  40
 0.3800
   1
-8
-  0
-POLYLINE
-  8
-ELEMENTE
- 62
-8
- 66
-1
- 10
-0.0000
- 20
-0.0000
- 30
-0.0000
- 70
-1
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-17.0000
- 20
-2.5000
- 30
-0.0000
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-18.2000
- 20
-2.5000
- 30
-0.0000
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-18.2000
- 20
-3.7000
- 30
-0.0000
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-17.0000
- 20
-3.7000
- 30
-0.0000
-  0
-SEQEND
-  8
-ELEMENTE
-  0
-POLYLINE
-  8
-ELEMENTE
- 66
-1
- 10
-0.0000
- 20
-0.0000
- 30
-0.0000
- 70
-1
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-17.3000
- 20
-2.8000
- 30
-0.0000
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-17.9000
- 20
-2.8000
- 30
-0.0000
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-17.9000
- 20
-3.4000
- 30
-0.0000
-  0
-VERTEX
-  8
-ELEMENTE
- 10
-17.3000
- 20
-3.4000
- 30
-0.0000
-  0
-SEQEND
-  8
-ELEMENTE
-  0
-TEXT
-  8
-TEXT
- 10
-17.4100
- 20
-2.9100
- 30
-0.0000
- 40
-0.3800
-  1
-9
+10
   0
 POLYLINE
   8
@@ -1421,7 +1553,271 @@ TEXT
  40
 0.3800
   1
-10
+11
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.8000
+ 20
+9.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+19.0000
+ 20
+9.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+19.0000
+ 20
+10.7000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+17.8000
+ 20
+10.7000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.1000
+ 20
+9.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.7000
+ 20
+9.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.7000
+ 20
+10.4000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+18.1000
+ 20
+10.4000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+18.2100
+ 20
+9.9100
+ 30
+0.0000
+ 40
+0.3800
+  1
+12
+  0
+POLYLINE
+  8
+ELEMENTE
+ 62
+8
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.8000
+ 20
+13.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+5.2000
+ 20
+13.5000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+5.2000
+ 20
+14.2000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+3.8000
+ 20
+14.2000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+POLYLINE
+  8
+ELEMENTE
+ 66
+1
+ 10
+0.0000
+ 20
+0.0000
+ 30
+0.0000
+ 70
+1
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+4.1000
+ 20
+13.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+4.9000
+ 20
+13.8000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+4.9000
+ 20
+13.9000
+ 30
+0.0000
+  0
+VERTEX
+  8
+ELEMENTE
+ 10
+4.1000
+ 20
+13.9000
+ 30
+0.0000
+  0
+SEQEND
+  8
+ELEMENTE
+  0
+TEXT
+  8
+TEXT
+ 10
+4.3100
+ 20
+13.6600
+ 30
+0.0000
+ 40
+0.3800
+  1
+13
   0
 LINE
   8
@@ -1659,7 +2055,7 @@ TEXT
  40
 0.3040
   1
-6. banca 1 (1,8 x 0,6 m)
+6. stalp de iluminat LED 1 (0,3 x 0,3 m)
   0
 TEXT
   8
@@ -1673,7 +2069,7 @@ TEXT
  40
 0.3040
   1
-7. banca 2 (1,8 x 0,6 m)
+7. stalp de iluminat LED 2 (0,3 x 0,3 m)
   0
 TEXT
   8
@@ -1687,7 +2083,7 @@ TEXT
  40
 0.3040
   1
-8. banca 3 (1,8 x 0,6 m)
+8. banca 1 (1,8 x 0,6 m)
   0
 TEXT
   8
@@ -1701,7 +2097,7 @@ TEXT
  40
 0.3040
   1
-9. cos de gunoi 1 (0,6 x 0,6 m)
+9. banca 2 (1,8 x 0,6 m)
   0
 TEXT
   8
@@ -1715,7 +2111,7 @@ TEXT
  40
 0.3040
   1
-10. cos de gunoi 2 (0,6 x 0,6 m)
+10. banca 3 (1,8 x 0,6 m)
   0
 TEXT
   8
@@ -1729,7 +2125,7 @@ TEXT
  40
 0.3040
   1
-Forma reala a terenului nu e cunoscuta: planul foloseste un dreptunghi de 20 x 30 m cu aceeasi suprafata.
+11. cos de gunoi 1 (0,6 x 0,6 m)
   0
 TEXT
   8
@@ -1743,7 +2139,7 @@ TEXT
  40
 0.3040
   1
-Dimensiunile elementelor si zonele libere din jurul lor sunt ipoteze schematice ale aplicatiei, nu valori din standarde sau din fise de produs.
+12. cos de gunoi 2 (0,6 x 0,6 m)
   0
 TEXT
   8
@@ -1757,7 +2153,7 @@ TEXT
  40
 0.3040
   1
-Pe contur ramane o margine libera de 1 m (imprejmuire, vegetatie).
+13. panou cu regulamentul de folosire (0,8 x 0,1 m)
   0
 TEXT
   8
@@ -1771,7 +2167,7 @@ TEXT
  40
 0.3040
   1
-Intrarea e pe latura de jos, cu o alee de 1,5 m.
+Forma reala a terenului nu e cunoscuta: planul foloseste un dreptunghi de 20 x 30 m cu aceeasi suprafata.
   0
 TEXT
   8
@@ -1780,6 +2176,48 @@ TEXT
 0.0000
  20
 -11.4000
+ 30
+0.0000
+ 40
+0.3040
+  1
+Dimensiunile elementelor si zonele libere din jurul lor sunt ipoteze schematice ale aplicatiei, nu valori din standarde sau din fise de produs.
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-12.0080
+ 30
+0.0000
+ 40
+0.3040
+  1
+Pe contur ramane o margine libera de 1 m (imprejmuire, vegetatie).
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-12.6160
+ 30
+0.0000
+ 40
+0.3040
+  1
+Intrarea e pe latura de jos, cu o alee de 1,5 m.
+  0
+TEXT
+  8
+TEXT
+ 10
+0.0000
+ 20
+-13.2240
  30
 0.0000
  40
