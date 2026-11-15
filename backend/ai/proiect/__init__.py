@@ -203,7 +203,8 @@ def template_draft(context: dict, refs: list[Referinta]) -> DosarDraft:
     hood = f", în cartierul {space['cartier']}" if space.get("cartier") else ""
     area = f", pe o suprafață de circa {context['suprafata_mp']:g} mp" if context.get("suprafata_mp") else ""
     people = idea.get("persoane_interesate")
-    support = f", susținută de {people} persoane din comunitate" if people else ""
+    support = (", susținută de o persoană din comunitate" if people == 1 else
+               f", susținută de {people} persoane din comunitate" if people else "")
     components = [c for r in refs for c in r.componente]
     return DosarDraft(
         titlu=f"Amenajare: {label} – {place}",

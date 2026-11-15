@@ -70,7 +70,7 @@
     "accesibilitate": "Accesul se face pietonal, pe o alee pavată fără trepte, utilizabilă cu cărucior și scaun rulant; se prevăd bănci, coșuri de gunoi și un panou cu regulile de folosire. Elementele periculoase (echipamente, instalații electrice, apă) se protejează și se semnalizează; zonele libere din jurul echipamentelor se păstrează. Iluminatul asigură siguranța după lăsarea serii. zgomot: distanța față de locuințe și programul de folosire trebuie stabilite uzura modulelor cere întreținere periodică și verificări de siguranță",
     "intretinere": "Întreținerea revine administratorului desemnat de Primărie (sau unei asociații de locuitori, prin protocol): curățenie, verificări periodice ale echipamentelor, reparații, cosit și întreținerea vegetației, golirea instalațiilor de apă iarna, programul de iluminat. Un plan de întreținere cu responsabil și buget anual este condiția ca amenajarea să reziste.",
     "impact_comunitate": "Beneficii așteptate: loc sigur pentru sporturi urbane, în locul străzii și al parcărilor; activitate fizică pentru adolescenți și tineri, gratuită; punct de întâlnire pentru comunitate; poate găzdui concursuri locale. Propunerea răspunde unei nevoi exprimate direct de locuitori și este susținută public pe platforma Loc Comun; numărul de susținători apare în dosar. Impactul se urmărește în tabloul de impact al aplicației (proiecte propuse, votate, trimise, aprobate).",
-    "documente_necesare": "Documentele publice uzuale, în ordine: 1. Dovada dreptului asupra terenului (extras de carte funciară; pentru teren public, hotărâre a Consiliului Local de aprobare a folosinței) (Oficiul de Cadastru și Publicitate Imobiliară; Consiliul Local); 2. Certificat de urbanism (Primăria Municipiului Timișoara – Direcția Urbanism); 3. Studiu topografic și, după caz, studiu geotehnic (Topograf autorizat / inginer geotehnician; obligatoriu pentru construcții și platforme din beton); 4. Aviz tehnic de racordare (ATR) și aviz de amplasament (Operatorul de distribuție a energiei electrice din zonă); 5. Aviz de mediu (clasare sau acord de mediu) (Agenția pentru Protecția Mediului Timiș; după caz, stabilit prin certificatul de urbanism); 6. Aviz al Direcției Județene pentru Cultură (Direcția Județeană pentru Cultură Timiș; numai în zone protejate); 7. Documentație tehnică pentru autorizarea executării lucrărilor (DTAC), întocmită de proiectant autorizat (Arhitect / inginer cu drept de semnătură); 8. Autorizație de construire (sau încadrarea lucrării ca executabilă fără autorizație) (Primăria Municipiului Timișoara – Direcția Urbanism); 9. Anunțul de începere a lucrărilor și recepția la terminarea lucrărilor (Primăria; Inspectoratul de Stat în Construcții). Lista exactă o stabilește Primăria prin certificatul de urbanism; aplicația nu emite și nu deține niciun aviz."
+    "documente_necesare": "Documentele publice uzuale, în ordine: 1. Dovada dreptului asupra terenului (extras de carte funciară; pentru teren public, hotărâre a Consiliului Local de aprobare a folosinței) (Oficiul de Cadastru și Publicitate Imobiliară; Consiliul Local); 2. Certificat de urbanism (Primăria Municipiului Timișoara – Direcția Urbanism); 3. Studiu topografic și, după caz, studiu geotehnic (Topograf autorizat / inginer geotehnician; obligatoriu pentru construcții și platforme din beton); 4. Aviz tehnic de racordare (ATR) și aviz de amplasament (Operatorul de distribuție a energiei electrice din zonă); 5. Aviz de mediu (clasare sau acord de mediu) (Agenția pentru Protecția Mediului Timiș; după caz, stabilit prin certificatul de urbanism); 6. Documentație tehnică pentru autorizarea executării lucrărilor (DTAC), întocmită de proiectant autorizat (Arhitect / inginer cu drept de semnătură); 7. Autorizație de construire (sau încadrarea lucrării ca executabilă fără autorizație) (Primăria Municipiului Timișoara – Direcția Urbanism); 8. Anunțul de începere a lucrărilor și recepția la terminarea lucrărilor (Primăria; Inspectoratul de Stat în Construcții); 9. Aviz al Direcției Județene pentru Cultură (Direcția Județeană pentru Cultură Timiș; numai în zone protejate). Lista exactă o stabilește Primăria prin certificatul de urbanism; aplicația nu emite și nu deține niciun aviz."
    },
    "acte": [
     {
@@ -80,7 +80,9 @@
      "descriere": "Cine deține terenul și dacă poate primi această destinație. Pentru o propunere a comunității pe teren public, Primăria inițiază proiectul sau aprobă folosința.",
      "temei": "Legea nr. 50/1991 privind autorizarea executării lucrărilor de construcții (republicată), condițiile de emitere a autorizației (titlul asupra imobilului)",
      "conditie": "",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": null
     },
     {
      "ordine": 2,
@@ -89,7 +91,9 @@
      "descriere": "Actul de informare: regimul juridic, economic și tehnic al terenului, ce se poate construi și lista avizelor necesare. Se cere cu o cerere-tip, planuri de încadrare și extras CF.",
      "temei": "Legea nr. 50/1991 privind autorizarea executării lucrărilor de construcții (republicată), art. 6 (certificatul de urbanism)",
      "conditie": "",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": null
     },
     {
      "ordine": 3,
@@ -98,16 +102,20 @@
      "descriere": "Ridicarea exactă a terenului; pentru platforme, bazine și construcții, natura solului.",
      "temei": "Normele metodologice de aplicare a Legii nr. 50/1991 (Ordinul MDRL nr. 839/2009) (conținutul documentației tehnice)",
      "conditie": "obligatoriu pentru construcții și platforme din beton",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": null
     },
     {
      "ordine": 4,
      "nume": "Aviz tehnic de racordare (ATR) și aviz de amplasament",
      "emitent": "Operatorul de distribuție a energiei electrice din zonă",
      "descriere": "Puterea disponibilă, soluția de racordare și tariful de racordare; amplasamentul față de rețelele existente.",
-     "temei": "Legea energiei electrice și a gazelor naturale nr. 123/2012; regulamentele ANRE privind racordarea",
+     "temei": "Legea energiei electrice și a gazelor naturale nr. 123/2012; reglementările în vigoare privind racordarea, de confirmat prin certificatul de urbanism",
      "conditie": "",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": null
     },
     {
      "ordine": 5,
@@ -116,46 +124,56 @@
      "descriere": "Dacă lucrarea are impact asupra mediului; amenajările mici primesc de obicei o decizie de clasare.",
      "temei": "Legea nr. 292/2018 privind evaluarea impactului anumitor proiecte asupra mediului",
      "conditie": "după caz, stabilit prin certificatul de urbanism",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": null
     },
     {
      "ordine": 6,
-     "nume": "Aviz al Direcției Județene pentru Cultură",
-     "emitent": "Direcția Județeană pentru Cultură Timiș",
-     "descriere": "Numai dacă terenul e în zona protejată a unui monument istoric sau în zona construită protejată.",
-     "temei": "Legea nr. 422/2001 privind protejarea monumentelor istorice",
-     "conditie": "numai în zone protejate",
-     "de_confirmat": true
-    },
-    {
-     "ordine": 7,
      "nume": "Documentație tehnică pentru autorizarea executării lucrărilor (DTAC), întocmită de proiectant autorizat",
      "emitent": "Arhitect / inginer cu drept de semnătură",
      "descriere": "Planuri, memorii, breviar de calcul, devize. Schițele aplicației sunt doar punct de pornire.",
      "temei": "Legea nr. 50/1991 privind autorizarea executării lucrărilor de construcții (republicată), art. 7 și anexa nr. 1 (conținutul-cadru al documentației)",
      "conditie": "",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": null
     },
     {
-     "ordine": 8,
+     "ordine": 7,
      "nume": "Autorizație de construire (sau încadrarea lucrării ca executabilă fără autorizație)",
      "emitent": "Primăria Municipiului Timișoara – Direcția Urbanism",
      "descriere": "Actul final care permite începerea lucrărilor. Lucrările mărunte de întreținere și unele amenajări pot fi scutite de autorizație; încadrarea o face Primăria.",
      "temei": "Legea nr. 50/1991 privind autorizarea executării lucrărilor de construcții (republicată), art. 3 (lucrări care necesită autorizație) și art. 11 (lucrări care se pot executa fără)",
      "conditie": "",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": null
     },
     {
-     "ordine": 9,
+     "ordine": 8,
      "nume": "Anunțul de începere a lucrărilor și recepția la terminarea lucrărilor",
      "emitent": "Primăria; Inspectoratul de Stat în Construcții",
      "descriere": "Comunicarea datei de început, apoi procesul-verbal de recepție.",
-     "temei": "Legea nr. 50/1991 privind autorizarea executării lucrărilor de construcții (republicată); HG nr. 343/2017 privind recepția construcțiilor",
+     "temei": "Legea nr. 50/1991 privind autorizarea executării lucrărilor de construcții (republicată); Regulamentul privind recepția construcțiilor, aprobat prin HG nr. 273/1994, cu modificările aduse de HG nr. 343/2017",
      "conditie": "",
-     "de_confirmat": true
+     "de_confirmat": true,
+     "grup": "uzual",
+     "url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/189596"
+    },
+    {
+     "ordine": 9,
+     "nume": "Aviz al Direcției Județene pentru Cultură",
+     "emitent": "Direcția Județeană pentru Cultură Timiș",
+     "descriere": "Numai dacă terenul e în zona protejată a unui monument istoric sau în zona construită protejată.",
+     "temei": "Legea nr. 422/2001 privind protejarea monumentelor istorice",
+     "conditie": "numai în zone protejate",
+     "de_confirmat": true,
+     "grup": "dupa_caz",
+     "url": null
     }
    ],
-   "acte_disclaimer": "Listă orientativă a documentelor publice uzuale pentru acest tip de lucrare. Lista exactă, avizele cerute și încadrarea (cu sau fără autorizație de construire) le stabilește Primăria prin certificatul de urbanism. Aplicația nu emite și nu deține niciun aviz sau autorizație.",
+   "acte_disclaimer": "Listă orientativă a documentelor publice uzuale pentru acest tip de lucrare. Lista exactă, avizele cerute și încadrarea (cu sau fără autorizație de construire) le stabilește Primăria prin certificatul de urbanism. Aplicația nu emite și nu deține niciun aviz sau autorizație, iar lista nu garantează obținerea lor.",
    "cereri_tip": [
     {
      "titlu": "Cerere pentru emiterea certificatului de urbanism",
@@ -288,6 +306,9 @@
     "seap": 4
    },
    "eticheta_suma": "Suma articolelor cotate (4 din 8); 4 articole rămân de cotat",
+   "titlu": "Cost estimat din proiecte de referință",
+   "lipsesc_principale": true,
+   "nota_suma": "Suma nu include elementele principale ale amenajării.",
    "metoda": "Două estimări independente: intervalul din proiecte de referință (cost/mp × suprafață) și suma articolelor cu preț din lista de materiale (parțială: articolele „de cotat” lipsesc)."
   },
   "specificatie": {
@@ -322,7 +343,10 @@
      "utilitati": [],
      "articol": "suprafata_skate",
      "derivat_din": "fix",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "zonă pentru începători",
@@ -342,7 +366,10 @@
      "utilitati": [],
      "articol": "suprafata_skate",
      "derivat_din": "fix",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "stâlp de iluminat LED",
@@ -364,7 +391,10 @@
      ],
      "articol": "stalp_iluminat",
      "derivat_din": "fix",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "bancă",
@@ -384,7 +414,10 @@
      "utilitati": [],
      "articol": "banca",
      "derivat_din": "fix",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "coș de gunoi",
@@ -404,7 +437,10 @@
      "utilitati": [],
      "articol": "cos_gunoi_stradal",
      "derivat_din": "fix",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "panou cu regulamentul de folosire",
@@ -424,7 +460,10 @@
      "utilitati": [],
      "articol": null,
      "derivat_din": "fix",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "alee de acces pavată",
@@ -444,7 +483,10 @@
      "utilitati": [],
      "articol": "pavaj",
      "derivat_din": "plan_alee",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "împrejmuire (gard)",
@@ -464,7 +506,10 @@
      "utilitati": [],
      "articol": "gard",
      "derivat_din": "plan_perimetru",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     },
     {
      "nume": "spațiu verde (gazon în rulou)",
@@ -484,7 +529,10 @@
      "utilitati": [],
      "articol": "gazon_rulou",
      "derivat_din": "plan_rest",
-     "bucati_plan": 1
+     "bucati_plan": 1,
+     "ordine_plan": null,
+     "rand_nou": false,
+     "langa": null
     }
    ],
    "beneficii": [
@@ -539,6 +587,8 @@
     "suprafata_mp": 600,
     "status_verificare": null
    },
+   "interpretare": "Am interpretat propunerea ca: skatepark",
+   "interpretare_diferita": false,
    "disclaimer": "Analiză orientativă, din reguli simple ale aplicației. Nu înlocuiește studiul de fezabilitate, certificatul de urbanism sau avizele operatorilor de utilități."
   },
   "voturi": 3,

@@ -15,7 +15,8 @@ LEGEA_50 = "Legea nr. 50/1991 privind autorizarea executării lucrărilor de con
 NORME_50 = "Normele metodologice de aplicare a Legii nr. 50/1991 (Ordinul MDRL nr. 839/2009)"
 ACTE_DISCLAIMER = ("Listă orientativă a documentelor publice uzuale pentru acest tip de lucrare. Lista exactă, "
                    "avizele cerute și încadrarea (cu sau fără autorizație de construire) le stabilește Primăria prin "
-                   "certificatul de urbanism. Aplicația nu emite și nu deține niciun aviz sau autorizație.")
+                   "certificatul de urbanism. Aplicația nu emite și nu deține niciun aviz sau autorizație, iar lista "
+                   "nu garantează obținerea lor.")
 
 
 class Act(BaseModel):
@@ -26,6 +27,8 @@ class Act(BaseModel):
     temei: str
     conditie: str = ""  # when it applies ("dacă lucrarea afectează circulația")
     de_confirmat: bool = True
+    grup: str = "uzual"  # uzual | dupa_caz (applies only in some situations; listed last)
+    url: str | None = None  # only pages on legislatie.just.ro that were opened when the row was written
 
 
 class CerereTip(BaseModel):
@@ -47,9 +50,9 @@ def lista_acte(spec: Specificatie, space: Any = None) -> list[Act]:
     utils = set(spec.utilitati_toate())
     acte: list[Act] = []
 
-    def add(nume, emitent, descriere, temei, conditie=""):
+    def add(nume, emitent, descriere, temei, conditie="", grup="uzual", url=None):
         acte.append(Act(ordine=len(acte) + 1, nume=nume, emitent=emitent, descriere=descriere, temei=temei,
-                        conditie=conditie))
+                        conditie=conditie, grup=grup, url=url))
 
     add("Dovada dreptului asupra terenului (extras de carte funciară; pentru teren public, hotărâre a Consiliului "
         "Local de aprobare a folosinței)",
@@ -77,7 +80,8 @@ def lista_acte(spec: Specificatie, space: Any = None) -> list[Act]:
         add("Aviz tehnic de racordare (ATR) și aviz de amplasament",
             "Operatorul de distribuție a energiei electrice din zonă",
             "Puterea disponibilă, soluția de racordare și tariful de racordare; amplasamentul față de rețelele existente.",
-            "Legea energiei electrice și a gazelor naturale nr. 123/2012; regulamentele ANRE privind racordarea")
+            "Legea energiei electrice și a gazelor naturale nr. 123/2012; reglementările în vigoare privind "
+            "racordarea, de confirmat prin certificatul de urbanism")
     if "apă potabilă" in utils or "instalatie_apa" in tags:
         add("Aviz de amplasament și aviz de branșare la rețeaua de apă",
             "Operatorul regional de apă-canal (în Timișoara, Aquatim)",
@@ -92,7 +96,10 @@ def lista_acte(spec: Specificatie, space: Any = None) -> list[Act]:
         add("Aviz / notificare sanitară pentru apa potabilă sau apa de îmbăiere",
             "Direcția de Sănătate Publică Timiș",
             "Calitatea apei oferite publicului.",
-            "Legea nr. 458/2002 privind calitatea apei potabile; normele de igienă pentru bazine")
+            "Ordonanța Guvernului nr. 7/2023 privind calitatea apei destinate consumului uman (a abrogat Legea "
+            "nr. 458/2002). Pentru apa de îmbăiere: legislația în vigoare privind normele de igienă pentru bazine, "
+            "de confirmat prin certificatul de urbanism.",
+            url="https://legislatie.just.ro/public/DetaliiDocument/264337")
     add("Aviz de mediu (clasare sau acord de mediu)",
         "Agenția pentru Protecția Mediului Timiș",
         "Dacă lucrarea are impact asupra mediului; amenajările mici primesc de obicei o decizie de clasare.",
@@ -102,17 +109,14 @@ def lista_acte(spec: Specificatie, space: Any = None) -> list[Act]:
         add("Aviz al Comisiei de Circulație",
             "Primăria Municipiului Timișoara – Comisia de Circulație / Poliția Rutieră",
             "Locurile de parcare, accesele auto și semnalizarea rutieră.",
-            "OUG nr. 195/2002 privind circulația pe drumurile publice; regulamentul local")
+            "OUG nr. 195/2002 privind circulația pe drumurile publice; reglementările locale, de confirmat prin "
+            "certificatul de urbanism")
     if tags & {"constructie", "bazine"} or any((c.inaltime_m or 0) >= 2.5 and c.categorie == "constructie"
                                                   for c in spec.componente):
         add("Aviz de securitate la incendiu",
             "Inspectoratul pentru Situații de Urgență „Banat” Timiș",
             "Pentru clădiri și spații cu public (vestiare, clădiri tehnice).",
             "Legea nr. 307/2006 privind apărarea împotriva incendiilor", "dacă se cere prin certificatul de urbanism")
-    add("Aviz al Direcției Județene pentru Cultură",
-        "Direcția Județeană pentru Cultură Timiș",
-        "Numai dacă terenul e în zona protejată a unui monument istoric sau în zona construită protejată.",
-        "Legea nr. 422/2001 privind protejarea monumentelor istorice", "numai în zone protejate")
     add("Documentație tehnică pentru autorizarea executării lucrărilor (DTAC), întocmită de proiectant autorizat",
         "Arhitect / inginer cu drept de semnătură",
         "Planuri, memorii, breviar de calcul, devize. Schițele aplicației sunt doar punct de pornire.",
@@ -131,7 +135,14 @@ def lista_acte(spec: Specificatie, space: Any = None) -> list[Act]:
     add("Anunțul de începere a lucrărilor și recepția la terminarea lucrărilor",
         "Primăria; Inspectoratul de Stat în Construcții",
         "Comunicarea datei de început, apoi procesul-verbal de recepție.",
-        LEGEA_50 + "; HG nr. 343/2017 privind recepția construcțiilor")
+        LEGEA_50 + "; Regulamentul privind recepția construcțiilor, aprobat prin HG nr. 273/1994, cu modificările "
+        "aduse de HG nr. 343/2017",
+        url="https://legislatie.just.ro/Public/DetaliiDocumentAfis/189596")
+    add("Aviz al Direcției Județene pentru Cultură",
+        "Direcția Județeană pentru Cultură Timiș",
+        "Numai dacă terenul e în zona protejată a unui monument istoric sau în zona construită protejată.",
+        "Legea nr. 422/2001 privind protejarea monumentelor istorice", "numai în zone protejate",
+        grup="dupa_caz")
     return acte
 
 
