@@ -28,12 +28,17 @@ export const TIP_AMENAJARE: Record<string, string> = {
   pista_biciclete: 'Pistă de biciclete',
   gradina_comunitara: 'Grădină comunitară',
   teren_sport: 'Teren de sport',
+  foisor: 'Foișor',
+  statie_incarcare: 'Stație de încărcare pentru mașini electrice',
+  fantana_publica: 'Fântână publică (cișmea)',
+  aquapark: 'Parc acvatic',
 }
 /** Unknown values (tip_amenajare may become free text) are shown as they are. */
 export const tipLabel = (tip: string) => TIP_AMENAJARE[tip] ?? tip.replace(/_/g, ' ')
 
 export const PROIECT_STARE: Record<ProiectStare, string> = {
   draft: 'Ciornă',
+  publicat: 'Publicat · în vot',
   trimis: 'Trimis la Primărie',
   in_verificare: 'În verificare',
   clarificari: 'Clarificări cerute',

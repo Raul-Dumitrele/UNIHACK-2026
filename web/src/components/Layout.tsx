@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { Bell, BarChart3, FlaskConical, Landmark, Map } from 'lucide-react'
+import { Bell, BarChart3, FlaskConical, Landmark, Map, Users } from 'lucide-react'
 import { api } from '@/api/client'
 import { Toaster } from '@/components/ui/sonner'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -12,6 +12,7 @@ import { useUser } from '@/user'
 
 const NAV = [
   { to: '/', label: 'Hartă', icon: Map },
+  { to: '/comunitate', label: 'Comunitate', icon: Users },
   { to: '/proiecte', label: 'Proiecte', icon: Landmark },
   { to: '/notificari', label: 'Notificări', icon: Bell },
   { to: '/impact', label: 'Impact', icon: BarChart3 },
@@ -87,6 +88,11 @@ export function Layout() {
           </div>
         </div>
       </header>
+      {USE_MOCKS ? (
+        <div className="border-b border-demo/30 bg-demo-soft px-4 py-2 text-center text-sm text-demo print:hidden">
+          Mod demonstrativ cu date false (VITE_USE_MOCKS=true): ce creezi aici dispare la reîncărcare și nu ajunge pe server.
+        </div>
+      ) : null}
       <main className="mx-auto max-w-6xl px-4 py-8 print:max-w-none print:p-0">
         <Outlet />
       </main>

@@ -1,14 +1,19 @@
 // Building blocks for "Propunere către Primărie". Everything shown comes from the API: no cost or text is
 // computed here (contract rule 10 + P3's notes).
-import { ExternalLink, Info } from 'lucide-react'
-import type { Cost, Dosar, Etapa, ProiectEveniment, ProiectStare, Referinta } from '@/api/models'
+import { useState } from 'react'
+import { ExternalLink, Info, Loader2, ThumbsUp } from 'lucide-react'
+import { toast } from 'sonner'
+import { api } from '@/api/client'
+import type { Cost, Dosar, Etapa, Proiect, ProiectDetaliu, ProiectEveniment, ProiectStare, Referinta, Vot } from '@/api/models'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { DEMO_USERS } from '@/demoUsers'
 import { DISCLAIMER, fmtDate, fmtLei, PROIECT_STARE, tipLabel } from '@/lib/format'
 import { cn } from '@/lib/utils'
 
 const STARE_STYLE: Record<ProiectStare, string> = {
   draft: 'border-border bg-muted text-muted-foreground',
+  publicat: 'border-primary/40 bg-primary/10 text-primary',
   trimis: 'border-primary/30 bg-accent text-accent-foreground',
   in_verificare: 'border-demo/30 bg-demo-soft text-demo',
   clarificari: 'border-demo/40 bg-demo-soft text-demo',
@@ -35,32 +40,73 @@ export function Disclaimer({ className = '' }: { className?: string }) {
 }
 
 export function CostBlock({ cost }: { cost: Cost }) {
-  if (!cost.suficient) {
-    return (
-      <div className="space-y-1 rounded-xl border border-dashed p-4">
-        <p className="font-medium">Date insuficiente pentru estimare</p>
-        {cost.motiv ? <p className="text-sm text-muted-foreground">{cost.motiv}</p> : null}
-      </div>
-    )
-  }
+  const sum = cost.suma_cotata_lei
   return (
-    <div className="space-y-3 rounded-xl border p-4">
-      <div className="grid gap-3 sm:grid-cols-3">
-        <Figure label="Minim" value={cost.min_lei} />
-        <Figure label="Mediană" value={cost.mediana_lei} strong />
-        <Figure label="Maxim" value={cost.max_lei} />
-      </div>
-      {cost.ipoteze.length ? (
-        <div className="space-y-1">
-          <p className="text-sm font-medium">Ipoteze</p>
+    <div className="space-y-4">
+      <div className="space-y-3 rounded-xl border p-4">
+        <p className="text-sm font-medium">Din proiecte de referință (cost/mp × suprafață)</p>
+        {cost.suficient ? (
+          <div className="grid gap-3 sm:grid-cols-3">
+            <Figure label="Minim" value={cost.min_lei} />
+            <Figure label="Mediană" value={cost.mediana_lei} strong />
+            <Figure label="Maxim" value={cost.max_lei} />
+          </div>
+        ) : (
+          <div className="space-y-1 rounded-lg border border-dashed p-3">
+            <p className="font-medium">Fără interval din referințe</p>
+            {cost.motiv ? <p className="text-sm text-muted-foreground">{cost.motiv}</p> : null}
+          </div>
+        )}
+        {cost.ipoteze.length ? (
           <ul className="list-disc space-y-0.5 pl-5 text-sm text-muted-foreground">
             {cost.ipoteze.map((x) => (
               <li key={x}>{x}</li>
             ))}
           </ul>
+        ) : null}
+      </div>
+      {sum != null ? (
+        <div className="space-y-2 rounded-xl border p-4">
+          <p className="text-sm font-medium">Din lista de materiale (articole cu preț verificat)</p>
+          <p className="text-xl font-semibold tabular-nums">{fmtLei(sum)}</p>
+          <p className="text-sm text-muted-foreground">{cost.eticheta_suma}</p>
+          {cost.articole_necotate?.length ? (
+            <p className="text-xs text-muted-foreground">De cotat (fără sursă de preț): {cost.articole_necotate.join('; ')}.</p>
+          ) : null}
+          {cost.pe_surse && Object.keys(cost.pe_surse).length ? (
+            <p className="text-xs text-muted-foreground">
+              Surse: {Object.entries(cost.pe_surse).map(([k, v]) => `${k} (${v})`).join(', ')}.
+            </p>
+          ) : null}
+          {cost.metoda ? <p className="text-xs text-muted-foreground">{cost.metoda}</p> : null}
         </div>
       ) : null}
     </div>
+  )
+}
+
+/** One vote per user per project; the server answers 409 on a second vote and sends the project on at the threshold. */
+export function VotButon({ p, onDone }: { p: Proiect | ProiectDetaliu; onDone: () => void }) {
+  const [busy, setBusy] = useState(false)
+  const voted = 'votat_de_mine' in p ? Boolean(p.votat_de_mine) : false
+  const open = p.stare === 'publicat' || p.stare === 'trimis' || p.stare === 'in_verificare' || p.stare === 'clarificari'
+  if (!open) return null
+  async function vote() {
+    setBusy(true)
+    try {
+      const r = await api<Vot>(`/proiecte/${p.id}/vot`, { method: 'POST' })
+      toast.success(r.stare === 'trimis' && p.stare === 'publicat' ? 'Pragul a fost atins: proiectul a plecat la Primărie' : 'Votul tău a fost înregistrat')
+      onDone()
+    } catch (e) {
+      toast.error((e as Error).message)
+    } finally {
+      setBusy(false)
+    }
+  }
+  return (
+    <Button size="sm" variant={voted ? 'outline' : 'default'} disabled={busy || voted} onClick={vote} className="print:hidden">
+      {busy ? <Loader2 className="animate-spin" /> : <ThumbsUp />} {voted ? 'Ai susținut' : 'Susțin proiectul'}
+    </Button>
   )
 }
 

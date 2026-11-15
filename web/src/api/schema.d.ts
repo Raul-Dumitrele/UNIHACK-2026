@@ -237,6 +237,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/proiecte/analiza": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Analiza
+         * @description Specification + feasibility for a proposal on a plot, before generating the project (no dossier, no cost).
+         */
+        post: operations["analiza_proiecte_analiza_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/ideas/{idea_id}/proiect": {
         parameters: {
             query?: never;
@@ -275,6 +295,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/proiecte/publice": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Publice
+         * @description Every project the community can see and vote on (anything past draft), newest activity first.
+         */
+        get: operations["list_publice_proiecte_publice_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/proiecte/{proiect_id}": {
         parameters: {
             query?: never;
@@ -292,6 +332,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/proiecte/{proiect_id}/publica": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Publica
+         * @description The author publishes the draft: everyone can see it and vote; at prag_voturi it goes to the city hall.
+         */
+        post: operations["publica_proiecte__proiect_id__publica_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/proiecte/{proiect_id}/vot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Voteaza
+         * @description One vote per user per project (409 on a second one). Reaching the threshold sends the project to the city hall.
+         */
+        post: operations["voteaza_proiecte__proiect_id__vot_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/proiecte/{proiect_id}/trimite": {
         parameters: {
             query?: never;
@@ -301,7 +381,10 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Trimite */
+        /**
+         * Trimite
+         * @description Direct send by the author (from draft, publicat or clarificari); the community path is publica + vot.
+         */
         post: operations["trimite_proiecte__proiect_id__trimite_post"];
         delete?: never;
         options?: never;
@@ -435,6 +518,47 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * AnalizaIn
+         * @description POST /proiecte/analiza: specification + feasibility before generating a project (fast, no dossier).
+         */
+        AnalizaIn: {
+            /**
+             * Tip Amenajare
+             * @description text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport
+             */
+            tip_amenajare: string;
+            /** Descriere */
+            descriere?: string | null;
+            /** Suprafata Mp */
+            suprafata_mp?: number | null;
+            /** Space Id */
+            space_id?: string | null;
+        };
+        /** AnalizaOut */
+        AnalizaOut: {
+            /** Tip Amenajare */
+            tip_amenajare: string;
+            /** Eticheta */
+            eticheta: string;
+            /** Specificatie */
+            specificatie: {
+                [key: string]: unknown;
+            };
+            /** Fezabilitate */
+            fezabilitate: {
+                [key: string]: unknown;
+            };
+            /** Plan Complet */
+            plan_complet?: boolean | null;
+            /**
+             * Omise
+             * @default []
+             */
+            omise: {
+                [key: string]: unknown;
+            }[];
+        };
         /** BookingCreate */
         BookingCreate: {
             /** Idea Id */
@@ -500,6 +624,35 @@ export interface components {
             referinte_folosite: string[];
             /** Motiv */
             motiv?: string | null;
+            /** Suma Cotata Lei */
+            suma_cotata_lei?: number | null;
+            /**
+             * Articole Cotate
+             * @default 0
+             */
+            articole_cotate: number;
+            /**
+             * Articole Necotate
+             * @default []
+             */
+            articole_necotate: string[];
+            /**
+             * Pe Surse
+             * @default {}
+             */
+            pe_surse: {
+                [key: string]: number;
+            };
+            /**
+             * Eticheta Suma
+             * @default
+             */
+            eticheta_suma: string;
+            /**
+             * Metoda
+             * @default
+             */
+            metoda: string;
         };
         /** DecizieIn */
         DecizieIn: {
@@ -544,6 +697,32 @@ export interface components {
              * @default []
              */
             referinte_citate: string[];
+            /**
+             * Memoriu
+             * @default {}
+             */
+            memoriu: {
+                [key: string]: string;
+            };
+            /**
+             * Acte
+             * @default []
+             */
+            acte: {
+                [key: string]: unknown;
+            }[];
+            /**
+             * Acte Disclaimer
+             * @default
+             */
+            acte_disclaimer: string;
+            /**
+             * Cereri Tip
+             * @default []
+             */
+            cereri_tip: {
+                [key: string]: unknown;
+            }[];
         };
         /** Element */
         Element: {
@@ -571,6 +750,18 @@ export interface components {
              * @default false
              */
             obligatoriu: boolean;
+            /**
+             * Categorie
+             * @default echipament
+             */
+            categorie: string;
+            /**
+             * Inaltime M
+             * @default 0
+             */
+            inaltime_m: number;
+            /** Componenta */
+            componenta?: string | null;
         };
         /** Etapa */
         Etapa: {
@@ -638,6 +829,36 @@ export interface components {
              * @default 0
              */
             proiecte_cu_acord: number;
+            /**
+             * Proiecte Propuse
+             * @default 0
+             */
+            proiecte_propuse: number;
+            /**
+             * Proiecte Publicate
+             * @default 0
+             */
+            proiecte_publicate: number;
+            /**
+             * Proiecte Peste Prag
+             * @default 0
+             */
+            proiecte_peste_prag: number;
+            /**
+             * Voturi Total
+             * @default 0
+             */
+            voturi_total: number;
+            /**
+             * Oameni Implicati
+             * @default 0
+             */
+            oameni_implicati: number;
+            /**
+             * Terenuri Libere
+             * @default 0
+             */
+            terenuri_libere: number;
         };
         /** InainteazaIn */
         InainteazaIn: {
@@ -656,11 +877,23 @@ export interface components {
             cantitate: number;
             /** Ipoteza */
             ipoteza: string;
+            /**
+             * Categorie
+             * @default echipament
+             */
+            categorie: string;
+            /**
+             * Capitol
+             * @default Echipamente
+             */
+            capitol: string;
             pret_unitar?: components["schemas"]["PretUnitar"] | null;
             /** Valoare Lei */
             valoare_lei?: number | null;
             /** Stare */
             stare: string;
+            /** Tip Sursa */
+            tip_sursa?: string | null;
             /**
              * Motiv
              * @default
@@ -671,10 +904,24 @@ export interface components {
         ListaMateriale: {
             /** Linii */
             linii: components["schemas"]["LinieMaterial"][];
+            /** Capitole */
+            capitole: string[];
             /** Subtotal Cotat Lei */
             subtotal_cotat_lei: number;
             /** Linii De Cotat */
             linii_de_cotat: number;
+            /**
+             * Articole Necotate
+             * @default []
+             */
+            articole_necotate: string[];
+            /**
+             * Pe Surse
+             * @default {}
+             */
+            pe_surse: {
+                [key: string]: number;
+            };
             /** Eticheta Subtotal */
             eticheta_subtotal: string;
             /**
@@ -682,6 +929,17 @@ export interface components {
              * @default Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)
              */
             sursa_preturi: string;
+            /**
+             * Surse
+             * @default {
+             *       "seap": "SEAP (achiziții directe, date deschise)",
+             *       "plafon": "plafon de program oficial",
+             *       "catalog": "preț de catalog verificat"
+             *     }
+             */
+            surse: {
+                [key: string]: string;
+            };
             /**
              * Tva
              * @default TVA: neprecizat în setul de date
@@ -691,7 +949,7 @@ export interface components {
             ipoteze: string[];
             /**
              * Disclaimer
-             * @default Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse.
+             * @default Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse.
              */
             disclaimer: string;
         };
@@ -773,12 +1031,34 @@ export interface components {
             /** Ipoteze */
             ipoteze: string[];
             /**
+             * Sursa Specificatie
+             * @default model_verificat
+             */
+            sursa_specificatie: string;
+            /**
              * Disclaimer
              * @default Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.
              */
             disclaimer: string;
             /** Suprafata Ocupata Mp */
             suprafata_ocupata_mp: number;
+            /**
+             * Bilant
+             * @default []
+             */
+            bilant: {
+                [key: string]: unknown;
+            }[];
+            /**
+             * Pot Procent
+             * @default 0
+             */
+            pot_procent: number;
+            /**
+             * Cut
+             * @default 0
+             */
+            cut: number;
         };
         /** PlotCandidateOut */
         PlotCandidateOut: {
@@ -825,6 +1105,17 @@ export interface components {
             surse: string[];
             /** Perioada */
             perioada: string;
+            /**
+             * Tip Sursa
+             * @default seap
+             */
+            tip_sursa: string;
+            /** Sursa Url */
+            sursa_url?: string | null;
+            /** Data Accesarii */
+            data_accesarii?: string | null;
+            /** Nota */
+            nota?: string | null;
         };
         /** ProiectCreate */
         ProiectCreate: {
@@ -859,7 +1150,7 @@ export interface components {
              * Stare
              * @enum {string}
              */
-            stare: "draft" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
+            stare: "draft" | "publicat" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
             dosar: components["schemas"]["Dosar"];
             /** Referinte */
             referinte: components["schemas"]["Referinta"][];
@@ -876,10 +1167,33 @@ export interface components {
              */
             is_demo: boolean;
             /**
+             * Voturi
+             * @default 0
+             */
+            voturi: number;
+            /**
+             * Prag Voturi
+             * @default 3
+             */
+            prag_voturi: number;
+            /** Specificatie */
+            specificatie?: {
+                [key: string]: unknown;
+            } | null;
+            /** Fezabilitate */
+            fezabilitate?: {
+                [key: string]: unknown;
+            } | null;
+            /**
              * Evenimente
              * @default []
              */
             evenimente: components["schemas"]["ProiectEvenimentOut"][];
+            /**
+             * Votat De Mine
+             * @default false
+             */
+            votat_de_mine: boolean;
         };
         /**
          * ProiectDirectCreate
@@ -910,7 +1224,7 @@ export interface components {
              * Stare Noua
              * @enum {string}
              */
-            stare_noua: "draft" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
+            stare_noua: "draft" | "publicat" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
             /** Mesaj */
             mesaj?: string | null;
             /** Created At */
@@ -937,7 +1251,7 @@ export interface components {
              * Stare
              * @enum {string}
              */
-            stare: "draft" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
+            stare: "draft" | "publicat" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
             dosar: components["schemas"]["Dosar"];
             /** Referinte */
             referinte: components["schemas"]["Referinta"][];
@@ -953,6 +1267,24 @@ export interface components {
              * @default false
              */
             is_demo: boolean;
+            /**
+             * Voturi
+             * @default 0
+             */
+            voturi: number;
+            /**
+             * Prag Voturi
+             * @default 3
+             */
+            prag_voturi: number;
+            /** Specificatie */
+            specificatie?: {
+                [key: string]: unknown;
+            } | null;
+            /** Fezabilitate */
+            fezabilitate?: {
+                [key: string]: unknown;
+            } | null;
         };
         /** Referinta */
         Referinta: {
@@ -1117,6 +1449,25 @@ export interface components {
             input?: unknown;
             /** Context */
             ctx?: Record<string, never>;
+        };
+        /** VotOut */
+        VotOut: {
+            /** Proiect Id */
+            proiect_id: string;
+            /** Voturi */
+            voturi: number;
+            /** Prag Voturi */
+            prag_voturi: number;
+            /**
+             * Stare
+             * @enum {string}
+             */
+            stare: "draft" | "publicat" | "trimis" | "in_verificare" | "clarificari" | "acord_de_principiu" | "respins";
+            /**
+             * Votat De Mine
+             * @default true
+             */
+            votat_de_mine: boolean;
         };
     };
     responses: never;
@@ -1960,6 +2311,69 @@ export interface operations {
             };
         };
     };
+    analiza_proiecte_analiza_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AnalizaIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AnalizaOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     create_proiect_ideas__idea_id__proiect_post: {
         parameters: {
             query?: never;
@@ -2147,6 +2561,26 @@ export interface operations {
             };
         };
     };
+    list_publice_proiecte_publice_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"][];
+                };
+            };
+        };
+    };
     get_proiect_proiecte__proiect_id__get: {
         parameters: {
             query?: never;
@@ -2167,6 +2601,128 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProiectDetaliuOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    publica_proiecte__proiect_id__publica_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProiectOut"];
+                };
+            };
+            /** @description X-User-Id lipsă sau necunoscut */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Acțiune interzisă */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resursa nu există */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    voteaza_proiecte__proiect_id__vot_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-user-id"?: string | null;
+            };
+            path: {
+                proiect_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VotOut"];
                 };
             };
             /** @description X-User-Id lipsă sau necunoscut */
@@ -2539,7 +3095,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description fișierul (SVG, DXF, PDF sau CSV) */
+            /** @description fișierul (SVG, DXF, PDF, XLSX sau CSV) */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -2548,6 +3104,7 @@ export interface operations {
                     "image/svg+xml": unknown;
                     "application/dxf": unknown;
                     "application/pdf": unknown;
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": unknown;
                     "text/csv": unknown;
                 };
             };

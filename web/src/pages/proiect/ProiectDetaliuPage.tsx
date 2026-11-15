@@ -1,16 +1,18 @@
-// One complete project. Tab "Dosar": summary, plot, cost, stages, risks, questions for the city hall, references;
-// tab "Documente": plan, downloads, materials. Beside them: history and the one action the current role may take.
+// One complete project. Tab "Dosar": feasibility, memorandum, specification, plot, cost (reference interval +
+// itemised sum), stages, risks, questions, documents needed, request templates, references; tab "Documente":
+// plan 2D/3D, downloads, materials. Beside them: support (votes), history and the one action the current role may take.
 // Printable (Save as PDF) via the print: utilities and @media print in index.css.
 import { useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Loader2, Printer, Send } from 'lucide-react'
+import { ArrowLeft, Loader2, Megaphone, Printer, Send, Users } from 'lucide-react'
 import { toast } from 'sonner'
 import { api } from '@/api/client'
-import type { Proiect, ProiectDetaliu, Space } from '@/api/models'
+import type { Act, CerereTip, Fezabilitate, Proiect, ProiectDetaliu, Space, Specificatie } from '@/api/models'
 import { DemoBadge } from '@/components/DemoBadge'
 import { DocumenteTab } from '@/components/proiect/Documente'
+import { ActeBlock, CereriTipBlock, FezabilitateCard, MemoriuBlock, SpecificatieBlock } from '@/components/proiect/Dosar'
 import {
-  BulletList, CostBlock, Disclaimer, EtapeList, EvenimenteTimeline, ProiectStatusBadge, ReferinteList, Rezumat,
+  BulletList, CostBlock, Disclaimer, EtapeList, EvenimenteTimeline, ProiectStatusBadge, ReferinteList, Rezumat, VotButon,
 } from '@/components/proiect/parts'
 import { ErrorState, LoadingCards } from '@/components/StateViews'
 import { TerenMap } from '@/components/TerenMap'
@@ -52,6 +54,13 @@ export function ProiectDetaliuPage() {
   const verificator = DEMO_USERS.find((u) => u.id === p.verificator_id)
   const space = spaces.data?.find((s) => s.id === p.space_id)
   const teren = space && isFreePlot(space.tip) ? space : undefined
+  const spec = (p.specificatie as unknown as Specificatie | null) ?? null
+  const fez = (p.fezabilitate as unknown as Fezabilitate | null) ?? null
+  const memoriu = (dosar.memoriu ?? {}) as Record<string, string>
+  const acte = (dosar.acte ?? []) as unknown as Act[]
+  const cereri = (dosar.cereri_tip ?? []) as unknown as CerereTip[]
+  let n = 0
+  const num = () => `${++n}.`
 
   return (
     <section className="space-y-6">
@@ -60,7 +69,7 @@ export function ProiectDetaliuPage() {
           <ArrowLeft className="size-4" /> Proiecte
         </Link>
         <Button variant="outline" size="sm" onClick={() => window.print()}>
-          <Printer /> Tipărește / salvează PDF
+          <Printer /> Tipărește pagina
         </Button>
       </div>
 
@@ -93,41 +102,70 @@ export function ProiectDetaliuPage() {
         <Tabs defaultValue="dosar" className="min-w-0">
           <TabsList className="print:hidden">
             <TabsTrigger value="dosar">Dosar</TabsTrigger>
-            <TabsTrigger value="documente">Documente</TabsTrigger>
+            <TabsTrigger value="documente">Planșe și materiale</TabsTrigger>
           </TabsList>
           <TabsContent value="dosar" className="mt-4 space-y-6">
-            <Block title="1. Rezumat">
-              <Rezumat dosar={dosar} />
-            </Block>
+            {fez ? (
+              <Block title={`${num()} Analiza fezabilității`}>
+                <FezabilitateCard fez={fez} />
+              </Block>
+            ) : null}
+            {Object.keys(memoriu).length ? (
+              <Block title={`${num()} Memoriu descriptiv`}>
+                <MemoriuBlock memoriu={memoriu} />
+              </Block>
+            ) : (
+              <Block title={`${num()} Rezumat`}>
+                <Rezumat dosar={dosar} />
+              </Block>
+            )}
+            {spec ? (
+              <Block title={`${num()} Specificație tehnică`}>
+                <SpecificatieBlock spec={spec} />
+              </Block>
+            ) : null}
             {teren ? (
-              <Block title="2. Terenul">
+              <Block title={`${num()} Terenul`}>
                 <TerenMap terenuri={[teren]} center={[teren.lat, teren.lng]} zoom={16} compact className="h-56 w-full print:hidden" />
                 <p className="text-sm text-muted-foreground">
                   {teren.nume} · {teren.suprafata_mp ? `${teren.suprafata_mp} mp · ` : ''}
                   {teren.lat.toFixed(5)}, {teren.lng.toFixed(5)}
+                  {teren.sursa ? ` · sursă: ${teren.sursa.replace(/_/g, ' ')}` : ''}
+                  {teren.status_verificare ? ` · ${teren.status_verificare}` : ''}
                 </p>
+                <p className="text-xs text-muted-foreground">Proprietarul, regimul juridic și disponibilitatea terenului se confirmă de Primărie.</p>
               </Block>
             ) : null}
-            <Block title="3. Cost estimat">
+            <Block title={`${num()} Cost estimat`}>
               <CostBlock cost={p.cost} />
               <Disclaimer />
             </Block>
             {dosar.etape.length ? (
-              <Block title="4. Etape">
+              <Block title={`${num()} Etape`}>
                 <EtapeList etape={dosar.etape} />
               </Block>
             ) : null}
             {dosar.riscuri.length ? (
-              <Block title="5. Riscuri">
+              <Block title={`${num()} Riscuri`}>
                 <BulletList items={dosar.riscuri} />
               </Block>
             ) : null}
             {dosar.lista_verificare.length ? (
-              <Block title="6. Întrebări pentru Primărie">
+              <Block title={`${num()} Întrebări pentru Primărie`}>
                 <BulletList items={dosar.lista_verificare} />
               </Block>
             ) : null}
-            <Block title="7. Proiecte de referință">
+            {acte.length ? (
+              <Block title={`${num()} Documente și avize necesare`}>
+                <ActeBlock acte={acte} disclaimer={dosar.acte_disclaimer} />
+              </Block>
+            ) : null}
+            {cereri.length ? (
+              <Block title={`${num()} Cereri-tip precompletate`}>
+                <CereriTipBlock cereri={cereri} />
+              </Block>
+            ) : null}
+            <Block title={`${num()} Proiecte de referință`}>
               <ReferinteList referinte={p.referinte} />
             </Block>
           </TabsContent>
@@ -136,10 +174,11 @@ export function ProiectDetaliuPage() {
           </TabsContent>
         </Tabs>
         <aside className="space-y-6 print:mt-6">
+          <Sustinere p={p} onChange={pr.reload} />
           {me ? <Actions p={p} me={me} onChange={pr.reload} /> : null}
           <Card className="print:border-0 print:shadow-none">
             <CardHeader>
-              <CardTitle>8. Istoric</CardTitle>
+              <CardTitle>Istoric</CardTitle>
             </CardHeader>
             <CardContent>
               <EvenimenteTimeline evenimente={p.evenimente} />
@@ -151,12 +190,36 @@ export function ProiectDetaliuPage() {
   )
 }
 
+function Sustinere({ p, onChange }: { p: ProiectDetaliu; onChange: () => void }) {
+  if (p.stare === 'draft') return null
+  const voturi = p.voturi ?? 0
+  const prag = p.prag_voturi ?? 3
+  const pct = Math.min(100, Math.round((100 * voturi) / Math.max(prag, 1)))
+  return (
+    <Card className="print:border-0 print:shadow-none">
+      <CardContent className="space-y-3">
+        <p className="flex items-center gap-2 font-semibold">
+          <Users className="size-4 text-primary" /> Susținere din comunitate
+        </p>
+        <p className="text-2xl font-semibold tabular-nums">
+          {voturi} <span className="text-sm font-normal text-muted-foreground">/ {prag} susținători pentru a ajunge la Primărie</span>
+        </p>
+        <span className="block h-2 w-full overflow-hidden rounded-full bg-muted">
+          <span className="block h-full bg-primary transition-all" style={{ width: `${pct}%` }} />
+        </span>
+        <VotButon p={p} onDone={onChange} />
+      </CardContent>
+    </Card>
+  )
+}
+
 type Me = (typeof DEMO_USERS)[number]
 
 /** The single action the current user may take now. The server enforces roles and states (403/409/422). */
 function Actions({ p, me, onChange }: { p: ProiectDetaliu; me: Me; onChange: () => void }) {
   const isAuthor = p.autor_id === me.id
-  if (isAuthor && (p.stare === 'draft' || p.stare === 'clarificari')) return <Trimite p={p} onDone={onChange} />
+  if (isAuthor && p.stare === 'draft') return <Publica p={p} onDone={onChange} />
+  if (isAuthor && p.stare === 'clarificari') return <Trimite p={p} onDone={onChange} />
   if (me.rol === 'primarie' && p.stare === 'trimis') return <Inainteaza p={p} onDone={onChange} />
   if (me.rol === 'verificator' && p.verificator_id === me.id && p.stare === 'in_verificare') return <Decizie p={p} onDone={onChange} />
   return null
@@ -180,7 +243,7 @@ function useAction(onDone: () => void) {
     setBusy(true)
     setError(null)
     try {
-      await api<Proiect>(path, { method: 'POST', body: JSON.stringify(body) })
+      await api<Proiect>(path, { method: 'POST', body: body === undefined ? undefined : JSON.stringify(body) })
       toast.success(ok)
       onDone()
     } catch (e) {
@@ -192,24 +255,40 @@ function useAction(onDone: () => void) {
   return { busy, error, run }
 }
 
+function Publica({ p, onDone }: { p: ProiectDetaliu; onDone: () => void }) {
+  const { busy, error, run } = useAction(onDone)
+  const [mesaj, setMesaj] = useState('')
+  return (
+    <ActionCard title="Publică proiectul pentru vot">
+      <p className="text-sm text-muted-foreground">
+        Vecinii îl văd în „Comunitate” și îl pot susține. La {p.prag_voturi ?? 3} susținători ajunge automat la Primărie.
+      </p>
+      {error ? <p className="text-sm text-destructive">{error}</p> : null}
+      <Button disabled={busy} onClick={() => run(`/proiecte/${p.id}/publica`, undefined, 'Proiectul a fost publicat')}>
+        {busy ? <Loader2 className="animate-spin" /> : <Megaphone />} Publică pentru vot
+      </Button>
+      <details className="text-sm">
+        <summary className="cursor-pointer text-muted-foreground">Sau trimite direct la Primărie, fără vot</summary>
+        <div className="mt-2 space-y-2">
+          <Textarea value={mesaj} onChange={(e) => setMesaj(e.target.value)} rows={2} placeholder="Mesaj pentru Primărie (opțional)" />
+          <Button variant="outline" disabled={busy} onClick={() => run(`/proiecte/${p.id}/trimite`, { mesaj: mesaj.trim() || null }, 'Propunerea a fost trimisă')}>
+            <Send /> Trimite direct
+          </Button>
+        </div>
+      </details>
+    </ActionCard>
+  )
+}
+
 function Trimite({ p, onDone }: { p: ProiectDetaliu; onDone: () => void }) {
-  const again = p.stare === 'clarificari'
   const [mesaj, setMesaj] = useState('')
   const { busy, error, run } = useAction(onDone)
   return (
-    <ActionCard title={again ? 'Primăria a cerut clarificări' : 'Trimite propunerea la Primărie'}>
-      <Textarea
-        value={mesaj}
-        onChange={(e) => setMesaj(e.target.value)}
-        rows={3}
-        placeholder={again ? 'Răspunsul tău la clarificările cerute' : 'Mesaj pentru Primărie (opțional)'}
-      />
+    <ActionCard title="Primăria a cerut clarificări">
+      <Textarea value={mesaj} onChange={(e) => setMesaj(e.target.value)} rows={3} placeholder="Răspunsul tău la clarificările cerute" />
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
-      <Button
-        disabled={busy || (again && !mesaj.trim())}
-        onClick={() => run(`/proiecte/${p.id}/trimite`, { mesaj: mesaj.trim() || null }, again ? 'Propunerea a fost retrimisă' : 'Propunerea a fost trimisă')}
-      >
-        {busy ? <Loader2 className="animate-spin" /> : <Send />} {again ? 'Retrimite' : 'Trimite la Primărie'}
+      <Button disabled={busy || !mesaj.trim()} onClick={() => run(`/proiecte/${p.id}/trimite`, { mesaj: mesaj.trim() || null }, 'Propunerea a fost retrimisă')}>
+        {busy ? <Loader2 className="animate-spin" /> : <Send />} Retrimite
       </Button>
     </ActionCard>
   )
@@ -269,17 +348,9 @@ function Decizie({ p, onDone }: { p: ProiectDetaliu; onDone: () => void }) {
           </button>
         ))}
       </div>
-      <Textarea
-        value={mesaj}
-        onChange={(e) => setMesaj(e.target.value)}
-        rows={3}
-        placeholder={needsMsg ? 'Motivul (obligatoriu)' : 'Mesaj (opțional)'}
-      />
+      <Textarea value={mesaj} onChange={(e) => setMesaj(e.target.value)} rows={3} placeholder={needsMsg ? 'Motivul (obligatoriu)' : 'Mesaj (opțional)'} />
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
-      <Button
-        disabled={busy || (needsMsg && !mesaj.trim())}
-        onClick={() => run(`/proiecte/${p.id}/decizie`, { stare, mesaj: mesaj.trim() || null }, 'Decizia a fost înregistrată')}
-      >
+      <Button disabled={busy || (needsMsg && !mesaj.trim())} onClick={() => run(`/proiecte/${p.id}/decizie`, { stare, mesaj: mesaj.trim() || null }, 'Decizia a fost înregistrată')}>
         {busy ? <Loader2 className="animate-spin" /> : <Send />} Trimite decizia
       </Button>
     </ActionCard>

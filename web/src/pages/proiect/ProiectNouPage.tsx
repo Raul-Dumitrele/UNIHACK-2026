@@ -6,7 +6,8 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, Landmark, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { api, describeError } from '@/api/client'
-import type { ProiectDetaliu, ProiectNou, TerenPotrivit } from '@/api/models'
+import type { Analiza, Fezabilitate, ProiectDetaliu, ProiectNou, TerenPotrivit } from '@/api/models'
+import { FezabilitateCard } from '@/components/proiect/Dosar'
 import { DemoBadge } from '@/components/DemoBadge'
 import { Disclaimer } from '@/components/proiect/parts'
 import { EmptyState, ErrorState, LoadingCards } from '@/components/StateViews'
@@ -60,6 +61,25 @@ export function ProiectNouPage() {
 
   const isCitizen = DEMO_USERS.find((u) => u.id === userId)?.rol === 'cetatean'
   const step1Ok = !!tip && descriere.trim().length >= 10 && areaOk
+  // Feasibility of the proposal on the chosen plot (POST /proiecte/analiza): shown before generating, never hidden.
+  const [analiza, setAnaliza] = useState<Analiza | null>(null)
+  const [analizaBusy, setAnalizaBusy] = useState(false)
+  const [force, setForce] = useState(false)
+  async function analyse() {
+    if (!tip || !chosen) return
+    setAnalizaBusy(true)
+    setAnaliza(null)
+    setForce(false)
+    try {
+      const body = { tip_amenajare: tip, descriere: descriere.trim(), suprafata_mp: Number(area) || null, space_id: chosen.space_id }
+      setAnaliza(await api<Analiza>('/proiecte/analiza', { method: 'POST', body: JSON.stringify(body) }))
+    } catch (err) {
+      setError(describeError(err, 'Analiza propunerii'))
+    } finally {
+      setAnalizaBusy(false)
+    }
+  }
+  const unrealistic = analiza?.fezabilitate.nivel === 'nerealist'
 
   async function generate() {
     if (!tip || !chosen) return
@@ -85,8 +105,8 @@ export function ProiectNouPage() {
       <div className="space-y-1">
         <h1 className="text-3xl font-semibold tracking-tight">Propune un proiect</h1>
         <p className="text-muted-foreground">
-          Spui ce vrei să construiești; aplicația găsește terenurile potrivite și pregătește dosarul complet: buget, plan, materiale, acte și
-          proiecte de referință.
+          Spui ce vrei să construiești; aplicația analizează dacă e realist, găsește terenurile potrivite și pregătește dosarul complet:
+          specificație tehnică, memoriu, planșe, listă de materiale cu prețuri, documente necesare și proiecte de referință.
         </p>
       </div>
 
@@ -189,7 +209,13 @@ export function ProiectNouPage() {
                   <Button variant="outline" onClick={() => setStep(1)}>
                     <ArrowLeft /> Înapoi
                   </Button>
-                  <Button onClick={() => setStep(3)} disabled={!chosen}>
+                  <Button
+                    onClick={() => {
+                      setStep(3)
+                      void analyse()
+                    }}
+                    disabled={!chosen}
+                  >
                     Continuă <ArrowRight />
                   </Button>
                 </div>
@@ -202,6 +228,19 @@ export function ProiectNouPage() {
                   <Row label="Suprafață" value={`${area} mp`} />
                   <Row label="Descriere" value={descriere.trim()} />
                 </dl>
+                {analizaBusy ? (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Loader2 className="size-4 animate-spin" /> Analizăm fezabilitatea pe terenul ales…
+                  </div>
+                ) : analiza ? (
+                  <FezabilitateCard fez={analiza.fezabilitate as unknown as Fezabilitate} compact />
+                ) : null}
+                {unrealistic && !force ? (
+                  <label className="flex items-start gap-2 text-sm">
+                    <input type="checkbox" className="mt-1" checked={force} onChange={(e) => setForce(e.target.checked)} />
+                    <span>Am citit motivele și vreau totuși să generez dosarul (va purta avertismentul „nerealist”).</span>
+                  </label>
+                ) : null}
                 {sending ? (
                   <div className="flex items-start gap-3 rounded-lg bg-muted/60 p-3 text-sm">
                     <Loader2 className="mt-0.5 size-4 shrink-0 animate-spin" />
@@ -216,7 +255,7 @@ export function ProiectNouPage() {
                   <Button variant="outline" onClick={() => setStep(2)} disabled={sending}>
                     <ArrowLeft /> Înapoi
                   </Button>
-                  <Button onClick={generate} disabled={sending || !chosen}>
+                  <Button onClick={generate} disabled={sending || !chosen || analizaBusy || (unrealistic && !force)}>
                     {sending ? <Loader2 className="animate-spin" /> : <Landmark />} Generează proiectul
                   </Button>
                 </div>

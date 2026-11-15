@@ -168,7 +168,7 @@ export function handleMock(method: string, path: string, body: Body, userId: str
     if (!pr) return fail(404, 'Proiectul nu există.')
     if (!canSee(pr, me)) return fail(403, 'Nu ai acces la acest proiect.')
     const src = db.docsFrom.get(pr.id) ?? pr.id
-    const docs = (documenteJson as Record<string, { plan: PlanSchematic; materiale: ListaMateriale }>)[src]
+    const docs = (documenteJson as unknown as Record<string, { plan: PlanSchematic; materiale: ListaMateriale }>)[src]
     if (r[2] === 'plan') return ok(docs.plan)
     if (r[2] === 'materiale') return ok(docs.materiale)
     const name = r[3]
