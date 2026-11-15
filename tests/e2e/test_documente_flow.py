@@ -48,7 +48,9 @@ async def test_big_project_goes_to_the_osm_candidates_or_the_demo_plot(client):
 
 
 async def test_project_on_a_listed_lot_has_plan_materials_and_documents(client):
-    best = (await _plots(client, tip_amenajare="loc_de_joaca", suprafata_minima=250, cartier="Ronaț"))[0]
+    # listed lots lose points (they need a Local Council decision), so the best plot may be another one: pick a listed lot
+    plots = await _plots(client, tip_amenajare="loc_de_joaca", suprafata_minima=250, cartier="Ronaț", limit=50)
+    best = next(p for p in plots if p["din_lista_primarie"])
     p = await _project_on(client, best["space_id"])
     assert p["stare"] == "draft" and p["space_id"] == best["space_id"]
     assert p["dosar"]["lista_verificare"][0].startswith("Confirmarea faptului că terenul nu a fost atribuit")

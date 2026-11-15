@@ -10,6 +10,15 @@ ids lista-2019-*, and the demo plot); P1 can pass its own rows (dicts or ORM obj
 | place | 30 | in the district: 30; else ≤ 1 km: 30, falling linearly to 0 at 8 km; no or unknown district: 15 |
 | size | 10 | ≤ 2× the minimum area: 10; ≤ 4×: 5; larger: 0 (a big plot is better kept for a bigger project) |
 
+Penalties, so that the score agrees with the feasibility analysis (fezabilitate.py) and says why:
+| Case | Points | Reason given |
+|---|---|---|
+| city hall list (Legea 15/2003) | −15 | reserved for young people's housing: needs a Local Council decision |
+| below the recommended area of the kind | −10 | the project would be reduced |
+| below half of the recommended area | score capped at 35 | unrealistic here (same rule as fezabilitate.PREA_MIC) |
+| unconfirmed source (OpenStreetMap, marked by a user) or demo plot | −10 | owner and legal status unknown / example |
+The score stays within 0-100. OpenStreetMap plots are candidates, never called free or owned by the city hall.
+
 Plots smaller than suprafata_minima are excluded. Listed lots are drawn LOT_WIDTH_M wide, as on the map
 (the annex gives only the area); their reason always says they are to be confirmed. Lots are never merged:
 their positions are schematic, so adjacency would be invented.
@@ -86,6 +95,14 @@ def _place(space: Any, cartier: str | None) -> tuple[int, float | None, str]:
     return round(30 * share), round(d, 2), f"la {fmt(round(d, 1))} km de centrul cartierului {cartier}"
 
 
+def _recommended(tip_amenajare: str) -> float | None:
+    """Recommended area of a kind that has a hand-written model (no LLM call here: this runs per plot)."""
+    from backend.ai.proiect.spec import MODELE, resolve_type  # loaded on demand (spec imports the design layer)
+
+    model = MODELE.get(resolve_type(tip_amenajare))
+    return model.suprafata_recomandata_mp if model else None
+
+
 def score_plot(space: Any, tip_amenajare: str, suprafata_minima: float | None,
                cartier: str | None = None) -> PlotCandidate | None:
     """None when the space is not a free plot or is smaller than suprafata_minima."""
@@ -103,6 +120,19 @@ def score_plot(space: Any, tip_amenajare: str, suprafata_minima: float | None,
     place, dist, place_text = _place(space, cartier)
     ratio = area / suprafata_minima if suprafata_minima else 1
     size = 10 if ratio <= 2 else 5 if ratio <= 4 else 0
+    sursa = _get(space, "sursa", "source")
+    rec = _recommended(tip_amenajare)
+    penalty, cap, notes = 0, 100, []
+    if listed:
+        penalty += 15
+    if rec and area < rec * 0.5:
+        cap = 35
+        notes.append(f"sub jumătate din suprafața recomandată de {fmt(rec)} mp: nerealist aici")
+    elif rec and area < rec:
+        penalty += 10
+        notes.append(f"sub suprafața recomandată de {fmt(rec)} mp: amenajarea ar fi redusă")
+    if sursa in ("osm", "marcat_de_utilizator") or (demo and not listed):
+        penalty += 10
 
     parts = [f"{fmt(area)} mp"]
     if not scene.complet:
@@ -115,9 +145,10 @@ def score_plot(space: Any, tip_amenajare: str, suprafata_minima: float | None,
         parts.append(place_text)
     if size == 0:
         parts.append("mult mai mare decât e nevoie")
+    parts.extend(notes)
     if listed:
-        parts.append("din lista Primăriei (Legea 15/2003), de confirmat: poate fi atribuit între timp")
-    sursa = _get(space, "sursa", "source")
+        parts.append("din lista Primăriei (Legea 15/2003), de confirmat: rezervat locuințelor pentru tineri, "
+                     "folosirea lui cere o hotărâre a Consiliului Local")
     if sursa == "osm":
         parts.append("candidat din OpenStreetMap, neconfirmat (proprietar și regim juridic necunoscute)")
     elif sursa == "marcat_de_utilizator":
@@ -127,7 +158,8 @@ def score_plot(space: Any, tip_amenajare: str, suprafata_minima: float | None,
     motiv = "; ".join(parts) + "."
     return PlotCandidate(
         space_id=str(_get(space, "id")), nume=str(_get(space, "name", "nume", default="")),
-        cartier=_get(space, "neighborhood", "cartier"), suprafata_mp=area, scor=fit + place + size,
+        cartier=_get(space, "neighborhood", "cartier"), suprafata_mp=area,
+        scor=max(0, min(cap, fit + place + size - penalty)),
         motiv=motiv[:1].upper() + motiv[1:], complet=scene.complet, din_lista_primarie=listed, is_demo=demo,
         distanta_km=dist,
     )

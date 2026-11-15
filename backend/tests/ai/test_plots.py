@@ -72,6 +72,8 @@ def test_oversized_plot_loses_points_and_ties_prefer_the_smaller_plot():
 def test_orm_rows_and_deterministic_order():
     rows = [SimpleNamespace(id="o1", nume="Teren", tip="teren_liber", suprafata_mp=350, cartier="Fabric",
                             lat=45.757, lng=21.25, is_demo=False, sursa=None)]
-    assert find_plots("gradina comunitara", 200, "Fabric", spaces=rows)[0].scor == 100
+    # 350 mp is under the 400 mp recommended for a community garden: 10 points less, and the reason says so
+    best = find_plots("gradina comunitara", 200, "Fabric", spaces=rows)[0]
+    assert best.scor == 90 and "sub suprafața recomandată de 400 mp" in best.motiv
     assert find_plots("skatepark", 250) == find_plots("skatepark", 250)
     assert all(0 <= c.scor <= 100 for c in find_plots("Fântână arteziană", 1))

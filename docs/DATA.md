@@ -389,6 +389,17 @@ python -m pytest backend/tests tests/e2e     # teste (fără Gemini live, fără
 | loc | 30 | în cartier: 30; altfel ≤ 1 km: 30, apoi scade liniar până la 0 la 8 km; fără cartier sau cartier necunoscut: 15 |
 | mărime | 10 | ≤ 2× suprafața minimă: 10; ≤ 4×: 5; mai mare: 0 (un teren mare rămâne pentru un proiect mai mare) |
 
+**Penalizări (din 15.11), ca scorul să nu contrazică analiza de fezabilitate; motivul le explică pe fiecare:**
+
+| Caz | Puncte | Ce spune motivul |
+|---|---|---|
+| lot din lista Primăriei (Legea 15/2003) | −15 | rezervat locuințelor pentru tineri; folosirea lui cere o hotărâre a Consiliului Local |
+| sub suprafața recomandată a tipului | −10 | amenajarea ar fi redusă |
+| sub jumătate din suprafața recomandată | scor plafonat la 35 | nerealist aici (aceeași regulă ca în fezabilitate: nivel „nerealist”) |
+| sursă neconfirmată (OpenStreetMap, marcat de un locuitor) sau teren demonstrativ | −10 | proprietar și regim juridic necunoscute / exemplu |
+
+- Suprafața recomandată vine din modelul scris de mână al tipului (`spec/modele.py`); pentru tipurile fără model nu se aplică penalizarea de suprafață.
+- Terenurile din OpenStreetMap sunt candidați neconfirmați: nu sunt numite „libere” sau „ale Primăriei”.
 - Ordinea: scor, apoi terenul mai mic, apoi id-ul.
 - Loturile din listă sunt desenate cu 12 m lățime, ca pe hartă. Motivul lor spune mereu „din lista Primăriei (Legea 15/2003), de confirmat: poate fi atribuit între timp”.
 - Loturile nu se unesc: pozițiile lor sunt schematice, deci alăturarea ar fi inventată. Consecință: un skatepark de peste 276 mp găsește azi doar terenul demo.
