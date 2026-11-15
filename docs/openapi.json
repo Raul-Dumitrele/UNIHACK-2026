@@ -1026,6 +1026,78 @@
         }
       }
     },
+    "/proiecte/analiza": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Analiza",
+        "description": "Specification + feasibility for a proposal on a plot, before generating the project (no dossier, no cost).",
+        "operationId": "analiza_proiecte_analiza_post",
+        "parameters": [
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalizaIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalizaOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ideas/{idea_id}/proiect": {
       "post": {
         "tags": [
@@ -1241,6 +1313,32 @@
         }
       }
     },
+    "/proiecte/publice": {
+      "get": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "List Publice",
+        "description": "Every project the community can see and vote on (anything past draft), newest activity first.",
+        "operationId": "list_publice_proiecte_publice_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProiectOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Publice Proiecte Publice Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/proiecte/{proiect_id}": {
       "get": {
         "tags": [
@@ -1311,12 +1409,155 @@
         }
       }
     },
+    "/proiecte/{proiect_id}/publica": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Publica",
+        "description": "The author publishes the draft: everyone can see it and vote; at prag_voturi it goes to the city hall.",
+        "operationId": "publica_proiecte__proiect_id__publica_post",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProiectOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proiecte/{proiect_id}/vot": {
+      "post": {
+        "tags": [
+          "proiecte"
+        ],
+        "summary": "Voteaza",
+        "description": "One vote per user per project (409 on a second one). Reaching the threshold sends the project to the city hall.",
+        "operationId": "voteaza_proiecte__proiect_id__vot_post",
+        "parameters": [
+          {
+            "name": "proiect_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Proiect Id"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-User-Id"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VotOut"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "X-User-Id lipsă sau necunoscut"
+          },
+          "403": {
+            "description": "Acțiune interzisă"
+          },
+          "404": {
+            "description": "Resursa nu există"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/proiecte/{proiect_id}/trimite": {
       "post": {
         "tags": [
           "proiecte"
         ],
         "summary": "Trimite",
+        "description": "Direct send by the author (from draft, publicat or clarificari); the community path is publica + vot.",
         "operationId": "trimite_proiecte__proiect_id__trimite_post",
         "parameters": [
           {
@@ -1736,11 +1977,12 @@
         ],
         "responses": {
           "200": {
-            "description": "fișierul (SVG, DXF, PDF sau CSV)",
+            "description": "fișierul (SVG, DXF, PDF, XLSX sau CSV)",
             "content": {
               "image/svg+xml": {},
               "application/dxf": {},
               "application/pdf": {},
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {},
               "text/csv": {}
             }
           },
@@ -1889,6 +2131,108 @@
   },
   "components": {
     "schemas": {
+      "AnalizaIn": {
+        "properties": {
+          "tip_amenajare": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 2,
+            "title": "Tip Amenajare",
+            "description": "text liber; sugestii: skatepark, loc_de_joaca, parc_caini, pista_biciclete, gradina_comunitara, teren_sport"
+          },
+          "descriere": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Descriere"
+          },
+          "suprafata_mp": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suprafata Mp"
+          },
+          "space_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Space Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tip_amenajare"
+        ],
+        "title": "AnalizaIn",
+        "description": "POST /proiecte/analiza: specification + feasibility before generating a project (fast, no dossier)."
+      },
+      "AnalizaOut": {
+        "properties": {
+          "tip_amenajare": {
+            "type": "string",
+            "title": "Tip Amenajare"
+          },
+          "eticheta": {
+            "type": "string",
+            "title": "Eticheta"
+          },
+          "specificatie": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Specificatie"
+          },
+          "fezabilitate": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Fezabilitate"
+          },
+          "plan_complet": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plan Complet"
+          },
+          "omise": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Omise",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "tip_amenajare",
+          "eticheta",
+          "specificatie",
+          "fezabilitate"
+        ],
+        "title": "AnalizaOut"
+      },
       "BookingCreate": {
         "properties": {
           "idea_id": {
@@ -2063,6 +2407,48 @@
               }
             ],
             "title": "Motiv"
+          },
+          "suma_cotata_lei": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suma Cotata Lei"
+          },
+          "articole_cotate": {
+            "type": "integer",
+            "title": "Articole Cotate",
+            "default": 0
+          },
+          "articole_necotate": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Articole Necotate",
+            "default": []
+          },
+          "pe_surse": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Pe Surse",
+            "default": {}
+          },
+          "eticheta_suma": {
+            "type": "string",
+            "title": "Eticheta Suma",
+            "default": ""
+          },
+          "metoda": {
+            "type": "string",
+            "title": "Metoda",
+            "default": ""
           }
         },
         "type": "object",
@@ -2153,6 +2539,37 @@
             "type": "array",
             "title": "Referinte Citate",
             "default": []
+          },
+          "memoriu": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Memoriu",
+            "default": {}
+          },
+          "acte": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Acte",
+            "default": []
+          },
+          "acte_disclaimer": {
+            "type": "string",
+            "title": "Acte Disclaimer",
+            "default": ""
+          },
+          "cereri_tip": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Cereri Tip",
+            "default": []
           }
         },
         "type": "object",
@@ -2202,6 +2619,27 @@
             "type": "boolean",
             "title": "Obligatoriu",
             "default": false
+          },
+          "categorie": {
+            "type": "string",
+            "title": "Categorie",
+            "default": "echipament"
+          },
+          "inaltime_m": {
+            "type": "number",
+            "title": "Inaltime M",
+            "default": 0.0
+          },
+          "componenta": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Componenta"
           }
         },
         "type": "object",
@@ -2373,6 +2811,36 @@
             "type": "integer",
             "title": "Proiecte Cu Acord",
             "default": 0
+          },
+          "proiecte_propuse": {
+            "type": "integer",
+            "title": "Proiecte Propuse",
+            "default": 0
+          },
+          "proiecte_publicate": {
+            "type": "integer",
+            "title": "Proiecte Publicate",
+            "default": 0
+          },
+          "proiecte_peste_prag": {
+            "type": "integer",
+            "title": "Proiecte Peste Prag",
+            "default": 0
+          },
+          "voturi_total": {
+            "type": "integer",
+            "title": "Voturi Total",
+            "default": 0
+          },
+          "oameni_implicati": {
+            "type": "integer",
+            "title": "Oameni Implicati",
+            "default": 0
+          },
+          "terenuri_libere": {
+            "type": "integer",
+            "title": "Terenuri Libere",
+            "default": 0
           }
         },
         "type": "object",
@@ -2426,6 +2894,16 @@
             "type": "string",
             "title": "Ipoteza"
           },
+          "categorie": {
+            "type": "string",
+            "title": "Categorie",
+            "default": "echipament"
+          },
+          "capitol": {
+            "type": "string",
+            "title": "Capitol",
+            "default": "Echipamente"
+          },
           "pret_unitar": {
             "anyOf": [
               {
@@ -2450,6 +2928,17 @@
           "stare": {
             "type": "string",
             "title": "Stare"
+          },
+          "tip_sursa": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tip Sursa"
           },
           "motiv": {
             "type": "string",
@@ -2477,6 +2966,13 @@
             "type": "array",
             "title": "Linii"
           },
+          "capitole": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Capitole"
+          },
           "subtotal_cotat_lei": {
             "type": "integer",
             "title": "Subtotal Cotat Lei"
@@ -2484,6 +2980,22 @@
           "linii_de_cotat": {
             "type": "integer",
             "title": "Linii De Cotat"
+          },
+          "articole_necotate": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Articole Necotate",
+            "default": []
+          },
+          "pe_surse": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Pe Surse",
+            "default": {}
           },
           "eticheta_subtotal": {
             "type": "string",
@@ -2493,6 +3005,18 @@
             "type": "string",
             "title": "Sursa Preturi",
             "default": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)"
+          },
+          "surse": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Surse",
+            "default": {
+              "seap": "SEAP (achiziții directe, date deschise)",
+              "plafon": "plafon de program oficial",
+              "catalog": "preț de catalog verificat"
+            }
           },
           "tva": {
             "type": "string",
@@ -2509,12 +3033,13 @@
           "disclaimer": {
             "type": "string",
             "title": "Disclaimer",
-            "default": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+            "default": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
           }
         },
         "type": "object",
         "required": [
           "linii",
+          "capitole",
           "subtotal_cotat_lei",
           "linii_de_cotat",
           "eticheta_subtotal",
@@ -2720,6 +3245,11 @@
             "type": "array",
             "title": "Ipoteze"
           },
+          "sursa_specificatie": {
+            "type": "string",
+            "title": "Sursa Specificatie",
+            "default": "model_verificat"
+          },
           "disclaimer": {
             "type": "string",
             "title": "Disclaimer",
@@ -2728,6 +3258,25 @@
           "suprafata_ocupata_mp": {
             "type": "number",
             "title": "Suprafata Ocupata Mp"
+          },
+          "bilant": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Bilant",
+            "default": []
+          },
+          "pot_procent": {
+            "type": "number",
+            "title": "Pot Procent",
+            "default": 0.0
+          },
+          "cut": {
+            "type": "number",
+            "title": "Cut",
+            "default": 0.0
           }
         },
         "type": "object",
@@ -2867,6 +3416,44 @@
           "perioada": {
             "type": "string",
             "title": "Perioada"
+          },
+          "tip_sursa": {
+            "type": "string",
+            "title": "Tip Sursa",
+            "default": "seap"
+          },
+          "sursa_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sursa Url"
+          },
+          "data_accesarii": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Data Accesarii"
+          },
+          "nota": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nota"
           }
         },
         "type": "object",
@@ -2949,6 +3536,7 @@
             "type": "string",
             "enum": [
               "draft",
+              "publicat",
               "trimis",
               "in_verificare",
               "clarificari",
@@ -2994,6 +3582,40 @@
             "title": "Is Demo",
             "default": false
           },
+          "voturi": {
+            "type": "integer",
+            "title": "Voturi",
+            "default": 0
+          },
+          "prag_voturi": {
+            "type": "integer",
+            "title": "Prag Voturi",
+            "default": 3
+          },
+          "specificatie": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Specificatie"
+          },
+          "fezabilitate": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fezabilitate"
+          },
           "evenimente": {
             "items": {
               "$ref": "#/components/schemas/ProiectEvenimentOut"
@@ -3001,6 +3623,11 @@
             "type": "array",
             "title": "Evenimente",
             "default": []
+          },
+          "votat_de_mine": {
+            "type": "boolean",
+            "title": "Votat De Mine",
+            "default": false
           }
         },
         "type": "object",
@@ -3078,6 +3705,7 @@
             "type": "string",
             "enum": [
               "draft",
+              "publicat",
               "trimis",
               "in_verificare",
               "clarificari",
@@ -3145,6 +3773,7 @@
             "type": "string",
             "enum": [
               "draft",
+              "publicat",
               "trimis",
               "in_verificare",
               "clarificari",
@@ -3189,6 +3818,40 @@
             "type": "boolean",
             "title": "Is Demo",
             "default": false
+          },
+          "voturi": {
+            "type": "integer",
+            "title": "Voturi",
+            "default": 0
+          },
+          "prag_voturi": {
+            "type": "integer",
+            "title": "Prag Voturi",
+            "default": 3
+          },
+          "specificatie": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Specificatie"
+          },
+          "fezabilitate": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fezabilitate"
           }
         },
         "type": "object",
@@ -3687,6 +4350,48 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "VotOut": {
+        "properties": {
+          "proiect_id": {
+            "type": "string",
+            "title": "Proiect Id"
+          },
+          "voturi": {
+            "type": "integer",
+            "title": "Voturi"
+          },
+          "prag_voturi": {
+            "type": "integer",
+            "title": "Prag Voturi"
+          },
+          "stare": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "publicat",
+              "trimis",
+              "in_verificare",
+              "clarificari",
+              "acord_de_principiu",
+              "respins"
+            ],
+            "title": "Stare"
+          },
+          "votat_de_mine": {
+            "type": "boolean",
+            "title": "Votat De Mine",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "proiect_id",
+          "voturi",
+          "prag_voturi",
+          "stare"
+        ],
+        "title": "VotOut"
       }
     }
   }

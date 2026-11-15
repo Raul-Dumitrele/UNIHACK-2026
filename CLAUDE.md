@@ -3,7 +3,11 @@
 ## Obiectiv
 Teren liber în Timișoara -> proiect complet generat (dosar, cost, plan SVG/DXF, materiale, PDF) -> Primărie -> verificator -> acord de principiu (simulat). Rezervările de spații nu mai sunt în UI.
 
-## Monorepo și zone (fiecare modifică doar zona sa)
+## Mod de lucru din 15.11: solo
+Echipa lucrează pe ramura `solo` cu o singură persoană care modifică toate zonele (hook-ul verifică doar secretele acolo).
+Zonele de mai jos rămân ca hartă a codului, nu ca restricție.
+
+## Monorepo și zone (hartă)
 - P1 (Raul): CLAUDE.md, README.md, Makefile, .gitignore, .env.example, scripts/, .githooks/, docs/CONTRACT.md, docs/openapi.json, docs/ARCHITECTURE.md, backend/__init__.py, backend/pytest.ini, backend/app/, backend/requirements.txt, backend/tests/app/
 - P2: web/ (React + Vite + TS), mobile/ (Expo + TS)
 - P3: backend/ai/, backend/impact/, backend/seed/, backend/tests/ai/, backend/tests/seed/, tests/e2e/, docs/DATA.md

@@ -80,4 +80,7 @@ def compute_impact(session) -> Impact:
     return compute_local(session)
 
 
-__all__ = ["structure_idea", "owner_message", "compute_impact", "find_references", "estimate_cost", "generate_dosar", "find_plots", "plan_json", "materiale_json", "build_documente"]
+from backend.ai.proiect.pipeline import analiza as analiza_proiect  # noqa: E402
+from backend.ai.proiect.pipeline import build_proiect  # noqa: E402
+
+__all__ = ["structure_idea", "owner_message", "compute_impact", "find_references", "estimate_cost", "generate_dosar", "find_plots", "plan_json", "materiale_json", "build_documente", "build_proiect", "analiza_proiect"]

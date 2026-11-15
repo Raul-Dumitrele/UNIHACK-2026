@@ -6,7 +6,17 @@
 - **Module P3**: `backend/ai/` (Gemini + fallback), `backend/impact/`, `backend/seed/`. P1 le importă prin `backend/app/p3.py` (real dacă există, altfel `stubs/`).
 - **Date**: SQLite. Câmpurile complexe (dotari, sloturi, structurat) sunt JSON.
 
-## Flux principal (din 15.11)
+## Flux principal (din 15.11, mod solo)
+0. `POST /proiecte/analiza` -> specificație + fezabilitate (pasul 3 al wizardului).
+0b. `POST /proiecte/{id}/publica` -> `POST /proiecte/{id}/vot` (×prag) -> trimis automat la Primărie; `GET /proiecte/publice` pentru pagina Comunitate.
+
+## Lanțul unui proiect (backend/ai/proiect/pipeline.py)
+specificatie (spec/) -> plan schematic (design/) -> fezabilitate -> referinte -> lista materiale (materiale + preturi_surse) ->
+cost (interval + suma) -> acte -> memoriu -> dosar. Documente (documente/): plan.svg, plan.dxf, plansa.pdf (A3, cartuș, nord,
+scară, bilanț, POT/CUT, detaliu + elevație), dosar.pdf, materiale.xlsx (OOXML scris direct), materiale.csv. Vederea 3D (web,
+three.js) citește același plan.
+
+## Flux anterior
 1. `GET /spaces?tip=teren_liber` / `GET /terenuri/potrivite` (find_plots) sau `POST /spaces` (teren marcat pe hartă).
 2. `POST /proiecte` -> structure_idea -> find_references -> estimate_cost -> generate_dosar -> proiect `draft`.
 3. `GET /proiecte/{id}/plan`, `/materiale`, `/documente/{plan.svg|plan.dxf|dosar.pdf|materiale.csv}` (P3, deterministe).

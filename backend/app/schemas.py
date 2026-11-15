@@ -19,7 +19,7 @@ TIP_AMENAJARE_SUGESTII = (
     "skatepark", "loc_de_joaca", "parc_caini", "pista_biciclete", "gradina_comunitara", "teren_sport",
 )
 TipAmenajare = Annotated[str, Field(min_length=2, max_length=80, description="text liber; sugestii: " + ", ".join(TIP_AMENAJARE_SUGESTII))]
-ProiectStare = Literal["draft", "trimis", "in_verificare", "clarificari", "acord_de_principiu", "respins"]
+ProiectStare = Literal["draft", "publicat", "trimis", "in_verificare", "clarificari", "acord_de_principiu", "respins"]
 DISCLAIMER = (
     "Estimare orientativă, bazată pe proiecte de referință. Nu reprezintă o autorizație; "
     "acordul din aplicație este un acord de principiu simulat."
@@ -72,6 +72,12 @@ class Impact(BaseModel):
     proiecte_active: int
     proiecte_trimise: int = 0
     proiecte_cu_acord: int = 0
+    proiecte_propuse: int = 0
+    proiecte_publicate: int = 0
+    proiecte_peste_prag: int = 0
+    voturi_total: int = 0
+    oameni_implicati: int = 0
+    terenuri_libere: int = 0
 
 
 class UserOut(ORM):
@@ -193,6 +199,12 @@ class Cost(BaseModel):
     ipoteze: list[str] = []
     referinte_folosite: list[str] = []
     motiv: str | None = None
+    suma_cotata_lei: int | None = None
+    articole_cotate: int = 0
+    articole_necotate: list[str] = []
+    pe_surse: dict[str, int] = {}
+    eticheta_suma: str = ""
+    metoda: str = ""
 
 
 class Etapa(BaseModel):
@@ -209,6 +221,10 @@ class Dosar(BaseModel):
     riscuri: list[str] = []
     lista_verificare: list[str] = []
     referinte_citate: list[str] = []
+    memoriu: dict[str, str] = {}
+    acte: list[dict] = []
+    acte_disclaimer: str = ""
+    cereri_tip: list[dict] = []
 
 
 class ProiectDirectCreate(BaseModel):
@@ -268,10 +284,40 @@ class ProiectOut(ORM):
     updated_at: UtcDatetime
     verificator_id: str | None = None
     is_demo: bool = False
+    voturi: int = 0
+    prag_voturi: int = 3
+    specificatie: dict | None = None
+    fezabilitate: dict | None = None
 
 
 class ProiectDetaliuOut(ProiectOut):
     evenimente: list[ProiectEvenimentOut] = []
+    votat_de_mine: bool = False
+
+
+class AnalizaIn(BaseModel):
+    """POST /proiecte/analiza: specification + feasibility before generating a project (fast, no dossier)."""
+    tip_amenajare: TipAmenajare
+    descriere: str | None = Field(default=None, max_length=2000)
+    suprafata_mp: int | None = Field(default=None, ge=1)
+    space_id: str | None = None
+
+
+class AnalizaOut(BaseModel):
+    tip_amenajare: str
+    eticheta: str
+    specificatie: dict
+    fezabilitate: dict
+    plan_complet: bool | None = None
+    omise: list[dict] = []
+
+
+class VotOut(BaseModel):
+    proiect_id: str
+    voturi: int
+    prag_voturi: int
+    stare: ProiectStare
+    votat_de_mine: bool = True
 
 
 # --- Terenuri si documente (functii P3 din backend.ai.proiect) ----------------
@@ -294,6 +340,9 @@ PlanOut = create_model(
     "PlanOut",
     **{name: (f.annotation, f) for name, f in Scene.model_fields.items()},
     suprafata_ocupata_mp=(float, ...),
+    bilant=(list[dict], []),
+    pot_procent=(float, 0.0),
+    cut=(float, 0.0),
 )
 
 

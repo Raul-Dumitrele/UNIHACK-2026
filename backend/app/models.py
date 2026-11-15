@@ -99,8 +99,21 @@ class Proiect(SQLModel, table=True):
     dosar: dict = Field(default_factory=dict, sa_column=Column(JSON, nullable=False))
     referinte: list = Field(default_factory=list, sa_column=Column(JSON, nullable=False))
     cost: dict = Field(default_factory=dict, sa_column=Column(JSON, nullable=False))
+    specificatie: dict | None = Field(default=None, sa_column=Column(JSON, nullable=True))
+    fezabilitate: dict | None = Field(default=None, sa_column=Column(JSON, nullable=True))
+    voturi: int = 0
+    prag_voturi: int = 3
     created_at: datetime = Field(default_factory=now_utc)
     updated_at: datetime = Field(default_factory=now_utc)
+
+
+class Vot(SQLModel, table=True):
+    __table_args__ = (UniqueConstraint("user_id", "proiect_id", name="uq_vot_user_proiect"),)
+
+    id: str = Field(default_factory=new_id, primary_key=True)
+    proiect_id: str = Field(foreign_key="proiect.id", index=True)
+    user_id: str = Field(foreign_key="user.id", index=True)
+    created_at: datetime = Field(default_factory=now_utc)
 
 
 class ProiectEveniment(SQLModel, table=True):

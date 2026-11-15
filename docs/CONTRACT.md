@@ -12,7 +12,7 @@ Orice schimbare se agreează în echipă; după schimbare: `make openapi` (sau `
 - Notificările sunt doar în aplicație (stare idee/rezervare), nu alerte despre oraș.
 
 ## Flux
-teren liber (hartă, căutare sau marcat de utilizator) -> proiect complet generat (dosar, cost din proiecte reale, plan SVG/DXF, materiale cu prețuri SEAP, dosar PDF) -> trimis la Primărie -> verificator -> acord de principiu (simulat) / clarificări / respins
+teren liber (hartă, căutare sau marcat de utilizator) -> analiză de fezabilitate -> proiect complet generat dintr-o specificație tehnică (memoriu, cost = interval din referințe + suma articolelor cu preț, planșe A3 SVG/DXF/PDF, vedere 3D, listă de materiale XLSX/CSV cu sursa fiecărui preț, documente și avize necesare, cereri-tip) -> publicat -> vot al comunității (un vot per utilizator per proiect) -> la prag, trimis automat la Primărie -> verificator -> acord de principiu (simulat) / clarificări / respins
 Fluxul vechi (idei cu prag de interes, potrivire cu spații existente, rezervări) rămâne în API, dar nu mai e folosit în UI.
 
 ## Vocabulare
@@ -32,7 +32,7 @@ Fluxul vechi (idei cu prag de interes, potrivire cu spații existente, rezervăr
 | IdeaStatus | deschisa, prag_atins, rezervata |
 | BookingStatus | cerut, aprobat, refuzat |
 | UserRole | cetatean, proprietar, primarie, verificator |
-| ProiectStare | draft, trimis, in_verificare, clarificari, acord_de_principiu, respins |
+| ProiectStare | draft, publicat, trimis, in_verificare, clarificari, acord_de_principiu, respins |
 
 ## Entități
 | Entitate | Câmpuri |
@@ -45,13 +45,18 @@ Fluxul vechi (idei cu prag de interes, potrivire cu spații existente, rezervăr
 | Booking | id, idea_id, space_id, slot, stare (BookingStatus), created_at, mesaj? (text) |
 | Notification | id, user_id, idea_id, booking_id?, proiect_id?, mesaj, citita, created_at |
 | Match | space (Space), scor (0-100), motiv, suprapunere[Slot] |
-| Impact | ore_recuperate, oameni_conectati, km_economisiti (estimare), proiecte_active, proiecte_trimise, proiecte_cu_acord |
+| Impact | ore_recuperate, oameni_conectati, km_economisiti (estimare), proiecte_active, proiecte_trimise, proiecte_cu_acord, proiecte_propuse, proiecte_publicate, proiecte_peste_prag, voturi_total, oameni_implicati, terenuri_libere |
 | Referinta | id, tip_amenajare, oras, an, suprafata_mp?, cost_total_lei?, componente[], sursa_url, sursa_tip, data_accesarii |
-| Cost | suficient (bool), min_lei?, mediana_lei?, max_lei?, moneda ("RON"), ipoteze[], referinte_folosite[], motiv? |
+| Cost | suficient (bool: există intervalul din referințe), min_lei?, mediana_lei?, max_lei?, moneda ("RON"), ipoteze[], referinte_folosite[], motiv?, **suma_cotata_lei?** (suma articolelor cu preț din lista de materiale), articole_cotate, articole_necotate[], pe_surse{tip_sursa: n}, eticheta_suma, metoda. Costul e MEREU prezent: intervalul când există ≥ 2 referințe, suma cotată de câte ori există o listă de materiale |
 | Etapa | nume, durata_luni |
-| Dosar | titlu, descriere, justificare, componente[], etape[Etapa], riscuri[], lista_verificare[], referinte_citate[] |
-| Proiect | id, idea_id, space_id, autor_id, tip_amenajare, suprafata_mp, stare (ProiectStare), dosar (Dosar), referinte[Referinta], cost (Cost), created_at, updated_at, verificator_id? (**adaugat de P1**, vezi nota), is_demo (bool, implicit false; **adaugat de P1**) |
+| Dosar | titlu, descriere, justificare, componente[], etape[Etapa], riscuri[], lista_verificare[], referinte_citate[], memoriu{date_generale, situatia_existenta, solutia_propusa, specificatii_tehnice, utilitati_energie, accesibilitate, intretinere, impact_comunitate, documente_necesare}, acte[Act], acte_disclaimer, cereri_tip[CerereTip] |
+| Proiect | id, idea_id, space_id, autor_id, tip_amenajare, suprafata_mp, stare (ProiectStare), dosar (Dosar), referinte[Referinta], cost (Cost), created_at, updated_at, verificator_id? (**adaugat de P1**, vezi nota), is_demo (bool, implicit false; **adaugat de P1**), voturi (int), prag_voturi (int, implicit 3), specificatie? (Specificatie, JSON), fezabilitate? (Fezabilitate, JSON) |
 | ProiectEveniment | id, proiect_id, user_id, stare_noua, mesaj?, created_at |
+| Vot | id, proiect_id, user_id, created_at; unic pe (user_id, proiect_id) |
+| Specificatie | tip_amenajare, eticheta, suprafata_minima_mp, suprafata_recomandata_mp?, utilitati_necesare[], categorie_lucrare[], componente[{nume, categorie, cantitate, unitate, latime_m?, lungime_m?, inaltime_m?, zona_libera_m, rol, obligatoriu, pe_plan, tip_desen, utilitati[], articol?, derivat_din}], beneficii[], riscuri_specifice[], ipoteze[], surse[], sursa_specificatie (model_verificat\|llm\|generic), disclaimer (`backend/ai/proiect/spec/model.py`) |
+| Fezabilitate | nivel (ok\|atentie\|nerealist), scor (0-100, orientativ), rezumat, motive[], recomandari[], beneficii[], utilitati[{nume, stare, detaliu}], suprafata_mp?, suprafata_minima_mp, suprafata_recomandata_mp?, teren{}, disclaimer |
+| Act | ordine, nume, emitent, descriere, temei, conditie?, de_confirmat |
+| CerereTip | titlu, catre, text |
 
 Nota: `Proiect.verificator_id` (opțional) nu era în lista inițială; e necesar ca să știm cine e desemnat (`GET /proiecte` pentru verificator, `decizie`). Se setează la `inainteaza`.
 
@@ -79,15 +84,19 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 | GET | /impact | - | Impact | rezultatul `impact.compute_impact` |
 | POST | /ideas/{id}/proiect | `{space_id, tip_amenajare, suprafata_mp?}` | Proiect draft (201) | autentificat; regula 6 |
 | GET | /proiecte | - | Proiect[] | autentificat; filtrat după rol (regula 7) |
-| GET | /proiecte/{id} | - | Proiect + `evenimente[]` | autentificat |
+| GET | /proiecte/{id} | - | Proiect + `evenimente[]` + `votat_de_mine` | ciorna doar pentru autor (403 altfel, inclusiv anonim); orice proiect ≠ draft e public |
 | POST | /proiecte/{id}/trimite | `{mesaj?}` | Proiect | autentificat; autor; regula 8 |
 | POST | /proiecte/{id}/inainteaza | `{verificator_id}` | Proiect | autentificat; primarie; regula 8 |
 | POST | /proiecte/{id}/decizie | `{stare: acord_de_principiu\|respins\|clarificari, mesaj}` | Proiect | autentificat; verificator desemnat; regula 8 |
+| POST | /proiecte/analiza | `{tip_amenajare, descriere?, suprafata_mp?, space_id?}` | AnalizaOut `{tip_amenajare, eticheta, specificatie, fezabilitate, plan_complet?, omise[]}` | autentificat; rapid, fără dosar; regula 16 |
+| GET | /proiecte/publice | - | Proiect[] | public; toate proiectele ≠ draft |
+| POST | /proiecte/{id}/publica | - | Proiect | autentificat; autor; draft -> publicat |
+| POST | /proiecte/{id}/vot | - | VotOut `{proiect_id, voturi, prag_voturi, stare, votat_de_mine}` (201) | autentificat; 409 la al doilea vot, pe draft sau după decizie; regula 17 |
 | GET | /terenuri/potrivite | `tip_amenajare` (obligatoriu), `suprafata_minima?`, `cartier?`, `limit?` (implicit 10) | PlotCandidate[] | terenuri libere potrivite, cel mai bun primul; regula 11 |
 | POST | /proiecte | `{space_id, tip_amenajare, descriere, suprafata_mp?}` | Proiect draft + `evenimente[]` (201) | autentificat; proiect direct pe teren, fără idee și fără prag; regula 12 |
 | GET | /proiecte/{id}/plan | - | Plan | autentificat; vizibilitate ca la GET /proiecte/{id} |
 | GET | /proiecte/{id}/materiale | - | ListaMateriale | autentificat; vizibilitate ca la GET /proiecte/{id} |
-| GET | /proiecte/{id}/documente/{nume} | `nume` ∈ plan.svg, plan.dxf, dosar.pdf, materiale.csv | fișier | autentificat; `Content-Disposition: attachment; filename="proiect-<id>-<nume>"`; alt nume -> 404; vizibilitate ca la GET /proiecte/{id} |
+| GET | /proiecte/{id}/documente/{nume} | `nume` ∈ plan.svg, plan.dxf, plansa.pdf, dosar.pdf, materiale.xlsx, materiale.csv | fișier | `Content-Disposition: attachment; filename="proiect-<id>-<nume>"`; alt nume -> 404; vizibilitate ca la GET /proiecte/{id} |
 
 ## Reguli
 1. **Idee.** `POST /ideas` apelează `ai.structure_idea(descriere)`; `titlu` implicit = `structurat.rezumat` (max 80 caractere); `stare = deschisa`; `prag` implicit 5.
@@ -114,7 +123,10 @@ Autentificat = necesită `X-User-Id` valid (altfel 401).
 12. **Proiect direct pe teren.** `POST /proiecte` structurează `descriere` (`structure_idea`), creează o idee internă a autorului (stare `prag_atins`, prag 1) și apoi același lanț ca la regula 6. 404 spațiu inexistent, 422 fără suprafață sau `tip_amenajare` necunoscut.
 13. **Plan, materiale, documente** (P3, deterministe, fără AI): Plan = `{tip_amenajare, eticheta, suprafata_mp, latime_m, lungime_m, elemente[], omise[], complet, ..., suprafata_ocupata_mp}`; ListaMateriale = `{linii[{articol, nume, unitate, cantitate, ipoteza, pret_unitar{mediana_lei, min_lei, max_lei, observatii, surse[], perioada}?, valoare_lei?, stare: cotat|de_cotat, motiv}], subtotal_cotat_lei, linii_de_cotat, eticheta_subtotal, sursa_preturi, tva, ipoteze[], disclaimer}`. Forma exactă: `docs/openapi.json`. Planul e o schiță orientativă, nu un proiect tehnic.
 14. **Teren marcat de utilizator.** `POST /spaces` creează un `Space` cu `tip = teren_liber`, `is_demo = false`, `owner_id` = utilizatorul, `sursa = marcat_de_utilizator`, `status_verificare = neverificat`, `cartier` = cel mai apropiat cartier (dacă se poate calcula). Coordonatele trebuie să fie în zona Timișoarei (lat 45.6–45.9, lng 21.0–21.45), altfel 422. Proprietarul real, regimul juridic și disponibilitatea NU sunt cunoscute; UI-ul le afișează ca „de verificat cu Primăria”.
-15. **Ce NU oferă API-ul:** buget pe componente separat (îl acoperă `cost` + lista de materiale), firme reale. `acte[]` (pașii de autorizare) și `firma` (profilul firmei căutate, fără nume reale) urmează de la P3 în `dosar`; până atunci UI-ul nu le afișează.
+15. **Ce NU oferă API-ul:** firme reale (dosarul descrie doar documentele și pașii; profilul firmei nu e generat), avize sau autorizații (aplicația nu emite nimic), prețuri inventate (un articol fără sursă rămâne „de cotat”).
+16. **Specificație și fezabilitate.** Orice proiect pornește din `Specificatie` (modele scrise de mână pentru skatepark, loc de joacă, parc câini, pistă biciclete, grădină comunitară, teren sport, foișor, stație de încărcare EV, fântână publică, parc acvatic; LLM cu schemă strictă și fără prețuri pentru orice alt tip; generic marcat ca atare dacă niciun model nu răspunde). Planul, materialele, dosarul, planșele și vederea 3D se construiesc din aceeași specificație, stocată pe Proiect. `Fezabilitate` vine din reguli deterministe (suprafață minimă/recomandată, componente care nu încap, utilități de verificat, sursa terenului); nivelul `nerealist` nu respinge tăcut: explică și recomandă.
+17. **Comunitate.** `publica`: autor, draft -> publicat (vizibil tuturor). `vot`: un vot per utilizator per proiect (409 la dublură); permis din publicat până la decizie. La `voturi >= prag_voturi` (implicit 3) proiectul trece automat în `trimis`, cu eveniment și notificări către autor și Primărie. `trimite` rămâne pentru trimiterea directă (draft, publicat) și pentru retrimiterea după clarificări. La decizie sunt notificați autorul, Primăria și toți votanții.
+18. **Prețuri cu sursă.** Fiecare `PretUnitar` are `tip_sursa` (seap | plafon | catalog), `sursa_url?`, `data_accesarii?`, `nota?`. Ordinea: SEAP (≥ 3 achiziții directe), plafon de program oficial (afișat ca plafon, nu preț), preț de catalog verificat în pagina sursei de scriptul offline. Fără sursă -> `de_cotat` cu motiv. Textul obligatoriu al planșelor: „Schiță orientativă generată de Loc Comun – nu este documentație tehnică (DTAC)”.
 
 ## Funcții între module (P3 -> P1)
 - `backend.ai.structure_idea(text: str) -> Structurat` (validare Pydantic, fallback determinist fără Gemini)

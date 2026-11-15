@@ -37,7 +37,7 @@ def test_list_endpoints_shapes(client, world):
     assert client.get("/ideas").json()[0]["id"] == "i1"
     m = client.get("/ideas/i1/matches").json()
     assert set(m[0]) == {"space", "scor", "motiv", "suprapunere"} and 0 <= m[0]["scor"] <= 100
-    assert set(client.get("/impact").json()) == {"ore_recuperate", "oameni_conectati", "km_economisiti", "proiecte_active", "proiecte_trimise", "proiecte_cu_acord"}
+    assert set(client.get("/impact").json()) == {"ore_recuperate", "oameni_conectati", "km_economisiti", "proiecte_active", "proiecte_trimise", "proiecte_cu_acord", "proiecte_propuse", "proiecte_publicate", "proiecte_peste_prag", "voturi_total", "oameni_implicati", "terenuri_libere"}
 
 
 def test_create_idea_defaults(client, world):
@@ -114,7 +114,9 @@ def test_openapi_has_all_contract_endpoints(client):
         ("/ideas/{idea_id}/proiect", "post"), ("/proiecte", "get"), ("/proiecte/{proiect_id}", "get"),
         ("/proiecte/{proiect_id}/trimite", "post"), ("/proiecte/{proiect_id}/inainteaza", "post"),
         ("/proiecte/{proiect_id}/decizie", "post"),
-        ("/proiecte", "post"), ("/terenuri/potrivite", "get"), ("/spaces", "post"), ("/spaces/{space_id}/proiecte", "get"), ("/proiecte/{proiect_id}/plan", "get"),
+        ("/proiecte", "post"), ("/terenuri/potrivite", "get"), ("/spaces", "post"), ("/spaces/{space_id}/proiecte", "get"),
+        ("/proiecte/analiza", "post"), ("/proiecte/publice", "get"), ("/proiecte/{proiect_id}/publica", "post"),
+        ("/proiecte/{proiect_id}/vot", "post"), ("/proiecte/{proiect_id}/plan", "get"),
         ("/proiecte/{proiect_id}/materiale", "get"), ("/proiecte/{proiect_id}/documente/{nume}", "get"),
     }
     assert {(p, m) for p, ops in paths.items() for m in ops} == expected

@@ -32,12 +32,24 @@ Web (alt terminal): `cd web && npm install && npm run dev` -> http://localhost:5
 Cu `make`: `make setup | seed | dev | test | smoke | openapi`. După o schimbare de contract: `make openapi`, apoi în web `npm run gen:types`.
 Ramuri: `p1-backend`, `p2-front`, `p3-data-ai`; hook-ul pre-commit blochează fișierele din afara zonei ramurii.
 
+## Ce face aplicația (pe scurt)
+1. Hartă cu terenuri libere (lista Primăriei, candidați OSM, terenuri marcate de locuitori) + „Marchează un teren”.
+2. Wizard: ce vrei -> terenuri potrivite (scor + motiv) -> **analiză de fezabilitate** (realist / atenție / nerealist, cu motive).
+3. Proiect complet: memoriu pe capitole, specificație tehnică, cost (interval din referințe + suma articolelor cu preț), etape,
+   riscuri, documente și avize necesare cu temei legal, cereri-tip, referințe; planșe A3 (PDF) și DXF, vedere 3D, listă de
+   materiale XLSX/CSV cu sursa fiecărui preț (SEAP / plafon / catalog / de cotat).
+4. Publicare -> vot (un vot per persoană) -> la 3 susținători ajunge automat la Primărie -> verificator -> decizie; notificări.
+5. Tablou de impact: terenuri, proiecte, voturi, oameni implicați, trimise, cu acord.
+
 ## Repetiție de demo
 Fă-o de două ori, pe `main` la zi:
 1. **Fără chei** (cum ar fi dacă pică internetul sau cheia): în `.env` lasă `GEMINI_API_KEY=` gol și pune `REFERENCES_LIVE_SEARCH=false`. Dosarul iese din șablon, AI-ul de structurare din reguli; totul trebuie să meargă.
 2. **Cu cheie**: completează `GEMINI_API_KEY`, păstrează `REFERENCES_LIVE_SEARCH=false` (căutarea live poate dura până la un minut).
 
 Scenariu (schimbi utilizatorul din dreapta sus):
+0. Cetățean: Hartă -> „Propune un proiect” -> „Stație de încărcare” (sau „Altceva…”) -> teren -> vezi analiza -> „Generează”.
+   Încearcă și „parc acvatic” pe un teren mic: analiza spune cinstit că nu e realist și de ce.
+0b. Autorul publică; alți doi-trei cetățeni apasă „Susțin proiectul” în Comunitate -> proiectul pleacă singur la Primărie.
 1. Cetățean (`demo-user-1`): hartă -> alege un teren sau marchează unul nou -> propune un proiect (ex. loc de joacă) -> vezi dosarul, costul, planul, materialele, descarcă PDF/DXF -> trimite la Primărie.
 2. Primărie (`demo-user-9`): proiectul apare la „Proiecte primite” -> înaintează la verificator.
 3. Verificator (`demo-user-10`): acord de principiu / clarificări / respins (cu mesaj).

@@ -7,7 +7,8 @@ from backend.tests.app.conftest import h
 
 PROIECT_KEYS = {
     "id", "idea_id", "space_id", "autor_id", "verificator_id", "tip_amenajare", "suprafata_mp",
-    "stare", "dosar", "referinte", "cost", "created_at", "updated_at", "is_demo",
+    "stare", "dosar", "referinte", "cost", "created_at", "updated_at", "is_demo", "voturi", "prag_voturi",
+    "specificatie", "fezabilitate",
 }
 
 
@@ -22,7 +23,7 @@ def test_create_proiect_shape_and_chain(client, world):
     p = r.json()
     assert set(p) == PROIECT_KEYS
     assert p["stare"] == "draft" and p["suprafata_mp"] == 1200
-    assert set(p["dosar"]) == {"titlu", "descriere", "justificare", "componente", "etape", "riscuri", "lista_verificare", "referinte_citate"}
+    assert set(p["dosar"]) >= {"titlu", "descriere", "justificare", "componente", "etape", "riscuri", "lista_verificare", "referinte_citate", "memoriu", "acte", "cereri_tip"}
     assert "acord de principiu simulat" in p["dosar"]["justificare"]
     assert p["cost"]["moneda"] == "RON" and p["cost"]["suficient"] is True
     assert p["created_at"].endswith("Z")
@@ -45,7 +46,7 @@ def test_get_proiect_detail_has_events(client, session, world):
     session.add(ProiectEveniment(proiect_id=pid, user_id=world["author"], stare_noua="draft"))
     session.commit()
     d = client.get(f"/proiecte/{pid}", headers=h(world["author"])).json()
-    assert set(d) == PROIECT_KEYS | {"evenimente"} and d["evenimente"][0]["stare_noua"] == "draft"
+    assert set(d) == PROIECT_KEYS | {"evenimente", "votat_de_mine"} and d["evenimente"][0]["stare_noua"] == "draft"
     assert client.get("/proiecte/nu-exista", headers=h(world["author"])).status_code == 404
 
 

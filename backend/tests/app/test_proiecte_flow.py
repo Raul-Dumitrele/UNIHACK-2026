@@ -64,7 +64,9 @@ def test_create_writes_draft_event(client, session, people):
 def test_cost_insufficient_when_few_references(client, monkeypatch, people):
     one = [Referinta(id="r1", tip_amenajare="skatepark", oras="X", an=2022, suprafata_mp=900, cost_total_lei=500000,
                      sursa_url="https://e.x", sursa_tip="primarie", data_accesarii=date.today())]
-    monkeypatch.setattr(p3, "find_references", lambda *a, **k: one)
+    import backend.ai.proiect.pipeline as pipeline
+
+    monkeypatch.setattr(pipeline, "find_references", lambda *a, **k: one)
     pid = make(client, people)
     cost = client.get(f"/proiecte/{pid}", headers=h(people["author"])).json()["cost"]
     assert cost["suficient"] is False and cost["motiv"] and cost["mediana_lei"] is None

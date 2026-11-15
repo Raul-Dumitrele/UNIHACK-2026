@@ -70,7 +70,9 @@ def test_post_proiecte_errors(client, plots):
 
 def test_tip_amenajare_is_free_text(client, plots):
     r = _direct(client, plots["other"], tip_amenajare="foișor")
-    assert r.status_code == 201 and r.json()["tip_amenajare"] == "foișor"
+    assert r.status_code == 201 and r.json()["tip_amenajare"] == "foisor"  # known kinds resolve to their model key
+    free = _direct(client, plots["other"], tip_amenajare="observator astronomic")
+    assert free.status_code == 201 and free.json()["tip_amenajare"] == "observator_astronomic"
     assert client.get("/terenuri/potrivite", params={"tip_amenajare": "parc acvatic"}).status_code == 200
 
 
@@ -134,7 +136,8 @@ def test_documents_follow_project_visibility(client, plots):
     for path in ("plan", "materiale", "documente/plan.svg"):
         assert client.get(f"/proiecte/{pid}/{path}", headers=h(plots["author"])).status_code == 403
         assert client.get(f"/proiecte/{pid}/{path}", headers=h("u-prim")).status_code == 403  # still a draft
-        assert client.get(f"/proiecte/{pid}/{path}").status_code == 401
+        assert client.get(f"/proiecte/{pid}/{path}").status_code == 403  # a draft is private, even anonymously
     client.post(f"/proiecte/{pid}/trimite", json={}, headers=h(plots["other"]))
     assert client.get(f"/proiecte/{pid}/plan", headers=h("u-prim")).status_code == 200
+    assert client.get(f"/proiecte/{pid}/plan").status_code == 200  # once past draft, the community can see it
     assert client.get("/proiecte/nu-exista/plan", headers=h(plots["other"])).status_code == 404
