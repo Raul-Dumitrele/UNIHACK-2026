@@ -35,6 +35,10 @@ class Cost(BaseModel):
     articole_necotate: list[str] = []
     pe_surse: dict[str, int] = {}  # tip_sursa -> number of priced lines
     eticheta_suma: str = ""
+    # What the UI shows as the headline. The partial sum is never the headline and is never called "the cost".
+    titlu: str = ""
+    lipsesc_principale: bool = False  # an unpriced line is one of the main (mandatory) elements
+    nota_suma: str | None = None
     metoda: str = ("Două estimări independente: intervalul din proiecte de referință (cost/mp × suprafață) și suma "
                    "articolelor cu preț din lista de materiale (parțială: articolele „de cotat” lipsesc).")
 
@@ -47,7 +51,13 @@ def _projects(n: int) -> str:
     return "un proiect" if n == 1 else f"{n} proiecte"
 
 
-def _itemised(cost: Cost, lista: Any) -> Cost:
+TITLU_INTERVAL = "Cost estimat din proiecte de referință"
+TITLU_FARA = "Cost total: nu poate fi estimat din datele disponibile"
+NOTA_PRINCIPALE = "Suma nu include elementele principale ale amenajării."
+
+
+def _itemised(cost: Cost, lista: Any, principale: Iterable[str] | None = None) -> Cost:
+    cost.titlu = TITLU_INTERVAL if cost.suficient else TITLU_FARA
     if lista is None:
         return cost
     linii = getattr(lista, "linii", None) or (lista.get("linii") if isinstance(lista, dict) else []) or []
@@ -66,15 +76,20 @@ def _itemised(cost: Cost, lista: Any) -> Cost:
     cost.eticheta_suma = (f"Suma articolelor cotate ({len(priced)} din {len(linii)}); "
                           f"{len(todo)} articole rămân de cotat" if todo else
                           f"Suma articolelor cotate ({len(priced)} din {len(linii)})")
+    main = {n.strip().lower() for n in (principale or [])}
+    cost.lipsesc_principale = any((n or "").strip().lower() in main for n in todo)
+    cost.nota_suma = NOTA_PRINCIPALE if cost.lipsesc_principale else None
     return cost
 
 
-def estimate_cost(referinte: Iterable[Any], suprafata_mp: float | None, lista: Any = None) -> Cost:
+def estimate_cost(referinte: Iterable[Any], suprafata_mp: float | None, lista: Any = None,
+                  principale: Iterable[str] | None = None) -> Cost:
+    """principale: names of the main (mandatory) elements; if one of them has no price, the sum says so."""
     refs = [r if isinstance(r, Referinta) else Referinta.model_validate(r) for r in referinte]
     usable = [r for r in refs if r.usable_for_cost]
     if not suprafata_mp or suprafata_mp <= 0:
         return _itemised(Cost(suficient=False, motiv="Suprafața propusă lipsește, deci costul nu poate fi raportat la ea."),
-                         lista)
+                         lista, principale)
     if len(usable) < MIN_REFERENCES:
         return _itemised(Cost(
             suficient=False,
@@ -82,7 +97,7 @@ def estimate_cost(referinte: Iterable[Any], suprafata_mp: float | None, lista: A
             motiv=(f"Doar {_projects(len(usable))} de referință {'are' if len(usable) == 1 else 'au'} "
                    f"atât costul, cât și suprafața publicate; sunt necesare cel puțin {MIN_REFERENCES}."
                    if usable else "Niciun proiect de referință nu are atât costul, cât și suprafața publicate."),
-        ), lista)
+        ), lista, principale)
 
     per_mp = sorted(r.cost_total_lei / r.suprafata_mp for r in usable)
     years = sorted(r.an for r in usable)
@@ -108,4 +123,4 @@ def estimate_cost(referinte: Iterable[Any], suprafata_mp: float | None, lista: A
         max_lei=_round(per_mp[-1] * suprafata_mp),
         ipoteze=ipoteze,
         referinte_folosite=[r.id for r in usable],
-    ), lista)
+    ), lista, principale)

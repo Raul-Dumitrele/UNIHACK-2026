@@ -2449,6 +2449,27 @@
             "type": "string",
             "title": "Metoda",
             "default": ""
+          },
+          "titlu": {
+            "type": "string",
+            "title": "Titlu",
+            "default": ""
+          },
+          "lipsesc_principale": {
+            "type": "boolean",
+            "title": "Lipsesc Principale",
+            "default": false
+          },
+          "nota_suma": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nota Suma"
           }
         },
         "type": "object",

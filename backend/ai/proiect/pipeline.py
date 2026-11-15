@@ -41,7 +41,7 @@ def _scene(spec, suprafata_mp: float | None, space: Any):
 def analiza(tip_amenajare: str, suprafata_mp: float | None, space: Any = None, descriere: str | None = None) -> dict:
     spec = get_specificatie(tip_amenajare, suprafata_mp, descriere)
     scene = _scene(spec, suprafata_mp, space)
-    fez = analizeaza(spec, suprafata_mp, space, scene)
+    fez = analizeaza(spec, suprafata_mp, space, scene, cerut=tip_amenajare)
     return {
         "tip_amenajare": spec.tip_amenajare, "eticheta": spec.eticheta,
         "specificatie": spec.model_dump(mode="json"), "fezabilitate": fez.model_dump(mode="json"),
@@ -54,10 +54,10 @@ def build_proiect(idea: Any, space: Any, tip_amenajare: str, suprafata_mp: float
                   descriere: str | None = None, use_llm: bool = True) -> dict:
     spec = get_specificatie(tip_amenajare, suprafata_mp, descriere or _get(idea, "descriere", "text"))
     scene = _scene(spec, suprafata_mp, space)
-    fez = analizeaza(spec, suprafata_mp, space, scene)
+    fez = analizeaza(spec, suprafata_mp, space, scene, cerut=tip_amenajare)
     refs = find_references(spec.tip_amenajare, suprafata_mp)
     lista = lista_materiale(scene, spec) if scene else None
-    cost = estimate_cost(refs, suprafata_mp, lista)
+    cost = estimate_cost(refs, suprafata_mp, lista, principale=[c.nume for c in spec.obligatorii])
     acte = lista_acte(spec, space)
     teren = fez.teren
     if use_llm:

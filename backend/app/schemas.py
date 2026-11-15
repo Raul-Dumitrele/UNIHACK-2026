@@ -205,6 +205,9 @@ class Cost(BaseModel):
     pe_surse: dict[str, int] = {}
     eticheta_suma: str = ""
     metoda: str = ""
+    titlu: str = ""
+    lipsesc_principale: bool = False
+    nota_suma: str | None = None
 
 
 class Etapa(BaseModel):
