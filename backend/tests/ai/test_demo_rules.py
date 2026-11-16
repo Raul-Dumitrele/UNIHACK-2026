@@ -113,3 +113,14 @@ def test_aqua_park_layout_is_functional_and_never_overlaps():
     assert abs(els["turn cu tobogane acvatice"].y - els["bazin principal"].y) < 3  # same row when the plot is wide enough
     svg = build_plan_svg(scene, "Plan")
     assert ">11–13<" in svg or ">9–10<" in svg  # small repeated items share one label outside the shapes
+
+
+def test_pdf_dossier_follows_the_same_cost_rule():
+    from backend.ai.proiect.documente import build_documente
+
+    space = _plot(6000, "osm")
+    p = build_proiect({"titlu": "Aqua park", "descriere": "piscine"}, space, "parc acvatic", 6000, use_llm=False)
+    pdf = build_documente({"id": "t", "stare": "draft", "suprafata_mp": 6000, "is_demo": False, **p}, space)["dosar.pdf"][0]
+    assert pdf.startswith(b"%PDF")
+    assert b"Cost total: nu poate fi estimat" in pdf  # the headline, as in the UI
+    assert b"Informa" in pdf and b"Suma nu include elementele principale" in pdf  # the partial sum is labelled as partial

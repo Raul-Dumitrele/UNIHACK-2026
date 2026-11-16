@@ -289,15 +289,20 @@ def build_dosar_pdf(proiect: Any, space: Any = None, scene: Scene | None = None,
     _draw_spec(pdf, spec)
 
     pdf.heading("Estimare de cost")
+    # Same rule as in the UI: the headline is the reference interval, or the plain statement that the total cannot be
+    # estimated. The sum of the priced lines is partial: never bold, never called the cost.
     if cost.get("suficient"):
-        pdf.paragraph(f"Din proiecte de referință: între {lei(cost.get('min_lei'))} și {lei(cost.get('max_lei'))}, "
-                      f"mediană {lei(cost.get('mediana_lei'))}.", bold=True)
+        pdf.paragraph(f"{cost.get('titlu') or 'Cost estimat din proiecte de referință'}: între {lei(cost.get('min_lei'))} și "
+                      f"{lei(cost.get('max_lei'))}, mediană {lei(cost.get('mediana_lei'))}.", bold=True)
     else:
-        pdf.paragraph("Din proiecte de referință: " + (cost.get("motiv") or "date insuficiente pentru un interval."))
-    if cost.get("suma_cotata_lei") is not None:
-        pdf.paragraph(f"{cost.get('eticheta_suma')}: {lei(cost.get('suma_cotata_lei'))}.", bold=True)
-        if cost.get("articole_necotate"):
-            pdf.paragraph("Fără preț (de cotat): " + "; ".join(cost["articole_necotate"]), size=8.5, color="#a33a1d")
+        pdf.paragraph(cost.get("titlu") or "Cost total: nu poate fi estimat din datele disponibile", bold=True)
+        pdf.paragraph(cost.get("motiv") or "Date insuficiente pentru un interval din proiecte de referință.")
+    if cost.get("suma_cotata_lei") is not None and cost.get("articole_cotate"):
+        pdf.paragraph(f"Informație parțială – {cost.get('eticheta_suma')}: {lei(cost.get('suma_cotata_lei'))}.")
+        if cost.get("nota_suma"):
+            pdf.paragraph(cost["nota_suma"], color="#a33a1d")
+    if cost.get("articole_necotate"):
+        pdf.paragraph("Fără preț (de cotat): " + "; ".join(cost["articole_necotate"]), size=8.5, color="#a33a1d")
     pdf.paragraph(cost.get("metoda", ""), size=8.5, color="#555555")
     for note in cost.get("ipoteze") or []:
         pdf.paragraph(note, size=8.5, bullet="•", color="#555555", after=1)
