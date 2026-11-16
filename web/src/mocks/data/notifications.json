@@ -1,193 +1,193 @@
 [
  {
-  "id": "453ba99c-f1ac-4822-964b-3f4213f1f834",
+  "id": "39aa0904-76c4-4126-bf10-44ccea4e2cff",
   "user_id": "demo-user-5",
-  "idea_id": "1b27441b-35d3-46f1-8265-0890b9e60f4d",
+  "idea_id": "6f46bede-fea9-4d0d-945b-59288fbcbcea",
   "booking_id": null,
-  "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+  "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
   "mesaj": "Proiectul „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)” a fost respins. Terenul este rezervat altei investiții.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.170Z"
+  "created_at": "2026-11-16T22:17:58.992Z"
  },
  {
-  "id": "77d2518e-17a8-43ad-99d6-f357c9c172cd",
+  "id": "1892c413-2b54-4ce1-a98e-e0edea4d6860",
   "user_id": "demo-user-9",
-  "idea_id": "1b27441b-35d3-46f1-8265-0890b9e60f4d",
+  "idea_id": "6f46bede-fea9-4d0d-945b-59288fbcbcea",
   "booking_id": null,
-  "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+  "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
   "mesaj": "Proiectul „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)” a fost respins. Terenul este rezervat altei investiții.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.170Z"
+  "created_at": "2026-11-16T22:17:58.992Z"
  },
  {
-  "id": "4a45ae2c-f072-4815-a4eb-fdcae1a583f8",
+  "id": "a1aa2113-f415-4bf6-abfb-4ead13c66043",
   "user_id": "demo-user-5",
-  "idea_id": "1b27441b-35d3-46f1-8265-0890b9e60f4d",
+  "idea_id": "6f46bede-fea9-4d0d-945b-59288fbcbcea",
   "booking_id": null,
-  "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+  "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
   "mesaj": "Proiectul „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)” a fost înaintat unui verificator.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.168Z"
+  "created_at": "2026-11-16T22:17:58.990Z"
  },
  {
-  "id": "1d1433b1-a8bd-47a1-b9a8-e2c780ec38e0",
+  "id": "d5ce6482-db38-42d4-ab4a-8738b74c0d27",
   "user_id": "demo-user-10",
-  "idea_id": "1b27441b-35d3-46f1-8265-0890b9e60f4d",
+  "idea_id": "6f46bede-fea9-4d0d-945b-59288fbcbcea",
   "booking_id": null,
-  "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+  "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
   "mesaj": "Ai de verificat proiectul „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)”.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.168Z"
+  "created_at": "2026-11-16T22:17:58.990Z"
  },
  {
-  "id": "bf08991d-f003-4e65-a8f3-1d9f5e8a5406",
+  "id": "ab12f8c1-4d15-419b-acdc-43493a094e4d",
   "user_id": "demo-user-9",
-  "idea_id": "1b27441b-35d3-46f1-8265-0890b9e60f4d",
+  "idea_id": "6f46bede-fea9-4d0d-945b-59288fbcbcea",
   "booking_id": null,
-  "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+  "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
   "mesaj": "Proiect nou trimis spre analiză: „Amenajare: pistă de biciclete – Teren viran, Cartierul Vienez (candidat OSM)” (0 susținători).",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.166Z"
+  "created_at": "2026-11-16T22:17:58.988Z"
  },
  {
-  "id": "316a5caf-8e33-40f8-97b8-bf83950ee422",
+  "id": "88c51691-ba8b-43eb-9c42-661c722aa1f6",
   "user_id": "demo-user-4",
-  "idea_id": "bb85bff6-6bd5-40b8-9ff2-5c6a34efec26",
+  "idea_id": "9fd70964-83d5-4ae0-8c30-d04e97cad59f",
   "booking_id": null,
-  "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+  "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
   "mesaj": "Proiectul „Amenajare: grădină comunitară – Teren viran, Dorobanților (candidat OSM)” necesită clarificări. Precizați cine întreține grădina după deschidere.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.159Z"
+  "created_at": "2026-11-16T22:17:58.981Z"
  },
  {
-  "id": "7a8f8273-d359-48b8-8ca1-b073f0530c04",
+  "id": "3920ed47-2895-408b-9ccb-ff4a5c8a4163",
   "user_id": "demo-user-9",
-  "idea_id": "bb85bff6-6bd5-40b8-9ff2-5c6a34efec26",
+  "idea_id": "9fd70964-83d5-4ae0-8c30-d04e97cad59f",
   "booking_id": null,
-  "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+  "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
   "mesaj": "Proiectul „Amenajare: grădină comunitară – Teren viran, Dorobanților (candidat OSM)” necesită clarificări. Precizați cine întreține grădina după deschidere.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.159Z"
+  "created_at": "2026-11-16T22:17:58.981Z"
  },
  {
-  "id": "8c14cf02-f6e4-407b-98b0-09a18b32da05",
+  "id": "b10848f1-738d-4747-9fbb-84a6215776e6",
   "user_id": "demo-user-4",
-  "idea_id": "bb85bff6-6bd5-40b8-9ff2-5c6a34efec26",
+  "idea_id": "9fd70964-83d5-4ae0-8c30-d04e97cad59f",
   "booking_id": null,
-  "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+  "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
   "mesaj": "Proiectul „Amenajare: grădină comunitară – Teren viran, Dorobanților (candidat OSM)” a fost înaintat unui verificator.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.157Z"
+  "created_at": "2026-11-16T22:17:58.978Z"
  },
  {
-  "id": "a91d50f9-eee1-4a68-b959-35b7cfb960ba",
+  "id": "ec2490ed-8276-4858-b388-17499a47eb92",
   "user_id": "demo-user-10",
-  "idea_id": "bb85bff6-6bd5-40b8-9ff2-5c6a34efec26",
+  "idea_id": "9fd70964-83d5-4ae0-8c30-d04e97cad59f",
   "booking_id": null,
-  "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+  "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
   "mesaj": "Ai de verificat proiectul „Amenajare: grădină comunitară – Teren viran, Dorobanților (candidat OSM)”.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.157Z"
+  "created_at": "2026-11-16T22:17:58.978Z"
  },
  {
-  "id": "07bdeb4b-ab5b-48c2-b5bd-f6e398f955e1",
+  "id": "f3afcd40-345a-474a-be7b-10b93f529448",
   "user_id": "demo-user-9",
-  "idea_id": "bb85bff6-6bd5-40b8-9ff2-5c6a34efec26",
+  "idea_id": "9fd70964-83d5-4ae0-8c30-d04e97cad59f",
   "booking_id": null,
-  "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+  "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
   "mesaj": "Proiect nou trimis spre analiză: „Amenajare: grădină comunitară – Teren viran, Dorobanților (candidat OSM)” (0 susținători).",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.155Z"
+  "created_at": "2026-11-16T22:17:58.976Z"
  },
  {
-  "id": "2e8badac-1ac0-4639-82c0-504540cd5774",
+  "id": "9e075e7b-ad90-4850-93c0-543c91e3ec64",
   "user_id": "demo-user-1",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a primit acord de principiu (simulat). Propunerea este în regulă pentru etapa următoare.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.135Z"
+  "created_at": "2026-11-16T22:17:58.957Z"
  },
  {
-  "id": "71b54392-c3f5-4291-8e79-88b961b7de65",
+  "id": "fdede724-0d24-4526-83f3-61bebd403b08",
   "user_id": "demo-user-2",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a primit acord de principiu (simulat). Propunerea este în regulă pentru etapa următoare.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.135Z"
+  "created_at": "2026-11-16T22:17:58.957Z"
  },
  {
-  "id": "969cfbd7-d0db-4078-be86-fc70ab134a73",
+  "id": "8a6008f3-73d1-4ff1-a83c-4972adacb135",
   "user_id": "demo-user-3",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a primit acord de principiu (simulat). Propunerea este în regulă pentru etapa următoare.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.135Z"
+  "created_at": "2026-11-16T22:17:58.957Z"
  },
  {
-  "id": "57a48c34-1bd1-4b5a-b1e1-6898c68c89ce",
+  "id": "476e7200-d146-4116-9415-bc79b9958b24",
   "user_id": "demo-user-4",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a primit acord de principiu (simulat). Propunerea este în regulă pentru etapa următoare.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.135Z"
+  "created_at": "2026-11-16T22:17:58.957Z"
  },
  {
-  "id": "36f76b06-a2bb-4938-87ef-99f8b2c46de0",
+  "id": "6698f4d9-f9fd-4f16-a6b7-7e8cbc1579b5",
   "user_id": "demo-user-9",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a primit acord de principiu (simulat). Propunerea este în regulă pentru etapa următoare.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.135Z"
+  "created_at": "2026-11-16T22:17:58.957Z"
  },
  {
-  "id": "7a1754e4-3f35-4398-b223-d7f49d345b61",
+  "id": "f0c7e3cb-ef19-4478-8493-ecdf0bc8f280",
   "user_id": "demo-user-2",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a fost înaintat unui verificator.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.132Z"
+  "created_at": "2026-11-16T22:17:58.954Z"
  },
  {
-  "id": "1be570b1-d599-41ba-85fc-97bf38bb1cce",
+  "id": "ad5e14ac-740f-4dd5-bbb1-f4d36b5c3429",
   "user_id": "demo-user-10",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Ai de verificat proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)”.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.132Z"
+  "created_at": "2026-11-16T22:17:58.954Z"
  },
  {
-  "id": "693a448a-69b3-4f30-9079-ffc5edc3ef88",
+  "id": "c5c1b1ab-3a14-44be-af7c-c5fd7979b300",
   "user_id": "demo-user-2",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiectul „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” a strâns 3 susținători și a fost trimis automat către Primărie.",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.130Z"
+  "created_at": "2026-11-16T22:17:58.952Z"
  },
  {
-  "id": "4c5222e1-2481-411e-839a-a5963b3dbadb",
+  "id": "08d52f7e-1b53-4edf-9d1a-3d1e4928e80f",
   "user_id": "demo-user-9",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "booking_id": null,
-  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
   "mesaj": "Proiect nou trimis spre analiză: „Amenajare: skatepark – Teren viran, Tipografilor (candidat OSM)” (3 susținători).",
   "citita": false,
-  "created_at": "2026-11-16T22:08:18.130Z"
+  "created_at": "2026-11-16T22:17:58.952Z"
  },
  {
   "id": "demo-booking-3-notif-aprobata",

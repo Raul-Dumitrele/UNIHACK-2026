@@ -1,7 +1,7 @@
 [
  {
-  "id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
-  "idea_id": "1b27441b-35d3-46f1-8265-0890b9e60f4d",
+  "id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
+  "idea_id": "6f46bede-fea9-4d0d-945b-59288fbcbcea",
   "space_id": "teren-osm-1481985560",
   "autor_id": "demo-user-5",
   "tip_amenajare": "pista_biciclete",
@@ -296,8 +296,8 @@
    "lipsesc_principale": true,
    "nota_suma": "Suma nu include elementele principale ale amenajării."
   },
-  "created_at": "2026-11-16T22:08:18.163Z",
-  "updated_at": "2026-11-16T22:08:18.170Z",
+  "created_at": "2026-11-16T22:17:58.985Z",
+  "updated_at": "2026-11-16T22:17:58.991Z",
   "verificator_id": "demo-user-10",
   "is_demo": false,
   "voturi": 0,
@@ -546,42 +546,42 @@
   },
   "evenimente": [
    {
-    "id": "9d07116b-52d2-40f6-b9c1-50490286dfd3",
-    "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+    "id": "dbff5030-97f3-4e51-8915-c7acc6b760b1",
+    "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
     "user_id": "demo-user-5",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.164Z"
+    "created_at": "2026-11-16T22:17:58.985Z"
    },
    {
-    "id": "fee2b4b0-48d5-4ad1-8e55-97e2306fe2d5",
-    "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+    "id": "64a3f106-a444-4391-99a4-b8ac1cb82f14",
+    "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
     "user_id": "demo-user-5",
     "stare_noua": "trimis",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.166Z"
+    "created_at": "2026-11-16T22:17:58.987Z"
    },
    {
-    "id": "7897651a-4c86-4c57-b979-385b39156cb9",
-    "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+    "id": "b2748f64-b04d-42ca-9009-7283e665d60b",
+    "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
     "user_id": "demo-user-9",
     "stare_noua": "in_verificare",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.168Z"
+    "created_at": "2026-11-16T22:17:58.989Z"
    },
    {
-    "id": "858f545d-ad6e-4341-95f7-d8d083349a21",
-    "proiect_id": "b93254f6-f7d1-44ff-a6f7-be12d3bf644e",
+    "id": "81fbb6aa-5130-4ccf-8220-d9b85748beec",
+    "proiect_id": "b30b780d-2f8f-41f4-8144-8bb11651f904",
     "user_id": "demo-user-10",
     "stare_noua": "respins",
     "mesaj": "Terenul este rezervat altei investiții.",
-    "created_at": "2026-11-16T22:08:18.170Z"
+    "created_at": "2026-11-16T22:17:58.991Z"
    }
   ]
  },
  {
-  "id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
-  "idea_id": "bb85bff6-6bd5-40b8-9ff2-5c6a34efec26",
+  "id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
+  "idea_id": "9fd70964-83d5-4ae0-8c30-d04e97cad59f",
   "space_id": "teren-osm-1413804572",
   "autor_id": "demo-user-4",
   "tip_amenajare": "gradina_comunitara",
@@ -800,8 +800,8 @@
    "lipsesc_principale": true,
    "nota_suma": "Suma nu include elementele principale ale amenajării."
   },
-  "created_at": "2026-11-16T22:08:18.152Z",
-  "updated_at": "2026-11-16T22:08:18.159Z",
+  "created_at": "2026-11-16T22:17:58.974Z",
+  "updated_at": "2026-11-16T22:17:58.980Z",
   "verificator_id": "demo-user-10",
   "is_demo": false,
   "voturi": 0,
@@ -1109,42 +1109,42 @@
   },
   "evenimente": [
    {
-    "id": "4a771e10-ebab-4912-aa11-614a41b5e2e0",
-    "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+    "id": "29e12bba-bd53-4c1b-aec1-62b9b84098d9",
+    "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
     "user_id": "demo-user-4",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.152Z"
+    "created_at": "2026-11-16T22:17:58.974Z"
    },
    {
-    "id": "95e0453d-4982-434a-84a8-bb6d4cda09f1",
-    "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+    "id": "aacdee49-f0ec-49c8-a962-2f787e535735",
+    "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
     "user_id": "demo-user-4",
     "stare_noua": "trimis",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.154Z"
+    "created_at": "2026-11-16T22:17:58.976Z"
    },
    {
-    "id": "39dd80f2-cba0-4ded-b51b-010944bcc749",
-    "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+    "id": "407b893e-51d8-48c3-a0da-7538c18c64c0",
+    "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
     "user_id": "demo-user-9",
     "stare_noua": "in_verificare",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.157Z"
+    "created_at": "2026-11-16T22:17:58.978Z"
    },
    {
-    "id": "37a1bee4-fa4d-42f7-aebb-4c4465427802",
-    "proiect_id": "d30bcfe7-a26e-435c-9711-1ef9a4742a52",
+    "id": "eb9fe7f1-7591-4893-bb56-a21e38813504",
+    "proiect_id": "fd1b3926-2603-4ace-95e0-bd872c18ab54",
     "user_id": "demo-user-10",
     "stare_noua": "clarificari",
     "mesaj": "Precizați cine întreține grădina după deschidere.",
-    "created_at": "2026-11-16T22:08:18.159Z"
+    "created_at": "2026-11-16T22:17:58.980Z"
    }
   ]
  },
  {
-  "id": "6c87d682-8d3a-4094-8044-b5aa06db6c73",
-  "idea_id": "7c0fbf44-9e3c-4b15-aaef-37934197c059",
+  "id": "6eb8f351-c30c-4d9c-9f04-d311116c97e6",
+  "idea_id": "991a2d23-06f7-449c-9e74-2fe99e69b6df",
   "space_id": "teren-osm-1076560842",
   "autor_id": "demo-user-1",
   "tip_amenajare": "teren_sport",
@@ -1392,8 +1392,8 @@
    "lipsesc_principale": true,
    "nota_suma": "Suma nu include elementele principale ale amenajării."
   },
-  "created_at": "2026-11-16T22:08:18.147Z",
-  "updated_at": "2026-11-16T22:08:18.147Z",
+  "created_at": "2026-11-16T22:17:58.969Z",
+  "updated_at": "2026-11-16T22:17:58.969Z",
   "verificator_id": null,
   "is_demo": false,
   "voturi": 0,
@@ -1678,18 +1678,18 @@
   },
   "evenimente": [
    {
-    "id": "f3c26bb7-07b3-42b8-9ae3-a13de1d19a12",
-    "proiect_id": "6c87d682-8d3a-4094-8044-b5aa06db6c73",
+    "id": "2bff220e-4579-4585-b7ab-a0c8229a8d01",
+    "proiect_id": "6eb8f351-c30c-4d9c-9f04-d311116c97e6",
     "user_id": "demo-user-1",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.147Z"
+    "created_at": "2026-11-16T22:17:58.969Z"
    }
   ]
  },
  {
-  "id": "2e68b054-93af-4065-a580-b552d2042352",
-  "idea_id": "c15d24fb-402e-4428-985e-d46a02ae8164",
+  "id": "d1a167ae-635d-4055-97d1-51bd239634e2",
+  "idea_id": "523f7d01-4a9a-4d5a-ae0c-31541b0de53a",
   "space_id": "teren-osm-1524142704",
   "autor_id": "demo-user-3",
   "tip_amenajare": "aquapark",
@@ -1959,8 +1959,8 @@
    "lipsesc_principale": true,
    "nota_suma": "Suma nu include elementele principale ale amenajării."
   },
-  "created_at": "2026-11-16T22:08:18.140Z",
-  "updated_at": "2026-11-16T22:08:18.142Z",
+  "created_at": "2026-11-16T22:17:58.961Z",
+  "updated_at": "2026-11-16T22:17:58.964Z",
   "verificator_id": null,
   "is_demo": false,
   "voturi": 0,
@@ -2390,26 +2390,26 @@
   },
   "evenimente": [
    {
-    "id": "d41298f7-e20c-48ab-9ce4-9885f55a8acb",
-    "proiect_id": "2e68b054-93af-4065-a580-b552d2042352",
+    "id": "d2424f78-e9a8-4eb0-8921-ed1c660c86d9",
+    "proiect_id": "d1a167ae-635d-4055-97d1-51bd239634e2",
     "user_id": "demo-user-3",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.140Z"
+    "created_at": "2026-11-16T22:17:58.962Z"
    },
    {
-    "id": "7d0d46cd-f238-4fe6-b184-b1c98c1a147e",
-    "proiect_id": "2e68b054-93af-4065-a580-b552d2042352",
+    "id": "02087252-3bd9-4bc1-9137-dd52424717f2",
+    "proiect_id": "d1a167ae-635d-4055-97d1-51bd239634e2",
     "user_id": "demo-user-3",
     "stare_noua": "publicat",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.142Z"
+    "created_at": "2026-11-16T22:17:58.964Z"
    }
   ]
  },
  {
-  "id": "d6e2c028-c70a-4873-a232-c632b6650552",
-  "idea_id": "b9d03ae5-6cf2-41e5-a52d-20dccd9e5481",
+  "id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
+  "idea_id": "de7a5fbc-8b6e-4957-b568-94c3e30cd9e1",
   "space_id": "teren-osm-1107708853",
   "autor_id": "demo-user-2",
   "tip_amenajare": "skatepark",
@@ -2720,8 +2720,8 @@
    "lipsesc_principale": true,
    "nota_suma": "Suma nu include elementele principale ale amenajării."
   },
-  "created_at": "2026-11-16T22:08:18.121Z",
-  "updated_at": "2026-11-16T22:08:18.134Z",
+  "created_at": "2026-11-16T22:17:58.943Z",
+  "updated_at": "2026-11-16T22:17:58.956Z",
   "verificator_id": "demo-user-10",
   "is_demo": false,
   "voturi": 3,
@@ -3009,50 +3009,50 @@
   },
   "evenimente": [
    {
-    "id": "8f023af4-4c85-41ff-952b-53f88935c476",
-    "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+    "id": "bdc83a37-01c2-4f63-9ae0-4dd361845dcc",
+    "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
     "user_id": "demo-user-2",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.121Z"
+    "created_at": "2026-11-16T22:17:58.943Z"
    },
    {
-    "id": "337a0669-e787-41d5-8216-0d601ae3ab3d",
-    "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+    "id": "c87ce3fd-92a0-4a94-9b57-205a85eaa301",
+    "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
     "user_id": "demo-user-2",
     "stare_noua": "publicat",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.124Z"
+    "created_at": "2026-11-16T22:17:58.945Z"
    },
    {
-    "id": "83c87dea-d3cb-4813-800e-8ee287bb95b8",
-    "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+    "id": "6a35ce4c-6b6e-429f-b25a-3bfd583796bd",
+    "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
     "user_id": "demo-user-4",
     "stare_noua": "trimis",
     "mesaj": "Pragul de 3 susținători a fost atins.",
-    "created_at": "2026-11-16T22:08:18.129Z"
+    "created_at": "2026-11-16T22:17:58.951Z"
    },
    {
-    "id": "c574041e-f78f-4749-bc16-5254954bc235",
-    "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+    "id": "7fcd3ad1-9923-4fb7-8c92-58702b9da177",
+    "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
     "user_id": "demo-user-9",
     "stare_noua": "in_verificare",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.132Z"
+    "created_at": "2026-11-16T22:17:58.954Z"
    },
    {
-    "id": "3168ab52-8086-447f-ac3a-59f87c946211",
-    "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+    "id": "7dec1887-a96e-41f7-8889-9356d2382070",
+    "proiect_id": "ff40ee3a-7c8f-420a-9233-fbf79db60da3",
     "user_id": "demo-user-10",
     "stare_noua": "acord_de_principiu",
     "mesaj": "Propunerea este în regulă pentru etapa următoare.",
-    "created_at": "2026-11-16T22:08:18.135Z"
+    "created_at": "2026-11-16T22:17:58.956Z"
    }
   ]
  },
  {
-  "id": "d8543aa9-7ecc-43fc-8516-80f401c79083",
-  "idea_id": "cbd07ba5-7d91-42d5-a95e-ff3db5dd491e",
+  "id": "b2d7c246-159f-4840-b82f-00ea76f5d3e1",
+  "idea_id": "47e7f60d-c1fd-47cc-b1aa-25ee4f3b4ae4",
   "space_id": "teren-osm-1280529258",
   "autor_id": "demo-user-1",
   "tip_amenajare": "loc_de_joaca",
@@ -3380,8 +3380,8 @@
    "lipsesc_principale": true,
    "nota_suma": "Suma nu include elementele principale ale amenajării."
   },
-  "created_at": "2026-11-16T22:08:18.109Z",
-  "updated_at": "2026-11-16T22:08:18.117Z",
+  "created_at": "2026-11-16T22:17:58.930Z",
+  "updated_at": "2026-11-16T22:17:58.939Z",
   "verificator_id": null,
   "is_demo": false,
   "voturi": 1,
@@ -3738,20 +3738,20 @@
   },
   "evenimente": [
    {
-    "id": "e9b3794c-c5b6-49c2-8274-0b7075be32ca",
-    "proiect_id": "d8543aa9-7ecc-43fc-8516-80f401c79083",
+    "id": "e41bdf21-eae1-4552-bfd1-49a8ca8982ec",
+    "proiect_id": "b2d7c246-159f-4840-b82f-00ea76f5d3e1",
     "user_id": "demo-user-1",
     "stare_noua": "draft",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.110Z"
+    "created_at": "2026-11-16T22:17:58.931Z"
    },
    {
-    "id": "2f0a9ef2-b6e2-49ba-8967-88bb0623d8a3",
-    "proiect_id": "d8543aa9-7ecc-43fc-8516-80f401c79083",
+    "id": "1ba0d6f3-b717-4032-982a-f89de8a763c7",
+    "proiect_id": "b2d7c246-159f-4840-b82f-00ea76f5d3e1",
     "user_id": "demo-user-1",
     "stare_noua": "publicat",
     "mesaj": null,
-    "created_at": "2026-11-16T22:08:18.114Z"
+    "created_at": "2026-11-16T22:17:58.936Z"
    }
   ]
  },

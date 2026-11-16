@@ -4,7 +4,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R] /Count 6 >>
+<< /Type /Pages /Kids [9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R] /Count 7 >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding 5 0 R /ToUnicode 7 0 R >>
@@ -88,7 +88,7 @@ BT /F1 9.5 Tf 0.000 0.000 0.000 rg 50.00 111.41 Td (terenului sunt schematice \(
 BT /F1 9.5 Tf 0.000 0.000 0.000 rg 50.00 98.59 Td (ipoteze schematice ale aplicaèiei, nu valori din standarde sau fiçe de produs. Proiectul tehnic le stabileçte.) Tj ET
 BT /F2 10.5 Tf 0.000 0.000 0.000 rg 50.00 80.76 Td (5. UtilitÄèi çi energie) Tj ET
 BT /F1 9.5 Tf 0.000 0.000 0.000 rg 50.00 65.59 Td (Obiectivul necesitÄ racord la: energie electricÄ. Pentru fiecare, operatorul de reèea emite avizul de amplasament çi) Tj ET
-BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 1 din 6) Tj ET
+BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 1 din 7) Tj ET
 endstream
 endobj
 9 0 obj
@@ -161,14 +161,14 @@ BT /F1 10 Tf 0.000 0.000 0.000 rg 50.00 106.24 Td (ï) Tj ET
 BT /F1 10 Tf 0.000 0.000 0.000 rg 62.00 106.24 Td (DacÄ proiectul poate intra Ón bugetul local sau Óntr-un program de finanèare) Tj ET
 BT /F1 10 Tf 0.000 0.000 0.000 rg 50.00 91.74 Td (ï) Tj ET
 BT /F1 10 Tf 0.000 0.000 0.000 rg 62.00 91.74 Td (Cine asigurÄ Óntreèinerea çi siguranèa dupÄ amenajare) Tj ET
-BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 2 din 6) Tj ET
+BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 2 din 7) Tj ET
 endstream
 endobj
 11 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
 endobj
 12 0 obj
-<< /Length 7300 >>
+<< /Length 7136 >>
 stream
 BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 772.89 Td (Etape) Tj ET
 q 0.5 w 0.533 0.533 0.533 RG 50.00 766.34 m 545.28 766.34 l S Q
@@ -215,103 +215,113 @@ BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 404.01 Td (Specificaèie orientativÄ: dime
 BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 393.21 Td (Proiectul tehnic le stabileçte.) Tj ET
 BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 370.41 Td (Estimare de cost) Tj ET
 q 0.5 w 0.533 0.533 0.533 RG 50.00 363.86 m 545.28 363.86 l S Q
-BT /F1 10 Tf 0.000 0.000 0.000 rg 50.00 347.86 Td (Din proiecte de referinèÄ: Doar un proiect de referinèÄ are at‚t costul, c‚t çi suprafaèa publicate; sunt necesare) Tj ET
-BT /F1 10 Tf 0.000 0.000 0.000 rg 50.00 334.36 Td (cel puèin 2.) Tj ET
-BT /F2 10 Tf 0.000 0.000 0.000 rg 50.00 316.86 Td (Suma articolelor cotate \(4 din 9\); 5 articole rÄm‚n de cotat: 98.117 lei.) Tj ET
-BT /F1 8.5 Tf 0.639 0.227 0.114 rg 50.00 300.86 Td (FÄrÄ preè \(de cotat\): teren multisport \(minifotbal, baschet, handbal\); porèi çi panouri de baschet; st‚lp de iluminat LED; alee de) Tj ET
-BT /F1 8.5 Tf 0.639 0.227 0.114 rg 50.00 289.39 Td (acces pavatÄ; panou cu regulamentul de folosire) Tj ET
-BT /F1 8.5 Tf 0.333 0.333 0.333 rg 50.00 273.91 Td (DouÄ estimÄri independente: intervalul din proiecte de referinèÄ \(cost/mp ◊ suprafaèÄ\) çi suma articolelor cu preè din lista de) Tj ET
-BT /F1 8.5 Tf 0.333 0.333 0.333 rg 50.00 262.44 Td (materiale \(parèialÄ: articolele Ñde cotatî lipsesc\).) Tj ET
-BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 236.46 Td (Proiecte de referinèÄ) Tj ET
-q 0.5 w 0.533 0.533 0.533 RG 50.00 229.91 m 545.28 229.91 l S Q
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 214.91 Td (ï) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 62.00 214.91 Td (Alba Iulia, 2023, 1127 mp, 405.952 lei) Tj ET
-BT /F1 7 Tf 0.333 0.333 0.333 rg 62.00 204.76 Td (https://alba24.ro/terenul-de-sport-de-la-scoala-avram-iancu-din-alba-iulia-va-fi-modernizat-care-este-valoarea-lucrarilor-1002753.html) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 191.31 Td (ï) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 62.00 191.31 Td (RÄducÄneni, 2026, 1008 mp) Tj ET
-BT /F1 7 Tf 0.333 0.333 0.333 rg 62.00 181.16 Td (https://www.bzi.ro/primaria-raducaneni-va-construi-o-sala-de-sport-si-un-teren-de-sport-multifunctional-doar-lucrarile-au-o-valoare-de-peste-5-milioane-de-lei-5458078) Tj ET
-BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 157.71 Td (Documente çi avize necesare \(orientativ\)) Tj ET
-q 0.5 w 0.533 0.533 0.533 RG 50.00 151.16 m 545.28 151.16 l S Q
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 136.16 Td (1. Dovada dreptului asupra terenului \(extras de carte funciarÄ; pentru teren public, hotÄr‚re a Consiliului Local de) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 124.01 Td (aprobare a folosinèei\) ñ Oficiul de Cadastru çi Publicitate ImobiliarÄ; Consiliul Local) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 112.86 Td (Cine deèine terenul çi dacÄ poate primi aceastÄ destinaèie. Pentru o propunere a comunitÄèii pe teren public, PrimÄria inièiazÄ proiectul) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 102.06 Td (sau aprobÄ folosinèa. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de construcèii \(republicatÄ\), condièiile de emitere) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 91.26 Td (a autorizaèiei \(titlul asupra imobilului\).) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 76.47 Td (2. Certificat de urbanism ñ PrimÄria Municipiului Timiçoara ñ Direcèia Urbanism) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 65.32 Td (Actul de informare: regimul juridic, economic çi tehnic al terenului, ce se poate construi çi lista avizelor necesare. Se cere cu o) Tj ET
-BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 3 din 6) Tj ET
+BT /F2 10 Tf 0.000 0.000 0.000 rg 50.00 347.86 Td (Cost total: nu poate fi estimat din datele disponibile) Tj ET
+BT /F1 10 Tf 0.000 0.000 0.000 rg 50.00 330.36 Td (Doar un proiect de referinèÄ are at‚t costul, c‚t çi suprafaèa publicate; sunt necesare cel puèin 2.) Tj ET
+BT /F1 10 Tf 0.000 0.000 0.000 rg 50.00 312.86 Td (Informaèie parèialÄ ñ Suma articolelor cotate \(4 din 9\); 5 articole rÄm‚n de cotat: 98.117 lei.) Tj ET
+BT /F1 10 Tf 0.639 0.227 0.114 rg 50.00 295.36 Td (Suma nu include elementele principale ale amenajÄrii.) Tj ET
+BT /F1 8.5 Tf 0.639 0.227 0.114 rg 50.00 279.36 Td (FÄrÄ preè \(de cotat\): teren multisport \(minifotbal, baschet, handbal\); porèi çi panouri de baschet; st‚lp de iluminat LED; alee de) Tj ET
+BT /F1 8.5 Tf 0.639 0.227 0.114 rg 50.00 267.89 Td (acces pavatÄ; panou cu regulamentul de folosire) Tj ET
+BT /F1 8.5 Tf 0.333 0.333 0.333 rg 50.00 252.41 Td (DouÄ estimÄri independente: intervalul din proiecte de referinèÄ \(cost/mp ◊ suprafaèÄ\) çi suma articolelor cu preè din lista de) Tj ET
+BT /F1 8.5 Tf 0.333 0.333 0.333 rg 50.00 240.94 Td (materiale \(parèialÄ: articolele Ñde cotatî lipsesc\).) Tj ET
+BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 214.96 Td (Proiecte de referinèÄ) Tj ET
+q 0.5 w 0.533 0.533 0.533 RG 50.00 208.41 m 545.28 208.41 l S Q
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 193.41 Td (ï) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 62.00 193.41 Td (Alba Iulia, 2023, 1127 mp, 405.952 lei) Tj ET
+BT /F1 7 Tf 0.333 0.333 0.333 rg 62.00 183.26 Td (https://alba24.ro/terenul-de-sport-de-la-scoala-avram-iancu-din-alba-iulia-va-fi-modernizat-care-este-valoarea-lucrarilor-1002753.html) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 169.81 Td (ï) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 62.00 169.81 Td (RÄducÄneni, 2026, 1008 mp) Tj ET
+BT /F1 7 Tf 0.333 0.333 0.333 rg 62.00 159.66 Td (https://www.bzi.ro/primaria-raducaneni-va-construi-o-sala-de-sport-si-un-teren-de-sport-multifunctional-doar-lucrarile-au-o-valoare-de-peste-5-milioane-de-lei-5458078) Tj ET
+BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 136.21 Td (Documente çi avize necesare \(orientativ\)) Tj ET
+q 0.5 w 0.533 0.533 0.533 RG 50.00 129.66 m 545.28 129.66 l S Q
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 114.66 Td (1. Dovada dreptului asupra terenului \(extras de carte funciarÄ; pentru teren public, hotÄr‚re a Consiliului Local de) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 102.51 Td (aprobare a folosinèei\) ñ Oficiul de Cadastru çi Publicitate ImobiliarÄ; Consiliul Local) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 91.36 Td (Cine deèine terenul çi dacÄ poate primi aceastÄ destinaèie. Pentru o propunere a comunitÄèii pe teren public, PrimÄria inièiazÄ proiectul) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 80.56 Td (sau aprobÄ folosinèa. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de construcèii \(republicatÄ\), condièiile de emitere) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 69.76 Td (a autorizaèiei \(titlul asupra imobilului\).) Tj ET
+BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 3 din 7) Tj ET
 endstream
 endobj
 13 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R >>
 endobj
 14 0 obj
-<< /Length 8305 >>
+<< /Length 8549 >>
 stream
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 783.89 Td (cerere-tip, planuri de Óncadrare çi extras CF. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de construcèii) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 773.09 Td (\(republicatÄ\), art. 6 \(certificatul de urbanism\).) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 758.29 Td (3. Studiu topografic çi, dupÄ caz, studiu geotehnic ñ Topograf autorizat / inginer geotehnician) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 747.14 Td (Ridicarea exactÄ a terenului; pentru platforme, bazine çi construcèii, natura solului. C‚nd: dacÄ se cere prin certificatul de urbanism.) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 736.34 Td (Temei: Normele metodologice de aplicare a Legii nr. 50/1991 \(Ordinul MDRL nr. 839/2009\) \(conèinutul documentaèiei tehnice\).) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 721.54 Td (4. Aviz tehnic de racordare \(ATR\) çi aviz de amplasament ñ Operatorul de distribuèie a energiei electrice din zonÄ) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 710.39 Td (Puterea disponibilÄ, soluèia de racordare çi tariful de racordare; amplasamentul faèÄ de reèelele existente. Temei: Legea energiei) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 699.59 Td (electrice çi a gazelor naturale nr. 123/2012; reglementÄrile Ón vigoare privind racordarea, de confirmat prin certificatul de urbanism.) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 684.79 Td (5. Aviz de mediu \(clasare sau acord de mediu\) ñ Agenèia pentru Protecèia Mediului Timiç) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 673.64 Td (DacÄ lucrarea are impact asupra mediului; amenajÄrile mici primesc de obicei o decizie de clasare. C‚nd: dupÄ caz, stabilit prin) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 662.84 Td (certificatul de urbanism. Temei: Legea nr. 292/2018 privind evaluarea impactului anumitor proiecte asupra mediului.) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 648.04 Td (6. Documentaèie tehnicÄ pentru autorizarea executÄrii lucrÄrilor \(DTAC\), ÓntocmitÄ de proiectant autorizat ñ Arhitect /) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 635.89 Td (inginer cu drept de semnÄturÄ) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 624.74 Td (Planuri, memorii, breviar de calcul, devize. Schièele aplicaèiei sunt doar punct de pornire. Temei: Legea nr. 50/1991 privind autorizarea) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 613.94 Td (executÄrii lucrÄrilor de construcèii \(republicatÄ\), art. 7 çi anexa nr. 1 \(conèinutul-cadru al documentaèiei\).) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 599.14 Td (7. Autorizaèie de construire \(sau Óncadrarea lucrÄrii ca executabilÄ fÄrÄ autorizaèie\) ñ PrimÄria Municipiului Timiçoara) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 586.99 Td (ñ Direcèia Urbanism) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 575.84 Td (Actul final care permite Ónceperea lucrÄrilor. LucrÄrile mÄrunte de Óntreèinere çi unele amenajÄri pot fi scutite de autorizaèie; Óncadrarea o) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 565.04 Td (face PrimÄria. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de construcèii \(republicatÄ\), art. 3 \(lucrÄri care necesitÄ) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 554.24 Td (autorizaèie\) çi art. 11 \(lucrÄri care se pot executa fÄrÄ\).) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 539.44 Td (8. Anunèul de Óncepere a lucrÄrilor çi recepèia la terminarea lucrÄrilor ñ PrimÄria; Inspectoratul de Stat Ón Construcèii) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 528.29 Td (Comunicarea datei de Ónceput, apoi procesul-verbal de recepèie. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 517.49 Td (construcèii \(republicatÄ\); Regulamentul privind recepèia construcèiilor, aprobat prin HG nr. 273/1994, cu modificÄrile aduse de HG nr.) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 506.69 Td (343/2017.) Tj ET
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 491.89 Td (9. Aviz al Direcèiei Judeèene pentru CulturÄ ñ Direcèia JudeèeanÄ pentru CulturÄ Timiç) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 480.74 Td (Numai dacÄ terenul e Ón zona protejatÄ a unui monument istoric sau Ón zona construitÄ protejatÄ. C‚nd: numai Ón zone protejate. Temei:) Tj ET
-BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 469.94 Td (Legea nr. 422/2001 privind protejarea monumentelor istorice.) Tj ET
-BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 456.14 Td (ListÄ orientativÄ a documentelor publice uzuale pentru acest tip de lucrare. Lista exactÄ, avizele cerute çi Óncadrarea \(cu sau fÄrÄ autorizaèie) Tj ET
-BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 445.34 Td (de construire\) le stabileçte PrimÄria prin certificatul de urbanism. Aplicaèia nu emite çi nu deèine niciun aviz sau autorizaèie, iar lista nu) Tj ET
-BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 434.54 Td (garanteazÄ obèinerea lor.) Tj ET
-BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 408.74 Td (Model: Cerere pentru emiterea certificatului de urbanism) Tj ET
-q 0.5 w 0.533 0.533 0.533 RG 50.00 402.19 m 545.28 402.19 l S Q
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 387.19 Td (CÄtre: PrimÄria Municipiului Timiçoara ñ Direcèia Urbanism) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 371.04 Td (Subsemnatul/Subsemnata ______________________, domiciliat\(Ä\) Ón ______________________, Ón calitate de) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 358.89 Td (reprezentant al grupului de locuitori din cartierul Torontalului, solicit emiterea certificatului de urbanism pentru imobilul situat) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 346.74 Td (la: Teren viran, Torontalului \(candidat OSM\), cartierul Torontalului, circa 1813 mp, Ón scopul: Amenajare: teren de sport ñ) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 334.59 Td (Teren viran, Torontalului \(candidat OSM\).) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 322.44 Td () Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 310.29 Td (Anexez: plan de Óncadrare Ón zonÄ, plan de situaèie \(schièa orientativÄ generatÄ de aplicaèia Loc Comun, care nu este) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 298.14 Td (documentaèie tehnicÄ\), extras de carte funciarÄ \(dacÄ este cazul\) çi dovada achitÄrii taxei.) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 285.99 Td () Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 273.84 Td (Data ____________ SemnÄtura ____________) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 261.69 Td () Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 249.54 Td (Formular-tip conform Normele metodologice de aplicare a Legii nr. 50/1991 \(Ordinul MDRL nr. 839/2009\), anexa nr. 1 \(F.1\).) Tj ET
-BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 223.39 Td (Model: Solicitare adresatÄ Consiliului Local privind folosinèa terenului) Tj ET
-q 0.5 w 0.533 0.533 0.533 RG 50.00 216.84 m 545.28 216.84 l S Q
-BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 201.84 Td (CÄtre: Consiliul Local al Municipiului Timiçoara) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 185.69 Td (Grupul de locuitori din cartierul Torontalului solicitÄ Consiliului Local analizarea propunerii ÑAmenajare: teren de sport ñ) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 173.54 Td (Teren viran, Torontalului \(candidat OSM\)î pe terenul Teren viran, Torontalului \(candidat OSM\), cartierul Torontalului, circa) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 161.39 Td (1813 mp çi, dacÄ terenul aparèine domeniului public sau privat al municipiului, aprobarea folosinèei lui pentru aceastÄ) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 149.24 Td (amenajare de interes comunitar.) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 137.09 Td () Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 124.94 Td (AnexÄm dosarul propunerii \(memoriu, estimare orientativÄ de cost din proiecte de referinèÄ, plan schematic, lista) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 112.79 Td (documentelor necesare\) çi lista persoanelor care susèin propunerea.) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 100.64 Td () Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 88.49 Td (PrecizÄm cÄ estimÄrile din dosar sunt orientative çi cÄ acordul de principiu din aplicaèie este simulat; solicitÄm Óndrumare) Tj ET
-BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 76.34 Td (privind paçii oficiali.) Tj ET
-BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 4 din 6) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 782.89 Td (2. Certificat de urbanism ñ PrimÄria Municipiului Timiçoara ñ Direcèia Urbanism) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 771.74 Td (Actul de informare: regimul juridic, economic çi tehnic al terenului, ce se poate construi çi lista avizelor necesare. Se cere cu o) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 760.94 Td (cerere-tip, planuri de Óncadrare çi extras CF. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de construcèii) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 750.14 Td (\(republicatÄ\), art. 6 \(certificatul de urbanism\).) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 735.34 Td (3. Studiu topografic çi, dupÄ caz, studiu geotehnic ñ Topograf autorizat / inginer geotehnician) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 724.19 Td (Ridicarea exactÄ a terenului; pentru platforme, bazine çi construcèii, natura solului. C‚nd: dacÄ se cere prin certificatul de urbanism.) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 713.39 Td (Temei: Normele metodologice de aplicare a Legii nr. 50/1991 \(Ordinul MDRL nr. 839/2009\) \(conèinutul documentaèiei tehnice\).) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 698.59 Td (4. Aviz tehnic de racordare \(ATR\) çi aviz de amplasament ñ Operatorul de distribuèie a energiei electrice din zonÄ) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 687.44 Td (Puterea disponibilÄ, soluèia de racordare çi tariful de racordare; amplasamentul faèÄ de reèelele existente. Temei: Legea energiei) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 676.64 Td (electrice çi a gazelor naturale nr. 123/2012; reglementÄrile Ón vigoare privind racordarea, de confirmat prin certificatul de urbanism.) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 661.84 Td (5. Aviz de mediu \(clasare sau acord de mediu\) ñ Agenèia pentru Protecèia Mediului Timiç) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 650.69 Td (DacÄ lucrarea are impact asupra mediului; amenajÄrile mici primesc de obicei o decizie de clasare. C‚nd: dupÄ caz, stabilit prin) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 639.89 Td (certificatul de urbanism. Temei: Legea nr. 292/2018 privind evaluarea impactului anumitor proiecte asupra mediului.) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 625.09 Td (6. Documentaèie tehnicÄ pentru autorizarea executÄrii lucrÄrilor \(DTAC\), ÓntocmitÄ de proiectant autorizat ñ Arhitect /) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 612.94 Td (inginer cu drept de semnÄturÄ) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 601.79 Td (Planuri, memorii, breviar de calcul, devize. Schièele aplicaèiei sunt doar punct de pornire. Temei: Legea nr. 50/1991 privind autorizarea) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 590.99 Td (executÄrii lucrÄrilor de construcèii \(republicatÄ\), art. 7 çi anexa nr. 1 \(conèinutul-cadru al documentaèiei\).) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 576.19 Td (7. Autorizaèie de construire \(sau Óncadrarea lucrÄrii ca executabilÄ fÄrÄ autorizaèie\) ñ PrimÄria Municipiului Timiçoara) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 564.04 Td (ñ Direcèia Urbanism) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 552.89 Td (Actul final care permite Ónceperea lucrÄrilor. LucrÄrile mÄrunte de Óntreèinere çi unele amenajÄri pot fi scutite de autorizaèie; Óncadrarea o) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 542.09 Td (face PrimÄria. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de construcèii \(republicatÄ\), art. 3 \(lucrÄri care necesitÄ) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 531.29 Td (autorizaèie\) çi art. 11 \(lucrÄri care se pot executa fÄrÄ\).) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 516.49 Td (8. Anunèul de Óncepere a lucrÄrilor çi recepèia la terminarea lucrÄrilor ñ PrimÄria; Inspectoratul de Stat Ón Construcèii) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 505.34 Td (Comunicarea datei de Ónceput, apoi procesul-verbal de recepèie. Temei: Legea nr. 50/1991 privind autorizarea executÄrii lucrÄrilor de) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 494.54 Td (construcèii \(republicatÄ\); Regulamentul privind recepèia construcèiilor, aprobat prin HG nr. 273/1994, cu modificÄrile aduse de HG nr.) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 483.74 Td (343/2017.) Tj ET
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 468.94 Td (9. Aviz al Direcèiei Judeèene pentru CulturÄ ñ Direcèia JudeèeanÄ pentru CulturÄ Timiç) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 457.79 Td (Numai dacÄ terenul e Ón zona protejatÄ a unui monument istoric sau Ón zona construitÄ protejatÄ. C‚nd: numai Ón zone protejate. Temei:) Tj ET
+BT /F1 8 Tf 0.267 0.267 0.267 rg 62.00 446.99 Td (Legea nr. 422/2001 privind protejarea monumentelor istorice.) Tj ET
+BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 433.19 Td (ListÄ orientativÄ a documentelor publice uzuale pentru acest tip de lucrare. Lista exactÄ, avizele cerute çi Óncadrarea \(cu sau fÄrÄ autorizaèie) Tj ET
+BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 422.39 Td (de construire\) le stabileçte PrimÄria prin certificatul de urbanism. Aplicaèia nu emite çi nu deèine niciun aviz sau autorizaèie, iar lista nu) Tj ET
+BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 411.59 Td (garanteazÄ obèinerea lor.) Tj ET
+BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 385.79 Td (Model: Cerere pentru emiterea certificatului de urbanism) Tj ET
+q 0.5 w 0.533 0.533 0.533 RG 50.00 379.24 m 545.28 379.24 l S Q
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 364.24 Td (CÄtre: PrimÄria Municipiului Timiçoara ñ Direcèia Urbanism) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 348.09 Td (Subsemnatul/Subsemnata ______________________, domiciliat\(Ä\) Ón ______________________, Ón calitate de) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 335.94 Td (reprezentant al grupului de locuitori din cartierul Torontalului, solicit emiterea certificatului de urbanism pentru imobilul situat) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 323.79 Td (la: Teren viran, Torontalului \(candidat OSM\), cartierul Torontalului, circa 1813 mp, Ón scopul: Amenajare: teren de sport ñ) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 311.64 Td (Teren viran, Torontalului \(candidat OSM\).) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 299.49 Td () Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 287.34 Td (Anexez: plan de Óncadrare Ón zonÄ, plan de situaèie \(schièa orientativÄ generatÄ de aplicaèia Loc Comun, care nu este) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 275.19 Td (documentaèie tehnicÄ\), extras de carte funciarÄ \(dacÄ este cazul\) çi dovada achitÄrii taxei.) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 263.04 Td () Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 250.89 Td (Data ____________ SemnÄtura ____________) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 238.74 Td () Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 226.59 Td (Formular-tip conform Normele metodologice de aplicare a Legii nr. 50/1991 \(Ordinul MDRL nr. 839/2009\), anexa nr. 1 \(F.1\).) Tj ET
+BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 200.44 Td (Model: Solicitare adresatÄ Consiliului Local privind folosinèa terenului) Tj ET
+q 0.5 w 0.533 0.533 0.533 RG 50.00 193.89 m 545.28 193.89 l S Q
+BT /F2 9 Tf 0.000 0.000 0.000 rg 50.00 178.89 Td (CÄtre: Consiliul Local al Municipiului Timiçoara) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 162.74 Td (Grupul de locuitori din cartierul Torontalului solicitÄ Consiliului Local analizarea propunerii ÑAmenajare: teren de sport ñ) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 150.59 Td (Teren viran, Torontalului \(candidat OSM\)î pe terenul Teren viran, Torontalului \(candidat OSM\), cartierul Torontalului, circa) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 138.44 Td (1813 mp çi, dacÄ terenul aparèine domeniului public sau privat al municipiului, aprobarea folosinèei lui pentru aceastÄ) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 126.29 Td (amenajare de interes comunitar.) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 114.14 Td () Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 101.99 Td (AnexÄm dosarul propunerii \(memoriu, estimare orientativÄ de cost din proiecte de referinèÄ, plan schematic, lista) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 89.84 Td (documentelor necesare\) çi lista persoanelor care susèin propunerea.) Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 77.69 Td () Tj ET
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 65.54 Td (PrecizÄm cÄ estimÄrile din dosar sunt orientative çi cÄ acordul de principiu din aplicaèie este simulat; solicitÄm Óndrumare) Tj ET
+BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 4 din 7) Tj ET
 endstream
 endobj
 15 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R >>
 endobj
 16 0 obj
+<< /Length 187 >>
+stream
+BT /F1 9 Tf 0.000 0.000 0.000 rg 50.00 782.89 Td (privind paçii oficiali.) Tj ET
+BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 5 din 7) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
 << /Length 5805 >>
 stream
 BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 772.89 Td (Plan schematic \(extras; plançele A3 sunt Ón plansa.pdf\)) Tj ET
@@ -378,13 +388,13 @@ BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 99.14 Td (Pe contur rÄm‚ne o margine libe
 BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 87.34 Td (Intrarea e pe latura de jos, cu o alee de 1,5 m.) Tj ET
 BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 75.54 Td (Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea realÄ o stabileçte) Tj ET
 BT /F1 8 Tf 0.333 0.333 0.333 rg 50.00 64.74 Td (un proiectant autorizat, dupÄ mÄsurÄtori pe teren.) Tj ET
-BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 5 din 6) Tj ET
+BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 6 din 7) Tj ET
 endstream
 endobj
-17 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R >>
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R >>
 endobj
-18 0 obj
+20 0 obj
 << /Length 7206 >>
 stream
 BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 772.89 Td (ListÄ de materiale \(orientativÄ; detaliu Ón materiale.xlsx\)) Tj ET
@@ -456,36 +466,38 @@ BT /F2 13 Tf 0.000 0.000 0.000 rg 50.00 237.34 Td (NotÄ) Tj ET
 q 0.5 w 0.533 0.533 0.533 RG 50.00 230.79 m 545.28 230.79 l S Q
 BT /F2 10 Tf 0.000 0.000 0.000 rg 50.00 214.79 Td (Estimare orientativÄ, bazatÄ pe proiecte de referinèÄ. Nu reprezintÄ o autorizaèie; acordul din aplicaèie) Tj ET
 BT /F2 10 Tf 0.000 0.000 0.000 rg 50.00 201.29 Td (este un acord de principiu simulat.) Tj ET
-BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 6 din 6) Tj ET
+BT /F1 8 Tf 0.450 0.450 0.450 rg 50.00 30.00 Td (Loc Comun ∑ dosar generat automat ∑ pagina 7 din 7) Tj ET
 endstream
 endobj
-19 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R >>
+21 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 20 0 R >>
 endobj
 xref
-0 20
+0 22
 0000000000 65535 f 
 0000000015 00000 n 
 0000000064 00000 n 
-0000000156 00000 n 
-0000000259 00000 n 
-0000000367 00000 n 
-0000000546 00000 n 
-0000000617 00000 n 
-0000000976 00000 n 
-0000008382 00000 n 
-0000008524 00000 n 
-0000016229 00000 n 
-0000016373 00000 n 
-0000023726 00000 n 
-0000023870 00000 n 
-0000032228 00000 n 
-0000032372 00000 n 
-0000038230 00000 n 
-0000038374 00000 n 
-0000045633 00000 n 
+0000000163 00000 n 
+0000000266 00000 n 
+0000000374 00000 n 
+0000000553 00000 n 
+0000000624 00000 n 
+0000000983 00000 n 
+0000008389 00000 n 
+0000008531 00000 n 
+0000016236 00000 n 
+0000016380 00000 n 
+0000023569 00000 n 
+0000023713 00000 n 
+0000032315 00000 n 
+0000032459 00000 n 
+0000032698 00000 n 
+0000032842 00000 n 
+0000038700 00000 n 
+0000038844 00000 n 
+0000046103 00000 n 
 trailer
-<< /Size 20 /Root 1 0 R /Info 6 0 R >>
+<< /Size 22 /Root 1 0 R /Info 6 0 R >>
 startxref
-45777
+46247
 %%EOF
