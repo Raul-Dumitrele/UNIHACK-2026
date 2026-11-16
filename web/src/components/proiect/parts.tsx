@@ -39,47 +39,68 @@ export function Disclaimer({ className = '' }: { className?: string }) {
   )
 }
 
+const SURSA_PRET: Record<string, string> = { seap: 'achiziții publice (SEAP)', plafon: 'plafon de program oficial', catalog: 'preț de catalog verificat' }
+
+/**
+ * The headline is the reference interval, or the plain statement that the total cannot be estimated (cost.titlu).
+ * The sum of the priced lines is partial by construction: it sits in a secondary block, under its own label
+ * (cost.eticheta_suma), with the lines that still have no price. It is never the headline and never called the cost.
+ */
 export function CostBlock({ cost }: { cost: Cost }) {
   const sum = cost.suma_cotata_lei
+  const titlu = cost.titlu || (cost.suficient ? 'Cost estimat din proiecte de referință' : 'Cost total: nu poate fi estimat din datele disponibile')
   return (
     <div className="space-y-4">
       <div className="space-y-3 rounded-xl border p-4">
-        <p className="text-sm font-medium">Din proiecte de referință (cost/mp × suprafață)</p>
+        <p className="text-lg font-semibold">{titlu}</p>
         {cost.suficient ? (
           <div className="grid gap-3 sm:grid-cols-3">
             <Figure label="Minim" value={cost.min_lei} />
             <Figure label="Mediană" value={cost.mediana_lei} strong />
             <Figure label="Maxim" value={cost.max_lei} />
           </div>
-        ) : (
-          <div className="space-y-1 rounded-lg border border-dashed p-3">
-            <p className="font-medium">Fără interval din referințe</p>
-            {cost.motiv ? <p className="text-sm text-muted-foreground">{cost.motiv}</p> : null}
-          </div>
-        )}
+        ) : cost.motiv ? (
+          <p className="text-sm text-muted-foreground">{cost.motiv}</p>
+        ) : null}
         {cost.ipoteze.length ? (
-          <ul className="list-disc space-y-0.5 pl-5 text-sm text-muted-foreground">
-            {cost.ipoteze.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
+          <details className="text-sm text-muted-foreground">
+            <summary className="cursor-pointer font-medium text-foreground">Cum am calculat</summary>
+            <ul className="mt-2 list-disc space-y-0.5 pl-5">
+              {cost.ipoteze.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </details>
         ) : null}
       </div>
-      {sum != null ? (
-        <div className="space-y-2 rounded-xl border p-4">
-          <p className="text-sm font-medium">Din lista de materiale (articole cu preț verificat)</p>
-          <p className="text-xl font-semibold tabular-nums">{fmtLei(sum)}</p>
-          <p className="text-sm text-muted-foreground">{cost.eticheta_suma}</p>
+      {sum != null && cost.articole_cotate ? (
+        <div className="space-y-2 rounded-xl border border-dashed p-4 text-sm" data-testid="suma-partiala">
+          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">Informație parțială</p>
+          <p className="flex flex-wrap items-baseline justify-between gap-2">
+            <span className="font-medium">{cost.eticheta_suma}</span>
+            <span className="tabular-nums">{fmtLei(sum)}</span>
+          </p>
+          {cost.nota_suma ? <p className="font-medium text-destructive">{cost.nota_suma}</p> : null}
           {cost.articole_necotate?.length ? (
-            <p className="text-xs text-muted-foreground">De cotat (fără sursă de preț): {cost.articole_necotate.join('; ')}.</p>
+            <div className="space-y-1">
+              <p className="text-muted-foreground">Încă de cotat (fără sursă de preț):</p>
+              <ul className="flex flex-wrap gap-1.5">
+                {cost.articole_necotate.map((x) => (
+                  <li key={x} className="rounded-full border px-2 py-0.5 text-xs">
+                    {x}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : null}
           {cost.pe_surse && Object.keys(cost.pe_surse).length ? (
             <p className="text-xs text-muted-foreground">
-              Surse: {Object.entries(cost.pe_surse).map(([k, v]) => `${k} (${v})`).join(', ')}.
+              Prețuri din: {Object.entries(cost.pe_surse).map(([k, v]) => `${SURSA_PRET[k] ?? k} – ${v} ${v === 1 ? 'articol' : 'articole'}`).join('; ')}.
             </p>
           ) : null}
-          {cost.metoda ? <p className="text-xs text-muted-foreground">{cost.metoda}</p> : null}
         </div>
+      ) : sum != null && cost.articole_necotate?.length ? (
+        <p className="rounded-xl border border-dashed p-4 text-sm text-muted-foreground">Niciun articol din lista de materiale nu are încă o sursă de preț.</p>
       ) : null}
     </div>
   )

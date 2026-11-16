@@ -653,6 +653,18 @@ export interface components {
              * @default
              */
             metoda: string;
+            /**
+             * Titlu
+             * @default
+             */
+            titlu: string;
+            /**
+             * Lipsesc Principale
+             * @default false
+             */
+            lipsesc_principale: boolean;
+            /** Nota Suma */
+            nota_suma?: string | null;
         };
         /** DecizieIn */
         DecizieIn: {

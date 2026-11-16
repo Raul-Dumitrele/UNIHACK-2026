@@ -77,9 +77,9 @@ const CATEGORII: Record<string, string> = {
   servicii: 'Servicii și sisteme',
 }
 const SURSA_SPEC: Record<string, string> = {
-  model_verificat: 'model tehnic verificat al aplicației',
-  llm: 'propusă automat (model de limbaj), validată ca formă',
-  generic: 'generică: aplicația nu are un model pentru acest tip',
+  model_verificat: 'model tehnic al aplicației',
+  llm: 'propusă automat, neverificată de un proiectant',
+  generic: 'schiță generică: tip de amenajare necunoscut aplicației',
 }
 
 export function SpecificatieBlock({ spec }: { spec: Specificatie }) {
@@ -187,30 +187,58 @@ export function MemoriuBlock({ memoriu }: { memoriu: Record<string, string> }) {
   )
 }
 
+function ActRow({ a }: { a: Act }) {
+  return (
+    <li className="flex gap-3 rounded-lg border p-3">
+      <span className="grid size-7 shrink-0 place-items-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">{a.ordine}</span>
+      <div className="min-w-0 space-y-1">
+        <p className="font-medium">
+          <FileCheck className="mr-1 inline size-4 text-primary" />
+          {a.nume}
+        </p>
+        <p className="text-xs text-muted-foreground">Emitent: {a.emitent}</p>
+        <p className="text-muted-foreground">{a.descriere}</p>
+        {a.conditie ? <p className="text-xs text-demo">Când: {a.conditie}</p> : null}
+        <p className="text-xs text-muted-foreground">
+          Temei: {a.temei}
+          {a.url ? (
+            <>
+              {' '}
+              <a href={a.url} target="_blank" rel="noreferrer" className="underline">
+                vezi actul
+              </a>
+            </>
+          ) : null}
+        </p>
+      </div>
+    </li>
+  )
+}
+
+/** The usual documents in order, then the ones that apply only in some situations. Nothing here is a guarantee. */
 export function ActeBlock({ acte, disclaimer }: { acte: Act[]; disclaimer?: string }) {
   if (!acte.length) return null
+  const uzuale = acte.filter((a) => a.grup !== 'dupa_caz')
+  const dupaCaz = acte.filter((a) => a.grup === 'dupa_caz')
   return (
-    <div className="space-y-3 text-sm">
+    <div className="space-y-4 text-sm">
+      {disclaimer ? <p className="rounded-lg border border-demo/30 bg-demo-soft p-3 text-demo">{disclaimer}</p> : null}
       <ol className="space-y-2">
-        {acte.map((a) => (
-          <li key={a.ordine} className="flex gap-3 rounded-lg border p-3">
-            <span className="grid size-7 shrink-0 place-items-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">
-              {a.ordine}
-            </span>
-            <div className="min-w-0 space-y-1">
-              <p className="font-medium">
-                <FileCheck className="mr-1 inline size-4 text-primary" />
-                {a.nume}
-              </p>
-              <p className="text-xs text-muted-foreground">Emitent: {a.emitent}</p>
-              <p className="text-muted-foreground">{a.descriere}</p>
-              {a.conditie ? <p className="text-xs text-demo">Când: {a.conditie}</p> : null}
-              <p className="text-xs text-muted-foreground">Temei: {a.temei}</p>
-            </div>
-          </li>
+        {uzuale.map((a) => (
+          <ActRow key={a.ordine} a={a} />
         ))}
       </ol>
-      {disclaimer ? <p className="rounded-lg border border-demo/30 bg-demo-soft p-3 text-demo">{disclaimer}</p> : null}
+      {dupaCaz.length ? (
+        <div className="space-y-2">
+          <p className="font-medium">După caz</p>
+          <p className="text-xs text-muted-foreground">Se cer doar în anumite situații; certificatul de urbanism spune dacă se aplică.</p>
+          <ol className="space-y-2">
+            {dupaCaz.map((a) => (
+              <ActRow key={a.ordine} a={a} />
+            ))}
+          </ol>
+        </div>
+      ) : null}
     </div>
   )
 }

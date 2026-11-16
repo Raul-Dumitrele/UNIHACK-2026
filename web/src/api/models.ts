@@ -75,6 +75,10 @@ export interface Fezabilitate {
   suprafata_minima_mp: number
   suprafata_recomandata_mp?: number | null
   disclaimer?: string
+  /** "Am interpretat propunerea ca: <eticheta>" */
+  interpretare?: string
+  /** The label is not what the user typed: ask to confirm or correct. */
+  interpretare_diferita?: boolean
 }
 export interface Act {
   ordine: number
@@ -84,6 +88,10 @@ export interface Act {
   temei: string
   conditie?: string
   de_confirmat?: boolean
+  /** uzual | dupa_caz (applies only in some situations; listed last) */
+  grup?: string
+  /** A page on legislatie.just.ro that was opened when the row was written. */
+  url?: string | null
 }
 export interface CerereTip {
   titlu: string

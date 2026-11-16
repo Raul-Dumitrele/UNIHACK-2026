@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { Bell, BarChart3, FlaskConical, Landmark, Map, Users } from 'lucide-react'
+import { BarChart3, Bell, FlaskConical, Landmark, Map, UserRound, Users } from 'lucide-react'
 import { api } from '@/api/client'
 import { Toaster } from '@/components/ui/sonner'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import { USE_MOCKS } from '@/config'
 import { DEMO_USERS } from '@/demoUsers'
@@ -25,7 +25,7 @@ function ApiStatus() {
       .then((r) => setOk(r.status === 'ok'))
       .catch(() => setOk(false))
   }, [])
-  const label = ok === null ? 'se verifică…' : ok ? 'API conectat' : 'API indisponibil'
+  const label = ok === null ? 'se verifică…' : ok ? 'conectat la server' : 'server indisponibil'
   return (
     <span className="hidden items-center gap-1.5 text-xs text-muted-foreground sm:flex" title={label}>
       <span
@@ -39,6 +39,12 @@ function ApiStatus() {
     </span>
   )
 }
+
+const GRUPURI = [
+  ['cetatean', 'Locuitori'],
+  ['primarie', 'Primărie'],
+  ['verificator', 'Verificator'],
+] as const
 
 export function Layout() {
   const { userId, setUser } = useUser()
@@ -67,30 +73,39 @@ export function Layout() {
           </nav>
           <div className="ml-auto flex items-center gap-3">
             {USE_MOCKS ? (
-              <span className="flex items-center gap-1 rounded-full bg-demo-soft px-2 py-0.5 text-xs font-medium text-demo" title="VITE_USE_MOCKS=true">
-                <FlaskConical className="size-3.5" /> date mock
+              <span className="flex items-center gap-1 rounded-full bg-demo-soft px-2 py-0.5 text-xs font-medium text-demo" title="Date de exemplu, fără server">
+                <FlaskConical className="size-3.5" /> mod demonstrativ
               </span>
             ) : (
               <ApiStatus />
             )}
-            <Select value={userId} onValueChange={setUser}>
-              <SelectTrigger size="sm" aria-label="Utilizator demo" className="w-52">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {DEMO_USERS.map((u) => (
-                  <SelectItem key={u.id} value={u.id}>
-                    {u.nume} · {ROL[u.rol]}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <label className="flex items-center gap-2">
+              <span className="hidden text-xs text-muted-foreground sm:inline">Văd aplicația ca</span>
+              <Select value={userId} onValueChange={setUser}>
+                <SelectTrigger size="sm" aria-label="Utilizator demo" className="w-60" title="Schimbă rolul ca să vezi aplicația ca locuitor, Primărie sau verificator">
+                  <UserRound className="size-4 text-muted-foreground" />
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {GRUPURI.map(([rol, titlu]) => (
+                    <SelectGroup key={rol}>
+                      <SelectLabel>{titlu}</SelectLabel>
+                      {DEMO_USERS.filter((u) => u.rol === rol).map((u) => (
+                        <SelectItem key={u.id} value={u.id}>
+                          {u.nume} · {ROL[u.rol]}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  ))}
+                </SelectContent>
+              </Select>
+            </label>
           </div>
         </div>
       </header>
       {USE_MOCKS ? (
         <div className="border-b border-demo/30 bg-demo-soft px-4 py-2 text-center text-sm text-demo print:hidden">
-          Mod demonstrativ cu date false (VITE_USE_MOCKS=true): ce creezi aici dispare la reîncărcare și nu ajunge pe server.
+          Mod demonstrativ: datele sunt exemple, iar ce creezi aici dispare la reîncărcarea paginii.
         </div>
       ) : null}
       <main className="mx-auto max-w-6xl px-4 py-8 print:max-w-none print:p-0">

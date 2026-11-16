@@ -1,10 +1,11 @@
-// One complete project. Tab "Dosar": feasibility, memorandum, specification, plot, cost (reference interval +
-// itemised sum), stages, risks, questions, documents needed, request templates, references; tab "Documente":
-// plan 2D/3D, downloads, materials. Beside them: support (votes), history and the one action the current role may take.
+// One complete project, in four tabs: "Rezumat" (how the idea was understood, what comes next, feasibility, cost,
+// plot), "Dosar" (memorandum, specification, stages, risks, questions, references), "Avize și cereri" (documents to
+// check, request templates), "Planșe și materiale" (plan 2D/3D, downloads, materials).
+// Beside them: support (votes), the one action the current role may take, and the history.
 // Printable (Save as PDF) via the print: utilities and @media print in index.css.
 import { useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Loader2, Megaphone, Printer, Send, Users } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Loader2, Megaphone, Printer, Send, Users } from 'lucide-react'
 import { toast } from 'sonner'
 import { api } from '@/api/client'
 import type { Act, CerereTip, Fezabilitate, Proiect, ProiectDetaliu, Space, Specificatie } from '@/api/models'
@@ -26,6 +27,23 @@ import { fmtDate, isFreePlot, tipLabel } from '@/lib/format'
 import { useApi } from '@/lib/useApi'
 import { cn } from '@/lib/utils'
 import { useUser } from '@/user'
+
+/** What the reader can expect next, in plain words, for every state of the project. */
+const URMEAZA: Record<string, string> = {
+  draft: 'Publică proiectul ca vecinii să îl poată susține. La pragul de susținători pleacă automat la Primărie; îl poți trimite și direct.',
+  publicat: 'Proiectul adună susținători. Când atinge pragul, pleacă automat la Primărie.',
+  trimis: 'Proiectul este la Primărie, care îl înaintează unui verificator.',
+  in_verificare: 'Un verificator analizează dosarul și decide: acord de principiu, clarificări sau respingere.',
+  clarificari: 'Verificatorul a cerut clarificări. Autorul răspunde și retrimite proiectul.',
+  acord_de_principiu: 'Proiectul are acord de principiu (simulat în aplicație). Pașii reali încep cu certificatul de urbanism, vezi „Avize și cereri”.',
+  respins: 'Proiectul a fost respins; motivul este în istoric. Poți propune o variantă nouă.',
+}
+const SURSA_TEREN: Record<string, string> = {
+  osm: 'Candidat din OpenStreetMap, neconfirmat.',
+  lista_primarie: 'Din lista Primăriei (Legea 15/2003) – de confirmat.',
+  marcat_de_utilizator: 'Marcat pe hartă de un locuitor, neverificat.',
+  demo: 'Teren demonstrativ (exemplu).',
+}
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -59,8 +77,6 @@ export function ProiectDetaliuPage() {
   const memoriu = (dosar.memoriu ?? {}) as Record<string, string>
   const acte = (dosar.acte ?? []) as unknown as Act[]
   const cereri = (dosar.cereri_tip ?? []) as unknown as CerereTip[]
-  let n = 0
-  const num = () => `${++n}.`
 
   return (
     <section className="space-y-6">
@@ -99,76 +115,109 @@ export function ProiectDetaliuPage() {
       </header>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_340px] print:block">
-        <Tabs defaultValue="dosar" className="min-w-0">
-          <TabsList className="print:hidden">
+        <Tabs defaultValue="rezumat" className="min-w-0">
+          <TabsList className="flex-wrap print:hidden">
+            <TabsTrigger value="rezumat">Rezumat</TabsTrigger>
             <TabsTrigger value="dosar">Dosar</TabsTrigger>
+            <TabsTrigger value="avize">Avize și cereri</TabsTrigger>
             <TabsTrigger value="documente">Planșe și materiale</TabsTrigger>
           </TabsList>
-          <TabsContent value="dosar" className="mt-4 space-y-6">
+
+          {/* What the project is, whether it is realistic, what it may cost, what happens next. */}
+          <TabsContent value="rezumat" className="mt-4 space-y-6">
+            <Card className="border-primary/20 bg-accent/30 print:border-0 print:shadow-none">
+              <CardContent className="space-y-2">
+                <p className="text-sm text-muted-foreground">{fez?.interpretare ?? `Propunere: ${spec?.eticheta ?? tipLabel(p.tip_amenajare)}`}</p>
+                <p className="whitespace-pre-line">{dosar.descriere}</p>
+                <p className="flex items-start gap-2 rounded-lg bg-background/70 p-3 text-sm">
+                  <ArrowRight className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <span>
+                    <span className="font-medium">Ce urmează: </span>
+                    {URMEAZA[p.stare] ?? ''}
+                  </span>
+                </p>
+              </CardContent>
+            </Card>
             {fez ? (
-              <Block title={`${num()} Analiza fezabilității`}>
+              <Block title="Este realist?">
                 <FezabilitateCard fez={fez} />
               </Block>
             ) : null}
+            <Block title="Cât ar putea costa">
+              <CostBlock cost={p.cost} />
+              <Disclaimer />
+            </Block>
+            {teren ? (
+              <Block title="Terenul">
+                <TerenMap terenuri={[teren]} center={[teren.lat, teren.lng]} zoom={16} compact className="h-56 w-full print:hidden" />
+                <p className="text-sm">
+                  <Link to={`/teren/${teren.id}`} className="font-medium underline print:no-underline">
+                    {teren.nume}
+                  </Link>
+                  {teren.suprafata_mp ? ` · ${teren.suprafata_mp} mp` : ''}
+                  {teren.cartier ? ` · ${teren.cartier}` : ''}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {SURSA_TEREN[teren.sursa ?? ''] ?? 'Teren propus.'} Proprietarul, regimul juridic și disponibilitatea terenului se confirmă de Primărie.
+                </p>
+              </Block>
+            ) : null}
+          </TabsContent>
+
+          {/* The written dossier: memorandum, specification, stages, risks, questions, references. */}
+          <TabsContent value="dosar" className="mt-4 space-y-6">
             {Object.keys(memoriu).length ? (
-              <Block title={`${num()} Memoriu descriptiv`}>
+              <Block title="Memoriu descriptiv">
                 <MemoriuBlock memoriu={memoriu} />
               </Block>
             ) : (
-              <Block title={`${num()} Rezumat`}>
+              <Block title="Descriere">
                 <Rezumat dosar={dosar} />
               </Block>
             )}
             {spec ? (
-              <Block title={`${num()} Specificație tehnică`}>
+              <Block title="Ce cuprinde amenajarea">
                 <SpecificatieBlock spec={spec} />
               </Block>
             ) : null}
-            {teren ? (
-              <Block title={`${num()} Terenul`}>
-                <TerenMap terenuri={[teren]} center={[teren.lat, teren.lng]} zoom={16} compact className="h-56 w-full print:hidden" />
-                <p className="text-sm text-muted-foreground">
-                  {teren.nume} · {teren.suprafata_mp ? `${teren.suprafata_mp} mp · ` : ''}
-                  {teren.lat.toFixed(5)}, {teren.lng.toFixed(5)}
-                  {teren.sursa ? ` · sursă: ${teren.sursa.replace(/_/g, ' ')}` : ''}
-                  {teren.status_verificare ? ` · ${teren.status_verificare}` : ''}
-                </p>
-                <p className="text-xs text-muted-foreground">Proprietarul, regimul juridic și disponibilitatea terenului se confirmă de Primărie.</p>
-              </Block>
-            ) : null}
-            <Block title={`${num()} Cost estimat`}>
-              <CostBlock cost={p.cost} />
-              <Disclaimer />
-            </Block>
             {dosar.etape.length ? (
-              <Block title={`${num()} Etape`}>
+              <Block title="Etape">
                 <EtapeList etape={dosar.etape} />
               </Block>
             ) : null}
             {dosar.riscuri.length ? (
-              <Block title={`${num()} Riscuri`}>
+              <Block title="Riscuri">
                 <BulletList items={dosar.riscuri} />
               </Block>
             ) : null}
             {dosar.lista_verificare.length ? (
-              <Block title={`${num()} Întrebări pentru Primărie`}>
+              <Block title="Întrebări pentru Primărie">
                 <BulletList items={dosar.lista_verificare} />
               </Block>
             ) : null}
-            {acte.length ? (
-              <Block title={`${num()} Documente și avize necesare`}>
-                <ActeBlock acte={acte} disclaimer={dosar.acte_disclaimer} />
-              </Block>
-            ) : null}
-            {cereri.length ? (
-              <Block title={`${num()} Cereri-tip precompletate`}>
-                <CereriTipBlock cereri={cereri} />
-              </Block>
-            ) : null}
-            <Block title={`${num()} Proiecte de referință`}>
+            <Block title="Proiecte de referință">
               <ReferinteList referinte={p.referinte} />
             </Block>
           </TabsContent>
+
+          {/* Permits to check and ready-made request texts. */}
+          <TabsContent value="avize" className="mt-4 space-y-6">
+            {acte.length ? (
+              <Block title="Documente și avize de verificat">
+                <ActeBlock acte={acte} disclaimer={dosar.acte_disclaimer} />
+              </Block>
+            ) : (
+              <Block title="Documente și avize de verificat">
+                <p className="text-sm text-muted-foreground">Acest proiect nu are o listă de documente. Lista o stabilește Primăria prin certificatul de urbanism.</p>
+              </Block>
+            )}
+            {cereri.length ? (
+              <Block title="Cereri gata de completat">
+                <CereriTipBlock cereri={cereri} />
+              </Block>
+            ) : null}
+          </TabsContent>
+
           <TabsContent value="documente" className="mt-4">
             <DocumenteTab proiectId={p.id} />
           </TabsContent>
