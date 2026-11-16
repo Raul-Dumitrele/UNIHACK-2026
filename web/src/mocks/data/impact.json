@@ -3,6 +3,12 @@
  "oameni_conectati": 5,
  "km_economisiti": 7.6,
  "proiecte_active": 13,
- "proiecte_trimise": 10,
- "proiecte_cu_acord": 2
+ "proiecte_trimise": 4,
+ "proiecte_cu_acord": 1,
+ "proiecte_propuse": 7,
+ "proiecte_publicate": 2,
+ "proiecte_peste_prag": 2,
+ "voturi_total": 7,
+ "oameni_implicati": 5,
+ "terenuri_libere": 24
 }

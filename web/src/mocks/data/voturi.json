@@ -1,0 +1,30 @@
+[
+ {
+  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "user_id": "demo-user-1"
+ },
+ {
+  "proiect_id": "demo-proiect-1",
+  "user_id": "demo-user-1"
+ },
+ {
+  "proiect_id": "d8543aa9-7ecc-43fc-8516-80f401c79083",
+  "user_id": "demo-user-2"
+ },
+ {
+  "proiect_id": "demo-proiect-1",
+  "user_id": "demo-user-2"
+ },
+ {
+  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "user_id": "demo-user-3"
+ },
+ {
+  "proiect_id": "demo-proiect-1",
+  "user_id": "demo-user-3"
+ },
+ {
+  "proiect_id": "d6e2c028-c70a-4873-a232-c632b6650552",
+  "user_id": "demo-user-4"
+ }
+]

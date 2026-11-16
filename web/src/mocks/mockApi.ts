@@ -1,15 +1,20 @@
-// In-memory fake of P1's backend, following the rules in docs/CONTRACT.md, over a snapshot of the REAL API
-// (P1's backend + seed): ./data, regenerate with web/scripts/dump_api_mocks.py.
-// Framework-agnostic: web wraps it in MSW (./browser.ts); mobile (paused) has a copy (`npm run sync:mocks`).
+// In-memory stand-in for the backend, used in demo mode (VITE_USE_MOCKS=true). It answers from ./data, which is
+// a SNAPSHOT of the real API (web/scripts/dump_api_mocks.py), and follows the state rules of docs/CONTRACT.md.
+// Framework-agnostic: web wraps it in MSW (./browser.ts).
 //
-// A project created with POST /proiecte is cloned from a snapshot project of the same kind (the mock never writes costs,
-// references or prices of its own) and shows that project's plan, materials and documents. /terenuri/potrivite
-// answers from snapshots taken at a few minimum areas. POST /ideas/{id}/proiect and the old idea/booking routes
-// are not mocked.
+// It never produces a figure, a score or a legal text of its own:
+//  * analysis (specification, feasibility) and plot choice come from snapshots taken per kind and per plot;
+//  * a project created here is a copy of the snapshot project of the same kind (dossier, cost, plan, materials,
+//    documents), with the feasibility of the chosen plot; for a kind without a snapshot project it copies the
+//    first one, so the plan may not match: this is a limit of the demo mode, not of the app;
+//  * the kind typed by the user is matched to a snapshot with a short keyword list (the server has its own rules).
+// The old idea and booking routes are not mocked.
 
 import type {
-  Impact, ListaMateriale, Notification, PlanSchematic, ProiectDetaliu, ProiectEveniment, ProiectNou, ProiectStare, Space, TerenNou, TerenPotrivit, User,
+  Analiza, Fezabilitate, Impact, ListaMateriale, Notification, PlanSchematic, ProiectDetaliu, ProiectEveniment, ProiectNou,
+  ProiectStare, Space, Specificatie, TerenNou, TerenPotrivit, User, Vot,
 } from '../api/models'
+import analizaData from './data/analiza.json'
 import documenteJson from './data/documente_json.json'
 import impactData from './data/impact.json'
 import notificationsData from './data/notifications.json'
@@ -17,6 +22,7 @@ import proiecteData from './data/proiecte.json'
 import spacesData from './data/spaces.json'
 import potriviteData from './data/terenuri_potrivite.json'
 import usersData from './data/users.json'
+import voturiData from './data/voturi.json'
 
 /** `file`: the caller (browser.ts) serves data/documente/<key>; kept out of here so this module stays framework-agnostic. */
 export type MockResult = { status: number; body: unknown; file?: { key: string; contentType: string } }
@@ -28,20 +34,53 @@ const db = {
   spaces: clone(spacesData) as Space[],
   notifications: clone(notificationsData) as Notification[],
   impact: clone(impactData) as Impact,
-  proiecte: clone(proiecteData) as ProiectDetaliu[],
+  proiecte: clone(proiecteData) as unknown as ProiectDetaliu[],
+  voturi: new Set((voturiData as { proiect_id: string; user_id: string }[]).map((v) => `${v.proiect_id}:${v.user_id}`)),
   /** project id -> the snapshot project whose plan, materials and documents it shows */
   docsFrom: new Map<string, string>(),
 }
+const SPEC = (analizaData as unknown as { specificatie: Record<string, Specificatie> }).specificatie
+const FEZ = (analizaData as unknown as { fezabilitate: Record<string, Record<string, Fezabilitate>> }).fezabilitate
+const POTRIVITE = potriviteData as unknown as Record<string, Record<string, TerenPotrivit[]>>
 
 const uuid = () =>
   globalThis.crypto?.randomUUID?.() ?? `mock-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
 const now = () => new Date().toISOString()
 const ok = (body: unknown, status = 200): MockResult => ({ status, body })
-const FILES: Record<string, string> = {
-  'plan.svg': 'image/svg+xml', 'plan.dxf': 'application/dxf', 'dosar.pdf': 'application/pdf', 'materiale.csv': 'text/csv; charset=utf-8',
-}
-const MINIME = [100, 250, 400, 600]
 const fail = (status: number, detail: string): MockResult => ({ status, body: { detail } })
+const FILES: Record<string, string> = {
+  'plan.svg': 'image/svg+xml', 'plan.dxf': 'application/dxf', 'plansa.pdf': 'application/pdf', 'dosar.pdf': 'application/pdf',
+  'materiale.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'materiale.csv': 'text/csv; charset=utf-8',
+}
+
+const plain = (t: string) => t.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, ' ').trim()
+/** Keywords -> snapshot key. Only for the demo mode; the server resolves kinds with its own rules. */
+const KEYWORDS: [RegExp, string][] = [
+  [/skate/, 'skatepark'], [/joac/, 'loc_de_joaca'], [/caini|caine|canin/, 'parc_caini'], [/bicicl/, 'pista_biciclete'],
+  [/gradin/, 'gradina_comunitara'], [/sport|baschet|fotbal|tenis/, 'teren_sport'], [/foisor/, 'foisor'],
+  [/acvatic|aqua|piscin|strand/, 'aquapark'],
+]
+function kindKey(tip: string): string {
+  const t = plain(tip)
+  const direct = t.replace(/ /g, '_')
+  if (SPEC[direct]) return direct
+  return KEYWORDS.find(([re]) => re.test(t))?.[1] ?? '_generic'
+}
+/** The generic snapshot was taken for the word "altceva": put the user's own words in its place. */
+function withLabel<T>(value: T, key: string, tip: string): T {
+  if (key !== '_generic') return clone(value)
+  const label = tip.trim().replace(/_/g, ' ')
+  return JSON.parse(JSON.stringify(value).replaceAll('altceva', label.replace(/["\\]/g, '')))
+}
+function analysis(tip: string, spaceId: string | null): Analiza | null {
+  const key = kindKey(tip)
+  const fez = FEZ[key]?.[spaceId ?? '_']
+  if (!fez) return null
+  const spec = withLabel(SPEC[key], key, tip)
+  const f = withLabel(fez, key, tip)
+  f.interpretare_diferita = ![plain(spec.eticheta), plain(spec.tip_amenajare)].includes(plain(tip))
+  return { tip_amenajare: spec.tip_amenajare, eticheta: spec.eticheta, specificatie: spec, fezabilitate: f, plan_complet: null, omise: [] } as unknown as Analiza
+}
 
 function notify(user_id: string, idea_id: string, mesaj: string, proiect_id: string | null = null) {
   db.notifications.unshift({ id: uuid(), user_id, idea_id, booking_id: null, proiect_id, mesaj, citita: false, created_at: now() })
@@ -49,17 +88,18 @@ function notify(user_id: string, idea_id: string, mesaj: string, proiect_id: str
 
 const withoutEvents = ({ evenimente: _ev, ...p }: ProiectDetaliu) => p
 const ofRole = (rol: User['rol']) => db.users.filter((u) => u.rol === rol)
-
-/** Rule 9 (visibility): author, primarie when not draft, the assigned verifier. */
-function canSee(p: ProiectDetaliu, me: User) {
-  return p.autor_id === me.id || (me.rol === 'primarie' && p.stare !== 'draft') || p.verificator_id === me.id
-}
+/** A draft is visible only to its author; any other project is public. */
+const canSee = (p: ProiectDetaliu, me: User | undefined) => p.stare !== 'draft' || p.autor_id === me?.id
 
 function transition(p: ProiectDetaliu, me: User, stare: ProiectStare, mesaj: string | null) {
   const ev: ProiectEveniment = { id: uuid(), proiect_id: p.id, user_id: me.id, stare_noua: stare, mesaj, created_at: now() }
   p.stare = stare
   p.updated_at = ev.created_at
   p.evenimente.push(ev)
+}
+function sendToCityHall(p: ProiectDetaliu, me: User, mesaj: string | null) {
+  transition(p, me, 'trimis', mesaj)
+  for (const u of ofRole('primarie')) notify(u.id, p.idea_id, `Proiect nou trimis: „${p.dosar.titlu}”.`, p.id)
 }
 
 /** Returns null when the route is unknown, so the caller can fall through to the real API. */
@@ -68,13 +108,14 @@ export function handleMock(method: string, path: string, body: Body, userId: str
   const p = url.pathname.replace(/\/+$/, '') || '/'
   const m = method.toUpperCase()
   const me = db.users.find((u) => u.id === userId)
-  const needUser = () => (me ? null : fail(401, 'Utilizator necunoscut.'))
+  const needUser = () => fail(401, 'Utilizator necunoscut.')
   let r: RegExpMatchArray | null
 
   if (m === 'GET' && p === '/health') return ok({ status: 'ok' })
   if (m === 'GET' && p === '/users') return ok(db.users)
+  if (m === 'GET' && p === '/impact') return ok(db.impact)
 
-  // GET /spaces?tip= (the other filters of the real route are not used by the web UI)
+  // GET /spaces?tip=
   if (m === 'GET' && p === '/spaces') {
     const tip = url.searchParams.get('tip')
     return ok(tip ? db.spaces.filter((x) => x.tip === tip) : db.spaces)
@@ -101,7 +142,7 @@ export function handleMock(method: string, path: string, body: Body, userId: str
   // GET /spaces/{id}/proiecte: public; every submitted project on the plot plus the caller's own drafts
   if (m === 'GET' && (r = p.match(/^\/spaces\/([^/]+)\/proiecte$/))) {
     if (!db.spaces.some((x) => x.id === r![1])) return fail(404, 'Spațiul nu există.')
-    const list = db.proiecte.filter((x) => x.space_id === r![1] && (x.stare !== 'draft' || x.autor_id === me?.id))
+    const list = db.proiecte.filter((x) => x.space_id === r![1] && canSee(x, me))
     return ok(list.sort((a, b) => b.updated_at.localeCompare(a.updated_at)).map(withoutEvents))
   }
 
@@ -118,7 +159,32 @@ export function handleMock(method: string, path: string, body: Body, userId: str
     return ok(n)
   }
 
-  if (m === 'GET' && p === '/impact') return ok(db.impact)
+  // GET /terenuri/potrivite?tip_amenajare=&suprafata_minima=&cartier=&limit= (snapshots at a few minimum areas:
+  // the closest one below the request, then the plots that are big enough; `cartier` is not applied)
+  if (m === 'GET' && p === '/terenuri/potrivite') {
+    const tip = url.searchParams.get('tip_amenajare') ?? ''
+    if (!tip) return fail(422, 'Alege tipul amenajării.')
+    const table = POTRIVITE[kindKey(tip)] ?? {}
+    const min = Number(url.searchParams.get('suprafata_minima') ?? 0)
+    const limit = Number(url.searchParams.get('limit') ?? 10)
+    const buckets = Object.keys(table).map(Number).sort((a, b) => a - b)
+    const bucket = [...buckets].reverse().find((x) => x <= min) ?? buckets[0]
+    return ok((table[String(bucket)] ?? []).filter((x) => x.suprafata_mp >= min).slice(0, limit))
+  }
+
+  // POST /proiecte/analiza {tip_amenajare, descriere?, suprafata_mp?, space_id?} -> specification + feasibility (rule 16)
+  if (m === 'POST' && p === '/proiecte/analiza') {
+    if (!me) return needUser()
+    const tip = String(body?.tip_amenajare ?? '').trim()
+    if (tip.length < 2) return fail(422, 'Alege tipul amenajării.')
+    const spaceId = typeof body?.space_id === 'string' ? body.space_id : null
+    if (spaceId && !db.spaces.some((x) => x.id === spaceId)) return fail(404, 'Spațiul nu există.')
+    const a = analysis(tip, spaceId) ?? analysis(tip, null)
+    return a ? ok(a) : fail(422, 'Tip de amenajare necunoscut.')
+  }
+
+  // GET /proiecte/publice: every project that is not a draft
+  if (m === 'GET' && p === '/proiecte/publice') return ok(db.proiecte.filter((x) => x.stare !== 'draft').map(withoutEvents))
 
   // POST /proiecte {space_id, tip_amenajare, descriere, suprafata_mp?} -> draft (201)
   if (m === 'POST' && p === '/proiecte') {
@@ -127,43 +193,32 @@ export function handleMock(method: string, path: string, body: Body, userId: str
     const b = (body ?? {}) as Partial<ProiectNou>
     const space = db.spaces.find((x) => x.id === b.space_id)
     if (!space) return fail(404, 'Terenul nu există.')
-    if (!String(b.tip_amenajare ?? '').trim()) return fail(422, 'Alege tipul amenajării.')
+    const tipText = String(b.tip_amenajare ?? '').trim()
+    if (!tipText) return fail(422, 'Alege tipul amenajării.')
     if (String(b.descriere ?? '').trim().length < 3) return fail(422, 'Descrierea trebuie să aibă cel puțin 3 caractere.')
     const mp = Number(b.suprafata_mp ?? space.suprafata_mp)
     if (!mp || mp < 1) return fail(422, 'Suprafața trebuie să fie de cel puțin 1 mp.')
-    const tip = String(b.tip_amenajare).trim() as ProiectDetaliu['tip_amenajare']
-    const example = db.proiecte.find((x) => x.tip_amenajare === tip && x.cost.suficient) ?? db.proiecte.find((x) => x.tip_amenajare === tip) ?? db.proiecte[0]
+    const a = analysis(tipText, space.id) ?? analysis(tipText, null)
+    const tip = (a?.tip_amenajare ?? tipText) as ProiectDetaliu['tip_amenajare']
+    const example = db.proiecte.find((x) => x.tip_amenajare === tip) ?? db.proiecte[0]
     const created = now()
     const pr: ProiectDetaliu = {
       ...clone(example),
       id: uuid(), space_id: space.id, autor_id: me.id, tip_amenajare: tip, suprafata_mp: Math.round(mp),
-      stare: 'draft', verificator_id: null, is_demo: false, created_at: created, updated_at: created,
+      stare: 'draft', verificator_id: null, is_demo: false, created_at: created, updated_at: created, voturi: 0,
       evenimente: [{ id: uuid(), proiect_id: '', user_id: me.id, stare_noua: 'draft', mesaj: null, created_at: created }],
     }
     pr.evenimente[0].proiect_id = pr.id
-    pr.dosar.titlu = `Amenajare: ${tip.replace(/_/g, ' ')} – ${space.nume}`
+    pr.dosar.titlu = `Amenajare: ${a?.eticheta ?? tipText} – ${space.nume}`
     pr.dosar.descriere = `${String(b.descriere).trim()}\n\n${pr.dosar.descriere}`
-    db.docsFrom.set(pr.id, example.id)
+    if (a) Object.assign(pr, { specificatie: a.specificatie, fezabilitate: a.fezabilitate })
+    db.docsFrom.set(pr.id, db.docsFrom.get(example.id) ?? example.id)
     db.proiecte.unshift(pr)
-    return ok(pr, 201)
+    return ok({ ...pr, votat_de_mine: false }, 201)
   }
 
-  // GET /terenuri/potrivite?tip_amenajare=&suprafata_minima=&cartier=&limit= (snapshots at a few minimum areas:
-  // we take the closest one below the request and keep the plots that are big enough; `cartier` is not applied)
-  if (m === 'GET' && p === '/terenuri/potrivite') {
-    const tip = url.searchParams.get('tip_amenajare') ?? ''
-    if (!tip) return fail(422, 'Alege tipul amenajării.')
-    const tables = potriviteData as Record<string, Record<string, TerenPotrivit[]>>
-    const table = tables[tip] ?? tables.foisor // any other kind: the generic plan (a snapshot of "foisor")
-    const min = Number(url.searchParams.get('suprafata_minima') ?? 0)
-    const limit = Number(url.searchParams.get('limit') ?? 10)
-    const bucket = String([...MINIME].reverse().find((x) => x <= min) ?? MINIME[0])
-    return ok(table[bucket].filter((x) => x.suprafata_mp >= min).slice(0, limit))
-  }
-
-  // GET /proiecte/{id}/plan | /materiale | /documente/{file}: same visibility as GET /proiecte/{id} (PROVISIONAL)
+  // GET /proiecte/{id}/plan | /materiale | /documente/{file}: same visibility as the project
   if (m === 'GET' && (r = p.match(/^\/proiecte\/([^/]+)\/(plan|materiale|documente\/([a-z.]+))$/))) {
-    if (!me) return needUser()
     const pr = db.proiecte.find((x) => x.id === r![1])
     if (!pr) return fail(404, 'Proiectul nu există.')
     if (!canSee(pr, me)) return fail(403, 'Nu ai acces la acest proiect.')
@@ -176,7 +231,7 @@ export function handleMock(method: string, path: string, body: Body, userId: str
     return { status: 200, body: null, file: { key: `${src}/${name}`, contentType: FILES[name] } }
   }
 
-  // GET /proiecte (rule 7)
+  // GET /proiecte (rule 7): author -> own; primarie -> everything but drafts; verifier -> assigned
   if (m === 'GET' && p === '/proiecte') {
     if (!me) return needUser()
     const list = db.proiecte.filter((x) =>
@@ -186,26 +241,55 @@ export function handleMock(method: string, path: string, body: Body, userId: str
   }
 
   if (m === 'GET' && (r = p.match(/^\/proiecte\/([^/]+)$/))) {
-    if (!me) return needUser()
     const pr = db.proiecte.find((x) => x.id === r![1])
     if (!pr) return fail(404, 'Proiectul nu există.')
     if (!canSee(pr, me)) return fail(403, 'Nu ai acces la acest proiect.')
-    return ok(pr)
+    return ok({ ...pr, votat_de_mine: me ? db.voturi.has(`${pr.id}:${me.id}`) : false })
   }
 
-  // POST /proiecte/{id}/trimite {mesaj?}: author, draft|clarificari -> trimis, notify every primarie
+  // POST /proiecte/{id}/publica: author, draft -> publicat (rule 17)
+  if (m === 'POST' && (r = p.match(/^\/proiecte\/([^/]+)\/publica$/))) {
+    if (!me) return needUser()
+    const pr = db.proiecte.find((x) => x.id === r![1])
+    if (!pr) return fail(404, 'Proiectul nu există.')
+    if (pr.autor_id !== me.id) return fail(403, 'Doar autorul proiectului îl poate publica.')
+    if (pr.stare !== 'draft') return fail(409, 'Doar o ciornă poate fi publicată.')
+    transition(pr, me, 'publicat', null)
+    return ok(withoutEvents(pr))
+  }
+
+  // POST /proiecte/{id}/vot: one vote per user; at the threshold the project is sent to the city hall (rule 17)
+  if (m === 'POST' && (r = p.match(/^\/proiecte\/([^/]+)\/vot$/))) {
+    if (!me) return needUser()
+    const pr = db.proiecte.find((x) => x.id === r![1])
+    if (!pr) return fail(404, 'Proiectul nu există.')
+    if (pr.stare === 'draft') return fail(409, 'Proiectul nu este publicat încă.')
+    if (pr.stare === 'acord_de_principiu' || pr.stare === 'respins') return fail(409, 'Proiectul are deja o decizie; votul s-a încheiat.')
+    const key = `${pr.id}:${me.id}`
+    if (db.voturi.has(key)) return fail(409, 'Ai votat deja acest proiect.')
+    db.voturi.add(key)
+    pr.voturi = (pr.voturi ?? 0) + 1
+    const prag = pr.prag_voturi ?? 3
+    if (pr.stare === 'publicat' && pr.voturi >= prag) {
+      sendToCityHall(pr, me, `Pragul de ${prag} susținători a fost atins.`)
+      notify(pr.autor_id, pr.idea_id, `Proiectul „${pr.dosar.titlu}” a strâns ${pr.voturi} susținători și a fost trimis la Primărie.`, pr.id)
+    }
+    const out: Vot = { proiect_id: pr.id, voturi: pr.voturi, prag_voturi: prag, stare: pr.stare, votat_de_mine: true }
+    return ok(out, 201)
+  }
+
+  // POST /proiecte/{id}/trimite {mesaj?}: author; draft | publicat | clarificari -> trimis
   if (m === 'POST' && (r = p.match(/^\/proiecte\/([^/]+)\/trimite$/))) {
     if (!me) return needUser()
     const pr = db.proiecte.find((x) => x.id === r![1])
     if (!pr) return fail(404, 'Proiectul nu există.')
     if (pr.autor_id !== me.id) return fail(403, 'Doar autorul poate trimite proiectul.')
-    if (pr.stare !== 'draft' && pr.stare !== 'clarificari') return fail(409, 'Proiectul nu poate fi trimis în starea curentă.')
-    transition(pr, me, 'trimis', typeof body?.mesaj === 'string' ? body.mesaj : null)
-    for (const u of ofRole('primarie')) notify(u.id, pr.idea_id, `Proiect nou trimis: „${pr.dosar.titlu}”.`, pr.id)
+    if (!['draft', 'publicat', 'clarificari'].includes(pr.stare)) return fail(409, 'Proiectul nu poate fi trimis în starea curentă.')
+    sendToCityHall(pr, me, typeof body?.mesaj === 'string' ? body.mesaj : null)
     return ok(withoutEvents(pr))
   }
 
-  // POST /proiecte/{id}/inainteaza {verificator_id}: primarie, trimis -> in_verificare, notify verifier
+  // POST /proiecte/{id}/inainteaza {verificator_id}: primarie, trimis -> in_verificare, notify the verifier
   if (m === 'POST' && (r = p.match(/^\/proiecte\/([^/]+)\/inainteaza$/))) {
     if (!me) return needUser()
     const pr = db.proiecte.find((x) => x.id === r![1])
@@ -220,7 +304,7 @@ export function handleMock(method: string, path: string, body: Body, userId: str
     return ok(withoutEvents(pr))
   }
 
-  // POST /proiecte/{id}/decizie {stare, mesaj}: assigned verifier, in_verificare -> acord|respins|clarificari
+  // POST /proiecte/{id}/decizie {stare, mesaj}: assigned verifier, in_verificare -> acord | respins | clarificari
   if (m === 'POST' && (r = p.match(/^\/proiecte\/([^/]+)\/decizie$/))) {
     if (!me) return needUser()
     const pr = db.proiecte.find((x) => x.id === r![1])
@@ -234,7 +318,7 @@ export function handleMock(method: string, path: string, body: Body, userId: str
     transition(pr, me, stare, mesaj || null)
     const text =
       stare === 'acord_de_principiu'
-        ? `Proiectul „${pr.dosar.titlu}” a primit acord de principiu.`
+        ? `Proiectul „${pr.dosar.titlu}” a primit acord de principiu (simulat).`
         : stare === 'respins'
           ? `Proiectul „${pr.dosar.titlu}” a fost respins. ${mesaj}`
           : `Pentru proiectul „${pr.dosar.titlu}” se cer clarificări: ${mesaj}`

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1188" viewBox="0 0 720 1188" font-family="Arial, Helvetica, sans-serif" font-size="12">
+<title>Amenajare: grădină comunitară – Teren viran, Dorobanților (candidat OSM)</title>
+<rect width="720" height="1188" fill="#ffffff"/>
+<text x="64" y="28" font-size="18" font-weight="bold">Amenajare: grădină comunitară – Teren viran, Dorobanților (candidat OSM)</text>
+<text x="64" y="48" fill="#555">grădină comunitară · teren de 1589 mp (32,5 × 48,89 m) · plan schematic</text>
+<g id="TEREN">
+<rect x="64.0" y="76.0" width="372.26" height="560.00" fill="#eef4e8" stroke="#2f4f2f" stroke-width="2"/>
+</g>
+<g id="ELEMENTE">
+<rect id="e1" x="75.45" y="607.36" width="349.36" height="17.18" fill="#d9d4c7" stroke="#333" stroke-width="1"><title>alee de acces</title></rect>
+<rect x="75.45" y="579.87" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e2" x="82.33" y="586.75" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 1</title></rect>
+<rect x="123.56" y="579.87" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e3" x="130.43" y="586.75" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 2</title></rect>
+<rect x="171.67" y="579.87" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e4" x="178.54" y="586.75" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 3</title></rect>
+<rect x="219.78" y="579.87" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e5" x="226.65" y="586.75" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 4</title></rect>
+<rect x="267.89" y="579.87" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e6" x="274.76" y="586.75" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 5</title></rect>
+<rect x="315.99" y="579.87" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e7" x="322.87" y="586.75" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 6</title></rect>
+<rect x="364.1" y="579.87" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e8" x="370.97" y="586.75" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 7</title></rect>
+<rect x="75.45" y="552.38" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e9" x="82.33" y="559.26" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 8</title></rect>
+<rect x="123.56" y="552.38" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e10" x="130.43" y="559.26" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 9</title></rect>
+<rect x="171.67" y="552.38" width="48.11" height="27.49" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e11" x="178.54" y="559.26" width="34.36" height="13.75" fill="#8fbf6a" stroke="#333" stroke-width="1"><title>strat înălțat 10</title></rect>
+<rect x="75.45" y="518.02" width="40.09" height="34.36" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e12" x="81.18" y="523.75" width="28.64" height="22.91" fill="#b08a62" stroke="#333" stroke-width="1"><title>magazie de unelte</title></rect>
+<rect x="115.54" y="523.75" width="34.36" height="28.64" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e13" x="121.27" y="529.48" width="22.91" height="17.18" fill="#7d6a4f" stroke="#333" stroke-width="1"><title>zonă de compost</title></rect>
+<rect x="219.78" y="561.55" width="18.33" height="18.33" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e14" x="223.21" y="564.98" width="11.45" height="11.45" fill="#8cc8e8" stroke="#333" stroke-width="1"><title>rezervor de apă și punct de udare</title></rect>
+<rect x="238.11" y="561.55" width="32.07" height="18.33" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e15" x="243.83" y="567.27" width="20.62" height="6.87" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 1</title></rect>
+<rect x="270.18" y="561.55" width="32.07" height="18.33" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e16" x="275.9" y="567.27" width="20.62" height="6.87" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 2</title></rect>
+<rect x="302.25" y="561.55" width="32.07" height="18.33" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e17" x="307.98" y="567.27" width="20.62" height="6.87" fill="#8d7b68" stroke="#333" stroke-width="1"><title>bancă 3</title></rect>
+<rect x="334.32" y="566.13" width="13.75" height="13.75" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e18" x="337.76" y="569.57" width="6.87" height="6.87" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 1</title></rect>
+<rect x="348.07" y="566.13" width="13.75" height="13.75" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e19" x="351.5" y="569.57" width="6.87" height="6.87" fill="#555555" stroke="#333" stroke-width="1"><title>coș de gunoi 2</title></rect>
+<rect x="361.81" y="571.86" width="16.04" height="8.02" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="4 3"/>
+<rect id="e20" x="365.25" y="575.29" width="9.16" height="1.15" fill="#cccccc" stroke="#333" stroke-width="1"><title>panou cu regulamentul de folosire</title></rect>
+</g>
+<g id="TEXT">
+<text x="250.13" y="619.96" text-anchor="middle" font-size="11">1</text>
+<text x="243.83" y="583.75" text-anchor="middle" font-size="8">2–8</text>
+<text x="147.62" y="556.26" text-anchor="middle" font-size="8">9–11</text>
+<text x="95.5" y="539.20" text-anchor="middle" font-size="11">12</text>
+<text x="132.73" y="542.07" text-anchor="middle" font-size="11">13</text>
+<text x="228.94" y="561.98" text-anchor="middle" font-size="8">14</text>
+<text x="286.21" y="564.27" text-anchor="middle" font-size="8">15–17</text>
+<text x="348.07" y="566.57" text-anchor="middle" font-size="8">18–19</text>
+<text x="369.83" y="572.29" text-anchor="middle" font-size="8">20</text>
+</g>
+<g id="COTE" stroke="#000" stroke-width="1">
+<line x1="64.0" y1="658.0" x2="436.26" y2="658.0"/>
+<line x1="64.0" y1="653.0" x2="64.0" y2="663.0"/>
+<line x1="436.26" y1="653.0" x2="436.26" y2="663.0"/>
+<line x1="38" y1="636.0" x2="38" y2="76.0"/>
+<line x1="33" y1="636.0" x2="43" y2="636.0"/>
+<line x1="33" y1="76.0" x2="43" y2="76.0"/>
+</g>
+<text x="250.13" y="676.0" text-anchor="middle">32,5 m</text>
+<text x="30" y="356.0" text-anchor="middle" transform="rotate(-90 30 356.0)">48,89 m</text>
+<text x="64" y="692.0" font-weight="bold">Legendă</text>
+<text x="64" y="708.0">1. alee de acces (30,5 × 1,5 m)</text>
+<text x="64" y="724.0">2. strat înălțat 1 (3 × 1,2 m)</text>
+<text x="64" y="740.0">3. strat înălțat 2 (3 × 1,2 m)</text>
+<text x="64" y="756.0">4. strat înălțat 3 (3 × 1,2 m)</text>
+<text x="64" y="772.0">5. strat înălțat 4 (3 × 1,2 m)</text>
+<text x="64" y="788.0">6. strat înălțat 5 (3 × 1,2 m)</text>
+<text x="64" y="804.0">7. strat înălțat 6 (3 × 1,2 m)</text>
+<text x="64" y="820.0">8. strat înălțat 7 (3 × 1,2 m)</text>
+<text x="64" y="836.0">9. strat înălțat 8 (3 × 1,2 m)</text>
+<text x="64" y="852.0">10. strat înălțat 9 (3 × 1,2 m)</text>
+<text x="64" y="868.0">11. strat înălțat 10 (3 × 1,2 m)</text>
+<text x="64" y="884.0">12. magazie de unelte (2,5 × 2 m)</text>
+<text x="64" y="900.0">13. zonă de compost (2 × 1,5 m)</text>
+<text x="64" y="916.0">14. rezervor de apă și punct de udare (1 × 1 m)</text>
+<text x="64" y="932.0">15. bancă 1 (1,8 × 0,6 m)</text>
+<text x="64" y="948.0">16. bancă 2 (1,8 × 0,6 m)</text>
+<text x="64" y="964.0">17. bancă 3 (1,8 × 0,6 m)</text>
+<text x="64" y="980.0">18. coș de gunoi 1 (0,6 × 0,6 m)</text>
+<text x="64" y="996.0">19. coș de gunoi 2 (0,6 × 0,6 m)</text>
+<text x="64" y="1012.0">20. panou cu regulamentul de folosire (0,8 × 0,1 m)</text>
+<text x="64" y="1044.0" font-size="11" fill="#555">Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 32,5 × 48,89 m cu aceeași</text>
+<text x="64" y="1060.0" font-size="11" fill="#555">suprafață.</text>
+<text x="64" y="1076.0" font-size="11" fill="#555">Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu</text>
+<text x="64" y="1092.0" font-size="11" fill="#555">valori din standarde sau din fișe de produs.</text>
+<text x="64" y="1108.0" font-size="11" fill="#555">Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).</text>
+<text x="64" y="1124.0" font-size="11" fill="#555">Intrarea e pe latura de jos, cu o alee de 1,5 m.</text>
+<text x="64" y="1140.0" font-size="11" fill="#555">Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de</text>
+<text x="64" y="1156.0" font-size="11" fill="#555">lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.</text>
+</svg>

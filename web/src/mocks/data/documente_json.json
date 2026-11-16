@@ -1,263 +1,8 @@
 {
- "e2c3acac-0f1a-44b8-b418-64506250b32e": {
+ "6c87d682-8d3a-4094-8044-b5aa06db6c73": {
   "plan": {
-   "tip_amenajare": "skatepark",
-   "eticheta": "skatepark",
-   "suprafata_mp": 2102.0,
-   "latime_m": 37.4,
-   "lungime_m": 56.2,
-   "elemente": [
-    {
-     "id": "e1",
-     "nume": "alee de acces",
-     "tip": "alee",
-     "x": 1.0,
-     "y": 1.0,
-     "latime_m": 35.4,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e2",
-     "nume": "zonă de skate (rampe și obstacole)",
-     "tip": "skate",
-     "x": 2.0,
-     "y": 3.5,
-     "latime_m": 20.0,
-     "lungime_m": 15.0,
-     "zona_libera_m": 1.0,
-     "obligatoriu": true
-    },
-    {
-     "id": "e3",
-     "nume": "zonă pentru începători",
-     "tip": "skate",
-     "x": 24.0,
-     "y": 3.5,
-     "latime_m": 8.0,
-     "lungime_m": 6.0,
-     "zona_libera_m": 1.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e4",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 33.5,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e5",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 1.5,
-     "y": 20.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e6",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 4.3,
-     "y": 20.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e7",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 6.9,
-     "y": 19.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e8",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 8.1,
-     "y": 19.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    }
-   ],
-   "omise": [],
-   "complet": true,
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 37,4 × 56,2 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
-   ],
-   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 405.06
-  },
-  "materiale": {
-   "linii": [
-    {
-     "articol": "banca",
-     "nume": "bancă de parc",
-     "unitate": "buc",
-     "cantitate": 3.0,
-     "ipoteza": "3 pe planul schematic",
-     "pret_unitar": {
-      "articol": "banca",
-      "nume": "bancă de parc",
-      "unitate": "buc",
-      "mediana_lei": 1575.0,
-      "min_lei": 550.0,
-      "max_lei": 2979.0,
-      "observatii": 8,
-      "surse": [
-       "DA38648219",
-       "DA39650128",
-       "DA39836760",
-       "DA39513916",
-       "DA41135418"
-      ],
-      "perioada": "2023-10-27 – 2026-09-08"
-     },
-     "valoare_lei": 4725,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": {
-      "articol": "cos_gunoi_stradal",
-      "nume": "coș de gunoi stradal",
-      "unitate": "buc",
-      "mediana_lei": 290.0,
-      "min_lei": 149.0,
-      "max_lei": 1350.0,
-      "observatii": 3,
-      "surse": [
-       "DA41296145",
-       "DA34334173",
-       "DA40752322"
-      ],
-      "perioada": "2023-10-25 – 2026-09-30"
-     },
-     "valoare_lei": 580,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 53.1,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "suprafață și module de skate",
-     "unitate": "mp",
-     "cantitate": 348.0,
-     "ipoteza": "suprafața din planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 187.2,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 64709,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
-     "unitate": "mp",
-     "cantitate": 1696.9,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
-     "pret_unitar": {
-      "articol": "gazon_rulou",
-      "nume": "gazon în rulou",
-      "unitate": "mp",
-      "mediana_lei": 25.0,
-      "min_lei": 13.5,
-      "max_lei": 38.0,
-      "observatii": 9,
-      "surse": [
-       "DA36800373",
-       "DA36847092",
-       "DA38264037",
-       "DA36875403",
-       "DA41019170"
-      ],
-      "perioada": "2023-07-19 – 2026-08-19"
-     },
-     "valoare_lei": 42422,
-     "stare": "cotat",
-     "motiv": ""
-    }
-   ],
-   "subtotal_cotat_lei": 112436,
-   "linii_de_cotat": 2,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 2 articole de cotat)",
-   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
-   "tva": "TVA: neprecizat în setul de date",
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 37,4 × 56,2 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
-    "Împrejmuirea are 187,2 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
-   ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
-  }
- },
- "965f1516-f140-44d6-b724-de2dc45a1351": {
-  "plan": {
-   "tip_amenajare": "loc_de_joaca",
-   "eticheta": "loc de joacă",
+   "tip_amenajare": "teren_sport",
+   "eticheta": "teren de sport",
    "suprafata_mp": 1813.0,
    "latime_m": 34.8,
    "lungime_m": 52.1,
@@ -271,106 +16,164 @@
      "latime_m": 32.8,
      "lungime_m": 1.5,
      "zona_libera_m": 0.0,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "finisaj",
+     "inaltime_m": 0.0,
+     "componenta": "alee de acces pavată"
     },
     {
      "id": "e2",
-     "nume": "structură de joacă cu tobogan",
-     "tip": "joaca",
-     "x": 2.5,
-     "y": 4.0,
-     "latime_m": 6.0,
-     "lungime_m": 4.0,
-     "zona_libera_m": 1.5,
-     "obligatoriu": true
+     "nume": "teren multisport (minifotbal, baschet, handbal)",
+     "tip": "sport",
+     "x": 2.0,
+     "y": 3.5,
+     "latime_m": 30.0,
+     "lungime_m": 15.0,
+     "zona_libera_m": 1.0,
+     "obligatoriu": true,
+     "categorie": "echipament",
+     "inaltime_m": 0.1,
+     "componenta": "teren multisport (minifotbal, baschet, handbal)"
     },
     {
      "id": "e3",
-     "nume": "leagăne",
-     "tip": "joaca",
-     "x": 11.5,
-     "y": 4.0,
-     "latime_m": 4.0,
-     "lungime_m": 2.5,
-     "zona_libera_m": 1.5,
-     "obligatoriu": false
+     "nume": "stâlp de iluminat LED 1",
+     "tip": "iluminat",
+     "x": 1.3,
+     "y": 19.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 8.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e4",
-     "nume": "nisipar",
-     "tip": "joaca",
-     "x": 17.5,
-     "y": 3.0,
-     "latime_m": 3.0,
-     "lungime_m": 3.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "stâlp de iluminat LED 2",
+     "tip": "iluminat",
+     "x": 2.2,
+     "y": 19.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 8.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e5",
-     "nume": "balansoar",
-     "tip": "joaca",
-     "x": 22.5,
-     "y": 4.0,
-     "latime_m": 3.0,
-     "lungime_m": 0.6,
-     "zona_libera_m": 1.5,
-     "obligatoriu": false
+     "nume": "stâlp de iluminat LED 3",
+     "tip": "iluminat",
+     "x": 3.1,
+     "y": 19.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 8.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e6",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 27.5,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "stâlp de iluminat LED 4",
+     "tip": "iluminat",
+     "x": 4.0,
+     "y": 19.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 8.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e7",
-     "nume": "bancă 2",
+     "nume": "bancă 1",
      "tip": "banca",
-     "x": 30.3,
-     "y": 3.0,
+     "x": 1.5,
+     "y": 20.9,
      "latime_m": 1.8,
      "lungime_m": 0.6,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e8",
-     "nume": "bancă 3",
+     "nume": "bancă 2",
      "tip": "banca",
-     "x": 1.5,
-     "y": 10.0,
+     "x": 4.3,
+     "y": 20.9,
      "latime_m": 1.8,
      "lungime_m": 0.6,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e9",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 32.9,
-     "y": 2.8,
-     "latime_m": 0.6,
+     "nume": "bancă 3",
+     "tip": "banca",
+     "x": 7.1,
+     "y": 20.9,
+     "latime_m": 1.8,
      "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e10",
-     "nume": "coș de gunoi 2",
+     "nume": "coș de gunoi 1",
      "tip": "cos",
-     "x": 4.1,
-     "y": 9.8,
+     "x": 9.7,
+     "y": 20.7,
      "latime_m": 0.6,
      "lungime_m": 0.6,
      "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e11",
+     "nume": "coș de gunoi 2",
+     "tip": "cos",
+     "x": 10.9,
+     "y": 20.7,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e12",
+     "nume": "panou cu regulamentul de folosire",
+     "tip": "semnalizare",
+     "x": 4.9,
+     "y": 19.8,
+     "latime_m": 0.8,
+     "lungime_m": 0.1,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "semnalizare",
+     "inaltime_m": 2.0,
+     "componenta": "panou cu regulamentul de folosire"
     }
    ],
    "omise": [],
@@ -381,61 +184,100 @@
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Intrarea e pe latura de jos, cu o alee de 1,5 m."
    ],
+   "sursa_specificatie": "model_verificat",
    "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 97.96
+   "suprafata_ocupata_mp": 503.6,
+   "bilant": [
+    {
+     "zona": "Construcții și echipamente",
+     "mp": 454.4,
+     "procent": 25.1
+    },
+    {
+     "zona": "Platforme, alei și circulații",
+     "mp": 49.2,
+     "procent": 2.7
+    },
+    {
+     "zona": "Spații verzi și suprafețe libere",
+     "mp": 1309.4,
+     "procent": 72.2
+    },
+    {
+     "zona": "Total teren",
+     "mp": 1813.0,
+     "procent": 100.0
+    }
+   ],
+   "pot_procent": 24.8,
+   "cut": 0.25
   },
   "materiale": {
    "linii": [
     {
-     "articol": "complex_joaca",
-     "nume": "structură de joacă (complex)",
+     "articol": "suprafata_sport",
+     "nume": "teren multisport (minifotbal, baschet, handbal)",
      "unitate": "buc",
      "cantitate": 1.0,
      "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
-     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": "leagan",
-     "nume": "leagăn",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3)"
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
     },
     {
      "articol": null,
-     "nume": "nisipar",
-     "unitate": "buc",
+     "nume": "porți și panouri de baschet",
+     "unitate": "set",
      "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
+     "ipoteza": "cantitate din specificația tehnică (ipoteză)",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
+     "tip_sursa": null,
      "motiv": "aplicația nu are o sursă de preț pentru acest articol"
     },
     {
-     "articol": "balansoar",
-     "nume": "balansoar",
+     "articol": "stalp_iluminat",
+     "nume": "stâlp de iluminat LED",
      "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
+     "cantitate": 4.0,
+     "ipoteza": "4 pe planul schematic",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
-     "motiv": "doar 1 observații în SEAP pentru acest articol (minimum 3)"
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "pavaj",
+     "nume": "alee de acces pavată",
+     "unitate": "mp",
+     "cantitate": 49.2,
+     "ipoteza": "suprafața aleii de acces din plan",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
     },
     {
      "articol": "banca",
-     "nume": "bancă de parc",
+     "nume": "bancă",
      "unitate": "buc",
      "cantitate": 3.0,
      "ipoteza": "3 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "banca",
       "nume": "bancă de parc",
@@ -451,18 +293,25 @@
        "DA39513916",
        "DA41135418"
       ],
-      "perioada": "2023-10-27 – 2026-09-08"
+      "perioada": "2023-10-27 – 2026-09-08",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 4725,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
      "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
+     "nume": "coș de gunoi",
      "unitate": "buc",
      "cantitate": 2.0,
      "ipoteza": "2 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "cos_gunoi_stradal",
       "nume": "coș de gunoi stradal",
@@ -476,56 +325,25 @@
        "DA34334173",
        "DA40752322"
       ],
-      "perioada": "2023-10-25 – 2026-09-30"
+      "perioada": "2023-10-25 – 2026-09-30",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 580,
      "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 49.2,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": "pardoseala_cauciuc",
-     "nume": "pardoseală sintetică (cauciuc / tartan)",
-     "unitate": "mp",
-     "cantitate": 123.1,
-     "ipoteza": "echipamentele de joacă împreună cu zona liberă din jurul lor (ipoteză de plan)",
-     "pret_unitar": {
-      "articol": "pardoseala_cauciuc",
-      "nume": "pardoseală sintetică (cauciuc / tartan)",
-      "unitate": "mp",
-      "mediana_lei": 148.29,
-      "min_lei": 101.01,
-      "max_lei": 318.19,
-      "observatii": 7,
-      "surse": [
-       "DA33672996",
-       "DA34077150",
-       "DA38725863",
-       "DA38542015",
-       "DA34219712"
-      ],
-      "perioada": "2023-07-18 – 2025-08-25"
-     },
-     "valoare_lei": 18254,
-     "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
      "articol": "gard",
-     "nume": "împrejmuire (gard)",
+     "nume": "plasă de protecție perimetrală",
      "unitate": "ml",
      "cantitate": 173.8,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
+     "ipoteza": "pe tot conturul terenului (ipoteză)",
+     "categorie": "siguranta",
+     "capitol": "Siguranță",
      "pret_unitar": {
       "articol": "gard",
       "nume": "împrejmuire (gard)",
@@ -541,18 +359,39 @@
        "DA38646215",
        "DA38923533"
       ],
-      "perioada": "2023-08-03 – 2026-09-02"
+      "perioada": "2023-08-03 – 2026-09-02",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 60077,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
+     "articol": null,
+     "nume": "panou cu regulamentul de folosire",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "semnalizare",
+     "capitol": "Semnalizare",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
      "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
+     "nume": "spațiu verde (gazon în rulou)",
      "unitate": "mp",
-     "cantitate": 1636.7,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
+     "cantitate": 1309.4,
+     "ipoteza": "suprafața rămasă liberă pe plan (ipoteză)",
+     "categorie": "vegetatie",
+     "capitol": "Spații verzi",
      "pret_unitar": {
       "articol": "gazon_rulou",
       "nume": "gazon în rulou",
@@ -568,17 +407,46 @@
        "DA36875403",
        "DA41019170"
       ],
-      "perioada": "2023-07-19 – 2026-08-19"
+      "perioada": "2023-07-19 – 2026-08-19",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
-     "valoare_lei": 40918,
+     "valoare_lei": 32735,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     }
    ],
-   "subtotal_cotat_lei": 124554,
+   "capitole": [
+    "Echipamente",
+    "Instalații și utilități",
+    "Finisaje și suprafețe",
+    "Mobilier urban",
+    "Siguranță",
+    "Semnalizare",
+    "Spații verzi"
+   ],
+   "subtotal_cotat_lei": 98117,
    "linii_de_cotat": 5,
+   "articole_necotate": [
+    "teren multisport (minifotbal, baschet, handbal)",
+    "porți și panouri de baschet",
+    "stâlp de iluminat LED",
+    "alee de acces pavată",
+    "panou cu regulamentul de folosire"
+   ],
+   "pe_surse": {
+    "seap": 4
+   },
    "eticheta_subtotal": "Subtotal articole cotate (incomplet: 5 articole de cotat)",
    "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+   "surse": {
+    "seap": "SEAP (achiziții directe, date deschise)",
+    "plafon": "plafon de program oficial",
+    "catalog": "preț de catalog verificat"
+   },
    "tva": "TVA: neprecizat în setul de date",
    "ipoteze": [
     "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 34,8 × 52,1 m cu aceeași suprafață.",
@@ -586,972 +454,15 @@
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
     "Împrejmuirea are 173,8 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
+    "Prețul unitar este mediana prețurilor din sursa indicată pe fiecare rând; intervalul min–max arată cât de mult diferă produsele între ele."
    ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+   "disclaimer": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
   }
  },
- "ec9fea17-6881-4b12-bea8-7a6e6cdb868f": {
+ "d8543aa9-7ecc-43fc-8516-80f401c79083": {
   "plan": {
    "tip_amenajare": "loc_de_joaca",
    "eticheta": "loc de joacă",
-   "suprafata_mp": 600.0,
-   "latime_m": 20.0,
-   "lungime_m": 30.0,
-   "elemente": [
-    {
-     "id": "e1",
-     "nume": "alee de acces",
-     "tip": "alee",
-     "x": 1.0,
-     "y": 1.0,
-     "latime_m": 18.0,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e2",
-     "nume": "structură de joacă cu tobogan",
-     "tip": "joaca",
-     "x": 2.5,
-     "y": 4.0,
-     "latime_m": 6.0,
-     "lungime_m": 4.0,
-     "zona_libera_m": 1.5,
-     "obligatoriu": true
-    },
-    {
-     "id": "e3",
-     "nume": "leagăne",
-     "tip": "joaca",
-     "x": 11.5,
-     "y": 4.0,
-     "latime_m": 4.0,
-     "lungime_m": 2.5,
-     "zona_libera_m": 1.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e4",
-     "nume": "nisipar",
-     "tip": "joaca",
-     "x": 1.5,
-     "y": 10.0,
-     "latime_m": 3.0,
-     "lungime_m": 3.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e5",
-     "nume": "balansoar",
-     "tip": "joaca",
-     "x": 6.5,
-     "y": 11.0,
-     "latime_m": 3.0,
-     "lungime_m": 0.6,
-     "zona_libera_m": 1.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e6",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 11.5,
-     "y": 10.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e7",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 14.3,
-     "y": 10.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e8",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 1.5,
-     "y": 14.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e9",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 17.3,
-     "y": 2.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e10",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 16.9,
-     "y": 9.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    }
-   ],
-   "omise": [],
-   "complet": true,
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
-   ],
-   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 75.76
-  },
-  "materiale": {
-   "linii": [
-    {
-     "articol": "complex_joaca",
-     "nume": "structură de joacă (complex)",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": "leagan",
-     "nume": "leagăn",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "nisipar",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "balansoar",
-     "nume": "balansoar",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 1 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": "banca",
-     "nume": "bancă de parc",
-     "unitate": "buc",
-     "cantitate": 3.0,
-     "ipoteza": "3 pe planul schematic",
-     "pret_unitar": {
-      "articol": "banca",
-      "nume": "bancă de parc",
-      "unitate": "buc",
-      "mediana_lei": 1575.0,
-      "min_lei": 550.0,
-      "max_lei": 2979.0,
-      "observatii": 8,
-      "surse": [
-       "DA38648219",
-       "DA39650128",
-       "DA39836760",
-       "DA39513916",
-       "DA41135418"
-      ],
-      "perioada": "2023-10-27 – 2026-09-08"
-     },
-     "valoare_lei": 4725,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": {
-      "articol": "cos_gunoi_stradal",
-      "nume": "coș de gunoi stradal",
-      "unitate": "buc",
-      "mediana_lei": 290.0,
-      "min_lei": 149.0,
-      "max_lei": 1350.0,
-      "observatii": 3,
-      "surse": [
-       "DA41296145",
-       "DA34334173",
-       "DA40752322"
-      ],
-      "perioada": "2023-10-25 – 2026-09-30"
-     },
-     "valoare_lei": 580,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 27.0,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": "pardoseala_cauciuc",
-     "nume": "pardoseală sintetică (cauciuc / tartan)",
-     "unitate": "mp",
-     "cantitate": 123.1,
-     "ipoteza": "echipamentele de joacă împreună cu zona liberă din jurul lor (ipoteză de plan)",
-     "pret_unitar": {
-      "articol": "pardoseala_cauciuc",
-      "nume": "pardoseală sintetică (cauciuc / tartan)",
-      "unitate": "mp",
-      "mediana_lei": 148.29,
-      "min_lei": 101.01,
-      "max_lei": 318.19,
-      "observatii": 7,
-      "surse": [
-       "DA33672996",
-       "DA34077150",
-       "DA38725863",
-       "DA38542015",
-       "DA34219712"
-      ],
-      "perioada": "2023-07-18 – 2025-08-25"
-     },
-     "valoare_lei": 18254,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 100.0,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 34567,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
-     "unitate": "mp",
-     "cantitate": 445.9,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
-     "pret_unitar": {
-      "articol": "gazon_rulou",
-      "nume": "gazon în rulou",
-      "unitate": "mp",
-      "mediana_lei": 25.0,
-      "min_lei": 13.5,
-      "max_lei": 38.0,
-      "observatii": 9,
-      "surse": [
-       "DA36800373",
-       "DA36847092",
-       "DA38264037",
-       "DA36875403",
-       "DA41019170"
-      ],
-      "perioada": "2023-07-19 – 2026-08-19"
-     },
-     "valoare_lei": 11148,
-     "stare": "cotat",
-     "motiv": ""
-    }
-   ],
-   "subtotal_cotat_lei": 69274,
-   "linii_de_cotat": 5,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 5 articole de cotat)",
-   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
-   "tva": "TVA: neprecizat în setul de date",
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
-    "Împrejmuirea are 100 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
-   ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
-  }
- },
- "3c354a6f-2866-4554-98f6-aa60c7d618bd": {
-  "plan": {
-   "tip_amenajare": "parc_caini",
-   "eticheta": "parc pentru câini",
-   "suprafata_mp": 3064.0,
-   "latime_m": 45.2,
-   "lungime_m": 67.79,
-   "elemente": [
-    {
-     "id": "e1",
-     "nume": "alee de acces",
-     "tip": "alee",
-     "x": 1.0,
-     "y": 1.0,
-     "latime_m": 43.2,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e2",
-     "nume": "zonă de alergare și agility",
-     "tip": "caini",
-     "x": 1.5,
-     "y": 3.0,
-     "latime_m": 12.0,
-     "lungime_m": 8.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": true
-    },
-    {
-     "id": "e3",
-     "nume": "zonă separată pentru câini mici",
-     "tip": "caini",
-     "x": 14.5,
-     "y": 3.0,
-     "latime_m": 8.0,
-     "lungime_m": 6.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e4",
-     "nume": "adăpătoare",
-     "tip": "apa",
-     "x": 23.5,
-     "y": 3.0,
-     "latime_m": 1.0,
-     "lungime_m": 1.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e5",
-     "nume": "dozator de pungi 1",
-     "tip": "cos",
-     "x": 25.3,
-     "y": 2.8,
-     "latime_m": 0.5,
-     "lungime_m": 0.5,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e6",
-     "nume": "dozator de pungi 2",
-     "tip": "cos",
-     "x": 26.4,
-     "y": 2.8,
-     "latime_m": 0.5,
-     "lungime_m": 0.5,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e7",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 27.7,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e8",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 30.5,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e9",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 33.3,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e10",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 35.9,
-     "y": 2.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e11",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 37.1,
-     "y": 2.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    }
-   ],
-   "omise": [],
-   "complet": true,
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 45,2 × 67,79 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
-   ],
-   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 214.26
-  },
-  "materiale": {
-   "linii": [
-    {
-     "articol": null,
-     "nume": "adăpătoare",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": null,
-     "nume": "dozator de pungi",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "banca",
-     "nume": "bancă de parc",
-     "unitate": "buc",
-     "cantitate": 3.0,
-     "ipoteza": "3 pe planul schematic",
-     "pret_unitar": {
-      "articol": "banca",
-      "nume": "bancă de parc",
-      "unitate": "buc",
-      "mediana_lei": 1575.0,
-      "min_lei": 550.0,
-      "max_lei": 2979.0,
-      "observatii": 8,
-      "surse": [
-       "DA38648219",
-       "DA39650128",
-       "DA39836760",
-       "DA39513916",
-       "DA41135418"
-      ],
-      "perioada": "2023-10-27 – 2026-09-08"
-     },
-     "valoare_lei": 4725,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": {
-      "articol": "cos_gunoi_stradal",
-      "nume": "coș de gunoi stradal",
-      "unitate": "buc",
-      "mediana_lei": 290.0,
-      "min_lei": 149.0,
-      "max_lei": 1350.0,
-      "observatii": 3,
-      "surse": [
-       "DA41296145",
-       "DA34334173",
-       "DA40752322"
-      ],
-      "perioada": "2023-10-25 – 2026-09-30"
-     },
-     "valoare_lei": 580,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 64.8,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "amenajare zone pentru câini",
-     "unitate": "mp",
-     "cantitate": 144.0,
-     "ipoteza": "suprafața din planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 226.0,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 78121,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
-     "unitate": "mp",
-     "cantitate": 2849.7,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
-     "pret_unitar": {
-      "articol": "gazon_rulou",
-      "nume": "gazon în rulou",
-      "unitate": "mp",
-      "mediana_lei": 25.0,
-      "min_lei": 13.5,
-      "max_lei": 38.0,
-      "observatii": 9,
-      "surse": [
-       "DA36800373",
-       "DA36847092",
-       "DA38264037",
-       "DA36875403",
-       "DA41019170"
-      ],
-      "perioada": "2023-07-19 – 2026-08-19"
-     },
-     "valoare_lei": 71242,
-     "stare": "cotat",
-     "motiv": ""
-    }
-   ],
-   "subtotal_cotat_lei": 154668,
-   "linii_de_cotat": 4,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 4 articole de cotat)",
-   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
-   "tva": "TVA: neprecizat în setul de date",
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 45,2 × 67,79 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
-    "Împrejmuirea are 225,98 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
-   ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
-  }
- },
- "b69d1a9e-3563-42a0-b34d-b747b0311c48": {
-  "plan": {
-   "tip_amenajare": "parc_caini",
-   "eticheta": "parc pentru câini",
-   "suprafata_mp": 600.0,
-   "latime_m": 20.0,
-   "lungime_m": 30.0,
-   "elemente": [
-    {
-     "id": "e1",
-     "nume": "alee de acces",
-     "tip": "alee",
-     "x": 1.0,
-     "y": 1.0,
-     "latime_m": 18.0,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e2",
-     "nume": "zonă de alergare și agility",
-     "tip": "caini",
-     "x": 1.5,
-     "y": 3.0,
-     "latime_m": 12.0,
-     "lungime_m": 8.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": true
-    },
-    {
-     "id": "e3",
-     "nume": "zonă separată pentru câini mici",
-     "tip": "caini",
-     "x": 1.5,
-     "y": 12.0,
-     "latime_m": 8.0,
-     "lungime_m": 6.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e4",
-     "nume": "adăpătoare",
-     "tip": "apa",
-     "x": 14.5,
-     "y": 3.0,
-     "latime_m": 1.0,
-     "lungime_m": 1.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e5",
-     "nume": "dozator de pungi 1",
-     "tip": "cos",
-     "x": 16.3,
-     "y": 2.8,
-     "latime_m": 0.5,
-     "lungime_m": 0.5,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e6",
-     "nume": "dozator de pungi 2",
-     "tip": "cos",
-     "x": 17.4,
-     "y": 2.8,
-     "latime_m": 0.5,
-     "lungime_m": 0.5,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e7",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 10.5,
-     "y": 12.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e8",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 13.3,
-     "y": 12.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e9",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 16.1,
-     "y": 12.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e10",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 1.3,
-     "y": 18.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e11",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 2.5,
-     "y": 18.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    }
-   ],
-   "omise": [],
-   "complet": true,
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
-   ],
-   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 176.46
-  },
-  "materiale": {
-   "linii": [
-    {
-     "articol": null,
-     "nume": "adăpătoare",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": null,
-     "nume": "dozator de pungi",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "banca",
-     "nume": "bancă de parc",
-     "unitate": "buc",
-     "cantitate": 3.0,
-     "ipoteza": "3 pe planul schematic",
-     "pret_unitar": {
-      "articol": "banca",
-      "nume": "bancă de parc",
-      "unitate": "buc",
-      "mediana_lei": 1575.0,
-      "min_lei": 550.0,
-      "max_lei": 2979.0,
-      "observatii": 8,
-      "surse": [
-       "DA38648219",
-       "DA39650128",
-       "DA39836760",
-       "DA39513916",
-       "DA41135418"
-      ],
-      "perioada": "2023-10-27 – 2026-09-08"
-     },
-     "valoare_lei": 4725,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": {
-      "articol": "cos_gunoi_stradal",
-      "nume": "coș de gunoi stradal",
-      "unitate": "buc",
-      "mediana_lei": 290.0,
-      "min_lei": 149.0,
-      "max_lei": 1350.0,
-      "observatii": 3,
-      "surse": [
-       "DA41296145",
-       "DA34334173",
-       "DA40752322"
-      ],
-      "perioada": "2023-10-25 – 2026-09-30"
-     },
-     "valoare_lei": 580,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 27.0,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "amenajare zone pentru câini",
-     "unitate": "mp",
-     "cantitate": 144.0,
-     "ipoteza": "suprafața din planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 100.0,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 34567,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
-     "unitate": "mp",
-     "cantitate": 423.5,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
-     "pret_unitar": {
-      "articol": "gazon_rulou",
-      "nume": "gazon în rulou",
-      "unitate": "mp",
-      "mediana_lei": 25.0,
-      "min_lei": 13.5,
-      "max_lei": 38.0,
-      "observatii": 9,
-      "surse": [
-       "DA36800373",
-       "DA36847092",
-       "DA38264037",
-       "DA36875403",
-       "DA41019170"
-      ],
-      "perioada": "2023-07-19 – 2026-08-19"
-     },
-     "valoare_lei": 10588,
-     "stare": "cotat",
-     "motiv": ""
-    }
-   ],
-   "subtotal_cotat_lei": 50460,
-   "linii_de_cotat": 4,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 4 articole de cotat)",
-   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
-   "tva": "TVA: neprecizat în setul de date",
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
-    "Împrejmuirea are 100 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
-   ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
-  }
- },
- "5ddf1697-df62-436f-a24d-c38c24c6d7bf": {
-  "plan": {
-   "tip_amenajare": "gradina_comunitara",
-   "eticheta": "grădină comunitară",
    "suprafata_mp": 1140.0,
    "latime_m": 27.6,
    "lungime_m": 41.3,
@@ -1565,205 +476,178 @@
      "latime_m": 25.6,
      "lungime_m": 1.5,
      "zona_libera_m": 0.0,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "finisaj",
+     "inaltime_m": 0.0,
+     "componenta": "alee de acces pavată"
     },
     {
      "id": "e2",
-     "nume": "strat înălțat 1",
-     "tip": "strat",
-     "x": 1.6,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "structură de joacă cu tobogan",
+     "tip": "joaca",
+     "x": 2.5,
+     "y": 4.0,
+     "latime_m": 6.0,
+     "lungime_m": 4.0,
+     "zona_libera_m": 1.5,
+     "obligatoriu": true,
+     "categorie": "echipament",
+     "inaltime_m": 3.0,
+     "componenta": "structură de joacă cu tobogan"
     },
     {
      "id": "e3",
-     "nume": "strat înălțat 2",
-     "tip": "strat",
-     "x": 5.8,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "leagăne",
+     "tip": "joaca",
+     "x": 11.5,
+     "y": 4.0,
+     "latime_m": 4.0,
+     "lungime_m": 2.5,
+     "zona_libera_m": 1.5,
+     "obligatoriu": false,
+     "categorie": "echipament",
+     "inaltime_m": 2.4,
+     "componenta": "leagăne"
     },
     {
      "id": "e4",
-     "nume": "strat înălțat 3",
-     "tip": "strat",
-     "x": 10.0,
-     "y": 3.1,
+     "nume": "nisipar",
+     "tip": "joaca",
+     "x": 17.5,
+     "y": 3.0,
      "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "lungime_m": 3.0,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "echipament",
+     "inaltime_m": 0.4,
+     "componenta": "nisipar"
     },
     {
      "id": "e5",
-     "nume": "strat înălțat 4",
-     "tip": "strat",
-     "x": 14.2,
-     "y": 3.1,
+     "nume": "balansoar",
+     "tip": "joaca",
+     "x": 2.5,
+     "y": 11.0,
      "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "lungime_m": 0.6,
+     "zona_libera_m": 1.5,
+     "obligatoriu": false,
+     "categorie": "echipament",
+     "inaltime_m": 0.8,
+     "componenta": "balansoar"
     },
     {
      "id": "e6",
-     "nume": "strat înălțat 5",
-     "tip": "strat",
-     "x": 18.4,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "stâlp de iluminat LED 1",
+     "tip": "iluminat",
+     "x": 21.3,
+     "y": 2.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e7",
-     "nume": "strat înălțat 6",
-     "tip": "strat",
-     "x": 22.6,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "stâlp de iluminat LED 2",
+     "tip": "iluminat",
+     "x": 22.2,
+     "y": 2.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e8",
-     "nume": "strat înălțat 7",
-     "tip": "strat",
-     "x": 1.6,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "bancă 1",
+     "tip": "banca",
+     "x": 23.3,
+     "y": 3.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e9",
-     "nume": "strat înălțat 8",
-     "tip": "strat",
-     "x": 5.8,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "bancă 2",
+     "tip": "banca",
+     "x": 7.5,
+     "y": 10.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e10",
-     "nume": "strat înălțat 9",
-     "tip": "strat",
-     "x": 10.0,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "bancă 3",
+     "tip": "banca",
+     "x": 10.3,
+     "y": 10.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e11",
-     "nume": "strat înălțat 10",
-     "tip": "strat",
-     "x": 14.2,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
+     "nume": "coș de gunoi 1",
+     "tip": "cos",
+     "x": 12.9,
+     "y": 9.8,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
     },
     {
      "id": "e12",
-     "nume": "magazie de unelte",
-     "tip": "magazie",
-     "x": 1.5,
-     "y": 7.8,
-     "latime_m": 2.5,
-     "lungime_m": 2.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "coș de gunoi 2",
+     "tip": "cos",
+     "x": 14.1,
+     "y": 9.8,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
     },
     {
      "id": "e13",
-     "nume": "zonă de compost",
-     "tip": "compost",
-     "x": 5.0,
-     "y": 7.8,
-     "latime_m": 2.0,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e14",
-     "nume": "rezervor de apă",
-     "tip": "apa",
-     "x": 18.1,
-     "y": 5.2,
-     "latime_m": 1.0,
-     "lungime_m": 1.0,
+     "nume": "panou cu regulamentul de folosire",
+     "tip": "semnalizare",
+     "x": 15.3,
+     "y": 9.8,
+     "latime_m": 0.8,
+     "lungime_m": 0.1,
      "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e15",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 19.9,
-     "y": 5.4,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e16",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 22.7,
-     "y": 5.4,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e17",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 8.0,
-     "y": 7.8,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e18",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 25.3,
-     "y": 5.2,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e19",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 10.6,
-     "y": 7.6,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "semnalizare",
+     "inaltime_m": 2.0,
+     "componenta": "panou cu regulamentul de folosire"
     }
    ],
    "omise": [],
@@ -1774,61 +658,162 @@
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Intrarea e pe latura de jos, cu o alee de 1,5 m."
    ],
+   "sursa_specificatie": "model_verificat",
    "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 87.36
+   "suprafata_ocupata_mp": 87.42,
+   "bilant": [
+    {
+     "zona": "Construcții și echipamente",
+     "mp": 49.0,
+     "procent": 4.3
+    },
+    {
+     "zona": "Platforme, alei și circulații",
+     "mp": 38.4,
+     "procent": 3.4
+    },
+    {
+     "zona": "Spații verzi și suprafețe libere",
+     "mp": 1052.6,
+     "procent": 92.3
+    },
+    {
+     "zona": "Total teren",
+     "mp": 1140.0,
+     "procent": 100.0
+    }
+   ],
+   "pot_procent": 3.9,
+   "cut": 0.04
   },
   "materiale": {
    "linii": [
     {
-     "articol": null,
-     "nume": "strat înălțat",
-     "unitate": "buc",
-     "cantitate": 10.0,
-     "ipoteza": "10 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": null,
-     "nume": "magazie de unelte",
+     "articol": "complex_joaca",
+     "nume": "structură de joacă cu tobogan",
      "unitate": "buc",
      "cantitate": 1.0,
      "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+     "tip_sursa": null,
+     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
     },
     {
-     "articol": "compostor",
-     "nume": "compostor",
+     "articol": "leagan",
+     "nume": "leagăne",
      "unitate": "buc",
      "cantitate": 1.0,
      "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
-     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3)"
+     "tip_sursa": null,
+     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
     },
     {
      "articol": null,
-     "nume": "rezervor de apă",
+     "nume": "nisipar",
      "unitate": "buc",
      "cantitate": 1.0,
      "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
+     "tip_sursa": null,
      "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": "balansoar",
+     "nume": "balansoar",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 1 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
+    },
+    {
+     "articol": "stalp_iluminat",
+     "nume": "stâlp de iluminat LED",
+     "unitate": "buc",
+     "cantitate": 2.0,
+     "ipoteza": "2 pe planul schematic",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "pardoseala_cauciuc",
+     "nume": "pardoseală de protecție (cauciuc / tartan)",
+     "unitate": "mp",
+     "cantitate": 139.1,
+     "ipoteza": "echipamentele împreună cu zona liberă din jurul lor (ipoteză de plan)",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": {
+      "articol": "pardoseala_cauciuc",
+      "nume": "pardoseală sintetică (cauciuc / tartan)",
+      "unitate": "mp",
+      "mediana_lei": 148.29,
+      "min_lei": 101.01,
+      "max_lei": 318.19,
+      "observatii": 7,
+      "surse": [
+       "DA33672996",
+       "DA34077150",
+       "DA38725863",
+       "DA38542015",
+       "DA34219712"
+      ],
+      "perioada": "2023-07-18 – 2025-08-25",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 20627,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    },
+    {
+     "articol": "pavaj",
+     "nume": "alee de acces pavată",
+     "unitate": "mp",
+     "cantitate": 38.4,
+     "ipoteza": "suprafața aleii de acces din plan",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
     },
     {
      "articol": "banca",
-     "nume": "bancă de parc",
+     "nume": "bancă",
      "unitate": "buc",
      "cantitate": 3.0,
      "ipoteza": "3 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "banca",
       "nume": "bancă de parc",
@@ -1844,18 +829,25 @@
        "DA39513916",
        "DA41135418"
       ],
-      "perioada": "2023-10-27 – 2026-09-08"
+      "perioada": "2023-10-27 – 2026-09-08",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 4725,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
      "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
+     "nume": "coș de gunoi",
      "unitate": "buc",
      "cantitate": 2.0,
      "ipoteza": "2 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "cos_gunoi_stradal",
       "nume": "coș de gunoi stradal",
@@ -1869,29 +861,25 @@
        "DA34334173",
        "DA40752322"
       ],
-      "perioada": "2023-10-25 – 2026-09-30"
+      "perioada": "2023-10-25 – 2026-09-30",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 580,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 38.4,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
     },
     {
      "articol": "gard",
      "nume": "împrejmuire (gard)",
      "unitate": "ml",
      "cantitate": 137.8,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
+     "ipoteza": "pe tot conturul terenului (ipoteză)",
+     "categorie": "siguranta",
+     "capitol": "Siguranță",
      "pret_unitar": {
       "articol": "gard",
       "nume": "împrejmuire (gard)",
@@ -1907,18 +895,39 @@
        "DA38646215",
        "DA38923533"
       ],
-      "perioada": "2023-08-03 – 2026-09-02"
+      "perioada": "2023-08-03 – 2026-09-02",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 47633,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
+     "articol": null,
+     "nume": "panou cu regulamentul de folosire",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "semnalizare",
+     "capitol": "Semnalizare",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
      "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
+     "nume": "spațiu verde (gazon în rulou)",
      "unitate": "mp",
-     "cantitate": 1052.6,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
+     "cantitate": 958.3,
+     "ipoteza": "suprafața rămasă liberă pe plan (ipoteză)",
+     "categorie": "vegetatie",
+     "capitol": "Spații verzi",
      "pret_unitar": {
       "articol": "gazon_rulou",
       "nume": "gazon în rulou",
@@ -1934,17 +943,48 @@
        "DA36875403",
        "DA41019170"
       ],
-      "perioada": "2023-07-19 – 2026-08-19"
+      "perioada": "2023-07-19 – 2026-08-19",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
-     "valoare_lei": 26315,
+     "valoare_lei": 23958,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     }
    ],
-   "subtotal_cotat_lei": 79253,
-   "linii_de_cotat": 5,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 5 articole de cotat)",
+   "capitole": [
+    "Echipamente",
+    "Instalații și utilități",
+    "Finisaje și suprafețe",
+    "Mobilier urban",
+    "Siguranță",
+    "Semnalizare",
+    "Spații verzi"
+   ],
+   "subtotal_cotat_lei": 97523,
+   "linii_de_cotat": 7,
+   "articole_necotate": [
+    "structură de joacă cu tobogan",
+    "leagăne",
+    "nisipar",
+    "balansoar",
+    "stâlp de iluminat LED",
+    "alee de acces pavată",
+    "panou cu regulamentul de folosire"
+   ],
+   "pe_surse": {
+    "seap": 5
+   },
+   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 7 articole de cotat)",
    "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+   "surse": {
+    "seap": "SEAP (achiziții directe, date deschise)",
+    "plafon": "plafon de program oficial",
+    "catalog": "preț de catalog verificat"
+   },
    "tva": "TVA: neprecizat în setul de date",
    "ipoteze": [
     "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 27,6 × 41,3 m cu aceeași suprafață.",
@@ -1952,909 +992,12 @@
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
     "Împrejmuirea are 137,8 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
+    "Prețul unitar este mediana prețurilor din sursa indicată pe fiecare rând; intervalul min–max arată cât de mult diferă produsele între ele."
    ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+   "disclaimer": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
   }
  },
- "d9c0f81b-4f2e-4c62-9816-0c54db1ad1df": {
-  "plan": {
-   "tip_amenajare": "gradina_comunitara",
-   "eticheta": "grădină comunitară",
-   "suprafata_mp": 600.0,
-   "latime_m": 20.0,
-   "lungime_m": 30.0,
-   "elemente": [
-    {
-     "id": "e1",
-     "nume": "alee de acces",
-     "tip": "alee",
-     "x": 1.0,
-     "y": 1.0,
-     "latime_m": 18.0,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e2",
-     "nume": "strat înălțat 1",
-     "tip": "strat",
-     "x": 1.6,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e3",
-     "nume": "strat înălțat 2",
-     "tip": "strat",
-     "x": 5.8,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e4",
-     "nume": "strat înălțat 3",
-     "tip": "strat",
-     "x": 10.0,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e5",
-     "nume": "strat înălțat 4",
-     "tip": "strat",
-     "x": 14.2,
-     "y": 3.1,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e6",
-     "nume": "strat înălțat 5",
-     "tip": "strat",
-     "x": 1.6,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e7",
-     "nume": "strat înălțat 6",
-     "tip": "strat",
-     "x": 5.8,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e8",
-     "nume": "strat înălțat 7",
-     "tip": "strat",
-     "x": 10.0,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e9",
-     "nume": "strat înălțat 8",
-     "tip": "strat",
-     "x": 14.2,
-     "y": 5.5,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e10",
-     "nume": "strat înălțat 9",
-     "tip": "strat",
-     "x": 1.6,
-     "y": 7.9,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e11",
-     "nume": "strat înălțat 10",
-     "tip": "strat",
-     "x": 5.8,
-     "y": 7.9,
-     "latime_m": 3.0,
-     "lungime_m": 1.2,
-     "zona_libera_m": 0.6,
-     "obligatoriu": true
-    },
-    {
-     "id": "e12",
-     "nume": "magazie de unelte",
-     "tip": "magazie",
-     "x": 1.5,
-     "y": 10.2,
-     "latime_m": 2.5,
-     "lungime_m": 2.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e13",
-     "nume": "zonă de compost",
-     "tip": "compost",
-     "x": 5.0,
-     "y": 10.2,
-     "latime_m": 2.0,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e14",
-     "nume": "rezervor de apă",
-     "tip": "apa",
-     "x": 9.7,
-     "y": 7.6,
-     "latime_m": 1.0,
-     "lungime_m": 1.0,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e15",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 11.5,
-     "y": 7.8,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e16",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 14.3,
-     "y": 7.8,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e17",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 8.0,
-     "y": 10.2,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e18",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 18.1,
-     "y": 2.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e19",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 18.1,
-     "y": 5.2,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    }
-   ],
-   "omise": [],
-   "complet": true,
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
-   ],
-   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 75.96
-  },
-  "materiale": {
-   "linii": [
-    {
-     "articol": null,
-     "nume": "strat înălțat",
-     "unitate": "buc",
-     "cantitate": 10.0,
-     "ipoteza": "10 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": null,
-     "nume": "magazie de unelte",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "compostor",
-     "nume": "compostor",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "rezervor de apă",
-     "unitate": "buc",
-     "cantitate": 1.0,
-     "ipoteza": "1 pe planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "banca",
-     "nume": "bancă de parc",
-     "unitate": "buc",
-     "cantitate": 3.0,
-     "ipoteza": "3 pe planul schematic",
-     "pret_unitar": {
-      "articol": "banca",
-      "nume": "bancă de parc",
-      "unitate": "buc",
-      "mediana_lei": 1575.0,
-      "min_lei": 550.0,
-      "max_lei": 2979.0,
-      "observatii": 8,
-      "surse": [
-       "DA38648219",
-       "DA39650128",
-       "DA39836760",
-       "DA39513916",
-       "DA41135418"
-      ],
-      "perioada": "2023-10-27 – 2026-09-08"
-     },
-     "valoare_lei": 4725,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": {
-      "articol": "cos_gunoi_stradal",
-      "nume": "coș de gunoi stradal",
-      "unitate": "buc",
-      "mediana_lei": 290.0,
-      "min_lei": 149.0,
-      "max_lei": 1350.0,
-      "observatii": 3,
-      "surse": [
-       "DA41296145",
-       "DA34334173",
-       "DA40752322"
-      ],
-      "perioada": "2023-10-25 – 2026-09-30"
-     },
-     "valoare_lei": 580,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 27.0,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 100.0,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 34567,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
-     "unitate": "mp",
-     "cantitate": 524.0,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
-     "pret_unitar": {
-      "articol": "gazon_rulou",
-      "nume": "gazon în rulou",
-      "unitate": "mp",
-      "mediana_lei": 25.0,
-      "min_lei": 13.5,
-      "max_lei": 38.0,
-      "observatii": 9,
-      "surse": [
-       "DA36800373",
-       "DA36847092",
-       "DA38264037",
-       "DA36875403",
-       "DA41019170"
-      ],
-      "perioada": "2023-07-19 – 2026-08-19"
-     },
-     "valoare_lei": 13100,
-     "stare": "cotat",
-     "motiv": ""
-    }
-   ],
-   "subtotal_cotat_lei": 52972,
-   "linii_de_cotat": 5,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 5 articole de cotat)",
-   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
-   "tva": "TVA: neprecizat în setul de date",
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
-    "Împrejmuirea are 100 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
-   ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
-  }
- },
- "c0670cfd-8580-4471-b2a3-a5fa02c1e403": {
-  "plan": {
-   "tip_amenajare": "teren_sport",
-   "eticheta": "teren de sport",
-   "suprafata_mp": 1589.0,
-   "latime_m": 32.5,
-   "lungime_m": 48.89,
-   "elemente": [
-    {
-     "id": "e1",
-     "nume": "alee de acces",
-     "tip": "alee",
-     "x": 1.0,
-     "y": 1.0,
-     "latime_m": 30.5,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e2",
-     "nume": "teren multisport",
-     "tip": "sport",
-     "x": 2.0,
-     "y": 3.5,
-     "latime_m": 15.0,
-     "lungime_m": 30.0,
-     "zona_libera_m": 1.0,
-     "obligatoriu": true
-    },
-    {
-     "id": "e3",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 18.5,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e4",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 21.3,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e5",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 24.1,
-     "y": 3.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e6",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 26.7,
-     "y": 2.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e7",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 27.9,
-     "y": 2.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    }
-   ],
-   "omise": [],
-   "complet": true,
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 32,5 × 48,89 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
-   ],
-   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 499.71
-  },
-  "materiale": {
-   "linii": [
-    {
-     "articol": "banca",
-     "nume": "bancă de parc",
-     "unitate": "buc",
-     "cantitate": 3.0,
-     "ipoteza": "3 pe planul schematic",
-     "pret_unitar": {
-      "articol": "banca",
-      "nume": "bancă de parc",
-      "unitate": "buc",
-      "mediana_lei": 1575.0,
-      "min_lei": 550.0,
-      "max_lei": 2979.0,
-      "observatii": 8,
-      "surse": [
-       "DA38648219",
-       "DA39650128",
-       "DA39836760",
-       "DA39513916",
-       "DA41135418"
-      ],
-      "perioada": "2023-10-27 – 2026-09-08"
-     },
-     "valoare_lei": 4725,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": {
-      "articol": "cos_gunoi_stradal",
-      "nume": "coș de gunoi stradal",
-      "unitate": "buc",
-      "mediana_lei": 290.0,
-      "min_lei": 149.0,
-      "max_lei": 1350.0,
-      "observatii": 3,
-      "surse": [
-       "DA41296145",
-       "DA34334173",
-       "DA40752322"
-      ],
-      "perioada": "2023-10-25 – 2026-09-30"
-     },
-     "valoare_lei": 580,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 45.8,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "suprafață teren de sport",
-     "unitate": "mp",
-     "cantitate": 450.0,
-     "ipoteza": "suprafața din planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 162.8,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 56275,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
-     "unitate": "mp",
-     "cantitate": 1089.3,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
-     "pret_unitar": {
-      "articol": "gazon_rulou",
-      "nume": "gazon în rulou",
-      "unitate": "mp",
-      "mediana_lei": 25.0,
-      "min_lei": 13.5,
-      "max_lei": 38.0,
-      "observatii": 9,
-      "surse": [
-       "DA36800373",
-       "DA36847092",
-       "DA38264037",
-       "DA36875403",
-       "DA41019170"
-      ],
-      "perioada": "2023-07-19 – 2026-08-19"
-     },
-     "valoare_lei": 27232,
-     "stare": "cotat",
-     "motiv": ""
-    }
-   ],
-   "subtotal_cotat_lei": 88812,
-   "linii_de_cotat": 2,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 2 articole de cotat)",
-   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
-   "tva": "TVA: neprecizat în setul de date",
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 32,5 × 48,89 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
-    "Împrejmuirea are 162,78 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
-   ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
-  }
- },
- "515ac44c-f260-4b5a-9a88-fb2677513aad": {
-  "plan": {
-   "tip_amenajare": "teren_sport",
-   "eticheta": "teren de sport",
-   "suprafata_mp": 600.0,
-   "latime_m": 20.0,
-   "lungime_m": 30.0,
-   "elemente": [
-    {
-     "id": "e1",
-     "nume": "alee de acces",
-     "tip": "alee",
-     "x": 1.0,
-     "y": 1.0,
-     "latime_m": 18.0,
-     "lungime_m": 1.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": false
-    },
-    {
-     "id": "e2",
-     "nume": "teren multisport",
-     "tip": "sport",
-     "x": 2.0,
-     "y": 3.5,
-     "latime_m": 15.0,
-     "lungime_m": 11.0,
-     "zona_libera_m": 1.0,
-     "obligatoriu": true
-    },
-    {
-     "id": "e3",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 1.5,
-     "y": 16.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e4",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 4.3,
-     "y": 16.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e5",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 7.1,
-     "y": 16.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
-    },
-    {
-     "id": "e6",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 9.7,
-     "y": 15.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    },
-    {
-     "id": "e7",
-     "nume": "coș de gunoi 2",
-     "tip": "cos",
-     "x": 10.9,
-     "y": 15.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
-    }
-   ],
-   "omise": [],
-   "complet": true,
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
-   ],
-   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 195.96
-  },
-  "materiale": {
-   "linii": [
-    {
-     "articol": "banca",
-     "nume": "bancă de parc",
-     "unitate": "buc",
-     "cantitate": 3.0,
-     "ipoteza": "3 pe planul schematic",
-     "pret_unitar": {
-      "articol": "banca",
-      "nume": "bancă de parc",
-      "unitate": "buc",
-      "mediana_lei": 1575.0,
-      "min_lei": 550.0,
-      "max_lei": 2979.0,
-      "observatii": 8,
-      "surse": [
-       "DA38648219",
-       "DA39650128",
-       "DA39836760",
-       "DA39513916",
-       "DA41135418"
-      ],
-      "perioada": "2023-10-27 – 2026-09-08"
-     },
-     "valoare_lei": 4725,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
-     "unitate": "buc",
-     "cantitate": 2.0,
-     "ipoteza": "2 pe planul schematic",
-     "pret_unitar": {
-      "articol": "cos_gunoi_stradal",
-      "nume": "coș de gunoi stradal",
-      "unitate": "buc",
-      "mediana_lei": 290.0,
-      "min_lei": 149.0,
-      "max_lei": 1350.0,
-      "observatii": 3,
-      "surse": [
-       "DA41296145",
-       "DA34334173",
-       "DA40752322"
-      ],
-      "perioada": "2023-10-25 – 2026-09-30"
-     },
-     "valoare_lei": 580,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 27.0,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "suprafață teren de sport",
-     "unitate": "mp",
-     "cantitate": 165.0,
-     "ipoteza": "suprafața din planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
-    },
-    {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 100.0,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 34567,
-     "stare": "cotat",
-     "motiv": ""
-    },
-    {
-     "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
-     "unitate": "mp",
-     "cantitate": 404.0,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
-     "pret_unitar": {
-      "articol": "gazon_rulou",
-      "nume": "gazon în rulou",
-      "unitate": "mp",
-      "mediana_lei": 25.0,
-      "min_lei": 13.5,
-      "max_lei": 38.0,
-      "observatii": 9,
-      "surse": [
-       "DA36800373",
-       "DA36847092",
-       "DA38264037",
-       "DA36875403",
-       "DA41019170"
-      ],
-      "perioada": "2023-07-19 – 2026-08-19"
-     },
-     "valoare_lei": 10100,
-     "stare": "cotat",
-     "motiv": ""
-    }
-   ],
-   "subtotal_cotat_lei": 49972,
-   "linii_de_cotat": 2,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 2 articole de cotat)",
-   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
-   "tva": "TVA: neprecizat în setul de date",
-   "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
-    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
-    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
-    "Împrejmuirea are 100 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
-   ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
-  }
- },
- "1fb7839e-f6e4-4c93-a477-e3bf64646624": {
+ "b93254f6-f7d1-44ff-a6f7-be12d3bf644e": {
   "plan": {
    "tip_amenajare": "pista_biciclete",
    "eticheta": "pistă de biciclete",
@@ -2871,7 +1014,10 @@
      "latime_m": 39.8,
      "lungime_m": 2.5,
      "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "obligatoriu": true,
+     "categorie": "finisaj",
+     "inaltime_m": 0.05,
+     "componenta": "pistă de biciclete în buclă"
     },
     {
      "id": "e2",
@@ -2882,7 +1028,10 @@
      "latime_m": 39.8,
      "lungime_m": 2.5,
      "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "obligatoriu": true,
+     "categorie": "finisaj",
+     "inaltime_m": 0.05,
+     "componenta": "pistă de biciclete în buclă"
     },
     {
      "id": "e3",
@@ -2893,7 +1042,10 @@
      "latime_m": 2.5,
      "lungime_m": 55.58,
      "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "obligatoriu": true,
+     "categorie": "finisaj",
+     "inaltime_m": 0.05,
+     "componenta": "pistă de biciclete în buclă"
     },
     {
      "id": "e4",
@@ -2904,7 +1056,10 @@
      "latime_m": 2.5,
      "lungime_m": 55.58,
      "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "obligatoriu": true,
+     "categorie": "finisaj",
+     "inaltime_m": 0.05,
+     "componenta": "pistă de biciclete în buclă"
     },
     {
      "id": "e5",
@@ -2915,7 +1070,10 @@
      "latime_m": 3.0,
      "lungime_m": 1.0,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "rastel pentru biciclete"
     },
     {
      "id": "e6",
@@ -2926,7 +1084,10 @@
      "latime_m": 8.0,
      "lungime_m": 6.0,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "echipament",
+     "inaltime_m": 0.1,
+     "componenta": "zonă de învățare pentru copii"
     },
     {
      "id": "e7",
@@ -2937,7 +1098,10 @@
      "latime_m": 1.8,
      "lungime_m": 0.6,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e8",
@@ -2948,7 +1112,10 @@
      "latime_m": 1.8,
      "lungime_m": 0.6,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e9",
@@ -2959,7 +1126,10 @@
      "latime_m": 1.8,
      "lungime_m": 0.6,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e10",
@@ -2970,7 +1140,10 @@
      "latime_m": 0.6,
      "lungime_m": 0.6,
      "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
     },
     {
      "id": "e11",
@@ -2981,7 +1154,24 @@
      "latime_m": 0.6,
      "lungime_m": 0.6,
      "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e12",
+     "nume": "panou cu regulamentul de folosire",
+     "tip": "semnalizare",
+     "x": 18.6,
+     "y": 3.8,
+     "latime_m": 0.8,
+     "lungime_m": 0.1,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "semnalizare",
+     "inaltime_m": 2.0,
+     "componenta": "panou cu regulamentul de folosire"
     }
    ],
    "omise": [],
@@ -2992,28 +1182,86 @@
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Pista e o buclă de 2,5 m lățime pe conturul terenului."
    ],
+   "sursa_specificatie": "model_verificat",
    "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 531.86
+   "suprafata_ocupata_mp": 531.94,
+   "bilant": [
+    {
+     "zona": "Construcții și echipamente",
+     "mp": 55.0,
+     "procent": 2.1
+    },
+    {
+     "zona": "Platforme, alei și circulații",
+     "mp": 476.9,
+     "procent": 18.2
+    },
+    {
+     "zona": "Spații verzi și suprafețe libere",
+     "mp": 2084.1,
+     "procent": 79.7
+    },
+    {
+     "zona": "Total teren",
+     "mp": 2616.0,
+     "procent": 100.0
+    }
+   ],
+   "pot_procent": 1.8,
+   "cut": 0.02
   },
   "materiale": {
    "linii": [
+    {
+     "articol": "imbracaminte_pista",
+     "nume": "zonă de învățare pentru copii",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "imbracaminte_pista",
+     "nume": "pistă de biciclete în buclă",
+     "unitate": "mp",
+     "cantitate": 476.9,
+     "ipoteza": "suprafața din planul schematic",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
     {
      "articol": "rastel_biciclete",
      "nume": "rastel pentru biciclete",
      "unitate": "buc",
      "cantitate": 1.0,
      "ipoteza": "1 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
-     "motiv": "doar 1 observații în SEAP pentru acest articol (minimum 3)"
+     "tip_sursa": null,
+     "motiv": "doar 1 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
     },
     {
      "articol": "banca",
-     "nume": "bancă de parc",
+     "nume": "bancă",
      "unitate": "buc",
      "cantitate": 3.0,
      "ipoteza": "3 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "banca",
       "nume": "bancă de parc",
@@ -3029,18 +1277,25 @@
        "DA39513916",
        "DA41135418"
       ],
-      "perioada": "2023-10-27 – 2026-09-08"
+      "perioada": "2023-10-27 – 2026-09-08",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 4725,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
      "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
+     "nume": "coș de gunoi",
      "unitate": "buc",
      "cantitate": 2.0,
      "ipoteza": "2 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "cos_gunoi_stradal",
       "nume": "coș de gunoi stradal",
@@ -3054,56 +1309,53 @@
        "DA34334173",
        "DA40752322"
       ],
-      "perioada": "2023-10-25 – 2026-09-30"
+      "perioada": "2023-10-25 – 2026-09-30",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 580,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
      "articol": null,
-     "nume": "îmbrăcăminte pistă de biciclete",
-     "unitate": "mp",
-     "cantitate": 524.9,
-     "ipoteza": "suprafața din planul schematic",
+     "nume": "marcaje și indicatoare rutiere didactice",
+     "unitate": "set",
+     "cantitate": 1.0,
+     "ipoteza": "cantitate din specificația tehnică (ipoteză)",
+     "categorie": "semnalizare",
+     "capitol": "Semnalizare",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
+     "tip_sursa": null,
      "motiv": "aplicația nu are o sursă de preț pentru acest articol"
     },
     {
-     "articol": "gard",
-     "nume": "împrejmuire (gard)",
-     "unitate": "ml",
-     "cantitate": 208.8,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
-     "pret_unitar": {
-      "articol": "gard",
-      "nume": "împrejmuire (gard)",
-      "unitate": "ml",
-      "mediana_lei": 345.67,
-      "min_lei": 85.71,
-      "max_lei": 1028.0,
-      "observatii": 13,
-      "surse": [
-       "DA34764331",
-       "DA38762909",
-       "DA34764616",
-       "DA38646215",
-       "DA38923533"
-      ],
-      "perioada": "2023-08-03 – 2026-09-02"
-     },
-     "valoare_lei": 72176,
-     "stare": "cotat",
-     "motiv": ""
+     "articol": null,
+     "nume": "panou cu regulamentul de folosire",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "semnalizare",
+     "capitol": "Semnalizare",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
     },
     {
      "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
+     "nume": "spațiu verde (gazon în rulou)",
      "unitate": "mp",
      "cantitate": 2084.1,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
+     "ipoteza": "suprafața rămasă liberă pe plan (ipoteză)",
+     "categorie": "vegetatie",
+     "capitol": "Spații verzi",
      "pret_unitar": {
       "articol": "gazon_rulou",
       "nume": "gazon în rulou",
@@ -3119,189 +1371,460 @@
        "DA36875403",
        "DA41019170"
       ],
-      "perioada": "2023-07-19 – 2026-08-19"
+      "perioada": "2023-07-19 – 2026-08-19",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 52102,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     }
    ],
-   "subtotal_cotat_lei": 129583,
-   "linii_de_cotat": 2,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 2 articole de cotat)",
+   "capitole": [
+    "Echipamente",
+    "Finisaje și suprafețe",
+    "Mobilier urban",
+    "Semnalizare",
+    "Spații verzi"
+   ],
+   "subtotal_cotat_lei": 57407,
+   "linii_de_cotat": 5,
+   "articole_necotate": [
+    "zonă de învățare pentru copii",
+    "pistă de biciclete în buclă",
+    "rastel pentru biciclete",
+    "marcaje și indicatoare rutiere didactice",
+    "panou cu regulamentul de folosire"
+   ],
+   "pe_surse": {
+    "seap": 3
+   },
+   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 5 articole de cotat)",
    "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+   "surse": {
+    "seap": "SEAP (achiziții directe, date deschise)",
+    "plafon": "plafon de program oficial",
+    "catalog": "preț de catalog verificat"
+   },
    "tva": "TVA: neprecizat în setul de date",
    "ipoteze": [
     "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 41,8 × 62,58 m cu aceeași suprafață.",
     "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Pista e o buclă de 2,5 m lățime pe conturul terenului.",
-    "Împrejmuirea are 208,76 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
+    "Prețul unitar este mediana prețurilor din sursa indicată pe fiecare rând; intervalul min–max arată cât de mult diferă produsele între ele."
    ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+   "disclaimer": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
   }
  },
- "cacdf8a8-1ca0-4bcb-b932-3f8ba564acb1": {
+ "d30bcfe7-a26e-435c-9711-1ef9a4742a52": {
   "plan": {
-   "tip_amenajare": "pista_biciclete",
-   "eticheta": "pistă de biciclete",
-   "suprafata_mp": 600.0,
-   "latime_m": 20.0,
-   "lungime_m": 30.0,
+   "tip_amenajare": "gradina_comunitara",
+   "eticheta": "grădină comunitară",
+   "suprafata_mp": 1589.0,
+   "latime_m": 32.5,
+   "lungime_m": 48.89,
    "elemente": [
     {
      "id": "e1",
-     "nume": "pistă de biciclete (latura de jos)",
-     "tip": "pista",
+     "nume": "alee de acces",
+     "tip": "alee",
      "x": 1.0,
      "y": 1.0,
-     "latime_m": 18.0,
-     "lungime_m": 2.5,
+     "latime_m": 30.5,
+     "lungime_m": 1.5,
      "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "obligatoriu": false,
+     "categorie": "finisaj",
+     "inaltime_m": 0.0,
+     "componenta": "alee de acces pavată"
     },
     {
      "id": "e2",
-     "nume": "pistă de biciclete (latura de sus)",
-     "tip": "pista",
-     "x": 1.0,
-     "y": 26.5,
-     "latime_m": 18.0,
-     "lungime_m": 2.5,
-     "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "nume": "strat înălțat 1",
+     "tip": "strat",
+     "x": 1.6,
+     "y": 3.1,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e3",
-     "nume": "pistă de biciclete (latura stângă)",
-     "tip": "pista",
-     "x": 1.0,
-     "y": 3.5,
-     "latime_m": 2.5,
-     "lungime_m": 23.0,
-     "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "nume": "strat înălțat 2",
+     "tip": "strat",
+     "x": 5.8,
+     "y": 3.1,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e4",
-     "nume": "pistă de biciclete (latura dreaptă)",
-     "tip": "pista",
-     "x": 16.5,
-     "y": 3.5,
-     "latime_m": 2.5,
-     "lungime_m": 23.0,
-     "zona_libera_m": 0.0,
-     "obligatoriu": true
+     "nume": "strat înălțat 3",
+     "tip": "strat",
+     "x": 10.0,
+     "y": 3.1,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e5",
-     "nume": "rastel pentru biciclete",
-     "tip": "rastel",
-     "x": 4.0,
-     "y": 4.0,
+     "nume": "strat înălțat 4",
+     "tip": "strat",
+     "x": 14.2,
+     "y": 3.1,
      "latime_m": 3.0,
-     "lungime_m": 1.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e6",
-     "nume": "zonă de învățare pentru copii",
-     "tip": "pista",
-     "x": 4.0,
-     "y": 6.0,
-     "latime_m": 8.0,
-     "lungime_m": 6.0,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "strat înălțat 5",
+     "tip": "strat",
+     "x": 18.4,
+     "y": 3.1,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e7",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 8.0,
-     "y": 4.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "strat înălțat 6",
+     "tip": "strat",
+     "x": 22.6,
+     "y": 3.1,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e8",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 10.8,
-     "y": 4.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "strat înălțat 7",
+     "tip": "strat",
+     "x": 26.8,
+     "y": 3.1,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e9",
-     "nume": "bancă 3",
-     "tip": "banca",
-     "x": 13.6,
-     "y": 4.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "strat înălțat 8",
+     "tip": "strat",
+     "x": 1.6,
+     "y": 5.5,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e10",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 12.8,
-     "y": 5.8,
-     "latime_m": 0.6,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "nume": "strat înălțat 9",
+     "tip": "strat",
+     "x": 5.8,
+     "y": 5.5,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
     },
     {
      "id": "e11",
-     "nume": "coș de gunoi 2",
+     "nume": "strat înălțat 10",
+     "tip": "strat",
+     "x": 10.0,
+     "y": 5.5,
+     "latime_m": 3.0,
+     "lungime_m": 1.2,
+     "zona_libera_m": 0.6,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.6,
+     "componenta": "strat înălțat"
+    },
+    {
+     "id": "e12",
+     "nume": "magazie de unelte",
+     "tip": "magazie",
+     "x": 1.5,
+     "y": 7.8,
+     "latime_m": 2.5,
+     "lungime_m": 2.0,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "constructie",
+     "inaltime_m": 2.2,
+     "componenta": "magazie de unelte"
+    },
+    {
+     "id": "e13",
+     "nume": "zonă de compost",
+     "tip": "compost",
+     "x": 5.0,
+     "y": 7.8,
+     "latime_m": 2.0,
+     "lungime_m": 1.5,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "echipament",
+     "inaltime_m": 1.0,
+     "componenta": "zonă de compost"
+    },
+    {
+     "id": "e14",
+     "nume": "rezervor de apă și punct de udare",
+     "tip": "apa",
+     "x": 13.9,
+     "y": 5.2,
+     "latime_m": 1.0,
+     "lungime_m": 1.0,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 1.5,
+     "componenta": "rezervor de apă și punct de udare"
+    },
+    {
+     "id": "e15",
+     "nume": "bancă 1",
+     "tip": "banca",
+     "x": 15.7,
+     "y": 5.4,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e16",
+     "nume": "bancă 2",
+     "tip": "banca",
+     "x": 18.5,
+     "y": 5.4,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e17",
+     "nume": "bancă 3",
+     "tip": "banca",
+     "x": 21.3,
+     "y": 5.4,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e18",
+     "nume": "coș de gunoi 1",
      "tip": "cos",
-     "x": 14.0,
-     "y": 5.8,
+     "x": 23.9,
+     "y": 5.2,
      "latime_m": 0.6,
      "lungime_m": 0.6,
      "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e19",
+     "nume": "coș de gunoi 2",
+     "tip": "cos",
+     "x": 25.1,
+     "y": 5.2,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e20",
+     "nume": "panou cu regulamentul de folosire",
+     "tip": "semnalizare",
+     "x": 26.3,
+     "y": 5.2,
+     "latime_m": 0.8,
+     "lungime_m": 0.1,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "semnalizare",
+     "inaltime_m": 2.0,
+     "componenta": "panou cu regulamentul de folosire"
     }
    ],
    "omise": [],
    "complet": true,
    "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
+    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 32,5 × 48,89 m cu aceeași suprafață.",
     "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Pista e o buclă de 2,5 m lățime pe conturul terenului."
+    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
    ],
+   "sursa_specificatie": "model_verificat",
    "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 259.96
+   "suprafata_ocupata_mp": 94.79,
+   "bilant": [
+    {
+     "zona": "Construcții și echipamente",
+     "mp": 49.0,
+     "procent": 3.1
+    },
+    {
+     "zona": "Platforme, alei și circulații",
+     "mp": 45.8,
+     "procent": 2.9
+    },
+    {
+     "zona": "Spații verzi și suprafețe libere",
+     "mp": 1494.2,
+     "procent": 94.0
+    },
+    {
+     "zona": "Total teren",
+     "mp": 1589.0,
+     "procent": 100.0
+    }
+   ],
+   "pot_procent": 2.8,
+   "cut": 0.03
   },
   "materiale": {
    "linii": [
     {
-     "articol": "rastel_biciclete",
-     "nume": "rastel pentru biciclete",
+     "articol": "compostor",
+     "nume": "zonă de compost",
      "unitate": "buc",
      "cantitate": 1.0,
      "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
      "pret_unitar": null,
      "valoare_lei": null,
      "stare": "de_cotat",
-     "motiv": "doar 1 observații în SEAP pentru acest articol (minimum 3)"
+     "tip_sursa": null,
+     "motiv": "doar 0 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
+    },
+    {
+     "articol": "cismea",
+     "nume": "rezervor de apă și punct de udare",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "strat_inaltat",
+     "nume": "strat înălțat",
+     "unitate": "buc",
+     "cantitate": 10.0,
+     "ipoteza": "10 pe planul schematic",
+     "categorie": "constructie",
+     "capitol": "Construcții",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": null,
+     "nume": "magazie de unelte",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "constructie",
+     "capitol": "Construcții",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": "pavaj",
+     "nume": "alee de acces pavată",
+     "unitate": "mp",
+     "cantitate": 45.8,
+     "ipoteza": "suprafața aleii de acces din plan",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
     },
     {
      "articol": "banca",
-     "nume": "bancă de parc",
+     "nume": "bancă",
      "unitate": "buc",
      "cantitate": 3.0,
      "ipoteza": "3 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "banca",
       "nume": "bancă de parc",
@@ -3317,18 +1840,25 @@
        "DA39513916",
        "DA41135418"
       ],
-      "perioada": "2023-10-27 – 2026-09-08"
+      "perioada": "2023-10-27 – 2026-09-08",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 4725,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
      "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
+     "nume": "coș de gunoi",
      "unitate": "buc",
      "cantitate": 2.0,
      "ipoteza": "2 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "cos_gunoi_stradal",
       "nume": "coș de gunoi stradal",
@@ -3342,29 +1872,25 @@
        "DA34334173",
        "DA40752322"
       ],
-      "perioada": "2023-10-25 – 2026-09-30"
+      "perioada": "2023-10-25 – 2026-09-30",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 580,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
-    },
-    {
-     "articol": null,
-     "nume": "îmbrăcăminte pistă de biciclete",
-     "unitate": "mp",
-     "cantitate": 253.0,
-     "ipoteza": "suprafața din planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
     },
     {
      "articol": "gard",
      "nume": "împrejmuire (gard)",
      "unitate": "ml",
-     "cantitate": 100.0,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
+     "cantitate": 162.8,
+     "ipoteza": "pe tot conturul terenului (ipoteză)",
+     "categorie": "siguranta",
+     "capitol": "Siguranță",
      "pret_unitar": {
       "articol": "gard",
       "nume": "împrejmuire (gard)",
@@ -3380,18 +1906,39 @@
        "DA38646215",
        "DA38923533"
       ],
-      "perioada": "2023-08-03 – 2026-09-02"
+      "perioada": "2023-08-03 – 2026-09-02",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
-     "valoare_lei": 34567,
+     "valoare_lei": 56275,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
+     "articol": null,
+     "nume": "panou cu regulamentul de folosire",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "semnalizare",
+     "capitol": "Semnalizare",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
      "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
+     "nume": "spațiu verde (gazon în rulou)",
      "unitate": "mp",
-     "cantitate": 340.0,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
+     "cantitate": 1494.2,
+     "ipoteza": "suprafața rămasă liberă pe plan (ipoteză)",
+     "categorie": "vegetatie",
+     "capitol": "Spații verzi",
      "pret_unitar": {
       "articol": "gazon_rulou",
       "nume": "gazon în rulou",
@@ -3407,27 +1954,1082 @@
        "DA36875403",
        "DA41019170"
       ],
-      "perioada": "2023-07-19 – 2026-08-19"
+      "perioada": "2023-07-19 – 2026-08-19",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
-     "valoare_lei": 8500,
+     "valoare_lei": 37355,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     }
    ],
-   "subtotal_cotat_lei": 48372,
-   "linii_de_cotat": 2,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 2 articole de cotat)",
+   "capitole": [
+    "Echipamente",
+    "Instalații și utilități",
+    "Construcții",
+    "Finisaje și suprafețe",
+    "Mobilier urban",
+    "Siguranță",
+    "Semnalizare",
+    "Spații verzi"
+   ],
+   "subtotal_cotat_lei": 98935,
+   "linii_de_cotat": 6,
+   "articole_necotate": [
+    "zonă de compost",
+    "rezervor de apă și punct de udare",
+    "strat înălțat",
+    "magazie de unelte",
+    "alee de acces pavată",
+    "panou cu regulamentul de folosire"
+   ],
+   "pe_surse": {
+    "seap": 4
+   },
+   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 6 articole de cotat)",
    "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+   "surse": {
+    "seap": "SEAP (achiziții directe, date deschise)",
+    "plafon": "plafon de program oficial",
+    "catalog": "preț de catalog verificat"
+   },
    "tva": "TVA: neprecizat în setul de date",
    "ipoteze": [
-    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
+    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 32,5 × 48,89 m cu aceeași suprafață.",
     "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
-    "Pista e o buclă de 2,5 m lățime pe conturul terenului.",
-    "Împrejmuirea are 100 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
+    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
+    "Împrejmuirea are 162,78 m (perimetrul dreptunghiului din plan).",
+    "Prețul unitar este mediana prețurilor din sursa indicată pe fiecare rând; intervalul min–max arată cât de mult diferă produsele între ele."
    ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+   "disclaimer": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+  }
+ },
+ "2e68b054-93af-4065-a580-b552d2042352": {
+  "plan": {
+   "tip_amenajare": "aquapark",
+   "eticheta": "parc acvatic",
+   "suprafata_mp": 4383.0,
+   "latime_m": 54.1,
+   "lungime_m": 81.02,
+   "elemente": [
+    {
+     "id": "e1",
+     "nume": "alee de acces",
+     "tip": "alee",
+     "x": 1.0,
+     "y": 1.0,
+     "latime_m": 52.1,
+     "lungime_m": 1.5,
+     "zona_libera_m": 0.0,
+     "obligatoriu": false,
+     "categorie": "finisaj",
+     "inaltime_m": 0.0,
+     "componenta": "alee de acces pavată"
+    },
+    {
+     "id": "e2",
+     "nume": "parcare",
+     "tip": "parcare",
+     "x": 1.5,
+     "y": 3.0,
+     "latime_m": 30.0,
+     "lungime_m": 15.0,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "terasament",
+     "inaltime_m": 0.0,
+     "componenta": "parcare"
+    },
+    {
+     "id": "e3",
+     "nume": "stație de pompe și tratare a apei (filtrare, clorinare)",
+     "tip": "cladire",
+     "x": 33.0,
+     "y": 3.5,
+     "latime_m": 6.0,
+     "lungime_m": 4.0,
+     "zona_libera_m": 1.0,
+     "obligatoriu": true,
+     "categorie": "instalatie",
+     "inaltime_m": 3.0,
+     "componenta": "stație de pompe și tratare a apei (filtrare, clorinare)"
+    },
+    {
+     "id": "e4",
+     "nume": "punct de prim ajutor și post de salvamar",
+     "tip": "cladire",
+     "x": 40.5,
+     "y": 3.0,
+     "latime_m": 3.0,
+     "lungime_m": 3.0,
+     "zona_libera_m": 0.5,
+     "obligatoriu": true,
+     "categorie": "siguranta",
+     "inaltime_m": 3.0,
+     "componenta": "punct de prim ajutor și post de salvamar"
+    },
+    {
+     "id": "e5",
+     "nume": "bazin principal",
+     "tip": "apa",
+     "x": 3.0,
+     "y": 20.5,
+     "latime_m": 25.0,
+     "lungime_m": 12.0,
+     "zona_libera_m": 2.0,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 1.8,
+     "componenta": "bazin principal"
+    },
+    {
+     "id": "e6",
+     "nume": "turn cu tobogane acvatice",
+     "tip": "echipament",
+     "x": 32.0,
+     "y": 20.5,
+     "latime_m": 10.0,
+     "lungime_m": 8.0,
+     "zona_libera_m": 2.0,
+     "obligatoriu": false,
+     "categorie": "echipament",
+     "inaltime_m": 8.0,
+     "componenta": "turn cu tobogane acvatice"
+    },
+    {
+     "id": "e7",
+     "nume": "bazin pentru copii",
+     "tip": "apa",
+     "x": 3.0,
+     "y": 36.5,
+     "latime_m": 8.0,
+     "lungime_m": 6.0,
+     "zona_libera_m": 2.0,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 0.5,
+     "componenta": "bazin pentru copii"
+    },
+    {
+     "id": "e8",
+     "nume": "vestiare, dușuri și grupuri sanitare",
+     "tip": "cladire",
+     "x": 14.0,
+     "y": 35.5,
+     "latime_m": 12.0,
+     "lungime_m": 6.0,
+     "zona_libera_m": 1.0,
+     "obligatoriu": true,
+     "categorie": "constructie",
+     "inaltime_m": 3.5,
+     "componenta": "vestiare, dușuri și grupuri sanitare"
+    },
+    {
+     "id": "e9",
+     "nume": "stâlp de iluminat LED 1",
+     "tip": "iluminat",
+     "x": 44.3,
+     "y": 2.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
+    },
+    {
+     "id": "e10",
+     "nume": "stâlp de iluminat LED 2",
+     "tip": "iluminat",
+     "x": 45.2,
+     "y": 2.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
+    },
+    {
+     "id": "e11",
+     "nume": "bancă 1",
+     "tip": "banca",
+     "x": 46.3,
+     "y": 3.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e12",
+     "nume": "bancă 2",
+     "tip": "banca",
+     "x": 49.1,
+     "y": 3.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e13",
+     "nume": "bancă 3",
+     "tip": "banca",
+     "x": 44.5,
+     "y": 19.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e14",
+     "nume": "coș de gunoi 1",
+     "tip": "cos",
+     "x": 51.7,
+     "y": 2.8,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e15",
+     "nume": "coș de gunoi 2",
+     "tip": "cos",
+     "x": 47.1,
+     "y": 18.8,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    }
+   ],
+   "omise": [],
+   "complet": true,
+   "ipoteze": [
+    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 54,1 × 81,02 m cu aceeași suprafață.",
+    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
+    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
+    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
+   ],
+   "sursa_specificatie": "model_verificat",
+   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
+   "suprafata_ocupata_mp": 1065.29,
+   "bilant": [
+    {
+     "zona": "Construcții și echipamente",
+     "mp": 537.1,
+     "procent": 12.3
+    },
+    {
+     "zona": "Platforme, alei și circulații",
+     "mp": 528.1,
+     "procent": 12.0
+    },
+    {
+     "zona": "Spații verzi și suprafețe libere",
+     "mp": 3317.7,
+     "procent": 75.7
+    },
+    {
+     "zona": "Total teren",
+     "mp": 4383.0,
+     "procent": 100.0
+    }
+   ],
+   "pot_procent": 12.0,
+   "cut": 0.12
+  },
+  "materiale": {
+   "linii": [
+    {
+     "articol": null,
+     "nume": "turn cu tobogane acvatice",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": null,
+     "nume": "stație de pompe și tratare a apei (filtrare, clorinare)",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": null,
+     "nume": "racorduri la apă, canalizare și energie",
+     "unitate": "set",
+     "cantitate": 1.0,
+     "ipoteza": "cantitate din specificația tehnică (ipoteză)",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": "stalp_iluminat",
+     "nume": "stâlp de iluminat LED",
+     "unitate": "buc",
+     "cantitate": 2.0,
+     "ipoteza": "2 pe planul schematic",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "bazin",
+     "nume": "bazin principal",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "constructie",
+     "capitol": "Construcții",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "bazin",
+     "nume": "bazin pentru copii",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "constructie",
+     "capitol": "Construcții",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": null,
+     "nume": "vestiare, dușuri și grupuri sanitare",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "constructie",
+     "capitol": "Construcții",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": "pavaj",
+     "nume": "parcare",
+     "unitate": "buc",
+     "cantitate": 450.0,
+     "ipoteza": "suprafața din planul schematic",
+     "categorie": "terasament",
+     "capitol": "Terasamente și platforme",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
+    },
+    {
+     "articol": "pavaj",
+     "nume": "alee de acces pavată",
+     "unitate": "mp",
+     "cantitate": 78.2,
+     "ipoteza": "suprafața aleii de acces din plan",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
+    },
+    {
+     "articol": "banca",
+     "nume": "bancă",
+     "unitate": "buc",
+     "cantitate": 3.0,
+     "ipoteza": "3 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
+     "pret_unitar": {
+      "articol": "banca",
+      "nume": "bancă de parc",
+      "unitate": "buc",
+      "mediana_lei": 1575.0,
+      "min_lei": 550.0,
+      "max_lei": 2979.0,
+      "observatii": 8,
+      "surse": [
+       "DA38648219",
+       "DA39650128",
+       "DA39836760",
+       "DA39513916",
+       "DA41135418"
+      ],
+      "perioada": "2023-10-27 – 2026-09-08",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 4725,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    },
+    {
+     "articol": "cos_gunoi_stradal",
+     "nume": "coș de gunoi",
+     "unitate": "buc",
+     "cantitate": 2.0,
+     "ipoteza": "2 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
+     "pret_unitar": {
+      "articol": "cos_gunoi_stradal",
+      "nume": "coș de gunoi stradal",
+      "unitate": "buc",
+      "mediana_lei": 290.0,
+      "min_lei": 149.0,
+      "max_lei": 1350.0,
+      "observatii": 3,
+      "surse": [
+       "DA41296145",
+       "DA34334173",
+       "DA40752322"
+      ],
+      "perioada": "2023-10-25 – 2026-09-30",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 580,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    },
+    {
+     "articol": null,
+     "nume": "punct de prim ajutor și post de salvamar",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "siguranta",
+     "capitol": "Siguranță",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": "gard",
+     "nume": "împrejmuire (gard)",
+     "unitate": "ml",
+     "cantitate": 270.2,
+     "ipoteza": "pe tot conturul terenului (ipoteză)",
+     "categorie": "siguranta",
+     "capitol": "Siguranță",
+     "pret_unitar": {
+      "articol": "gard",
+      "nume": "împrejmuire (gard)",
+      "unitate": "ml",
+      "mediana_lei": 345.67,
+      "min_lei": 85.71,
+      "max_lei": 1028.0,
+      "observatii": 13,
+      "surse": [
+       "DA34764331",
+       "DA38762909",
+       "DA34764616",
+       "DA38646215",
+       "DA38923533"
+      ],
+      "perioada": "2023-08-03 – 2026-09-02",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 93400,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    },
+    {
+     "articol": "gazon_rulou",
+     "nume": "spațiu verde (gazon în rulou)",
+     "unitate": "mp",
+     "cantitate": 3317.7,
+     "ipoteza": "suprafața rămasă liberă pe plan (ipoteză)",
+     "categorie": "vegetatie",
+     "capitol": "Spații verzi",
+     "pret_unitar": {
+      "articol": "gazon_rulou",
+      "nume": "gazon în rulou",
+      "unitate": "mp",
+      "mediana_lei": 25.0,
+      "min_lei": 13.5,
+      "max_lei": 38.0,
+      "observatii": 9,
+      "surse": [
+       "DA36800373",
+       "DA36847092",
+       "DA38264037",
+       "DA36875403",
+       "DA41019170"
+      ],
+      "perioada": "2023-07-19 – 2026-08-19",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 82942,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    }
+   ],
+   "capitole": [
+    "Echipamente",
+    "Instalații și utilități",
+    "Construcții",
+    "Terasamente și platforme",
+    "Finisaje și suprafețe",
+    "Mobilier urban",
+    "Siguranță",
+    "Spații verzi"
+   ],
+   "subtotal_cotat_lei": 181647,
+   "linii_de_cotat": 10,
+   "articole_necotate": [
+    "turn cu tobogane acvatice",
+    "stație de pompe și tratare a apei (filtrare, clorinare)",
+    "racorduri la apă, canalizare și energie",
+    "stâlp de iluminat LED",
+    "bazin principal",
+    "bazin pentru copii",
+    "vestiare, dușuri și grupuri sanitare",
+    "parcare",
+    "alee de acces pavată",
+    "punct de prim ajutor și post de salvamar"
+   ],
+   "pe_surse": {
+    "seap": 4
+   },
+   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 10 articole de cotat)",
+   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+   "surse": {
+    "seap": "SEAP (achiziții directe, date deschise)",
+    "plafon": "plafon de program oficial",
+    "catalog": "preț de catalog verificat"
+   },
+   "tva": "TVA: neprecizat în setul de date",
+   "ipoteze": [
+    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 54,1 × 81,02 m cu aceeași suprafață.",
+    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
+    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
+    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
+    "Împrejmuirea are 270,24 m (perimetrul dreptunghiului din plan).",
+    "Prețul unitar este mediana prețurilor din sursa indicată pe fiecare rând; intervalul min–max arată cât de mult diferă produsele între ele."
+   ],
+   "disclaimer": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+  }
+ },
+ "d6e2c028-c70a-4873-a232-c632b6650552": {
+  "plan": {
+   "tip_amenajare": "skatepark",
+   "eticheta": "skatepark",
+   "suprafata_mp": 2102.0,
+   "latime_m": 37.4,
+   "lungime_m": 56.2,
+   "elemente": [
+    {
+     "id": "e1",
+     "nume": "alee de acces",
+     "tip": "alee",
+     "x": 1.0,
+     "y": 1.0,
+     "latime_m": 35.4,
+     "lungime_m": 1.5,
+     "zona_libera_m": 0.0,
+     "obligatoriu": false,
+     "categorie": "finisaj",
+     "inaltime_m": 0.0,
+     "componenta": "alee de acces pavată"
+    },
+    {
+     "id": "e2",
+     "nume": "zonă de skate (rampe și obstacole)",
+     "tip": "skate",
+     "x": 2.0,
+     "y": 3.5,
+     "latime_m": 20.0,
+     "lungime_m": 15.0,
+     "zona_libera_m": 1.0,
+     "obligatoriu": true,
+     "categorie": "echipament",
+     "inaltime_m": 1.5,
+     "componenta": "zonă de skate (rampe și obstacole)"
+    },
+    {
+     "id": "e3",
+     "nume": "zonă pentru începători",
+     "tip": "skate",
+     "x": 24.0,
+     "y": 3.5,
+     "latime_m": 8.0,
+     "lungime_m": 6.0,
+     "zona_libera_m": 1.0,
+     "obligatoriu": false,
+     "categorie": "echipament",
+     "inaltime_m": 0.6,
+     "componenta": "zonă pentru începători"
+    },
+    {
+     "id": "e4",
+     "nume": "stâlp de iluminat LED 1",
+     "tip": "iluminat",
+     "x": 33.3,
+     "y": 2.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
+    },
+    {
+     "id": "e5",
+     "nume": "stâlp de iluminat LED 2",
+     "tip": "iluminat",
+     "x": 34.2,
+     "y": 2.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
+    },
+    {
+     "id": "e6",
+     "nume": "bancă 1",
+     "tip": "banca",
+     "x": 1.5,
+     "y": 20.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e7",
+     "nume": "bancă 2",
+     "tip": "banca",
+     "x": 4.3,
+     "y": 20.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e8",
+     "nume": "bancă 3",
+     "tip": "banca",
+     "x": 7.1,
+     "y": 20.0,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e9",
+     "nume": "coș de gunoi 1",
+     "tip": "cos",
+     "x": 35.1,
+     "y": 2.8,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e10",
+     "nume": "coș de gunoi 2",
+     "tip": "cos",
+     "x": 9.7,
+     "y": 19.8,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e11",
+     "nume": "panou cu regulamentul de folosire",
+     "tip": "semnalizare",
+     "x": 10.9,
+     "y": 19.8,
+     "latime_m": 0.8,
+     "lungime_m": 0.1,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "semnalizare",
+     "inaltime_m": 2.0,
+     "componenta": "panou cu regulamentul de folosire"
+    }
+   ],
+   "omise": [],
+   "complet": true,
+   "ipoteze": [
+    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 37,4 × 56,2 m cu aceeași suprafață.",
+    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
+    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
+    "Intrarea e pe latura de jos, cu o alee de 1,5 m."
+   ],
+   "sursa_specificatie": "model_verificat",
+   "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
+   "suprafata_ocupata_mp": 405.32,
+   "bilant": [
+    {
+     "zona": "Construcții și echipamente",
+     "mp": 352.2,
+     "procent": 16.8
+    },
+    {
+     "zona": "Platforme, alei și circulații",
+     "mp": 53.1,
+     "procent": 2.5
+    },
+    {
+     "zona": "Spații verzi și suprafețe libere",
+     "mp": 1696.7,
+     "procent": 80.7
+    },
+    {
+     "zona": "Total teren",
+     "mp": 2102.0,
+     "procent": 100.0
+    }
+   ],
+   "pot_procent": 16.6,
+   "cut": 0.17
+  },
+  "materiale": {
+   "linii": [
+    {
+     "articol": "suprafata_skate",
+     "nume": "zonă de skate (rampe și obstacole)",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "suprafata_skate",
+     "nume": "zonă pentru începători",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "stalp_iluminat",
+     "nume": "stâlp de iluminat LED",
+     "unitate": "buc",
+     "cantitate": 2.0,
+     "ipoteza": "2 pe planul schematic",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "pavaj",
+     "nume": "alee de acces pavată",
+     "unitate": "mp",
+     "cantitate": 53.1,
+     "ipoteza": "suprafața aleii de acces din plan",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
+    },
+    {
+     "articol": "banca",
+     "nume": "bancă",
+     "unitate": "buc",
+     "cantitate": 3.0,
+     "ipoteza": "3 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
+     "pret_unitar": {
+      "articol": "banca",
+      "nume": "bancă de parc",
+      "unitate": "buc",
+      "mediana_lei": 1575.0,
+      "min_lei": 550.0,
+      "max_lei": 2979.0,
+      "observatii": 8,
+      "surse": [
+       "DA38648219",
+       "DA39650128",
+       "DA39836760",
+       "DA39513916",
+       "DA41135418"
+      ],
+      "perioada": "2023-10-27 – 2026-09-08",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 4725,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    },
+    {
+     "articol": "cos_gunoi_stradal",
+     "nume": "coș de gunoi",
+     "unitate": "buc",
+     "cantitate": 2.0,
+     "ipoteza": "2 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
+     "pret_unitar": {
+      "articol": "cos_gunoi_stradal",
+      "nume": "coș de gunoi stradal",
+      "unitate": "buc",
+      "mediana_lei": 290.0,
+      "min_lei": 149.0,
+      "max_lei": 1350.0,
+      "observatii": 3,
+      "surse": [
+       "DA41296145",
+       "DA34334173",
+       "DA40752322"
+      ],
+      "perioada": "2023-10-25 – 2026-09-30",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 580,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    },
+    {
+     "articol": "gard",
+     "nume": "împrejmuire (gard)",
+     "unitate": "ml",
+     "cantitate": 187.2,
+     "ipoteza": "pe tot conturul terenului (ipoteză)",
+     "categorie": "siguranta",
+     "capitol": "Siguranță",
+     "pret_unitar": {
+      "articol": "gard",
+      "nume": "împrejmuire (gard)",
+      "unitate": "ml",
+      "mediana_lei": 345.67,
+      "min_lei": 85.71,
+      "max_lei": 1028.0,
+      "observatii": 13,
+      "surse": [
+       "DA34764331",
+       "DA38762909",
+       "DA34764616",
+       "DA38646215",
+       "DA38923533"
+      ],
+      "perioada": "2023-08-03 – 2026-09-02",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 64709,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    },
+    {
+     "articol": null,
+     "nume": "panou cu regulamentul de folosire",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "semnalizare",
+     "capitol": "Semnalizare",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
+     "articol": "gazon_rulou",
+     "nume": "spațiu verde (gazon în rulou)",
+     "unitate": "mp",
+     "cantitate": 1696.7,
+     "ipoteza": "suprafața rămasă liberă pe plan (ipoteză)",
+     "categorie": "vegetatie",
+     "capitol": "Spații verzi",
+     "pret_unitar": {
+      "articol": "gazon_rulou",
+      "nume": "gazon în rulou",
+      "unitate": "mp",
+      "mediana_lei": 25.0,
+      "min_lei": 13.5,
+      "max_lei": 38.0,
+      "observatii": 9,
+      "surse": [
+       "DA36800373",
+       "DA36847092",
+       "DA38264037",
+       "DA36875403",
+       "DA41019170"
+      ],
+      "perioada": "2023-07-19 – 2026-08-19",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
+     },
+     "valoare_lei": 42418,
+     "stare": "cotat",
+     "tip_sursa": "seap",
+     "motiv": ""
+    }
+   ],
+   "capitole": [
+    "Echipamente",
+    "Instalații și utilități",
+    "Finisaje și suprafețe",
+    "Mobilier urban",
+    "Siguranță",
+    "Semnalizare",
+    "Spații verzi"
+   ],
+   "subtotal_cotat_lei": 112432,
+   "linii_de_cotat": 5,
+   "articole_necotate": [
+    "zonă de skate (rampe și obstacole)",
+    "zonă pentru începători",
+    "stâlp de iluminat LED",
+    "alee de acces pavată",
+    "panou cu regulamentul de folosire"
+   ],
+   "pe_surse": {
+    "seap": 4
+   },
+   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 5 articole de cotat)",
+   "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+   "surse": {
+    "seap": "SEAP (achiziții directe, date deschise)",
+    "plafon": "plafon de program oficial",
+    "catalog": "preț de catalog verificat"
+   },
+   "tva": "TVA: neprecizat în setul de date",
+   "ipoteze": [
+    "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 37,4 × 56,2 m cu aceeași suprafață.",
+    "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
+    "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
+    "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
+    "Împrejmuirea are 187,2 m (perimetrul dreptunghiului din plan).",
+    "Prețul unitar este mediana prețurilor din sursa indicată pe fiecare rând; intervalul min–max arată cât de mult diferă produsele între ele."
+   ],
+   "disclaimer": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
   }
  },
  "demo-proiect-1": {
@@ -3447,7 +3049,10 @@
      "latime_m": 18.0,
      "lungime_m": 1.5,
      "zona_libera_m": 0.0,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "finisaj",
+     "inaltime_m": 0.0,
+     "componenta": "alee de acces pavată"
     },
     {
      "id": "e2",
@@ -3458,62 +3063,122 @@
      "latime_m": 15.0,
      "lungime_m": 20.0,
      "zona_libera_m": 1.0,
-     "obligatoriu": true
+     "obligatoriu": true,
+     "categorie": "echipament",
+     "inaltime_m": 1.5,
+     "componenta": "zonă de skate (rampe și obstacole)"
     },
     {
      "id": "e3",
-     "nume": "bancă 1",
-     "tip": "banca",
-     "x": 1.5,
-     "y": 25.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "stâlp de iluminat LED 1",
+     "tip": "iluminat",
+     "x": 18.3,
+     "y": 2.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e4",
-     "nume": "bancă 2",
-     "tip": "banca",
-     "x": 4.3,
-     "y": 25.0,
-     "latime_m": 1.8,
-     "lungime_m": 0.6,
-     "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "nume": "stâlp de iluminat LED 2",
+     "tip": "iluminat",
+     "x": 1.3,
+     "y": 24.8,
+     "latime_m": 0.3,
+     "lungime_m": 0.3,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "instalatie",
+     "inaltime_m": 4.0,
+     "componenta": "stâlp de iluminat LED"
     },
     {
      "id": "e5",
-     "nume": "bancă 3",
+     "nume": "bancă 1",
      "tip": "banca",
-     "x": 7.1,
-     "y": 25.0,
+     "x": 1.5,
+     "y": 25.9,
      "latime_m": 1.8,
      "lungime_m": 0.6,
      "zona_libera_m": 0.5,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e6",
-     "nume": "coș de gunoi 1",
-     "tip": "cos",
-     "x": 9.7,
-     "y": 24.8,
-     "latime_m": 0.6,
+     "nume": "bancă 2",
+     "tip": "banca",
+     "x": 4.3,
+     "y": 25.9,
+     "latime_m": 1.8,
      "lungime_m": 0.6,
-     "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
     },
     {
      "id": "e7",
-     "nume": "coș de gunoi 2",
+     "nume": "bancă 3",
+     "tip": "banca",
+     "x": 7.1,
+     "y": 25.9,
+     "latime_m": 1.8,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.5,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 0.9,
+     "componenta": "bancă"
+    },
+    {
+     "id": "e8",
+     "nume": "coș de gunoi 1",
      "tip": "cos",
-     "x": 10.9,
-     "y": 24.8,
+     "x": 9.7,
+     "y": 25.7,
      "latime_m": 0.6,
      "lungime_m": 0.6,
      "zona_libera_m": 0.3,
-     "obligatoriu": false
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e9",
+     "nume": "coș de gunoi 2",
+     "tip": "cos",
+     "x": 10.9,
+     "y": 25.7,
+     "latime_m": 0.6,
+     "lungime_m": 0.6,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "mobilier",
+     "inaltime_m": 1.0,
+     "componenta": "coș de gunoi"
+    },
+    {
+     "id": "e10",
+     "nume": "panou cu regulamentul de folosire",
+     "tip": "semnalizare",
+     "x": 2.2,
+     "y": 24.8,
+     "latime_m": 0.8,
+     "lungime_m": 0.1,
+     "zona_libera_m": 0.3,
+     "obligatoriu": false,
+     "categorie": "semnalizare",
+     "inaltime_m": 2.0,
+     "componenta": "panou cu regulamentul de folosire"
     }
    ],
    "omise": [
@@ -3531,17 +3196,86 @@
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Intrarea e pe latura de jos, cu o alee de 1,5 m."
    ],
+   "sursa_specificatie": "model_verificat",
    "disclaimer": "Plan schematic orientativ, generat automat. Nu este un proiect tehnic: dimensiunile sunt ipoteze de lucru, iar amplasarea reală o stabilește un proiectant autorizat, după măsurători pe teren.",
-   "suprafata_ocupata_mp": 330.96
+   "suprafata_ocupata_mp": 331.22,
+   "bilant": [
+    {
+     "zona": "Construcții și echipamente",
+     "mp": 304.2,
+     "procent": 50.7
+    },
+    {
+     "zona": "Platforme, alei și circulații",
+     "mp": 27.0,
+     "procent": 4.5
+    },
+    {
+     "zona": "Spații verzi și suprafețe libere",
+     "mp": 268.8,
+     "procent": 44.8
+    },
+    {
+     "zona": "Total teren",
+     "mp": 600.0,
+     "procent": 100.0
+    }
+   ],
+   "pot_procent": 50.0,
+   "cut": 0.5
   },
   "materiale": {
    "linii": [
     {
+     "articol": "suprafata_skate",
+     "nume": "zonă de skate (rampe și obstacole)",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "echipament",
+     "capitol": "Echipamente",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "stalp_iluminat",
+     "nume": "stâlp de iluminat LED",
+     "unitate": "buc",
+     "cantitate": 2.0,
+     "ipoteza": "2 pe planul schematic",
+     "categorie": "instalatie",
+     "capitol": "Instalații și utilități",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "fără achiziții SEAP potrivite, fără plafon de program și fără preț de catalog verificat"
+    },
+    {
+     "articol": "pavaj",
+     "nume": "alee de acces pavată",
+     "unitate": "mp",
+     "cantitate": 27.0,
+     "ipoteza": "suprafața aleii de acces din plan",
+     "categorie": "finisaj",
+     "capitol": "Finisaje și suprafețe",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3); fără plafon sau preț de catalog verificat"
+    },
+    {
      "articol": "banca",
-     "nume": "bancă de parc",
+     "nume": "bancă",
      "unitate": "buc",
      "cantitate": 3.0,
      "ipoteza": "3 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "banca",
       "nume": "bancă de parc",
@@ -3557,18 +3291,25 @@
        "DA39513916",
        "DA41135418"
       ],
-      "perioada": "2023-10-27 – 2026-09-08"
+      "perioada": "2023-10-27 – 2026-09-08",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 4725,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
      "articol": "cos_gunoi_stradal",
-     "nume": "coș de gunoi stradal",
+     "nume": "coș de gunoi",
      "unitate": "buc",
      "cantitate": 2.0,
      "ipoteza": "2 pe planul schematic",
+     "categorie": "mobilier",
+     "capitol": "Mobilier urban",
      "pret_unitar": {
       "articol": "cos_gunoi_stradal",
       "nume": "coș de gunoi stradal",
@@ -3582,40 +3323,25 @@
        "DA34334173",
        "DA40752322"
       ],
-      "perioada": "2023-10-25 – 2026-09-30"
+      "perioada": "2023-10-25 – 2026-09-30",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 580,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
-    },
-    {
-     "articol": "pavaj",
-     "nume": "pavaj din pavele (furnizare și/sau montaj)",
-     "unitate": "mp",
-     "cantitate": 27.0,
-     "ipoteza": "suprafața aleii de acces din plan, pavată",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "doar 2 observații în SEAP pentru acest articol (minimum 3)"
-    },
-    {
-     "articol": null,
-     "nume": "suprafață și module de skate",
-     "unitate": "mp",
-     "cantitate": 300.0,
-     "ipoteza": "suprafața din planul schematic",
-     "pret_unitar": null,
-     "valoare_lei": null,
-     "stare": "de_cotat",
-     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
     },
     {
      "articol": "gard",
      "nume": "împrejmuire (gard)",
      "unitate": "ml",
      "cantitate": 100.0,
-     "ipoteza": "împrejmuire pe tot conturul terenului (ipoteză)",
+     "ipoteza": "pe tot conturul terenului (ipoteză)",
+     "categorie": "siguranta",
+     "capitol": "Siguranță",
      "pret_unitar": {
       "articol": "gard",
       "nume": "împrejmuire (gard)",
@@ -3631,18 +3357,39 @@
        "DA38646215",
        "DA38923533"
       ],
-      "perioada": "2023-08-03 – 2026-09-02"
+      "perioada": "2023-08-03 – 2026-09-02",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
      "valoare_lei": 34567,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     },
     {
+     "articol": null,
+     "nume": "panou cu regulamentul de folosire",
+     "unitate": "buc",
+     "cantitate": 1.0,
+     "ipoteza": "1 pe planul schematic",
+     "categorie": "semnalizare",
+     "capitol": "Semnalizare",
+     "pret_unitar": null,
+     "valoare_lei": null,
+     "stare": "de_cotat",
+     "tip_sursa": null,
+     "motiv": "aplicația nu are o sursă de preț pentru acest articol"
+    },
+    {
      "articol": "gazon_rulou",
-     "nume": "gazon în rulou",
+     "nume": "spațiu verde (gazon în rulou)",
      "unitate": "mp",
-     "cantitate": 269.0,
-     "ipoteza": "suprafața rămasă liberă pe plan, înierbată (ipoteză)",
+     "cantitate": 268.8,
+     "ipoteza": "suprafața rămasă liberă pe plan (ipoteză)",
+     "categorie": "vegetatie",
+     "capitol": "Spații verzi",
      "pret_unitar": {
       "articol": "gazon_rulou",
       "nume": "gazon în rulou",
@@ -3658,27 +3405,56 @@
        "DA36875403",
        "DA41019170"
       ],
-      "perioada": "2023-07-19 – 2026-08-19"
+      "perioada": "2023-07-19 – 2026-08-19",
+      "tip_sursa": "seap",
+      "sursa_url": null,
+      "data_accesarii": null,
+      "nota": null
      },
-     "valoare_lei": 6725,
+     "valoare_lei": 6720,
      "stare": "cotat",
+     "tip_sursa": "seap",
      "motiv": ""
     }
    ],
-   "subtotal_cotat_lei": 46597,
-   "linii_de_cotat": 2,
-   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 2 articole de cotat)",
+   "capitole": [
+    "Echipamente",
+    "Instalații și utilități",
+    "Finisaje și suprafețe",
+    "Mobilier urban",
+    "Siguranță",
+    "Semnalizare",
+    "Spații verzi"
+   ],
+   "subtotal_cotat_lei": 46592,
+   "linii_de_cotat": 4,
+   "articole_necotate": [
+    "zonă de skate (rampe și obstacole)",
+    "stâlp de iluminat LED",
+    "alee de acces pavată",
+    "panou cu regulamentul de folosire"
+   ],
+   "pe_surse": {
+    "seap": 4
+   },
+   "eticheta_subtotal": "Subtotal articole cotate (incomplet: 4 articole de cotat)",
    "sursa_preturi": "Achiziții directe din SEAP, date deschise publicate de Autoritatea pentru Digitalizarea României pe data.gov.ro (CC BY 4.0)",
+   "surse": {
+    "seap": "SEAP (achiziții directe, date deschise)",
+    "plafon": "plafon de program oficial",
+    "catalog": "preț de catalog verificat"
+   },
    "tva": "TVA: neprecizat în setul de date",
    "ipoteze": [
     "Forma reală a terenului nu e cunoscută: planul folosește un dreptunghi de 20 × 30 m cu aceeași suprafață.",
     "Dimensiunile elementelor și zonele libere din jurul lor sunt ipoteze schematice ale aplicației, nu valori din standarde sau din fișe de produs.",
     "Pe contur rămâne o margine liberă de 1 m (împrejmuire, vegetație).",
     "Intrarea e pe latura de jos, cu o alee de 1,5 m.",
+    "„zonă pentru începători” nu încape pe plan și nu apare în listă.",
     "Împrejmuirea are 100 m (perimetrul dreptunghiului din plan).",
-    "Prețul unitar este mediana prețurilor plătite în achizițiile directe găsite; intervalul min–max arată cât de mult diferă produsele între ele."
+    "Prețul unitar este mediana prețurilor din sursa indicată pe fiecare rând; intervalul min–max arată cât de mult diferă produsele între ele."
    ],
-   "disclaimer": "Listă orientativă. Cantitățile rezultă din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
+   "disclaimer": "Listă orientativă. Cantitățile rezultă din specificația tehnică și din planul schematic, iar prețurile unitare sunt mediane ale unor achiziții directe publice din SEAP, plafoane de program sau prețuri de catalog verificate, nu oferte. Subtotalul nu este costul proiectului: articolele „de cotat” lipsesc din el, iar manopera, transportul și proiectarea pot să nu fie incluse."
   }
  }
 }
