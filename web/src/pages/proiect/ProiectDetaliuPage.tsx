@@ -116,11 +116,12 @@ export function ProiectDetaliuPage() {
 
       <div className="grid gap-6 lg:grid-cols-[1fr_340px] print:block">
         <Tabs defaultValue="rezumat" className="min-w-0">
-          <TabsList className="flex-wrap print:hidden">
-            <TabsTrigger value="rezumat">Rezumat</TabsTrigger>
-            <TabsTrigger value="dosar">Dosar</TabsTrigger>
-            <TabsTrigger value="avize">Avize și cereri</TabsTrigger>
-            <TabsTrigger value="documente">Planșe și materiale</TabsTrigger>
+          {/* On a phone the four tabs do not fit: the bar scrolls sideways instead of wrapping out of its frame. */}
+          <TabsList className="max-w-full justify-start overflow-x-auto print:hidden">
+            <TabsTrigger value="rezumat" className="flex-none px-3">Rezumat</TabsTrigger>
+            <TabsTrigger value="dosar" className="flex-none px-3">Dosar</TabsTrigger>
+            <TabsTrigger value="avize" className="flex-none px-3">Avize și cereri</TabsTrigger>
+            <TabsTrigger value="documente" className="flex-none px-3">Planșe și materiale</TabsTrigger>
           </TabsList>
 
           {/* What the project is, whether it is realistic, what it may cost, what happens next. */}
